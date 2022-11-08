@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Fbla- Computer- Game- Simulation- Programming- 22"
-run/main_scene="res://scenes/get_letters.tscn"
+run/main_scene="res://scenes/lvl1.tscn"
 config/icon="res://icon.png"
 
 [gui]
