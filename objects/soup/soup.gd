@@ -3,8 +3,13 @@ extends Node
 export(NodePath) onready var meshInstance = get_node(meshInstance) as MeshInstance
 
 export var points: PoolVector2Array = [Vector2(0, 0), Vector2(1, 0), Vector2(0, 1)]
+export var height: float = 0
+
+var buoyancy_acceleration = 9.81 * 2
+var drag = 2
 
 func set_polygon_points(points):
+	
 	var mat = SpatialMaterial.new()
 	var color = Color(1, 0, 0)
 	
@@ -30,7 +35,6 @@ func set_polygon_points(points):
 	
 	for vertex in points:
 		surfaceTool.add_color(color)
-		print(Vector2((vertex.x - minX) / diffX, (vertex.y - minY) / diffY))
 		surfaceTool.add_uv(Vector2((vertex.x - minX) / diffX, (vertex.y - minY) / diffY))
 		surfaceTool.add_vertex(Vector3(vertex.x, 0, vertex.y))
 	
@@ -41,17 +45,47 @@ func set_polygon_points(points):
 	
 	pass
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var letters = []
+
+func push_letters(node: Node):
+	
+	if node is Letter:
+		letters.push_back(node)
+		return
+	
+	for child in node.get_children():
+		push_letters(child)
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	set_polygon_points(points);
-	pass # Replace with function body.
+	
+	push_letters(get_tree().get_root())
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func buoyancy(letter_height: float):
+	var depth = height - letter_height
+	
+	if depth < -0.1:
+		return 0
+	elif depth < 0.1:
+		return buoyancy_acceleration * inverse_lerp(-0.1, 0.1, depth)
+	else:
+		return buoyancy_acceleration
+
+func _process(delta):
+	
+	for letter in letters:
+		var pos = letter.translation
+		
+		if pos.y < height + 0.1 && Geometry.is_point_in_polygon(Vector2(pos.x, pos.z), points):
+			var acceleration = buoyancy(pos.y)
+			
+			# Buoyancy
+			letter.apply_central_impulse(Vector3(0, acceleration, 0) * delta * letter.mass)
+			
+			# Drag
+			letter.apply_central_impulse(letter.linear_velocity * drag * delta * -1)
+	
+	pass

@@ -1,20 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://objects/soup/soup.gd" type="Script" id=1]
 
-[sub_resource type="PlaneMesh" id=1]
-
-[sub_resource type="SpatialMaterial" id=2]
-vertex_color_use_as_albedo = true
-params_cull_mode = 2
-roughness = 0.0
-subsurf_scatter_enabled = true
-subsurf_scatter_strength = 0.38
-
-[node name="Spatial" type="Spatial"]
+[node name="Soup" type="Spatial"]
 script = ExtResource( 1 )
 meshInstance = NodePath("MeshInstance")
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )

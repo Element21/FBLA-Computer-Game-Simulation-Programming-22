@@ -8,10 +8,20 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "Letter",
+"language": "GDScript",
+"path": "res://objects/letter/letter.gd"
+} ]
+_global_script_class_icons={
+"Letter": ""
+}
+
 [application]
 
 config/name="Fbla- Computer- Game- Simulation- Programming- 22"
-run/main_scene="res://scenes/lvl1.tscn"
+run/main_scene="res://levels/lvl1.tscn"
 config/icon="res://icon.png"
 
 [gui]
