@@ -8,12 +8,18 @@ export var height: float = 0
 var buoyancy_acceleration = 9.81 * 2
 var drag = 2
 
+# Converts the list of points to a mesh & puts that mesh on the mesh renderer
 func set_polygon_points(points):
+	
+	# Set up the material
 	
 	var mat = SpatialMaterial.new()
 	var color = Color(1, 0, 0)
 	
 	mat.albedo_color = color
+	
+	# Find the smallest rectangle that contains all the points
+	# This will be used the set the UV coordinates of the points
 	
 	var minX = INF
 	var minY = INF
@@ -29,14 +35,20 @@ func set_polygon_points(points):
 	var diffX = maxX - minX
 	var diffY = maxY - minY
 	
+	# SurfaceTool is used for generating meshes
+	
 	var surfaceTool = SurfaceTool.new()
 	surfaceTool.begin(Mesh.PRIMITIVE_TRIANGLE_FAN)
 	surfaceTool.set_material(mat)
+	
+	# Add all the points
 	
 	for vertex in points:
 		surfaceTool.add_color(color)
 		surfaceTool.add_uv(Vector2((vertex.x - minX) / diffX, (vertex.y - minY) / diffY))
 		surfaceTool.add_vertex(Vector3(vertex.x, 0, vertex.y))
+	
+	# Get the mesh from the SurfaceTool and assign it to the mesh renderer
 	
 	var mesh = ArrayMesh.new()
 	surfaceTool.commit(mesh);
@@ -47,6 +59,7 @@ func set_polygon_points(points):
 
 var letters = []
 
+# Recursively search the node tree for all the letters and push them to the list
 func push_letters(node: Node):
 	
 	if node is Letter:
@@ -79,6 +92,7 @@ func _process(delta):
 	for letter in letters:
 		var pos = letter.translation
 		
+		# Check if the letter is below the soup, then check if it's in the soup
 		if pos.y < height + 0.1 && Geometry.is_point_in_polygon(Vector2(pos.x, pos.z), points):
 			var acceleration = buoyancy(pos.y)
 			
