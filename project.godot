@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Fbla- Computer- Game- Simulation- Programming- 22"
-run/main_scene="res://levels/lvl1.tscn"
+run/main_scene="res://Levels/Level 1/lvl1.tscn"
 config/icon="res://icon.png"
 
 [gui]

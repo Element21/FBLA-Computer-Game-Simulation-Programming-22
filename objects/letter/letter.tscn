@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://objects/letter/letter.gd" type="Script" id=1]
 
@@ -9,6 +9,16 @@ height = 0.529
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.136
 mid_height = 0.529
+
+[sub_resource type="GDScript" id=3]
+script/source = "
+"
+
+[sub_resource type="Shader" id=4]
+script = SubResource( 3 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
 
 [node name="RigidBody" type="RigidBody"]
 can_sleep = false
@@ -21,3 +31,4 @@ shape = SubResource( 2 )
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
+material/0 = SubResource( 5 )
