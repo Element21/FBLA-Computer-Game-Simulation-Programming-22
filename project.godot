@@ -9,13 +9,19 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "RigidBody",
 "class": "Letter",
 "language": "GDScript",
 "path": "res://objects/letter/letter.gd"
+}, {
+"base": "Node",
+"class": "LetterForcefield",
+"language": "GDScript",
+"path": "res://objects/letter_forcefield.gd"
 } ]
 _global_script_class_icons={
-"Letter": ""
+"Letter": "",
+"LetterForcefield": ""
 }
 
 [application]

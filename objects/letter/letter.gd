@@ -1,4 +1,4 @@
-extends Node
+extends RigidBody
 
 class_name Letter
 

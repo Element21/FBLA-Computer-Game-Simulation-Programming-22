@@ -1,27 +1,14 @@
-extends MeshInstance
+extends LetterForcefield
 
-export var buoyancy_acceleration = 9.81 * 2
+export(NodePath) onready var mesh_instance = get_triangles(get_node(mesh_instance).mesh.get_faces())
+
+var buoyancy_acceleration = 9.81 * 2
 var drag = 2
-
-var mesh_points = self.mesh.get_faces()
-
-var letters = []
-
-var triangles = []
-
-# Recursively search the node tree for all the letters and push them to the list
-func push_letters(node: Node):
-	
-	if node is Letter:
-		letters.push_back(node)
-		return
-	
-	for child in node.get_children():
-		push_letters(child)
 
 
 # Get all of the triangles in the mesh, change the data structure to be easier to work with, and flatten them into 2d triangles
-func get_triangles():
+func get_triangles(mesh_points: PoolVector3Array) -> Array:
+	var triangles = []
 	
 	for i in range(0, (mesh_points.size() / 3)):
 		
@@ -30,11 +17,8 @@ func get_triangles():
 		var p3 = mesh_points[i * 3 + 2]
 		
 		triangles.push_back([Vector2(p1.x, p1.z), Vector2(p2.x, p2.y), Vector2(p3.x, p3.y)])
-
-func _ready():
-	push_letters(get_tree().get_root())
 	
-	get_triangles()
+	return triangles
 
 
 func buoyancy(letter_height: float):
@@ -47,26 +31,27 @@ func buoyancy(letter_height: float):
 	else:
 		return buoyancy_acceleration
 
-func _process(delta):
+
+func force_letter(letter: Letter) -> Vector3:
+	var force = Vector3(0, 0, 0)
 	
-	for letter in letters:
-		var pos = letter.translation
+	var pos = letter.translation
 		
-		# Check if the letter is below the soup, then check if it's in the soup
-		if pos.y < self.translation.y + 0.1:
+	# Check if the letter is below the soup, then check if it's in the soup
+	if pos.y < self.translation.y + 0.1:
+		
+		# Check if the letter is above or below one of the triangles in the mesh
+		for triangle in mesh_instance:
 			
-			# Check if the letter is above or below one of the triangles in the mesh
-			for triangle in triangles:
+			if Geometry.is_point_in_polygon(Vector2(pos.x, pos.z), triangle):
+				var acceleration = buoyancy(pos.y)
 				
-				if Geometry.is_point_in_polygon(Vector2(pos.x, pos.z), triangle):
-					var acceleration = buoyancy(pos.y)
-					
-					# Buoyancy
-					letter.apply_central_impulse(Vector3(0, acceleration, 0) * delta * letter.mass)
-					
-					# Drag
-					letter.apply_central_impulse(letter.linear_velocity * drag * delta * -1)
-					
-					break
+				# Buoyancy
+				force += Vector3(0, acceleration, 0) * letter.mass
+				
+				# Drag
+				force += letter.linear_velocity * drag * -1
+				
+				break
 	
-	pass
+	return force
