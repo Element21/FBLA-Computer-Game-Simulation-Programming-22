@@ -16,9 +16,6 @@ data = PoolVector3Array( 0.0106, -0.0102, -0.1075, 0, 0, -0.1085, 0, -0.0102, -0
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 8 )
 
-[node name="Letter" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.627, 10, 0 )
-
 [node name="Soup" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.21526, 0 )
 mesh = SubResource( 1 )
@@ -32,3 +29,81 @@ mesh = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Bowl/StaticBody"]
 shape = SubResource( 2 )
+
+[node name="A" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82298, 9.82393, -1.76755 )
+
+[node name="B" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73463, 9.91666, -0.839772 )
+
+[node name="C" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.601199, 9.91314, -0.881963 )
+
+[node name="D" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.178259, 9.91431, -0.874985 )
+
+[node name="E" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1303, 10, 0 )
+
+[node name="F" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207728, 10, 0 )
+
+[node name="G" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37353, 10, 0 )
+
+[node name="H" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167997, 10, 0 )
+
+[node name="I" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.890971, 10, 0 )
+
+[node name="J" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24774, 9.82979, -1.70619 )
+
+[node name="K" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65062, 13.2053, 0.000144601 )
+
+[node name="L" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05555, 9.82158, -1.79575 )
+
+[node name="M" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65558, 9.91901, -0.810632 )
+
+[node name="N" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36849, 9.91783, -0.830263 )
+
+[node name="O" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.630356, 4.52381, -1.7866 )
+
+[node name="P" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44517, 9.82275, -1.78161 )
+
+[node name="Q" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.673, 9.82745, -1.72709 )
+
+[node name="R" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.978867, 9.91666, -0.844399 )
+
+[node name="S" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199625, 9.91431, -0.872672 )
+
+[node name="T" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73709, 10, 0 )
+
+[node name="U" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.614547, 10, 0 )
+
+[node name="V" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922114, 10.022, -0.890004 )
+
+[node name="W" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14766, 9.92135, -0.79024 )
+
+[node name="X" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00665, 10, 0 )
+
+[node name="Y" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.529463, 10, 0 )
+
+[node name="Z" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.556142, 9.91431, -0.877299 )
