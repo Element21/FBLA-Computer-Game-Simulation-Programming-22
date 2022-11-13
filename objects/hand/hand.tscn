@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objects/hand/hand.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://objects/hand/hand.gd" type="Script" id=2]
+
+[node name="MeshInstance" type="MeshInstance"]
+mesh = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="RayCast" type="RayCast" parent="."]
+enabled = true
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
