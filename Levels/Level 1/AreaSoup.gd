@@ -13,10 +13,18 @@ func buoyancy(letter_height: float):
 	else:
 		return buoyancy_acceleration
 
+func _on_AreaSoup_body_entered(_body:RigidBody) -> void:
+	print("entered ", _body)
+	set_process(true)
+
+func _on_AreaSoup_body_exited(_body:RigidBody) -> void:
+	print("exited ", _body)
+	set_process(false)
+
 func _ready() -> void:
 	print("Soup spawned")
-	connect("body_entered", self, "_on_Soup_body_entered")
-	connect("body_exited", self, "_on_Soup_body_exited")
+	connect("body_entered", self, "_on_AreaSoup_body_entered")
+	connect("body_exited", self, "_on_AreaSoup_body_exited")
 
 func _process(delta):
 	for letter in LetterGetter.letters_in_play:
@@ -27,11 +35,3 @@ func _process(delta):
 
 		# Drag
 		letter.apply_central_impulse(-letter.linear_velocity * drag * delta)
-
-func _on_Soup_area_entered():
-	print("body entered")
-	set_process(true)
-
-func _on_Soup_area_exited():
-	print("soup exited")
-	set_process(false)
