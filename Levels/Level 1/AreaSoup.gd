@@ -1,7 +1,7 @@
-extends MeshInstance
+extends Area
 
 var buoyancy_acceleration = 9.81 * 2
-var drag = 2
+var drag = 1.2
 
 func buoyancy(letter_height: float):
 	var depth = self.translation.y - letter_height
@@ -14,6 +14,7 @@ func buoyancy(letter_height: float):
 		return buoyancy_acceleration
 
 func _ready() -> void:
+	print("Soup spawned")
 	connect("body_entered", self, "_on_Soup_body_entered")
 	connect("body_exited", self, "_on_Soup_body_exited")
 
@@ -25,10 +26,12 @@ func _process(delta):
 		letter.apply_central_impulse(Vector3(0, acceleration, 0) * letter.mass * delta)
 
 		# Drag
-		letter.apply_central_impulse(letter.linear_velocity * drag * -1 * delta)
+		letter.apply_central_impulse(-letter.linear_velocity * drag * delta)
 
-func _on_Soup_body_entered():
+func _on_Soup_area_entered():
+	print("body entered")
 	set_process(true)
 
-func _on_Soup_body_exited():
-	set_process(true)
+func _on_Soup_area_exited():
+	print("soup exited")
+	set_process(false)
