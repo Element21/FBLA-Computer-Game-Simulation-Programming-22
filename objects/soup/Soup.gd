@@ -4,12 +4,6 @@ var buoyancy_acceleration = 9.81 * 2
 var drag = 2
 
 
-func _ready() -> void:
-	print("Soup spawned")
-	connect("body_entered", self, "_on_AreaSoup_body_entered")
-	connect("body_exited", self, "_on_AreaSoup_body_exited")
-
-
 func _process(delta):
 	for letter in LetterGetter.letters_in_play:
 		
