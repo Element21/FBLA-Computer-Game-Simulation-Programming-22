@@ -129,3 +129,4 @@ shape = SubResource( 13 )
 
 [node name="Hand" parent="." instance=ExtResource( 9 )]
 camera = NodePath("../Camera")
+arm_pivot = Vector2( 0, 0 )

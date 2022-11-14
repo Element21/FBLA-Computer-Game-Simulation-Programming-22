@@ -3,6 +3,7 @@
 extends Node
 
 export(NodePath) onready var camera = get_node(camera) as Camera
+export(Vector2) var arm_pivot = Vector2(-1, -1)
 
 var raycast: RayCast
 var hand: MeshInstance
@@ -27,5 +28,7 @@ func _process(delta):
 	if raycast.is_colliding():
 		
 		hand.translation = raycast.get_collision_point() + Vector3(0, 2, 0)
+		
+		hand.rotation.y = -Vector2(hand.translation.x, hand.translation.z).angle_to_point(arm_pivot) - PI / 2
 	
 	pass
