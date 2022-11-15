@@ -14,6 +14,7 @@ var hand_animation_part_time = 0.5
 
 onready var hand: MeshInstance = get_child(0)
 onready var raycast: RayCast = get_child(1)
+onready var letter_pickup_area: Area = hand.get_child(1)
 
 onready var target_pos: Vector3 = hand.translation
 
@@ -25,6 +26,7 @@ var grabbing_state = GRABBING_STATE.NOT
 var start_hand_translation
 var final_hand_translation
 var time = 0
+var letter_being_grabbed = null
 
 func smoothify(t):
 	return (-cos(PI * t) + 1) * 0.5
@@ -38,6 +40,55 @@ func _input(event):
 		
 		start_hand_translation = hand.translation
 		final_hand_translation = hand.translation - Vector3(0, hand_height, 0)
+
+
+func progress_grabbing_state():
+	
+	if grabbing_state == GRABBING_STATE.DIPPING:
+		grabbing_state = GRABBING_STATE.PULLING
+		
+		var tmp = start_hand_translation
+		start_hand_translation = final_hand_translation
+		final_hand_translation = tmp
+		
+		var min_distance = INF
+		
+		for letter in LetterGetter.letters_in_play:
+			
+			if letter_pickup_area.overlaps_body(letter):
+				
+				var distance = hand.global_translation.distance_to(letter.global_translation)
+				
+				if distance < min_distance:
+					
+					min_distance = distance
+					letter_being_grabbed = letter
+		
+		if letter_being_grabbed:
+			
+			letter_being_grabbed.mode = RigidBody.MODE_KINEMATIC
+			LetterGetter.remove_from_play(letter_being_grabbed)
+		
+	elif grabbing_state == GRABBING_STATE.PULLING:
+		if letter_being_grabbed:
+			grabbing_state = GRABBING_STATE.DROPPING
+			
+			var local_drop_pos = drop_position - Vector2(self.translation.x, self.translation.z)
+			
+			start_hand_translation = hand.translation
+			final_hand_translation = Vector3(local_drop_pos.x, hand_height, local_drop_pos.y)
+		
+		else:
+			grabbing_state = GRABBING_STATE.NOT
+	
+	elif grabbing_state == GRABBING_STATE.DROPPING:
+		
+		if letter_being_grabbed:
+			letter_being_grabbed.mode = RigidBody.MODE_RIGID
+			LetterGetter.add_letter_to_picked(letter_being_grabbed)
+			letter_being_grabbed = null
+		
+		grabbing_state = GRABBING_STATE.NOT
 
 
 func _process(delta):
@@ -61,23 +112,11 @@ func _process(delta):
 	if time >= hand_animation_part_time:
 		time = 0
 		
-		if grabbing_state == GRABBING_STATE.DIPPING:
-			grabbing_state = GRABBING_STATE.PULLING
-			
-			var tmp = start_hand_translation
-			start_hand_translation = final_hand_translation
-			final_hand_translation = tmp
+		progress_grabbing_state()
+	
+	if (grabbing_state == GRABBING_STATE.PULLING || grabbing_state == GRABBING_STATE.DROPPING) && letter_being_grabbed:
 		
-		elif grabbing_state == GRABBING_STATE.PULLING:
-				grabbing_state = GRABBING_STATE.DROPPING
-				
-				var local_drop_pos = drop_position - Vector2(self.translation.x, self.translation.z)
-				
-				start_hand_translation = hand.translation
-				final_hand_translation = Vector3(local_drop_pos.x, hand_height, local_drop_pos.y)
-		
-		elif grabbing_state == GRABBING_STATE.DROPPING:
-				grabbing_state = GRABBING_STATE.NOT
+		letter_being_grabbed.global_translation = hand.global_translation
 	
 	if grabbing_state != GRABBING_STATE.NOT:
 		
