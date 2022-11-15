@@ -6,7 +6,7 @@
 [ext_resource path="res://objects/letter/Plant On Lawn.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=5]
 [ext_resource path="res://Levels/Level 1/Level 1 Bowl Interior.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://objects/soup/Soup.gd" type="Script" id=7]
+[ext_resource path="res://objects/soup/soup.gd" type="Script" id=7]
 [ext_resource path="res://objects/room/Table.obj" type="ArrayMesh" id=8]
 [ext_resource path="res://objects/hand/hand.tscn" type="PackedScene" id=9]
 
