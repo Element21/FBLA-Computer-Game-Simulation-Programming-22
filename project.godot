@@ -32,8 +32,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-LetterManager="*res://objects/letter/letter_manager.gd"
+LetterManager="*res://objects/letter_manager.gd"
 Utils="*res://objects/utils.gd"
+WordUtils="*res://objects/word_utils.gd"
 
 [display]
 
