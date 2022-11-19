@@ -9,8 +9,6 @@ func _process(delta):
 		
 		if overlaps_body(letter):
 			
-			var pos = letter.translation
-			
 			# Buoyancy
 			letter.apply_central_impulse(Vector3(0, 19.62, 0) * letter.mass * delta)
 

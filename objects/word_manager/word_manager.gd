@@ -15,6 +15,7 @@ func platform_index_to_x_position(index: int) -> float:
 	
 	return (word_length / 2 - index) * (1 + platform_margin)
 
+
 func _ready():
 	
 	letters_placed.resize(word_length)

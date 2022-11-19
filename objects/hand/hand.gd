@@ -39,7 +39,7 @@ func _input(event):
 		final_hand_translation = hand.translation - Vector3(0, hand_height, 0)
 
 
-func progress_grabbing_state():
+func next_grabbing_state():
 	
 	if grabbing_state == GRABBING_STATE.DIPPING:
 		grabbing_state = GRABBING_STATE.PULLING
@@ -109,7 +109,7 @@ func _process(delta):
 	if time >= hand_animation_part_time:
 		time = 0
 		
-		progress_grabbing_state()
+		next_grabbing_state()
 	
 	if (grabbing_state == GRABBING_STATE.PULLING || grabbing_state == GRABBING_STATE.DROPPING) && letter_being_grabbed:
 		

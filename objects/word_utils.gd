@@ -9,14 +9,14 @@ func load_words() -> PoolStringArray:
 	var f = File.new()
 	f.open("res://objects/words.txt", File.READ)
 	
-	var words = []
+	var new_words = []
 	
 	while not f.eof_reached():
-		words.push_back(f.get_line())
+		new_words.push_back(f.get_line())
 	
 	f.close()
 	
-	return words
+	return new_words
 
 
 func fraction_of_words_unavailable(letters: Array) -> float:
