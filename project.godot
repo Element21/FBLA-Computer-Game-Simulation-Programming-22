@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "RigidBody",
 "class": "Letter",
 "language": "GDScript",
-"path": "res://Levels/Level 1/RigidBodyA.gd"
+"path": "res://objects/letter/letter.gd"
 } ]
 _global_script_class_icons={
 "Letter": ""
@@ -26,7 +26,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-LetterGetter="*res://objects/letter/letter_getter.gd"
+LetterManager="*res://objects/letter/letter_manager.gd"
 
 [display]
 

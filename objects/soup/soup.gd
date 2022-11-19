@@ -5,7 +5,7 @@ var drag = 2
 
 
 func _process(delta):
-	for letter in LetterGetter.letters_in_play:
+	for letter in LetterManager.letters_in_play:
 		
 		if overlaps_body(letter):
 			

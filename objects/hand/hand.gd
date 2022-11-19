@@ -28,6 +28,7 @@ var final_hand_translation
 var time = 0
 var letter_being_grabbed = null
 
+# 3x^2 - 2x^3 might be faster
 func smoothify(t):
 	return (-cos(PI * t) + 1) * 0.5
 
@@ -53,7 +54,7 @@ func progress_grabbing_state():
 		
 		var min_distance = INF
 		
-		for letter in LetterGetter.letters_in_play:
+		for letter in LetterManager.letters_in_play:
 			
 			if letter_pickup_area.overlaps_body(letter):
 				
@@ -67,7 +68,7 @@ func progress_grabbing_state():
 		if letter_being_grabbed:
 			
 			letter_being_grabbed.mode = RigidBody.MODE_KINEMATIC
-			LetterGetter.remove_from_play(letter_being_grabbed)
+			LetterManager.remove_from_play(letter_being_grabbed)
 		
 	elif grabbing_state == GRABBING_STATE.PULLING:
 		if letter_being_grabbed:
@@ -85,7 +86,7 @@ func progress_grabbing_state():
 		
 		if letter_being_grabbed:
 			letter_being_grabbed.mode = RigidBody.MODE_RIGID
-			LetterGetter.add_letter_to_picked(letter_being_grabbed)
+			LetterManager.add_letter_to_picked(letter_being_grabbed)
 			letter_being_grabbed = null
 		
 		grabbing_state = GRABBING_STATE.NOT
