@@ -39,4 +39,6 @@ func _ready():
 	static_body.remove_child(collision_object)
 	mesh_instance.remove_child(static_body)
 	add_child(collision_object)
+	
+	LetterManager.put_in_play(self)
 

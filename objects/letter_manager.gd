@@ -3,20 +3,10 @@ extends Node
 
 var letters_in_play = []
 
-# Recursively search the node tree for all the letters and push them to the list
-func _push_letters(node: Node):
-	
-	if node is Letter:
-		letters_in_play.push_back(node)
-		return
-	
-	for child in node.get_children():
-		_push_letters(child)
 
-
-func _ready():
+func put_in_play(letter: Letter):
 	
-	_push_letters(get_tree().get_root())
+	letters_in_play.push_back(letter)
 
 
 func remove_from_play(letter: Letter):
