@@ -3,8 +3,8 @@
 extends Spatial
 
 export(NodePath) onready var camera = get_node(camera) as Camera
+export(NodePath) onready var word_manager = get_node(word_manager) as WordManager
 export(Vector2) var arm_pivot = Vector2(2, -15)
-export(Vector2) var drop_position = Vector2(0, -5)
 
 var hand_height = 2
 
@@ -27,10 +27,6 @@ var start_hand_translation
 var final_hand_translation
 var time = 0
 var letter_being_grabbed = null
-
-# 3x^2 - 2x^3 might be faster
-func smoothify(t):
-	return (-cos(PI * t) + 1) * 0.5
 
 
 func _input(event):
@@ -74,7 +70,7 @@ func progress_grabbing_state():
 		if letter_being_grabbed:
 			grabbing_state = GRABBING_STATE.DROPPING
 			
-			var local_drop_pos = drop_position - Vector2(self.translation.x, self.translation.z)
+			var local_drop_pos = word_manager.next_platform_position() - Vector2(self.translation.x, self.translation.z)
 			
 			start_hand_translation = hand.translation
 			final_hand_translation = Vector3(local_drop_pos.x, hand_height, local_drop_pos.y)
@@ -86,7 +82,7 @@ func progress_grabbing_state():
 		
 		if letter_being_grabbed:
 			letter_being_grabbed.mode = RigidBody.MODE_RIGID
-			LetterManager.add_letter_to_picked(letter_being_grabbed)
+			word_manager.drop_letter(letter_being_grabbed)
 			letter_being_grabbed = null
 		
 		grabbing_state = GRABBING_STATE.NOT
@@ -123,6 +119,6 @@ func _process(delta):
 		
 		time += delta
 		
-		hand.translation = lerp(start_hand_translation, final_hand_translation, smoothify(time / hand_animation_part_time))
+		hand.translation = lerp(start_hand_translation, final_hand_translation, Utils.smoothify(time / hand_animation_part_time))
 	
 	hand.rotation.y = -Vector2(hand.translation.x, hand.translation.z).angle_to_point(arm_pivot - Vector2(self.translation.x, self.translation.y)) - PI / 2

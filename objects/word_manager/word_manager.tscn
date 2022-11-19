@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://objects/word_manager/word_manager.gd" type="Script" id=1]
+
+[node name="Word manager" type="Spatial"]
+script = ExtResource( 1 )

@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Letter",
 "language": "GDScript",
 "path": "res://objects/letter/letter.gd"
+}, {
+"base": "Node",
+"class": "WordManager",
+"language": "GDScript",
+"path": "res://objects/word_manager/word_manager.gd"
 } ]
 _global_script_class_icons={
-"Letter": ""
+"Letter": "",
+"WordManager": ""
 }
 
 [application]
@@ -27,6 +33,7 @@ config/icon="res://icon.png"
 [autoload]
 
 LetterManager="*res://objects/letter/letter_manager.gd"
+Utils="*res://objects/utils.gd"
 
 [display]
 
