@@ -41,3 +41,25 @@ func next_platform_position():
 	var index = letters_placed.find(null)
 	
 	return Vector2(self.global_translation.x, self.global_translation.z) + Vector2(platform_index_to_x_position(index), 0)
+
+
+func _input(event):
+	
+	if event.is_action_pressed("delete_letter"):
+		
+		delete()
+
+
+func delete():
+	
+	var last_letter_index = null
+		
+	for i in range(0, letters_placed.size()):
+		if letters_placed[i] != null:
+			last_letter_index = i
+	
+	if last_letter_index != null:
+		
+		letters_placed[last_letter_index] = null
+		
+		get_child(last_letter_index).flip()
