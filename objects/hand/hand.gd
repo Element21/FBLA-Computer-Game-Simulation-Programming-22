@@ -82,7 +82,7 @@ func next_grabbing_state():
 		
 		if letter_being_grabbed:
 			letter_being_grabbed.mode = RigidBody.MODE_RIGID
-			word_manager.drop_letter(letter_being_grabbed)
+			word_manager.place_letter(letter_being_grabbed)
 			letter_being_grabbed = null
 		
 		grabbing_state = GRABBING_STATE.NOT

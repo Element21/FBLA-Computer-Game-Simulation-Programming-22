@@ -4,3 +4,10 @@
 
 [node name="Word manager" type="Spatial"]
 script = ExtResource( 1 )
+
+[node name="Make word timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[connection signal="timeout" from="Make word timer" to="." method="flip_all_platforms"]

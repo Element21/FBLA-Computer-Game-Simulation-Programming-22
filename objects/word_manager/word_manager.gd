@@ -5,6 +5,9 @@ class_name WordManager
 
 export var word_length = 5
 
+onready var make_word_timer: Timer = get_child(0)
+onready var platforms: Spatial = get_child(1)
+
 var letters_placed = []
 
 var platform_margin = 0.5
@@ -26,14 +29,32 @@ func _ready():
 		
 		platform.translation.x = platform_index_to_x_position(index)
 		
-		add_child(platform)
+		platforms.add_child(platform)
 
 
-func drop_letter(letter: Letter):
+func place_letter(letter: Letter):
 	
 	var index = letters_placed.find(null)
 	
 	letters_placed[index] = letter
+	
+	if letters_placed.find(null) == -1:
+		
+		# I implemented it like this so we can reuse this function to calculate score in the future
+		if WordUtils.fraction_of_words_unavailable(letters_placed) != 0:
+			word_made()
+
+
+func word_made():
+	
+	letters_placed.fill(null)
+	
+	make_word_timer.start()
+
+
+func flip_all_platforms():
+	for child in platforms.get_children():
+		child.flip()
 
 
 func next_platform_position():
@@ -44,9 +65,7 @@ func next_platform_position():
 
 
 func _input(event):
-	
 	if event.is_action_pressed("delete_letter"):
-		
 		delete()
 
 
@@ -62,4 +81,4 @@ func delete():
 		
 		letters_placed[last_letter_index] = null
 		
-		get_child(last_letter_index).flip()
+		platforms.get_child(last_letter_index).flip()

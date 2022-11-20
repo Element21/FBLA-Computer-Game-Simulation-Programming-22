@@ -87,13 +87,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.864, -7.471 )
 word_length = 3
 
 [node name="Letter" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.511, 0 )
 which_letter = "t"
 
 [node name="Letter2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12549, 19.6023, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12549, 14.5467, 0 )
 which_letter = "o"
 
 [node name="Letter3" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85503, 19.5362, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85503, 14.9004, 0 )
 which_letter = "p"
