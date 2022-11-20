@@ -52,9 +52,9 @@ func word_made():
 	make_word_timer.start()
 
 
-func flip_all_platforms():
+func launch_all_platforms():
 	for child in platforms.get_children():
-		child.flip()
+		child.launch()
 
 
 func next_platform_position():
