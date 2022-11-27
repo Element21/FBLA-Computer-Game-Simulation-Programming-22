@@ -7,9 +7,10 @@
 text = "o"
 font = ExtResource( 2 )
 uppercase = true
+depth = 0.07
 
 [sub_resource type="CylinderShape" id=1]
-height = 0.058
+height = 0.07
 radius = 0.37
 
 [node name="Letter" type="RigidBody"]

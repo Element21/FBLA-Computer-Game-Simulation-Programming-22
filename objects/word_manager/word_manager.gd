@@ -5,7 +5,7 @@ class_name WordManager
 
 export var word_length = 5
 
-onready var make_word_timer: Timer = get_child(0)
+onready var launch_word_timer: Timer = get_child(0)
 onready var platforms: Spatial = get_child(1)
 
 var letters_placed = []
@@ -37,6 +37,7 @@ func place_letter(letter: Letter):
 	var index = letters_placed.find(null)
 	
 	letters_placed[index] = letter
+	platforms.get_child(index).letter = letter
 	
 	if letters_placed.find(null) == -1:
 		
@@ -49,12 +50,12 @@ func word_made():
 	
 	letters_placed.fill(null)
 	
-	make_word_timer.start()
+	launch_word_timer.start()
 
 
-func flip_all_platforms():
+func launch_all_platforms():
 	for child in platforms.get_children():
-		child.flip()
+		child.launch()
 
 
 func next_platform_position():

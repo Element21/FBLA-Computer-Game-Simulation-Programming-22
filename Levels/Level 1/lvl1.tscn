@@ -84,7 +84,7 @@ word_manager = NodePath("../Word manager")
 
 [node name="Word manager" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.864, -7.471 )
-word_length = 3
+word_length = 1
 
 [node name="Letter" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.511, 0 )
