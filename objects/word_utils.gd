@@ -25,15 +25,29 @@ func load_words() -> Array:
 	return new_words
 
 
-func fraction_of_words_unavailable(letters: Array) -> float:
-	
-	var options = 0.0
+func is_word(letters: Array) -> bool:
 	
 	for word in words[letters.size() - 1]:
 		if compare_word(word, letters):
-			options += 1
+			return true
 	
-	return options / words.size()
+	return false
+
+
+func letters_that_could_be_used(letters: Array) -> int:
+	
+	var empty_index = letters.find(null)
+	
+	var could_be_placed = []
+	
+	could_be_placed.resize(26)
+	could_be_placed.fill(false)
+	
+	for word in words[letters.size() - 1]:
+		if compare_word(word, letters):
+			could_be_placed[word.ord_at(empty_index) - 97] = true
+	
+	return could_be_placed.count(true)
 
 
 # Assumes word & letters are the same length

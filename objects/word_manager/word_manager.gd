@@ -34,6 +34,8 @@ func _ready():
 
 func place_letter(letter: Letter):
 	
+	print(WordUtils.letters_that_could_be_used(letters_placed))
+	
 	var index = letters_placed.find(null)
 	
 	letters_placed[index] = letter
@@ -41,8 +43,7 @@ func place_letter(letter: Letter):
 	
 	if letters_placed.find(null) == -1:
 		
-		# I implemented it like this so we can reuse this function to calculate score in the future
-		if WordUtils.fraction_of_words_unavailable(letters_placed) != 0:
+		if WordUtils.is_word(letters_placed):
 			word_made()
 
 
