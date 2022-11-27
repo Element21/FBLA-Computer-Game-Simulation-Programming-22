@@ -97,3 +97,7 @@ which_letter = "a"
 [node name="Letter3" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85503, 14.9004, 0 )
 which_letter = "p"
+
+[node name="Letter4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.7546, -1.50582 )
+which_letter = "q"

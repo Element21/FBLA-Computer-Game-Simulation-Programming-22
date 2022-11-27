@@ -38,17 +38,21 @@ func place_letter(letter: Letter):
 	
 	var platform: LetterPlatform = platforms.get_child(index)
 	
-	if WordUtils.matches_word(letters_placed):
+	var matches_before = WordUtils.matches_word(letters_placed)
+	
+	if matches_before:
 		platform.set_score(WordUtils.calculate_score_added(letters_placed))
-	else:
-		platform.set_score(null)
 	
 	letters_placed[index] = letter
 	platform.letter = letter
 	
-	if letters_placed.find(null) == -1:
-		if WordUtils.matches_word(letters_placed):
-			word_made()
+	var matches_after = WordUtils.matches_word(letters_placed)
+	
+	if !matches_after:
+		platform.set_score(null)
+	
+	if letters_placed.find(null) == -1 && matches_after:
+		word_made()
 
 
 
