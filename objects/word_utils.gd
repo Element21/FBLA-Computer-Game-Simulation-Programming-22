@@ -25,13 +25,22 @@ func load_words() -> Array:
 	return new_words
 
 
-func is_word(letters: Array) -> bool:
+func matches_word(letters: Array) -> bool:
 	
 	for word in words[letters.size() - 1]:
 		if compare_word(word, letters):
 			return true
 	
 	return false
+
+
+func calculate_score_added(letters: Array):
+	var amt_could_be_placed = letters_that_could_be_used(letters)
+	
+	if amt_could_be_placed == 0:
+		return null
+	
+	return 27 - amt_could_be_placed
 
 
 func letters_that_could_be_used(letters: Array) -> int:

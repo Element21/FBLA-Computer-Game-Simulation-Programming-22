@@ -34,17 +34,22 @@ func _ready():
 
 func place_letter(letter: Letter):
 	
-	print(WordUtils.letters_that_could_be_used(letters_placed))
-	
 	var index = letters_placed.find(null)
 	
+	var platform: LetterPlatform = platforms.get_child(index)
+	
+	if WordUtils.matches_word(letters_placed):
+		platform.set_score(WordUtils.calculate_score_added(letters_placed))
+	else:
+		platform.set_score(null)
+	
 	letters_placed[index] = letter
-	platforms.get_child(index).letter = letter
+	platform.letter = letter
 	
 	if letters_placed.find(null) == -1:
-		
-		if WordUtils.is_word(letters_placed):
+		if WordUtils.matches_word(letters_placed):
 			word_made()
+
 
 
 func word_made():
