@@ -1,11 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/word_manager/word_manager.gd" type="Script" id=1]
 [ext_resource path="res://objects/letter/letter_font.tres" type="DynamicFont" id=2]
 
 [sub_resource type="TextMesh" id=1]
-text = "01"
+text = "10"
 font = ExtResource( 2 )
+horizontal_alignment = 0
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 2.8, 0.05, 0.5 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 1, 0.643137, 0.572549, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 3, 0.1, 0.1 )
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 0.1, 0.1, 0.5 )
 
 [node name="Word manager" type="Spatial"]
 script = ExtResource( 1 )
@@ -19,8 +32,39 @@ one_shot = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.05648 )
 
 [node name="Score" type="MeshInstance" parent="UI"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.12264, 0, 0 )
 mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="Timer" type="Spatial" parent="UI"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849751, 0, -0.0872575 )
+
+[node name="Time indicator" type="Spatial" parent="UI/Timer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, 0 )
+
+[node name="Mesh" type="MeshInstance" parent="UI/Timer/Time indicator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, -0.277338 )
+mesh = SubResource( 4 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 5 )
+
+[node name="Bottom" type="MeshInstance" parent="UI/Timer"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+
+[node name="Top" type="MeshInstance" parent="UI/Timer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+
+[node name="Left" type="MeshInstance" parent="UI/Timer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45, 0, -0.246724 )
+mesh = SubResource( 3 )
+skeleton = NodePath("../..")
+
+[node name="Right" type="MeshInstance" parent="UI/Timer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45, 0, -0.24106 )
+mesh = SubResource( 3 )
 skeleton = NodePath("../..")
 
 [connection signal="timeout" from="Launch word timer" to="." method="launch_all_platforms"]

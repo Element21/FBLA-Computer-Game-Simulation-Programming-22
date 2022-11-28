@@ -4,14 +4,17 @@ class_name WordManager
 
 
 export var word_length = 5
+export var time_given = 30
 export(NodePath) onready var camera = get_node(camera) as Camera
 
 var score = 0
+onready var time_left = time_given
 
 onready var launch_word_timer: Timer = get_child(0)
 onready var platforms: Spatial = get_child(1)
 onready var ui: Spatial = get_child(2)
-onready var score_mesh = ui.get_child(0)
+onready var score_mesh: MeshInstance = ui.get_child(0)
+onready var time_indicator: Spatial = ui.get_child(1).get_child(0)
 
 var letters_placed = []
 
@@ -38,6 +41,16 @@ func _ready():
 	var camera_displacement_from_ui = camera.global_translation - ui.global_translation
 	
 	ui.rotation.x = atan2(camera_displacement_from_ui.y, camera_displacement_from_ui.z)
+
+
+func _process(delta):
+	
+	time_left -= delta
+	
+	time_indicator.scale.x = time_left / time_given
+	
+	if time_left < 0:
+		print("DONE")
 
 
 func place_letter(letter: Letter):
