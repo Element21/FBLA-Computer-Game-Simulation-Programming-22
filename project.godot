@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "LeaderboardData",
+"language": "GDScript",
+"path": "res://objects/leaderboard_data.gd"
+}, {
 "base": "RigidBody",
 "class": "Letter",
 "language": "GDScript",
@@ -19,14 +24,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://objects/letter_platform/letter_platform.gd"
 }, {
+"base": "Control",
+"class": "LevelData",
+"language": "GDScript",
+"path": "res://Levels/Main Menu/level_data.gd"
+}, {
 "base": "Node",
 "class": "WordManager",
 "language": "GDScript",
 "path": "res://objects/word_manager/word_manager.gd"
 } ]
 _global_script_class_icons={
+"LeaderboardData": "",
 "Letter": "",
 "LetterPlatform": "",
+"LevelData": "",
 "WordManager": ""
 }
 
@@ -41,6 +53,7 @@ config/icon="res://icon.png"
 LetterManager="*res://resources/letter_manager.gd"
 Utils="*res://objects/utils.gd"
 WordUtils="*res://objects/word_utils.gd"
+LeaderboardManager="*res://objects/leaderboard_manager.gd"
 
 [display]
 

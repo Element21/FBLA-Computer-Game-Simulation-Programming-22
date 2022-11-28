@@ -1,32 +1,63 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/Main Menu/menu_theme.tres" type="Theme" id=1]
-[ext_resource path="res://resources/Plant On Lawn.otf" type="DynamicFontData" id=2]
-[ext_resource path="res://Levels/Main Menu/scene_switch_button.gd" type="Script" id=3]
+[ext_resource path="res://resources/letter_font_smaller.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Levels/Main Menu/level_data.gd" type="Script" id=3]
 [ext_resource path="res://Levels/Level 1/lvl1.tscn" type="PackedScene" id=4]
-
-[sub_resource type="DynamicFont" id=1]
-size = 40
-font_data = ExtResource( 2 )
+[ext_resource path="res://Levels/Main Menu/main_menu.gd" type="Script" id=5]
 
 [node name="Control" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
 theme = ExtResource( 1 )
+script = ExtResource( 5 )
+levels = [ ExtResource( 4 ) ]
+level_names = [ "Level 1" ]
+level_button_size = Vector2( 80, 40 )
+level_button_distance = 50
 
-[node name="Button" type="Button" parent="."]
-margin_left = 41.0
-margin_top = 85.0
-margin_right = 248.0
-margin_bottom = 144.0
-text = "1"
+[node name="Level buttons" type="Control" parent="."]
+margin_left = 105.0
+margin_top = 89.0
+margin_right = 105.0
+margin_bottom = 89.0
+
+[node name="Level data" type="Control" parent="."]
+anchor_right = 1.0
+margin_left = -1.0
+margin_top = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
 script = ExtResource( 3 )
-scene_to_switch_to = ExtResource( 4 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Level label" type="Label" parent="Level data"]
+margin_left = 383.0
+margin_top = 24.0
+margin_right = 541.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 2 )
+text = "Level Q"
+align = 1
+
+[node name="Highscore" type="Label" parent="Level data"]
+margin_left = 379.0
+margin_top = 137.0
+margin_right = 541.0
+margin_bottom = 156.0
+text = "Your highscore: -8"
+align = 1
+
+[node name="Button" type="Button" parent="Level data"]
+margin_left = 429.0
+margin_top = 79.0
+margin_right = 490.0
+margin_bottom = 118.0
+text = "Play"
+
+[node name="Levels" type="Label" parent="."]
 margin_left = 78.0
 margin_top = 23.0
 margin_right = 214.0
 margin_bottom = 70.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Levels"
