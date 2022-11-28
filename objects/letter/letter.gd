@@ -12,7 +12,7 @@ func get_mesh() -> Mesh:
 	var mesh = TextMesh.new()
 	
 	mesh.text = which_letter
-	mesh.font = load("res://objects/letter/letter_font.tres")
+	mesh.font = load("res://resources/letter_font.tres")
 	mesh.depth = 0.07
 	mesh.uppercase = true
 	

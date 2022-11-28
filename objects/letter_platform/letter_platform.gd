@@ -35,7 +35,7 @@ func set_score(new_score):
 	
 	var mesh = TextMesh.new()
 	
-	mesh.font = load("res://objects/letter/letter_font.tres")
+	mesh.font = load("res://resources/letter_font.tres")
 	
 	if score == null:
 		mesh.text = "X"

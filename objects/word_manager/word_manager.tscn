@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/word_manager/word_manager.gd" type="Script" id=1]
-[ext_resource path="res://objects/letter/letter_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/letter_font.tres" type="DynamicFont" id=2]
 
 [sub_resource type="TextMesh" id=1]
-text = "10"
+text = "0"
 font = ExtResource( 2 )
 horizontal_alignment = 0
 
