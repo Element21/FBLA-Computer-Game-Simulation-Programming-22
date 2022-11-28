@@ -76,13 +76,13 @@ func do_flip_transformation():
 func do_launch_transformation():
 	var t = time / action_time
 	
-	var lerp_amt = launch_curve(t)
+	var lerp_amt = Utils.smooth_up_and_down(t)
 	
 	self.translation.y = lerp(0, launch_direction.y, lerp_amt)
 	self.translation.z = lerp(0, launch_direction.x, lerp_amt)
 	
 	if letter != null && t < launch_curve_inflection_point:
-		var lerp_amt_derivative = launch_curve_derivative(t, 1 / action_time)
+		var lerp_amt_derivative = Utils.smooth_up_and_down_derivative(t) / action_time
 		
 		letter.linear_velocity.y = launch_direction.y * lerp_amt_derivative
 		letter.linear_velocity.z = launch_direction.x * lerp_amt_derivative
@@ -100,20 +100,6 @@ func do_move_score():
 
 
 # When the platform starts slowing down rather than speeding up
-# Calculated by finding the first point after t = 0 where the second derivative of launch_curve is zero (I made my graphing calculator do it for me)
+# Calculated by finding the first point after t = 0 where the second derivative of smooth_up_and_down is zero (I made my graphing calculator do it for me)
 # The letters are unglued from the platform when this time is reached
 var launch_curve_inflection_point = 0.234
-
-func launch_curve(t):
-	return unsmoothed_launch_curve(Utils.smoothify(t))
-
-func launch_curve_derivative(t, dt):
-	# Chain rule twice
-	return unsmoothed_launch_curve_derivative(Utils.smoothify(t)) * Utils.smoothify_derivative(t) * dt
-
-
-func unsmoothed_launch_curve(t):
-	return 4*t - 4*t*t
-
-func unsmoothed_launch_curve_derivative(t):
-	return 4 - 8*t
