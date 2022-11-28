@@ -41,6 +41,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849751, 0, -0.0872575 )
 
 [node name="Time indicator" type="Spatial" parent="UI/Timer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, 0 )
+__meta__ = {
+"_editor_description_": "scale.x is used to control the display"
+}
 
 [node name="Mesh" type="MeshInstance" parent="UI/Timer/Time indicator"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, -0.277338 )

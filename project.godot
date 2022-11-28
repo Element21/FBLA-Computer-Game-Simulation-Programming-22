@@ -76,4 +76,5 @@ common/enable_pause_aware_picking=true
 vram_compression/import_bptc=true
 vram_compression/import_etc=true
 vram_compression/import_pvrtc=true
+quality/shadow_atlas/size=16384
 environment/default_environment="res://default_env.tres"
