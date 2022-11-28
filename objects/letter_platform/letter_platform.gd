@@ -3,7 +3,7 @@ extends RigidBody
 class_name LetterPlatform
 
 var action_time = 1
-var launch_direction = Vector2(-2, 5)
+var launch_direction = Vector2(2, 5)
 
 var score = null
 onready var score_mesh: MeshInstance = get_child(0)
@@ -68,9 +68,9 @@ func _physics_process(delta):
 func do_flip_transformation():
 	var t = time / action_time
 	
-	self.rotation_degrees.x = lerp(0, -360, Utils.smoothify(t))
+	self.rotation_degrees.x = lerp(0, 360, Utils.smoothify(t))
 	
-	score_mesh.translation.z = lerp(-1.5, -0.334, Utils.smoothify(t))
+	score_mesh.translation.z = lerp(1.5, 0.334, Utils.smoothify(t))
 
 
 func do_launch_transformation():
@@ -91,12 +91,12 @@ func do_launch_transformation():
 		letter.translation.z = original_letter_position.z + lerp(0, launch_direction.x, lerp_amt)
 	
 	if t > 0.5:
-		score_mesh.translation.z = lerp(-1.5, -0.334, Utils.smoothify((t - 0.5) * 2))
+		score_mesh.translation.z = lerp(1.5, 0.334, Utils.smoothify((t - 0.5) * 2))
 
 
 func do_move_score():
 	
-	score_mesh.translation.z = lerp(-0.334, -1.5, Utils.smoothify(time / action_time))
+	score_mesh.translation.z = lerp(0.334, 1.5, Utils.smoothify(time / action_time))
 
 
 # When the platform starts slowing down rather than speeding up

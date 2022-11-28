@@ -4,9 +4,14 @@ class_name WordManager
 
 
 export var word_length = 5
+export(NodePath) onready var camera = get_node(camera) as Camera
+
+var score = 0
 
 onready var launch_word_timer: Timer = get_child(0)
 onready var platforms: Spatial = get_child(1)
+onready var ui: Spatial = get_child(2)
+onready var score_mesh = ui.get_child(0)
 
 var letters_placed = []
 
@@ -16,7 +21,7 @@ var letter_platform_scene = preload("res://objects/letter_platform/letter_platfo
 
 func platform_index_to_x_position(index: int) -> float:
 	
-	return (word_length / 2 - index) * (1 + platform_margin)
+	return (index - word_length / 2) * (1 + platform_margin)
 
 
 func _ready():
@@ -24,12 +29,15 @@ func _ready():
 	letters_placed.resize(word_length)
 	
 	for index in range(0, word_length):
-		
 		var platform = letter_platform_scene.instance()
 		
 		platform.translation.x = platform_index_to_x_position(index)
 		
 		platforms.add_child(platform)
+	
+	var camera_displacement_from_ui = camera.global_translation - ui.global_translation
+	
+	ui.rotation.x = atan2(camera_displacement_from_ui.y, camera_displacement_from_ui.z)
 
 
 func place_letter(letter: Letter):
@@ -55,8 +63,12 @@ func place_letter(letter: Letter):
 		word_made()
 
 
-
 func word_made():
+	
+	for platform in platforms.get_children():
+		score += platform.score
+	
+	score_mesh.mesh.text = String(score)
 	
 	letters_placed.fill(null)
 	
