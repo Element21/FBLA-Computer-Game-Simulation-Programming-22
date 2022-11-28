@@ -109,10 +109,9 @@ which_letter = "q"
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8459, 31.1814, 17.6058 )
-light_energy = 2.468
-light_indirect_energy = 0.0
+light_energy = 1.051
 shadow_enabled = true
+shadow_color = Color( 0.639216, 0.639216, 0.639216, 1 )
 omni_range = 140.969
-omni_attenuation = 3.13834
 omni_shadow_mode = 0
 omni_shadow_detail = 0
