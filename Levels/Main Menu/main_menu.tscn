@@ -54,6 +54,19 @@ margin_right = 490.0
 margin_bottom = 118.0
 text = "Play"
 
+[node name="Leaderboard" type="Control" parent="Level data"]
+margin_left = 462.0
+margin_top = 234.0
+margin_right = 502.0
+margin_bottom = 274.0
+
+[node name="Leaderboard label" type="Label" parent="Level data"]
+margin_left = 403.0
+margin_top = 190.0
+margin_right = 520.0
+margin_bottom = 209.0
+text = "Leaderboard"
+
 [node name="Levels" type="Label" parent="."]
 margin_left = 78.0
 margin_top = 23.0
