@@ -19,15 +19,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://objects/letter/letter.gd"
 }, {
-"base": "Node",
-"class": "LetterManager",
-"language": "GDScript",
-"path": "res://objects/letter_manager.gd"
-}, {
 "base": "RigidBody",
 "class": "LetterPlatform",
 "language": "GDScript",
 "path": "res://objects/letter_platform/letter_platform.gd"
+}, {
+"base": "Spatial",
+"class": "Level",
+"language": "GDScript",
+"path": "res://objects/level.gd"
 }, {
 "base": "Control",
 "class": "LevelData",
@@ -42,8 +42,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "LeaderboardData": "",
 "Letter": "",
-"LetterManager": "",
 "LetterPlatform": "",
+"Level": "",
 "LevelData": "",
 "WordManager": ""
 }

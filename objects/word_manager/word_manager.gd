@@ -4,11 +4,8 @@ class_name WordManager
 
 
 export var word_length = 5
-export var time_given = 30
 export(NodePath) onready var camera = get_node(camera) as Camera
-
-var score = 0
-onready var time_left = time_given
+export(NodePath) onready var level = get_node(level) as Level
 
 onready var launch_word_timer: Timer = get_child(0)
 onready var platforms: Spatial = get_child(1)
@@ -45,14 +42,9 @@ func _ready():
 
 func _process(delta):
 	
-	time_left -= delta
-	
 	# Making it go fast at the beginning makes the beginning more exciting because the timer is going fast, and more exciting at the end because it looks like you don't have much time left (and makes succeeding anyways that much better)
 	# This is a common trick with health bars
-	time_indicator.scale.x = 1 - Tweening.fast_then_slow(1 - time_left / time_given)
-	
-	if time_left < 0:
-		print("DONE")
+	time_indicator.scale.x = 1 - Tweening.fast_then_slow(1 - level.time_left / level.time_given)
 
 
 func place_letter(letter: Letter):
@@ -81,9 +73,9 @@ func place_letter(letter: Letter):
 func word_made():
 	
 	for platform in platforms.get_children():
-		score += platform.score
+		level.score += platform.score
 	
-	score_mesh.mesh.text = String(score)
+	score_mesh.mesh.text = String(level.score)
 	
 	letters_placed.fill(null)
 	

@@ -4,7 +4,7 @@ extends Spatial
 
 export(NodePath) onready var camera = get_node(camera) as Camera
 export(NodePath) onready var word_manager = get_node(word_manager) as WordManager
-export(NodePath) onready var letter_manager = get_node(letter_manager) as LetterManager
+export(NodePath) onready var level = get_node(level) as Level
 export(Vector2) var arm_pivot = Vector2(2, -15)
 
 var hand_height = 2
@@ -51,7 +51,7 @@ func next_grabbing_state():
 		
 		var min_distance = INF
 		
-		for letter in letter_manager.letters_in_play:
+		for letter in level.letters_in_play:
 			
 			if letter_pickup_area.overlaps_body(letter):
 				
@@ -65,7 +65,7 @@ func next_grabbing_state():
 		if letter_being_grabbed:
 			
 			letter_being_grabbed.mode = RigidBody.MODE_KINEMATIC
-			letter_manager.remove_from_play(letter_being_grabbed)
+			level.remove_letter_from_play(letter_being_grabbed)
 		
 	elif grabbing_state == GRABBING_STATE.PULLING:
 		if letter_being_grabbed:
