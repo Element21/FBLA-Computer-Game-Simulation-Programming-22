@@ -49,7 +49,7 @@ func _process(delta):
 	
 	# Making it go fast at the beginning makes the beginning more exciting because the timer is going fast, and more exciting at the end because it looks like you don't have much time left (and makes succeeding anyways that much better)
 	# This is a common trick with health bars
-	time_indicator.scale.x = 1 - Utils.fast_then_slow(1 - time_left / time_given)
+	time_indicator.scale.x = 1 - Tweening.fast_then_slow(1 - time_left / time_given)
 	
 	if time_left < 0:
 		print("DONE")

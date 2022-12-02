@@ -119,6 +119,6 @@ func _process(delta):
 		
 		time += delta
 		
-		hand.translation = lerp(start_hand_translation, final_hand_translation, Utils.smoothify(time / hand_animation_part_time))
+		hand.translation = lerp(start_hand_translation, final_hand_translation, Tweening.smoothify(time / hand_animation_part_time))
 	
 	hand.rotation.y = -Vector2(hand.translation.x, hand.translation.z).angle_to_point(arm_pivot - Vector2(self.translation.x, self.translation.y)) - PI / 2

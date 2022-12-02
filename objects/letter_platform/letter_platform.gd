@@ -68,21 +68,21 @@ func _physics_process(delta):
 func do_flip_transformation():
 	var t = time / action_time
 	
-	self.rotation_degrees.x = lerp(0, 360, Utils.smoothify(t))
+	self.rotation_degrees.x = lerp(0, 360, Tweening.smoothify(t))
 	
-	score_mesh.translation.z = lerp(1.5, 0.334, Utils.smoothify(t))
+	score_mesh.translation.z = lerp(1.5, 0.334, Tweening.smoothify(t))
 
 
 func do_launch_transformation():
 	var t = time / action_time
 	
-	var lerp_amt = Utils.smooth_up_and_down(t)
+	var lerp_amt = Tweening.smooth_up_and_down(t)
 	
 	self.translation.y = lerp(0, launch_direction.y, lerp_amt)
 	self.translation.z = lerp(0, launch_direction.x, lerp_amt)
 	
 	if letter != null && t < launch_curve_inflection_point:
-		var lerp_amt_derivative = Utils.smooth_up_and_down_derivative(t) / action_time
+		var lerp_amt_derivative = Tweening.smooth_up_and_down_derivative(t) / action_time
 		
 		letter.linear_velocity.y = launch_direction.y * lerp_amt_derivative
 		letter.linear_velocity.z = launch_direction.x * lerp_amt_derivative
@@ -91,12 +91,12 @@ func do_launch_transformation():
 		letter.translation.z = original_letter_position.z + lerp(0, launch_direction.x, lerp_amt)
 	
 	if t > 0.5:
-		score_mesh.translation.z = lerp(1.5, 0.334, Utils.smoothify((t - 0.5) * 2))
+		score_mesh.translation.z = lerp(1.5, 0.334, Tweening.smoothify((t - 0.5) * 2))
 
 
 func do_move_score():
 	
-	score_mesh.translation.z = lerp(0.334, 1.5, Utils.smoothify(time / action_time))
+	score_mesh.translation.z = lerp(0.334, 1.5, Tweening.smoothify(time / action_time))
 
 
 # When the platform starts slowing down rather than speeding up
