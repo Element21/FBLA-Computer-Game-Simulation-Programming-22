@@ -1,11 +1,13 @@
 extends Area
 
+export(NodePath) onready var letter_manager = get_node(letter_manager) as LetterManager
+
 var buoyancy_acceleration = 9.81 * 2
 var drag = 2
 
 
 func _process(delta):
-	for letter in LetterManager.letters_in_play:
+	for letter in letter_manager.letters_in_play:
 		
 		if overlaps_body(letter):
 			

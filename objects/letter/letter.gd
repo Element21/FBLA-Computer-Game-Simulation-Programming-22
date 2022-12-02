@@ -5,6 +5,7 @@ class_name Letter
 onready var mesh_instance: MeshInstance = get_child(0)
 
 export var which_letter: String
+export(NodePath) onready var letter_manager = get_node(letter_manager)
 
 # Refactor when we get 3d models from Daniel
 func get_mesh() -> Mesh:
@@ -25,5 +26,6 @@ func _ready():
 	
 	mesh_instance.mesh = mesh
 	
-	LetterManager.put_in_play(self)
+	letter_manager.put_in_play(self)
+
 

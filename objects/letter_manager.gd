@@ -1,5 +1,7 @@
 extends Node
 
+class_name LetterManager
+
 
 var letters_in_play = []
 
@@ -13,7 +15,3 @@ func remove_from_play(letter: Letter):
 	
 	letters_in_play.remove(letters_in_play.find(letter))
 
-
-func reset_letters_in_play():
-	
-	letters_in_play.empty()
