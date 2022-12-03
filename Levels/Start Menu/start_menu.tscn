@@ -13,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
 script = ExtResource( 3 )
+name_input = NodePath("VBoxContainer/LineEdit")
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
