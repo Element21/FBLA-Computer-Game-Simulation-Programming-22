@@ -52,5 +52,5 @@ margin_right = 572.0
 margin_bottom = 426.0
 text = "Next Level"
 
-[connection signal="button_down" from="Viewport/Control/Main Menu" to="Viewport/Control" method="main_menu"]
-[connection signal="button_down" from="Viewport/Control/Next Level" to="Viewport/Control" method="next_level"]
+[connection signal="button_down" from="Viewport/Control/Main Menu" to="." method="main_menu"]
+[connection signal="button_down" from="Viewport/Control/Next Level" to="." method="next_level"]

@@ -4,15 +4,15 @@ class_name Level
 
 
 export var time_given = 30
+export(PackedScene) var next_level
+
+onready var level_end_screen = get_child(0) as LevelEndScreen
 
 onready var time_left = time_given
 var score = 0
 var playing = false
 
 var letters_in_play = []
-
-
-signal level_end
 
 
 func put_letter_in_play(letter: Letter):
@@ -27,6 +27,8 @@ func remove_letter_from_play(letter: Letter):
 
 func _ready():
 	playing = true
+	
+	level_end_screen.next_level = next_level
 
 
 func _process(delta):
@@ -37,5 +39,5 @@ func _process(delta):
 		letters_in_play.clear()
 		playing = false
 		
-		emit_signal("level_end")
+		level_end_screen.show()
 

@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Level",
 "language": "GDScript",
-"path": "res://objects/level.gd"
+"path": "res://objects/level/level.gd"
 }, {
 "base": "Control",
 "class": "LevelData",
