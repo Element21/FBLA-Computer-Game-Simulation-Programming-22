@@ -28,7 +28,7 @@ margin_bottom = 40.0
 
 [node name="Level buttons" type="VBoxContainer" parent="HBoxContainer"]
 margin_right = 136.0
-margin_bottom = 181.0
+margin_bottom = 199.0
 grow_horizontal = 2
 
 [node name="Levels" type="Label" parent="HBoxContainer/Level buttons"]
@@ -47,14 +47,14 @@ rect_min_size = Vector2( 0, 20 )
 
 [node name="Control" type="Control" parent="HBoxContainer"]
 margin_left = 140.0
-margin_right = 209.297
-margin_bottom = 181.0
-rect_min_size = Vector2( 69.297, 0 )
+margin_right = 290.0
+margin_bottom = 199.0
+rect_min_size = Vector2( 150, 0 )
 
 [node name="Level data" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 213.0
-margin_right = 375.0
-margin_bottom = 181.0
+margin_left = 294.0
+margin_right = 456.0
+margin_bottom = 199.0
 script = ExtResource( 3 )
 level_label = NodePath("Level label")
 highscore_label = NodePath("Highscore")
@@ -69,46 +69,52 @@ custom_fonts/font = ExtResource( 2 )
 text = "Level Q"
 align = 1
 
-[node name="Highscore" type="Label" parent="HBoxContainer/Level data"]
+[node name="Control" type="Control" parent="HBoxContainer/Level data"]
 margin_top = 51.0
 margin_right = 162.0
-margin_bottom = 70.0
-text = "Your highscore: -8"
-align = 1
-
-[node name="Control" type="Control" parent="HBoxContainer/Level data"]
-margin_top = 74.0
-margin_right = 162.0
-margin_bottom = 88.0
+margin_bottom = 65.0
 rect_min_size = Vector2( 0, 14 )
 
 [node name="Button" type="Button" parent="HBoxContainer/Level data"]
 margin_left = 41.0
-margin_top = 92.0
+margin_top = 69.0
 margin_right = 121.0
-margin_bottom = 132.0
+margin_bottom = 109.0
 rect_min_size = Vector2( 80, 40 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Play"
 
 [node name="Control2" type="Control" parent="HBoxContainer/Level data"]
-margin_top = 136.0
+margin_top = 113.0
 margin_right = 162.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 0, 14 )
+margin_bottom = 133.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="Highscore" type="Label" parent="HBoxContainer/Level data"]
+margin_top = 137.0
+margin_right = 162.0
+margin_bottom = 156.0
+text = "Your highscore: -8"
+align = 1
+
+[node name="Control3" type="Control" parent="HBoxContainer/Level data"]
+margin_top = 160.0
+margin_right = 162.0
+margin_bottom = 168.0
+rect_min_size = Vector2( 0, 8 )
 
 [node name="Leaderboard label" type="Label" parent="HBoxContainer/Level data"]
-margin_top = 154.0
+margin_top = 172.0
 margin_right = 162.0
-margin_bottom = 173.0
+margin_bottom = 191.0
 text = "Leaderboard"
 align = 1
 
 [node name="Leaderboard" type="GridContainer" parent="HBoxContainer/Level data"]
-margin_top = 177.0
+margin_top = 195.0
 margin_right = 162.0
-margin_bottom = 177.0
+margin_bottom = 195.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_constants/vseparation = 5
@@ -117,9 +123,9 @@ columns = 2
 
 [node name="HSplitContainer" type="HSplitContainer" parent="HBoxContainer/Level data"]
 margin_left = 75.0
-margin_top = 181.0
+margin_top = 199.0
 margin_right = 87.0
-margin_bottom = 181.0
+margin_bottom = 199.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
