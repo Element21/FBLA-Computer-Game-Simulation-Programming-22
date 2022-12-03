@@ -90,6 +90,8 @@ func next_grabbing_state():
 
 
 func _process(delta):
+	if !level.playing:
+		return
 	
 	if grabbing_state == GRABBING_STATE.NOT:
 		
