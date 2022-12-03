@@ -5,9 +5,7 @@ class_name LevelEndScreen
 
 export(PackedScene) var next_level
 
-onready var viewport = get_child(0)
-onready var ui = viewport.get_child(0)
-onready var next_level_button = ui.get_child(3)
+export(NodePath) onready var next_level_button = get_node(next_level_button) as Button
 
 func _ready():
 	self.hide()
