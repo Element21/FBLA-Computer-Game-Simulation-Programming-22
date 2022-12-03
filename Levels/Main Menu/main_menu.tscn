@@ -28,7 +28,7 @@ margin_bottom = 40.0
 
 [node name="Level buttons" type="VBoxContainer" parent="HBoxContainer"]
 margin_right = 136.0
-margin_bottom = 199.0
+margin_bottom = 195.0
 grow_horizontal = 2
 
 [node name="Levels" type="Label" parent="HBoxContainer/Level buttons"]
@@ -48,13 +48,13 @@ rect_min_size = Vector2( 0, 20 )
 [node name="Control" type="Control" parent="HBoxContainer"]
 margin_left = 140.0
 margin_right = 290.0
-margin_bottom = 199.0
+margin_bottom = 195.0
 rect_min_size = Vector2( 150, 0 )
 
 [node name="Level data" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 294.0
 margin_right = 456.0
-margin_bottom = 199.0
+margin_bottom = 195.0
 script = ExtResource( 3 )
 level_label = NodePath("Level label")
 highscore_label = NodePath("Highscore")
@@ -111,21 +111,11 @@ margin_bottom = 191.0
 text = "Leaderboard"
 align = 1
 
-[node name="Leaderboard" type="GridContainer" parent="HBoxContainer/Level data"]
-margin_top = 195.0
-margin_right = 162.0
-margin_bottom = 195.0
-grow_horizontal = 2
-grow_vertical = 2
-custom_constants/vseparation = 5
-custom_constants/hseparation = 10
-columns = 2
-
 [node name="HSplitContainer" type="HSplitContainer" parent="HBoxContainer/Level data"]
 margin_left = 75.0
-margin_top = 199.0
+margin_top = 195.0
 margin_right = 87.0
-margin_bottom = 199.0
+margin_bottom = 195.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
