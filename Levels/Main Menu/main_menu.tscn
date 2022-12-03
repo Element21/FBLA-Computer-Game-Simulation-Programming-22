@@ -15,62 +15,119 @@ levels = [ ExtResource( 4 ) ]
 level_names = [ "Level 1" ]
 level_button_size = Vector2( 80, 40 )
 level_button_distance = 50
+level_buttons = NodePath("HBoxContainer/Level buttons")
+level_data = NodePath("HBoxContainer/Level data")
 
-[node name="Level buttons" type="Control" parent="."]
-margin_left = 105.0
-margin_top = 89.0
-margin_right = 105.0
-margin_bottom = 89.0
-
-[node name="Level data" type="Control" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-margin_left = -1.0
-margin_top = 1.0
+anchor_bottom = 1.0
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 3 )
 
-[node name="Level label" type="Label" parent="Level data"]
-margin_left = 383.0
-margin_top = 24.0
-margin_right = 541.0
+[node name="Level buttons" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 136.0
+margin_bottom = 181.0
+grow_horizontal = 2
+
+[node name="Levels" type="Label" parent="HBoxContainer/Level buttons"]
+margin_right = 136.0
+margin_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 2 )
+text = "Levels"
+
+[node name="Control" type="Control" parent="HBoxContainer/Level buttons"]
+margin_top = 51.0
+margin_right = 136.0
 margin_bottom = 71.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+margin_left = 140.0
+margin_right = 209.297
+margin_bottom = 181.0
+rect_min_size = Vector2( 69.297, 0 )
+
+[node name="Level data" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 213.0
+margin_right = 375.0
+margin_bottom = 181.0
+script = ExtResource( 3 )
+level_label = NodePath("Level label")
+highscore_label = NodePath("Highscore")
+play_button = NodePath("Button")
+leaderboard_names = NodePath("HSplitContainer/VBoxContainer")
+leaderboard_scores = NodePath("HSplitContainer/VBoxContainer2")
+
+[node name="Level label" type="Label" parent="HBoxContainer/Level data"]
+margin_right = 162.0
+margin_bottom = 47.0
 custom_fonts/font = ExtResource( 2 )
 text = "Level Q"
 align = 1
 
-[node name="Highscore" type="Label" parent="Level data"]
-margin_left = 379.0
-margin_top = 137.0
-margin_right = 541.0
-margin_bottom = 156.0
+[node name="Highscore" type="Label" parent="HBoxContainer/Level data"]
+margin_top = 51.0
+margin_right = 162.0
+margin_bottom = 70.0
 text = "Your highscore: -8"
 align = 1
 
-[node name="Button" type="Button" parent="Level data"]
-margin_left = 429.0
-margin_top = 79.0
-margin_right = 490.0
-margin_bottom = 118.0
+[node name="Control" type="Control" parent="HBoxContainer/Level data"]
+margin_top = 74.0
+margin_right = 162.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 0, 14 )
+
+[node name="Button" type="Button" parent="HBoxContainer/Level data"]
+margin_left = 41.0
+margin_top = 92.0
+margin_right = 121.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 80, 40 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Play"
 
-[node name="Leaderboard" type="Control" parent="Level data"]
-margin_left = 462.0
-margin_top = 234.0
-margin_right = 502.0
-margin_bottom = 274.0
+[node name="Control2" type="Control" parent="HBoxContainer/Level data"]
+margin_top = 136.0
+margin_right = 162.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 14 )
 
-[node name="Leaderboard label" type="Label" parent="Level data"]
-margin_left = 403.0
-margin_top = 190.0
-margin_right = 520.0
-margin_bottom = 209.0
+[node name="Leaderboard label" type="Label" parent="HBoxContainer/Level data"]
+margin_top = 154.0
+margin_right = 162.0
+margin_bottom = 173.0
 text = "Leaderboard"
+align = 1
 
-[node name="Levels" type="Label" parent="."]
-margin_left = 78.0
-margin_top = 23.0
-margin_right = 214.0
-margin_bottom = 70.0
-custom_fonts/font = ExtResource( 2 )
-text = "Levels"
+[node name="Leaderboard" type="GridContainer" parent="HBoxContainer/Level data"]
+margin_top = 177.0
+margin_right = 162.0
+margin_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/vseparation = 5
+custom_constants/hseparation = 10
+columns = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="HBoxContainer/Level data"]
+margin_left = 75.0
+margin_top = 181.0
+margin_right = 87.0
+margin_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+dragger_visibility = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Level data/HSplitContainer"]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/Level data/HSplitContainer"]
+margin_left = 12.0
+margin_right = 12.0

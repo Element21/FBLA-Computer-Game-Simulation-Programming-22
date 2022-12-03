@@ -1,20 +1,19 @@
-extends Control
+extends BoxContainer
 
 class_name LevelData
 
 
 var max_leaderboard_entries = 10
-var leaderboard_entry_horizontal_spacing = 10
-var leaderboard_entry_vertical_separation = 30
 
 
 var level_idx = null
 var level_scene = null
 
-onready var level_label: Label = get_child(0)
-onready var highscore_label: Label = get_child(1)
-onready var play_button: Button = get_child(2)
-onready var leaderboard: Control = get_child(3)
+export(NodePath) onready var level_label = get_node(level_label) as Label
+export(NodePath) onready var highscore_label = get_node(highscore_label) as Label
+export(NodePath) onready var play_button = get_node(play_button) as Button
+export(NodePath) onready var leaderboard_names = get_node(leaderboard_names) as VBoxContainer
+export(NodePath) onready var leaderboard_scores = get_node(leaderboard_scores) as VBoxContainer
 
 
 func _ready():
@@ -40,20 +39,12 @@ func select_level(idx: int, name: String, scene: PackedScene):
 	
 	for i in range(0, min(max_leaderboard_entries, leaderboard_entries.size())):
 		var name_label = Label.new()
-		name_label.align = Label.ALIGN_RIGHT
-		name_label.grow_horizontal = Control.GROW_DIRECTION_BEGIN
 		name_label.text = leaderboard_entries[i][0]
-		name_label.rect_position.x = -leaderboard_entry_horizontal_spacing / 2
-		name_label.rect_position.y = leaderboard_entry_vertical_separation * i
-		leaderboard.add_child(name_label)
+		leaderboard_names.add_child(name_label)
 		
 		var score_label = Label.new()
-		score_label.align = Label.ALIGN_LEFT
-		score_label.align = Control.GROW_DIRECTION_END
 		score_label.text = String(leaderboard_entries[i][1])
-		score_label.rect_position.x = leaderboard_entry_horizontal_spacing / 2
-		score_label.rect_position.y = leaderboard_entry_vertical_separation * i
-		leaderboard.add_child(score_label)
+		leaderboard_scores.add_child(score_label)
 	
 	self.show()
 
