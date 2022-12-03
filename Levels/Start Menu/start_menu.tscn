@@ -14,33 +14,55 @@ anchor_bottom = 1.0
 theme = ExtResource( 2 )
 script = ExtResource( 3 )
 
-[node name="LineEdit" type="LineEdit" parent="."]
-margin_left = 403.0
-margin_top = 213.0
-margin_right = 646.0
-margin_bottom = 243.0
-placeholder_text = "Enter your name"
-
 [node name="Label" type="Label" parent="."]
-margin_left = 211.0
-margin_top = 51.0
-margin_right = 825.0
-margin_bottom = 168.0
+anchor_left = 0.5
+anchor_top = 0.138
+anchor_right = 0.5
+anchor_bottom = 0.147
+grow_horizontal = 2
+grow_vertical = 2
 custom_fonts/font = SubResource( 1 )
 text = "mmm soup"
 
-[node name="Button" type="Button" parent="."]
-margin_left = 479.0
-margin_top = 265.0
-margin_right = 562.0
-margin_bottom = 293.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.404
+anchor_right = 0.5
+anchor_bottom = 0.404
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 300, 0 )
+placeholder_text = "Enter your name"
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_top = 25.0
+margin_right = 300.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+margin_left = 105.0
+margin_top = 39.0
+margin_right = 195.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 90, 30 )
+size_flags_horizontal = 4
 text = "Submit"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 212.0
-margin_top = 326.0
-margin_right = 833.0
-margin_bottom = 542.0
+anchor_left = 0.5
+anchor_top = 0.738
+anchor_right = 0.5
+anchor_bottom = 0.738
+margin_left = -300.0
+margin_right = 300.0
+grow_horizontal = 2
+grow_vertical = 2
 custom_constants/line_separation = 12
 bbcode_enabled = true
 bbcode_text = "[center]
@@ -55,6 +77,7 @@ Words that share fewer letters with other words get more points
 
 Click to grab
 Right Click or Backspace to delete"
+fit_content_height = true
 
-[connection signal="text_entered" from="LineEdit" to="." method="go_to_main_menu"]
-[connection signal="button_down" from="Button" to="." method="go_to_main_menu" binds= [ "The LineEdit gives a string argument so I have to too" ]]
+[connection signal="text_entered" from="VBoxContainer/LineEdit" to="." method="go_to_main_menu"]
+[connection signal="button_down" from="VBoxContainer/Button" to="." method="go_to_main_menu" binds= [ "The LineEdit gives a string argument so I have to too" ]]
