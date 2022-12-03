@@ -95,7 +95,7 @@ func next_platform_position():
 
 
 func _input(event):
-	if event.is_action_pressed("delete_letter"):
+	if level.playing && event.is_action_pressed("delete_letter"):
 		delete()
 
 

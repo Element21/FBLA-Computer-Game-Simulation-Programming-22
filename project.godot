@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://objects/level/level.gd"
 }, {
+"base": "Spatial",
+"class": "LevelCountdown",
+"language": "GDScript",
+"path": "res://objects/level_countdown/level_countdown.gd"
+}, {
 "base": "BoxContainer",
 "class": "LevelData",
 "language": "GDScript",
@@ -49,6 +54,7 @@ _global_script_class_icons={
 "Letter": "",
 "LetterPlatform": "",
 "Level": "",
+"LevelCountdown": "",
 "LevelData": "",
 "LevelEndScreen": "",
 "WordManager": ""

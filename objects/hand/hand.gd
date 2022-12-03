@@ -30,6 +30,10 @@ var time = 0
 var letter_being_grabbed = null
 
 
+func _ready():
+	fix_arm_rotation()
+
+
 func _input(event):
 	
 	if event.is_action_pressed("click") && raycast.is_colliding():
@@ -124,4 +128,11 @@ func _process(delta):
 		
 		hand.translation = lerp(start_hand_translation, final_hand_translation, Tweening.smoothify(time / hand_animation_part_time))
 	
-	hand.rotation.y = -Vector2(hand.translation.x, hand.translation.z).angle_to_point(arm_pivot - Vector2(self.translation.x, self.translation.y)) - PI / 2
+	fix_arm_rotation()
+
+
+func fix_arm_rotation():
+	var top_down_position = Vector2(hand.translation.x, hand.translation.z)
+	var arm_pivot_position_local = arm_pivot - Vector2(self.translation.x, self.translation.y)
+	
+	hand.rotation.y = -top_down_position.angle_to_point(arm_pivot_position_local) - PI / 2
