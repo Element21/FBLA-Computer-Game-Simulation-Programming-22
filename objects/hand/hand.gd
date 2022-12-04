@@ -16,6 +16,7 @@ var hand_animation_part_time = 0.5
 onready var hand: MeshInstance = get_child(0)
 onready var raycast: RayCast = get_child(1)
 onready var letter_pickup_area: Area = hand.get_child(0)
+onready var slap_sound_player = hand.get_child(1)
 
 onready var target_pos: Vector3 = hand.translation
 
@@ -48,6 +49,8 @@ func next_grabbing_state():
 	
 	if grabbing_state == GRABBING_STATE.DIPPING:
 		grabbing_state = GRABBING_STATE.PULLING
+		
+		slap_sound_player.play()
 		
 		var tmp = start_hand_translation
 		start_hand_translation = final_hand_translation
