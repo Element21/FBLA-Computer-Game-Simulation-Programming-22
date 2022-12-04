@@ -28,7 +28,7 @@ shape = SubResource( 2 )
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Hand"]
 stream = ExtResource( 3 )
-unit_size = 20.4
+unit_size = 20.0
 
 [node name="RayCast" type="RayCast" parent="."]
 enabled = true

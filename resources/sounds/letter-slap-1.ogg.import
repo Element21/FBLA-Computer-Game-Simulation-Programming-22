@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/letter-slap-1.ogg-04bec3db7c9c91733cf24a2b40e21456.oggstr"
+
+[deps]
+
+source_file="res://resources/sounds/letter-slap-1.ogg"
+dest_files=[ "res://.import/letter-slap-1.ogg-04bec3db7c9c91733cf24a2b40e21456.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

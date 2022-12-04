@@ -10,7 +10,7 @@ var distance_from_camera = 5
 onready var mesh_instance = get_child(0)
 onready var timer = get_child(1)
 
-var time = 3
+var time = 1
 
 
 func got_camera(camera: Camera):
