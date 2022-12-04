@@ -37,7 +37,7 @@ func _ready():
 	
 	var camera_displacement_from_ui = camera.global_translation - ui.global_translation
 	
-	ui.rotation.x = atan2(camera_displacement_from_ui.y, camera_displacement_from_ui.z)
+	ui.rotation.x = atan2(camera_displacement_from_ui.z, camera_displacement_from_ui.y)
 
 
 func _process(delta):

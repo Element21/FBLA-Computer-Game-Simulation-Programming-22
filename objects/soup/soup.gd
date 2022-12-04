@@ -8,7 +8,6 @@ var drag = 2
 
 func _process(delta):
 	for letter in level.letters_in_play:
-		
 		if overlaps_body(letter):
 			
 			# Buoyancy

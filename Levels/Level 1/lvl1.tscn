@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Levels/Level 1/Level 1 Bowl.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://objects/letter/letter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/room/Room.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Levels/Level 2/lvl2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=5]
 [ext_resource path="res://Levels/Level 1/Level 1 Bowl Interior.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://objects/soup/soup.gd" type="Script" id=7]
@@ -30,6 +31,7 @@ data = PoolVector3Array( 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0.1093, -1, 1, 0.1093, 0
 
 [node name="Level" parent="." instance=ExtResource( 13 )]
 time_given = 10
+next_level = ExtResource( 4 )
 camera = NodePath("Camera")
 
 [node name="Camera" type="Camera" parent="Level"]

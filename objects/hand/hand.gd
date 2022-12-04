@@ -46,10 +46,19 @@ func _ready():
 	fix_arm_rotation()
 
 
-func _input(event):
+func pointing_at_valid_soup_surface() -> bool:
+	if !raycast.is_colliding():
+		return false
 	
-	if event.is_action_pressed("click") && raycast.is_colliding():
-		
+	var normal = raycast.get_collision_normal()
+	
+	# Make sure the soup is flat, the side of the soup should be invisible
+	# Allows for margin of error because normal calculations aren't perfect
+	return abs(normal.x) < 0.001 && abs(normal.z) < 0.001
+
+
+func _input(event):
+	if event.is_action_pressed("click") && pointing_at_valid_soup_surface():
 		grabbing_state = GRABBING_STATE.DIPPING
 		
 		start_hand_translation = hand.translation
@@ -63,10 +72,9 @@ func start_hand_animation():
 
 
 func next_hand_animation_frame():
-	print(grabbing_state, " ", current_hand_animation_frame)
 	if grabbing_state == GRABBING_STATE.DIPPING:
 		current_hand_animation_frame += 1
-	elif grabbing_state == GRABBING_STATE.DROPPING:
+	elif grabbing_state == GRABBING_STATE.DROPPING || grabbing_state == GRABBING_STATE.PULLING:
 		current_hand_animation_frame -= 1
 	
 	if current_hand_animation_frame == 0 || current_hand_animation_frame == hand_animation_frames.size() - 1:
@@ -100,9 +108,10 @@ func next_grabbing_state():
 					letter_being_grabbed = letter
 		
 		if letter_being_grabbed:
-			
 			letter_being_grabbed.mode = RigidBody.MODE_KINEMATIC
 			level.remove_letter_from_play(letter_being_grabbed)
+		else:
+			start_hand_animation()
 		
 	elif grabbing_state == GRABBING_STATE.PULLING:
 		if letter_being_grabbed:
@@ -144,7 +153,7 @@ func _process(delta):
 		raycast.cast_to = to - self.translation
 		raycast.translation = from - self.translation
 
-		if raycast.is_colliding():
+		if pointing_at_valid_soup_surface():
 			
 			target_pos = raycast.get_collision_point() + Vector3(0, hand_height, 0) - self.translation
 	

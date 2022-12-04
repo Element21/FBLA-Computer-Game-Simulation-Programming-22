@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://objects/level/level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Level 2/pot2.0.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://objects/word_manager/word_manager.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/hand/hand.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=5]
+
+[sub_resource type="CylinderShape" id=1]
+height = 8.73
+radius = 4.42
+
+[sub_resource type="CylinderMesh" id=2]
+material = ExtResource( 5 )
+top_radius = 4.42
+bottom_radius = 4.42
+height = 8.73
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Level" parent="." instance=ExtResource( 1 )]
+countdown = false
+enable_timer = false
+level_index = 1
+camera = NodePath("../Camera")
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+mesh = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 16.7406, 9.13881 )
+
+[node name="Word manager" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.74265, 8.7045 )
+camera = NodePath("../Camera")
+level = NodePath("../Level")
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94556, 16.2211, 12.7187 )
+omni_range = 26.3415
+
+[node name="Hand" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.497, 0 )
+camera = NodePath("../Camera")
+word_manager = NodePath("../Word manager")
+level = NodePath("../Level")
+arm_pivot = Vector2( -2, 35 )
+
+[node name="Soup" type="Area" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Soup"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.42, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Soup"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.42, 0 )
+mesh = SubResource( 2 )
