@@ -15,7 +15,7 @@ var hand_animation_part_time = 0.5
 
 onready var hand: MeshInstance = get_child(0)
 onready var raycast: RayCast = get_child(1)
-onready var letter_pickup_area: Area = hand.get_child(1)
+onready var letter_pickup_area: Area = hand.get_child(0)
 
 onready var target_pos: Vector3 = hand.translation
 

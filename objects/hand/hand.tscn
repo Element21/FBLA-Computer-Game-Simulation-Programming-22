@@ -1,13 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://objects/hand/hand.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://objects/hand/longgripper.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://objects/hand/hand.gd" type="Script" id=2]
-[ext_resource path="res://objects/hand/hand.tres" type="Material" id=3]
-
-[sub_resource type="CylinderMesh" id=1]
-top_radius = 0.61
-bottom_radius = 0.61
-height = 20.487
 
 [sub_resource type="CylinderShape" id=2]
 height = 1.783
@@ -19,12 +13,6 @@ script = ExtResource( 2 )
 [node name="Hand" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )
 skeleton = NodePath("")
-material/0 = ExtResource( 3 )
-
-[node name="Arm" type="MeshInstance" parent="Hand"]
-transform = Transform( 1, 0, 0, 0, -2.4128e-08, -0.551985, 0, 1, -4.37114e-08, 0.174, 0, 11.5414 )
-mesh = SubResource( 1 )
-material/0 = ExtResource( 3 )
 
 [node name="Letter pickup area" type="Area" parent="Hand"]
 monitorable = false
