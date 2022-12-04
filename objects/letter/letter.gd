@@ -9,21 +9,28 @@ export var which_letter: String
 export(NodePath) onready var level = get_node(level)
 
 # Refactor when we get 3d models from Daniel
-func get_mesh() -> Mesh:
-	var mesh = TextMesh.new()
+func set_mesh():
+	var mesh: ArrayMesh = load("res://resources/letters/" + which_letter + ".obj") as ArrayMesh
 	
-	mesh.text = which_letter
-	mesh.font = load("res://resources/letter_font.tres")
-	mesh.depth = 0.07
-	mesh.uppercase = true
+	var avg_translation = Vector3(0, 0, 0)
 	
-	return mesh
+	var mesh_data_tool = MeshDataTool.new()
+	mesh_data_tool.create_from_surface(mesh, 0)
+	
+	var vertex_count = mesh_data_tool.get_vertex_count()
+	var inverse_vertex_count = 1.0 / vertex_count
+	
+	for i in range(vertex_count):
+		var vertex = mesh_data_tool.get_vertex(i)
+		
+		avg_translation += vertex * inverse_vertex_count
+	
+	mesh_instance.mesh = mesh
+	mesh_instance.translation -= avg_translation
 
 
 func _ready():
-	var mesh = get_mesh()
-	
-	mesh_instance.mesh = mesh
+	set_mesh()
 	
 	level.put_letter_in_play(self)
 
