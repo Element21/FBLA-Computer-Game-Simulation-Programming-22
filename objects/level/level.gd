@@ -4,6 +4,8 @@ class_name Level
 
 
 export var time_given = 30
+export var countdown = true
+export var enable_timer = true
 export(PackedScene) var next_level
 export(int) var level_index
 export(NodePath) onready var camera = get_node(camera) as Camera
@@ -31,12 +33,16 @@ func start():
 
 
 func _ready():
-	level_countdown.got_camera(camera)
+	if countdown:
+		level_countdown.start(camera)
+	else:
+		start()
+	
 	level_end_screen.next_level = next_level
 
 
 func _process(delta):
-	if playing:
+	if playing && enable_timer:
 		time_left -= delta
 	
 	if time_left < 0:

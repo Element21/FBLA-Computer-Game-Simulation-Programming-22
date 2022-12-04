@@ -10,15 +10,17 @@ var distance_from_camera = 5
 onready var mesh_instance = get_child(0)
 onready var timer = get_child(1)
 
-var time = 1
+var time = 3
 
 
-func got_camera(camera: Camera):
+func start(camera: Camera):
 	var camera_normal = camera.project_ray_normal(get_viewport().size / 2)
 	
 	self.global_translation = camera.global_translation + camera_normal * distance_from_camera
 	
 	self.rotation = camera.rotation
+	
+	timer.start()
 
 
 func timeout():
