@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://objects/hand/longgripper.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://objects/hand/hand.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.898039, 0.0823529, 0.92549, 1 )
 
 [sub_resource type="CylinderShape" id=2]
 height = 1.783
@@ -13,6 +16,7 @@ script = ExtResource( 2 )
 [node name="Hand" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )
 skeleton = NodePath("")
+material/1 = SubResource( 3 )
 
 [node name="Letter pickup area" type="Area" parent="Hand"]
 monitorable = false

@@ -10,6 +10,7 @@ anchor_bottom = 1.0
 stretch = true
 script = ExtResource( 3 )
 next_level_button = NodePath("Viewport/Control/VBoxContainer/Next Level")
+score_label = NodePath("Viewport/Control/VBoxContainer/Score")
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 1024, 600 )

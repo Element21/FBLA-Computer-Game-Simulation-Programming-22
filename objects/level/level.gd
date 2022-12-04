@@ -5,6 +5,7 @@ class_name Level
 
 export var time_given = 30
 export(PackedScene) var next_level
+export(int) var level_index
 export(NodePath) onready var camera = get_node(camera) as Camera
 
 onready var level_countdown = get_child(0) as LevelCountdown
@@ -42,5 +43,7 @@ func _process(delta):
 		letters_in_play.clear()
 		playing = false
 		
-		level_end_screen.show()
+		LeaderboardManager.add_score(level_index, score)
+		
+		level_end_screen.level_ended(score)
 
