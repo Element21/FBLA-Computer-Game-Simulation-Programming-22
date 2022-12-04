@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/frame4_hand_3.0.obj-a69a072d085a25ec2fc4a0359a516ac2.mesh"
+
+[deps]
+
+files=[ "res://.import/frame4_hand_3.0.obj-a69a072d085a25ec2fc4a0359a516ac2.mesh" ]
+
+source_file="res://resources/hand_frames/frame4_hand_3.0.obj"
+dest_files=[ "res://.import/frame4_hand_3.0.obj-a69a072d085a25ec2fc4a0359a516ac2.mesh", "res://.import/frame4_hand_3.0.obj-a69a072d085a25ec2fc4a0359a516ac2.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

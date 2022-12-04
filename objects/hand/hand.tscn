@@ -35,3 +35,19 @@ enabled = true
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Hand animation state interval" type="Timer" parent="."]
+wait_time = 0.05
+__meta__ = {
+"_editor_description_": "Each time this timer triggers, it advances the hand animation state"
+}
+
+[node name="Hand animation start timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+__meta__ = {
+"_editor_description_": "Adds a delay to the start of the hand animation"
+}
+
+[connection signal="timeout" from="Hand animation state interval" to="." method="next_hand_animation_frame"]
+[connection signal="timeout" from="Hand animation start timer" to="." method="start_hand_animation"]

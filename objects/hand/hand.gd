@@ -16,7 +16,18 @@ var hand_animation_part_time = 0.5
 onready var hand: MeshInstance = get_child(0)
 onready var raycast: RayCast = get_child(1)
 onready var letter_pickup_area: Area = hand.get_child(0)
-onready var slap_sound_player = hand.get_child(1)
+onready var slap_sound_player: AudioStreamPlayer3D = hand.get_child(1)
+onready var hand_animation_state_interval: Timer = self.get_child(2)
+onready var hand_animation_start_timer: Timer = self.get_child(3)
+
+var hand_animation_frames = [
+	preload("res://resources/hand_frames/frame1_hand_3.0.obj"),
+	preload("res://resources/hand_frames/frame2_hand_3.0.obj"),
+	preload("res://resources/hand_frames/frame3_hand_3.0.obj"),
+	preload("res://resources/hand_frames/frame4_hand_3.0.obj"),
+	preload("res://resources/hand_frames/frame5_hand_3.0.obj"),
+]
+var current_hand_animation_frame = 0
 
 onready var target_pos: Vector3 = hand.translation
 
@@ -43,6 +54,25 @@ func _input(event):
 		
 		start_hand_translation = hand.translation
 		final_hand_translation = hand.translation - Vector3(0, hand_height, 0)
+		
+		hand_animation_start_timer.start()
+
+
+func start_hand_animation():
+	hand_animation_state_interval.start()
+
+
+func next_hand_animation_frame():
+	print(grabbing_state, " ", current_hand_animation_frame)
+	if grabbing_state == GRABBING_STATE.DIPPING:
+		current_hand_animation_frame += 1
+	elif grabbing_state == GRABBING_STATE.DROPPING:
+		current_hand_animation_frame -= 1
+	
+	if current_hand_animation_frame == 0 || current_hand_animation_frame == hand_animation_frames.size() - 1:
+		hand_animation_state_interval.stop()
+	
+	hand.mesh = hand_animation_frames[current_hand_animation_frame]
 
 
 func next_grabbing_state():
@@ -82,6 +112,8 @@ func next_grabbing_state():
 			
 			start_hand_translation = hand.translation
 			final_hand_translation = Vector3(local_drop_pos.x, hand_height, local_drop_pos.y)
+			
+			hand_animation_start_timer.start()
 		
 		else:
 			grabbing_state = GRABBING_STATE.NOT

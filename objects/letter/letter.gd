@@ -12,6 +12,14 @@ export(NodePath) onready var level = get_node(level)
 func set_mesh():
 	var mesh: ArrayMesh = load("res://resources/letters/" + which_letter + ".obj") as ArrayMesh
 	
+	mesh_instance.mesh = mesh
+	
+	undo_mesh_translation(mesh)
+
+
+# Daniel's letter models are offset, this undoes the translation
+# This assumes that the vertices are about evenly spread out, otherwise the average will be biased towards where there's a higher density of vertices
+func undo_mesh_translation(mesh: ArrayMesh):
 	var avg_translation = Vector3(0, 0, 0)
 	
 	var mesh_data_tool = MeshDataTool.new()
@@ -25,7 +33,7 @@ func set_mesh():
 		
 		avg_translation += vertex * inverse_vertex_count
 	
-	mesh_instance.mesh = mesh
+	
 	mesh_instance.translation -= avg_translation
 
 
