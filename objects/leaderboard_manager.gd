@@ -17,10 +17,10 @@ func set_player_name(new_player_name: String):
 
 
 func add_score(level_index: int, score: int):
-	leaderboard_data.data[level_index][player_name] = score
+	leaderboard_data.get_leaderboard_for(level_index)[player_name] = score
 	
 	ResourceSaver.save("user://leaderboard_data.res", leaderboard_data)
 
 
 func highscore_for(level_index: int):
-	return leaderboard_data.data[level_index].get(player_name, null)
+	return leaderboard_data.get_leaderboard_for(level_index).get(player_name, null)

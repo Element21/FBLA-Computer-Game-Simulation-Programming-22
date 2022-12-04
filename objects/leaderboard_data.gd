@@ -4,10 +4,7 @@ class_name LeaderboardData
 
 # Array, each entry contains leaderboard data for the level with the same index (first value contains data for level 1)
 # Each entry is a dictionary from `name` to `highest score`
-export var data: Array = [{
-	test = 5,
-	bruh = 9,
-}]
+export var data: Array = []
 
 
 class LeaderboardDataSorter:
@@ -16,7 +13,7 @@ class LeaderboardDataSorter:
 
 
 func get_sorted_leaderboard_for(idx: int) -> Array:
-	var data_dictionary: Dictionary = data[idx]
+	var data_dictionary = get_leaderboard_for(idx)
 	
 	var data_array = []
 	
@@ -26,3 +23,13 @@ func get_sorted_leaderboard_for(idx: int) -> Array:
 	data_array.sort_custom(LeaderboardDataSorter, "sort_ascending")
 	
 	return data_array
+
+
+func get_leaderboard_for(idx: int) -> Dictionary:
+	if data.size() <= idx:
+		data.resize(idx + 1)
+	
+	if data[idx] == null:
+		data[idx] = {}
+	
+	return data[idx]
