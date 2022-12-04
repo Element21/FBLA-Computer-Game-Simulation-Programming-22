@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 stretch = true
 script = ExtResource( 3 )
+main_menu_button = NodePath("Viewport/Control/VBoxContainer/Main Menu")
 next_level_button = NodePath("Viewport/Control/VBoxContainer/Next Level")
 score_label = NodePath("Viewport/Control/VBoxContainer/Score")
 
