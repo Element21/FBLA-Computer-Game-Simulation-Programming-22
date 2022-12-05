@@ -18,6 +18,7 @@ var score = 0
 var playing = false
 
 var letters_in_play = []
+var bubbles_in_play = []
 
 
 func put_letter_in_play(letter: Letter):

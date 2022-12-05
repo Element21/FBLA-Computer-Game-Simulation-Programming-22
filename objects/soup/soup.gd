@@ -6,12 +6,19 @@ var buoyancy_acceleration = 9.81 * 2
 var drag = 2
 
 
+func maybe_apply_buoyancy_to_thing(thing: RigidBody, delta: float):
+	if overlaps_body(thing):
+		
+		# Buoyancy
+		thing.apply_central_impulse(Vector3(0, 19.62, 0) * thing.mass * delta)
+
+		# Drag
+		thing.apply_central_impulse(-thing.linear_velocity * drag * delta)
+
+
 func _process(delta):
 	for letter in level.letters_in_play:
-		if overlaps_body(letter):
-			
-			# Buoyancy
-			letter.apply_central_impulse(Vector3(0, 19.62, 0) * letter.mass * delta)
-
-			# Drag
-			letter.apply_central_impulse(-letter.linear_velocity * drag * delta)
+		maybe_apply_buoyancy_to_thing(letter, delta)
+	
+	for bubble in level.bubbles_in_play:
+		maybe_apply_buoyancy_to_thing(bubble, delta)

@@ -54,7 +54,7 @@ func pointing_at_valid_soup_surface() -> bool:
 	
 	# Make sure the soup is flat, the side of the soup should be invisible
 	# Allows for margin of error because normal calculations aren't perfect
-	return abs(normal.x) < 0.001 && abs(normal.z) < 0.001
+	return abs(normal.x) < 0.01 && abs(normal.z) < 0.01
 
 
 func _input(event):

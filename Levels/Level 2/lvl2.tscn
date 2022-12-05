@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://objects/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level 2/pot2.0.obj" type="ArrayMesh" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://objects/hand/hand.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=5]
 [ext_resource path="res://Levels/Level 2/ovenstove.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://objects/letter/letter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/soup/soup.gd" type="Script" id=8]
+[ext_resource path="res://objects/bubble/bubble.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CylinderShape" id=1]
 height = 8.73
@@ -23,6 +26,7 @@ params_cull_mode = 2
 [node name="Spatial" type="Spatial"]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22611, 0 )
 countdown = false
 enable_timer = false
 level_index = 1
@@ -56,6 +60,8 @@ arm_pivot = Vector2( -2, 35 )
 
 [node name="Soup" type="Area" parent="."]
 collision_layer = 2
+script = ExtResource( 8 )
+level = NodePath("../Level")
 
 [node name="CollisionShape" type="CollisionShape" parent="Soup"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.42, 0 )
@@ -83,3 +89,11 @@ light_energy = 0.646
 shadow_color = Color( 0.435294, 0.435294, 0.435294, 1 )
 omni_range = 82.7533
 omni_shadow_mode = 0
+
+[node name="Letter" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.2657, 0 )
+which_letter = "a"
+level = NodePath("../Level")
+
+[node name="Bubble" parent="." instance=ExtResource( 9 )]
+level = NodePath("../Level")

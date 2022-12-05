@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=1]
+[ext_resource path="res://objects/bubble/bubble.gd" type="Script" id=2]
+
+[sub_resource type="SphereMesh" id=1]
+material = ExtResource( 1 )
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.3
+
+[node name="Bubble" type="RigidBody"]
+contacts_reported = 16
+contact_monitor = true
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
