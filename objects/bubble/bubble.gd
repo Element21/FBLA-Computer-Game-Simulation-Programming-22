@@ -14,7 +14,7 @@ func _ready():
 	level.bubbles_in_play.push_back(self)
 
 
-func _process(delta):
+func maybe_pop(delta: float):
 	if is_instance_valid(bubble_mesh) && randf() < probability_of_pop_in_one_second * delta:
 		level.bubbles_in_play.remove(level.bubbles_in_play.find(self))
 		bubble_mesh.queue_free()
