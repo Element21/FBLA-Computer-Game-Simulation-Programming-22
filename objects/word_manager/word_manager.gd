@@ -4,6 +4,7 @@ class_name WordManager
 
 
 export var word_length = 5
+export(Vector2) var launch_vector = Vector2(2, 5)
 export(NodePath) onready var camera = get_node(camera) as Camera
 export(NodePath) onready var level = get_node(level) as Level
 
@@ -31,6 +32,7 @@ func _ready():
 	for index in range(0, word_length):
 		var platform = letter_platform_scene.instance()
 		
+		platform.launch_vector = launch_vector
 		platform.translation.x = platform_index_to_x_position(index)
 		
 		platforms.add_child(platform)

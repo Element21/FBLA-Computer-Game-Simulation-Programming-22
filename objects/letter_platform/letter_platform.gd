@@ -3,7 +3,7 @@ extends RigidBody
 class_name LetterPlatform
 
 var action_time = 1
-var launch_direction = Vector2(2, 5)
+var launch_vector = Vector2(2, 5)
 
 var score = null
 onready var score_mesh: MeshInstance = get_child(0)
@@ -78,17 +78,17 @@ func do_launch_transformation():
 	
 	var lerp_amt = Tweening.smooth_up_and_down(t)
 	
-	self.translation.y = lerp(0, launch_direction.y, lerp_amt)
-	self.translation.z = lerp(0, launch_direction.x, lerp_amt)
+	self.translation.y = lerp(0, launch_vector.y, lerp_amt)
+	self.translation.z = lerp(0, launch_vector.x, lerp_amt)
 	
 	if letter != null && t < launch_curve_inflection_point:
 		var lerp_amt_derivative = Tweening.smooth_up_and_down_derivative(t) / action_time
 		
-		letter.linear_velocity.y = launch_direction.y * lerp_amt_derivative
-		letter.linear_velocity.z = launch_direction.x * lerp_amt_derivative
+		letter.linear_velocity.y = launch_vector.y * lerp_amt_derivative
+		letter.linear_velocity.z = launch_vector.x * lerp_amt_derivative
 		
-		letter.translation.y = original_letter_position.y + lerp(0, launch_direction.y, lerp_amt)
-		letter.translation.z = original_letter_position.z + lerp(0, launch_direction.x, lerp_amt)
+		letter.translation.y = original_letter_position.y + lerp(0, launch_vector.y, lerp_amt)
+		letter.translation.z = original_letter_position.z + lerp(0, launch_vector.x, lerp_amt)
 	
 	if t > 0.5:
 		score_mesh.translation.z = lerp(1.5, 0.334, Tweening.smoothify((t - 0.5) * 2))

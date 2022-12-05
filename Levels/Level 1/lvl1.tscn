@@ -35,7 +35,7 @@ next_level = ExtResource( 4 )
 camera = NodePath("Camera")
 
 [node name="Camera" type="Camera" parent="Level"]
-transform = Transform( 1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 30, 15.664 )
+transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 23.331, 5.213 )
 
 [node name="AreaSoup" type="Area" parent="Level"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205, 12.063, -0.024 )
@@ -96,8 +96,9 @@ level = NodePath("..")
 arm_pivot = Vector2( -2, 35 )
 
 [node name="Word manager" parent="Level" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.864, 7.471 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.864, -7.254 )
 word_length = 3
+launch_vector = Vector2( 5, 3.5 )
 camera = NodePath("../Camera")
 level = NodePath("..")
 
