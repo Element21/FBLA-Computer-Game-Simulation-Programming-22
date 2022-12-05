@@ -1,8 +1,8 @@
 extends RigidBody
 
 
-export(NodePath) onready var level = get_node(level) as Level
-
+# This is assigned by BubbleSpawner (WHY ARE NODE PATHS RELATIVE AAAAAAAAA)
+var level: Level
 
 var surface = 8.73
 var half_life = 1
