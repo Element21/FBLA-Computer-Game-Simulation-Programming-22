@@ -21,11 +21,11 @@ var letters_in_play = []
 var bubbles_in_play = []
 
 
-func put_letter_in_play(letter: Letter):
+func put_letter_in_play(letter):
 	letters_in_play.push_back(letter)
 
 
-func remove_letter_from_play(letter: Letter):
+func remove_letter_from_play(letter):
 	letters_in_play.remove(letters_in_play.find(letter))
 
 

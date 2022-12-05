@@ -12,7 +12,7 @@ var action = null
 var time = null
 var original_letter_position = null
 
-var letter: Letter = null
+var letter = null
 
 
 func flip():

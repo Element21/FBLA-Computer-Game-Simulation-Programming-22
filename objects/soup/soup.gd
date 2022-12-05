@@ -1,5 +1,8 @@
 extends Area
 
+class_name Soup
+
+
 export(NodePath) onready var level = get_node(level) as Level
 
 var buoyancy_acceleration = 9.81 * 1.5
@@ -30,3 +33,8 @@ func _process(delta):
 				apply_buoyancy_to_thing(bubble, delta)
 			else:
 				bubble.maybe_pop(delta)
+
+
+func object_entered(node: Node):
+	if node is Letter:
+		node.contacted_soup()

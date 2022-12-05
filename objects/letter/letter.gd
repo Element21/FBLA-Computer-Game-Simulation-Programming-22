@@ -2,8 +2,9 @@ extends RigidBody
 
 class_name Letter
 
-onready var mesh_instance: MeshInstance = get_child(0)
-onready var letter_slap_sound: AudioStreamPlayer3D = get_child(1)
+onready var mesh_instance: MeshInstance = get_node("Mesh")
+onready var letter_slap_sound: AudioStreamPlayer3D = get_node("Slap")
+onready var particles: Particles = get_node("Particles")
 
 export var which_letter: String
 export(NodePath) onready var level = get_node(level)
@@ -51,5 +52,15 @@ func on_collision(node: Node):
 	if node.get_script() == self.get_script():
 		# Letter on letter sound
 		pass
-	else:
+	elif node is LetterPlatform:
 		letter_slap_sound.play()
+		soup_particle_burst()
+
+
+func contacted_soup():
+	soup_particle_burst()
+
+
+func soup_particle_burst():
+	particles.rotation = -self.rotation
+	particles.emitting = true
