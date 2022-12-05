@@ -33,10 +33,10 @@ transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
 mesh = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 16.7406, 9.13881 )
+transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 18.8478, 6.15397 )
 
 [node name="Word manager" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.74265, 8.7045 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.74265, -8.79778 )
 camera = NodePath("../Camera")
 level = NodePath("../Level")
 
