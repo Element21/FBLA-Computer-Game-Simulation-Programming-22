@@ -11,13 +11,13 @@ radius = 0.492
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=4]
+[sub_resource type="CurveTexture" id=6]
 curve = SubResource( 3 )
 
 [sub_resource type="ParticlesMaterial" id=5]
 direction = Vector3( 0, 1, 0 )
 initial_velocity = 4.71
-scale_curve = SubResource( 4 )
+scale_curve = SubResource( 6 )
 
 [sub_resource type="SphereMesh" id=2]
 material = ExtResource( 2 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=1]
 [ext_resource path="res://objects/bubble/bubble.gd" type="Script" id=2]
@@ -11,6 +11,23 @@ height = 0.6
 
 [sub_resource type="SphereShape" id=2]
 radius = 0.3
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+direction = Vector3( 0, 1, 0 )
+spread = 180.0
+initial_velocity = 4.71
+scale_curve = SubResource( 4 )
+
+[sub_resource type="SphereMesh" id=7]
+material = ExtResource( 1 )
+radius = 0.1
+height = 0.2
 
 [node name="Bubble" type="RigidBody"]
 contacts_reported = 16
@@ -28,4 +45,16 @@ stream = ExtResource( 3 )
 unit_db = -5.356
 unit_size = 20.0
 
-[connection signal="finished" from="Pop sound" to="." method="finished_playing_sound"]
+[node name="Particles" type="Particles" parent="."]
+emitting = false
+lifetime = 0.37
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+process_material = SubResource( 8 )
+draw_pass_1 = SubResource( 7 )
+
+[node name="Delete timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Delete timer" to="." method="delete"]
