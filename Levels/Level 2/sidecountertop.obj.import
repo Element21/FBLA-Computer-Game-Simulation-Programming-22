@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/sidecountertop.obj-27951fb9e835dd41902276c9d2cc7b62.mesh"
+
+[deps]
+
+files=[ "res://.import/sidecountertop.obj-27951fb9e835dd41902276c9d2cc7b62.mesh" ]
+
+source_file="res://Levels/Level 2/sidecountertop.obj"
+dest_files=[ "res://.import/sidecountertop.obj-27951fb9e835dd41902276c9d2cc7b62.mesh", "res://.import/sidecountertop.obj-27951fb9e835dd41902276c9d2cc7b62.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

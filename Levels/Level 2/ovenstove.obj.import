@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/ovenstove.obj-9ca19c5357ff30604aabfc75f18dbdcc.mesh"
+
+[deps]
+
+files=[ "res://.import/ovenstove.obj-9ca19c5357ff30604aabfc75f18dbdcc.mesh" ]
+
+source_file="res://Levels/Level 2/ovenstove.obj"
+dest_files=[ "res://.import/ovenstove.obj-9ca19c5357ff30604aabfc75f18dbdcc.mesh", "res://.import/ovenstove.obj-9ca19c5357ff30604aabfc75f18dbdcc.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
