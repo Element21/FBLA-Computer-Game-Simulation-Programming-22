@@ -11,3 +11,7 @@ func go_to_main_menu(_from_signal):
 	assert(status == OK)
 	
 	LeaderboardManager.set_player_name(name_input.text)
+
+
+func quit():
+	Quitter.quit()

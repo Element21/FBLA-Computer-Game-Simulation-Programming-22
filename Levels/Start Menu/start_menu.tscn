@@ -71,14 +71,29 @@ Grab letters from the soup to make words
 Words that share fewer letters with other words get more points
 
 Click to grab
-Right Click or Backspace to delete"
+Right Click or Backspace to delete
+
+Escape to quit"
 text = "
 Grab letters from the soup to make words
 Words that share fewer letters with other words get more points
 
 Click to grab
-Right Click or Backspace to delete"
+Right Click or Backspace to delete
+
+Escape to quit"
 fit_content_height = true
+
+[node name="Quit" type="Button" parent="."]
+anchor_left = 0.9
+anchor_top = 0.9
+anchor_right = 0.9
+anchor_bottom = 0.9
+margin_right = 40.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 60, 30 )
+text = "Quit"
 
 [connection signal="text_entered" from="VBoxContainer/LineEdit" to="." method="go_to_main_menu"]
 [connection signal="button_down" from="VBoxContainer/Button" to="." method="go_to_main_menu" binds= [ "The LineEdit gives a string argument so I have to too" ]]
+[connection signal="button_down" from="Quit" to="." method="quit"]
