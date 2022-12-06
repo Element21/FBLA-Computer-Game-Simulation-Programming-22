@@ -55,6 +55,24 @@ rect_min_size = Vector2( 90, 30 )
 size_flags_horizontal = 4
 text = "Submit"
 
+[node name="Control2" type="Control" parent="VBoxContainer"]
+margin_top = 73.0
+margin_right = 300.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="Empty name error" type="Label" parent="VBoxContainer"]
+margin_top = 87.0
+margin_right = 300.0
+margin_bottom = 106.0
+custom_colors/font_color = Color( 0.8, 0.439216, 0.32549, 1 )
+text = "Name must not be empty"
+align = 1
+percent_visible = 0.0
+__meta__ = {
+"_editor_description_": "visible_characters is used to change whether this is visible or not"
+}
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchor_left = 0.5
 anchor_top = 0.738
