@@ -15,3 +15,7 @@ func go_to_main_menu(_from_signal):
 
 func quit():
 	Quitter.quit()
+
+
+func _ready():
+	Music.start_ambience()

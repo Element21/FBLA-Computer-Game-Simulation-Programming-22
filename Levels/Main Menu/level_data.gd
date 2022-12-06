@@ -52,4 +52,6 @@ func select_level(idx: int, name: String, scene: PackedScene):
 func play():
 	var status = get_tree().change_scene_to(level_scene)
 	
+	Music.end_ambience()
+	
 	assert(status == OK)

@@ -31,6 +31,7 @@ func remove_letter_from_play(letter):
 
 func start():
 	playing = true
+	Music.start_gameplay_music()
 
 
 func _ready():
@@ -46,11 +47,13 @@ func _process(delta):
 	if playing && enable_timer:
 		time_left -= delta
 	
-	if time_left < 0:
+	if time_left < 0 && playing:
 		letters_in_play.clear()
 		playing = false
 		
 		LeaderboardManager.add_score(level_index, score)
+		
+		Music.end_gameplay_music()
 		
 		level_end_screen.level_ended(score)
 

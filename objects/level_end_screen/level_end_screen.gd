@@ -30,6 +30,8 @@ func level_ended(score: int):
 func main_menu():
 	var status = get_tree().change_scene("res://Levels/Main Menu/main_menu.tscn")
 	assert(status == OK)
+	
+	Music.start_ambience()
 
 
 func next_level():
