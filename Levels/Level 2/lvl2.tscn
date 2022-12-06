@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://objects/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level 2/pot2.0.obj" type="ArrayMesh" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://objects/letter/letter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/soup/soup.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/bubble_spawner/bubble_spawner.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/Level 2/sidecountertop.obj" type="ArrayMesh" id=10]
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 1, 9, 0.2 )
@@ -36,7 +37,7 @@ level_index = 1
 camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 18.8478, 6.15397 )
+transform = Transform( 1, 0, 0, 0, 0.490599, 0.871385, 0, -0.871385, 0.490599, 0, 18.8478, 6.15397 )
 
 [node name="Word manager" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.74265, -8.79778 )
@@ -50,70 +51,70 @@ shadow_color = Color( 0.447059, 0.447059, 0.447059, 1 )
 omni_range = 69.4678
 omni_shadow_mode = 0
 
-[node name="StaticBody" type="StaticBody" parent="."]
+[node name="Pot" type="StaticBody" parent="."]
 
-[node name="Pot" type="MeshInstance" parent="StaticBody"]
+[node name="Pot mesh" type="MeshInstance" parent="Pot"]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
 mesh = ExtResource( 2 )
 skeleton = NodePath("../..")
 
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Pot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.451, 4.492 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape2" type="CollisionShape" parent="Pot"]
 transform = Transform( -0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, -0.906308, -1.934, 0.451, 4.07 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape4" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape4" type="CollisionShape" parent="Pot"]
 transform = Transform( -0.677056, 0, 0.735932, 0, 1, 0, -0.735932, 0, -0.677056, -3.335, 0.451, 2.982 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape5" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape5" type="CollisionShape" parent="Pot"]
 transform = Transform( -0.290953, 0, 0.956737, 0, 1, 0, -0.956737, 0, -0.290953, -4.33303, 0.476, 1.26494 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape6" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape6" type="CollisionShape" parent="Pot"]
 transform = Transform( 0.0841125, 0, 0.996456, 0, 1, 0, -0.996456, 0, 0.0841125, -4.47909, 0.476, -0.399523 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape7" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape7" type="CollisionShape" parent="Pot"]
 transform = Transform( 0.501782, 0, 0.864994, 0, 1, 0, -0.864994, 0, 0.501782, -3.90324, 0.476, -2.28312 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape8" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape8" type="CollisionShape" parent="Pot"]
 transform = Transform( 0.802453, 0, 0.596715, 0, 1, 0, -0.596715, 0, 0.802453, -2.61717, 0.476, -3.68898 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape9" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape9" type="CollisionShape" parent="Pot"]
 transform = Transform( 0.990416, 0, 0.138119, 0, 1, 0, -0.138119, 0, 0.990416, -0.792409, 0.476, -4.43163 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape10" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape10" type="CollisionShape" parent="Pot"]
 transform = Transform( 0.964525, 0, -0.263991, 0, 1, 0, 0.263991, 0, 0.964525, 1.14376, 0.476, -4.36104 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape11" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape11" type="CollisionShape" parent="Pot"]
 transform = Transform( 0.770669, 0, -0.637236, 0, 1, 0, 0.637236, 0, 0.770669, 2.84818, 0.476, -3.48778 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape12" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape12" type="CollisionShape" parent="Pot"]
 transform = Transform( 0.461919, 0, -0.886922, 0, 1, 0, 0.886922, 0, 0.461919, 4.04095, 0.476, -2.00813 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape13" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape13" type="CollisionShape" parent="Pot"]
 transform = Transform( 0.0322481, 0, -0.99948, 0, 1, 0, 0.99948, 0, 0.0322481, 4.51259, 0.476, -0.113481 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape14" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape14" type="CollisionShape" parent="Pot"]
 transform = Transform( -0.414153, 0, -0.910207, 0, 1, 0, 0.910207, 0, -0.414153, 4.11885, 0.476, 1.81081 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape15" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape15" type="CollisionShape" parent="Pot"]
 transform = Transform( -0.757622, 0, -0.652693, 0, 1, 0, 0.652693, 0, -0.757622, 2.96207, 0.476, 3.35814 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape16" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape16" type="CollisionShape" parent="Pot"]
 transform = Transform( -0.934235, 0, -0.356656, 0, 1, 0, 0.356656, 0, -0.934235, 1.59202, 0.476, 4.21947 )
 shape = SubResource( 4 )
 
@@ -147,6 +148,14 @@ material/4 = SubResource( 3 )
 material/5 = SubResource( 3 )
 material/6 = SubResource( 3 )
 material/7 = SubResource( 3 )
+
+[node name="Left countertop" type="MeshInstance" parent="."]
+transform = Transform( -9, 0, -7.86805e-07, 0, 9, 0, 7.86805e-07, 0, -9, -40.9895, -21.247, -8.548 )
+mesh = ExtResource( 10 )
+
+[node name="Right countertop" type="MeshInstance" parent="."]
+transform = Transform( -9, 0, -7.86805e-07, 0, 9, 0, 7.86805e-07, 0, -9, 26.9305, -21.247, -8.548 )
+mesh = ExtResource( 10 )
 
 [node name="OmniLight2" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6979, 26.0407, -4.42988 )
