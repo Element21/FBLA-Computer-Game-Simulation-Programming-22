@@ -44,6 +44,7 @@ shape = SubResource( 2 )
 stream = ExtResource( 3 )
 unit_db = -5.356
 unit_size = 20.0
+bus = "SFX"
 
 [node name="Particles" type="Particles" parent="."]
 emitting = false

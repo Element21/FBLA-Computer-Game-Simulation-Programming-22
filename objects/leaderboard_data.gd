@@ -8,8 +8,8 @@ export var data: Array = []
 
 
 class LeaderboardDataSorter:
-	static func sort_ascending(a, b):
-		return a[0] < b[0]
+	static func sort_descending(a, b):
+		return a[0] > b[0]
 
 
 func get_sorted_leaderboard_for(idx: int) -> Array:
@@ -20,7 +20,7 @@ func get_sorted_leaderboard_for(idx: int) -> Array:
 	for key in data_dictionary.keys():
 		data_array.push_back([key, data_dictionary[key]])
 	
-	data_array.sort_custom(LeaderboardDataSorter, "sort_ascending")
+	data_array.sort_custom(LeaderboardDataSorter, "sort_descending")
 	
 	return data_array
 

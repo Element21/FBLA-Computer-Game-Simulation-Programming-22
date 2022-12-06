@@ -19,6 +19,9 @@ func set_player_name(new_player_name: String):
 func add_score(level_index: int, score: int):
 	var leaderboard = leaderboard_data.get_leaderboard_for(level_index)
 	
+	if !leaderboard.has(player_name):
+		leaderboard[player_name] = 0
+	
 	if score > leaderboard[player_name]:
 		leaderboard[player_name] = score
 		ResourceSaver.save("user://leaderboard_data.res", leaderboard_data)

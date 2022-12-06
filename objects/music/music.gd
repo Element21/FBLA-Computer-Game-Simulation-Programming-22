@@ -2,8 +2,8 @@ extends Node
 
 
 var transition_duration = 2.0
-var ambience_volume = -4.0
-var gameplay_volume = -12.0
+var ambience_volume = 0.0
+var gameplay_volume = -8.0
 
 
 onready var sienexilin: AudioStreamPlayer = get_node("Sienexilin")
