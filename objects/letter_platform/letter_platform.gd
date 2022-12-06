@@ -6,7 +6,8 @@ var action_time = 1
 var launch_vector = Vector2(2, 5)
 
 var score = null
-onready var score_mesh: MeshInstance = get_child(0)
+onready var score_mesh: MeshInstance = get_node("Score")
+onready var whoosh_sound: AudioStreamPlayer3D = get_node("Whoosh")
 
 var action = null
 var time = null
@@ -18,6 +19,8 @@ var letter = null
 func flip():
 	action = "flip"
 	time = 0
+	
+	whoosh_sound.play()
 
 
 func launch():
@@ -28,6 +31,8 @@ func launch():
 		letter.collision_layer = 0
 		letter.collision_mask = 0
 		original_letter_position = letter.translation
+	
+	whoosh_sound.play()
 
 
 func set_score(new_score):
