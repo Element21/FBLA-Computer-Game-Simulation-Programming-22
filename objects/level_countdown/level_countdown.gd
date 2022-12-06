@@ -7,8 +7,9 @@ signal started
 
 var distance_from_camera = 5
 
-onready var mesh_instance = get_child(0)
-onready var timer = get_child(1)
+onready var mesh_instance = get_node("MeshInstance")
+onready var timer = get_node("Timer")
+onready var click_sound = get_node("Click sound")
 
 var time = 3
 
@@ -20,11 +21,15 @@ func start(camera: Camera):
 	
 	self.rotation = camera.rotation
 	
+	click_sound.play()
+	
 	timer.start()
 
 
 func timeout():
 	time -= 1
+	
+	click_sound.play()
 	
 	mesh_instance.mesh.text = String(time)
 	

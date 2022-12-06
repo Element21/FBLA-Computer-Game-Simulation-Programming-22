@@ -14,8 +14,8 @@ onready var fade_out: Tween = get_node("Fade out")
 
 func start_ambience():
 	fade_in.interpolate_property(sienexilin, "volume_db", -80, ambience_volume, transition_duration, Tween.TRANS_SINE)
-	sienexilin.play()
 	fade_in.start()
+	sienexilin.play()
 
 
 func end_ambience():
@@ -25,8 +25,8 @@ func end_ambience():
 
 func start_gameplay_music():
 	fade_in.interpolate_property(my_song_6, "volume_db", -80, gameplay_volume, transition_duration, Tween.TRANS_SINE)
-	my_song_6.play()
 	fade_in.start()
+	my_song_6.play()
 
 
 func end_gameplay_music():
