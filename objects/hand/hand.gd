@@ -154,7 +154,6 @@ func _process(delta):
 		raycast.translation = from - self.translation
 
 		if pointing_at_valid_soup_surface():
-			
 			target_pos = raycast.get_collision_point() + Vector3(0, hand_height, 0) - self.translation
 	
 	if time >= hand_animation_part_time:

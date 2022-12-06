@@ -6,7 +6,7 @@
 [ext_resource path="res://Levels/Level 2/lvl2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=5]
 [ext_resource path="res://Levels/Level 1/Level 1 Bowl Interior.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://objects/soup/soup.gd" type="Script" id=7]
+[ext_resource path="res://objects/soup/soup.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/room/Table.obj" type="ArrayMesh" id=8]
 [ext_resource path="res://objects/hand/hand.tscn" type="PackedScene" id=9]
 [ext_resource path="res://objects/word_manager/word_manager.tscn" type="PackedScene" id=10]
@@ -32,97 +32,88 @@ data = PoolVector3Array( 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0.1093, -1, 1, 0.1093, 0
 [node name="Level" parent="." instance=ExtResource( 13 )]
 time_given = 10
 next_level = ExtResource( 4 )
-camera = NodePath("Camera")
+camera = NodePath("../Camera")
 
-[node name="Camera" type="Camera" parent="Level"]
+[node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 23.331, 5.213 )
 
-[node name="AreaSoup" type="Area" parent="Level"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205, 12.063, -0.024 )
-collision_layer = 2
-monitorable = false
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_group_": true
-}
-level = NodePath("..")
-
-[node name="Soup" type="MeshInstance" parent="Level/AreaSoup"]
-transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0 )
-mesh = ExtResource( 6 )
-skeleton = NodePath("../../..")
-material/0 = ExtResource( 5 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Level/AreaSoup"]
-transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0 )
-shape = SubResource( 10 )
-
-[node name="Bowl" type="MeshInstance" parent="Level"]
+[node name="Bowl" type="MeshInstance" parent="."]
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 11.2553, 0 )
 mesh = ExtResource( 1 )
-skeleton = NodePath("../..")
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Room" type="MeshInstance" parent="Level"]
+[node name="Soup" parent="." instance=ExtResource( 7 )]
+level = NodePath("../Level")
+surface = 14.97
+
+[node name="Soup" type="MeshInstance" parent="Soup"]
+transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0.205, 12.063, -0.024 )
+mesh = ExtResource( 6 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Soup"]
+transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0.205, 12.063, -0.024 )
+shape = SubResource( 10 )
+
+[node name="Room" type="MeshInstance" parent="."]
 transform = Transform( -20, 0, -1.74846e-06, 0, 20, 0, 1.74846e-06, 0, -20, 0, 5, 0 )
 cast_shadow = 0
 mesh = ExtResource( 3 )
-skeleton = NodePath("../..")
 material/0 = SubResource( 11 )
 
-[node name="StaticBody" type="StaticBody" parent="Level/Room"]
+[node name="StaticBody" type="StaticBody" parent="Room"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Level/Room/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Room/StaticBody"]
 shape = SubResource( 12 )
 
-[node name="Table" type="MeshInstance" parent="Level"]
+[node name="Table" type="MeshInstance" parent="."]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 10.06, 0 )
 mesh = ExtResource( 8 )
-skeleton = NodePath("../..")
 material/0 = SubResource( 14 )
 
-[node name="StaticBody" type="StaticBody" parent="Level/Table"]
+[node name="StaticBody" type="StaticBody" parent="Table"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Level/Table/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Table/StaticBody"]
 shape = SubResource( 13 )
 
-[node name="Hand" parent="Level" instance=ExtResource( 9 )]
+[node name="Hand" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.734, 0 )
 camera = NodePath("../Camera")
 word_manager = NodePath("../Word manager")
-level = NodePath("..")
+level = NodePath("../Level")
 arm_pivot = Vector2( -2, 35 )
 
-[node name="Word manager" parent="Level" instance=ExtResource( 10 )]
+[node name="Word manager" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.864, -7.254 )
 word_length = 3
 launch_vector = Vector2( 5, 3.5 )
 camera = NodePath("../Camera")
-level = NodePath("..")
+level = NodePath("../Level")
 
-[node name="Letter" parent="Level" instance=ExtResource( 2 )]
+[node name="Letter" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.7252, 0 )
 which_letter = "t"
-level = NodePath("..")
+level = NodePath("../Level")
 
-[node name="Letter2" parent="Level" instance=ExtResource( 2 )]
+[node name="Letter2" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12549, 14.5467, 0 )
 which_letter = "a"
-level = NodePath("..")
+level = NodePath("../Level")
 
-[node name="Letter3" parent="Level" instance=ExtResource( 2 )]
+[node name="Letter3" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85503, 14.9004, 0 )
 which_letter = "p"
-level = NodePath("..")
+level = NodePath("../Level")
 
-[node name="Letter4" parent="Level" instance=ExtResource( 2 )]
+[node name="Letter4" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.7546, -1.50582 )
 which_letter = "q"
-level = NodePath("..")
+level = NodePath("../Level")
 
-[node name="OmniLight" type="OmniLight" parent="Level"]
+[node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8459, 31.1814, 17.6058 )
 light_energy = 1.051
 shadow_enabled = true

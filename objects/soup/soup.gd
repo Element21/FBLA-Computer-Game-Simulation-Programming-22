@@ -4,10 +4,10 @@ class_name Soup
 
 
 export(NodePath) onready var level = get_node(level) as Level
+export var surface = 8.73
 
 var buoyancy_acceleration = 9.81 * 1.5
 var drag = 3
-var surface = 8.73
 
 
 func apply_buoyancy_to_thing(thing: RigidBody, delta: float):
