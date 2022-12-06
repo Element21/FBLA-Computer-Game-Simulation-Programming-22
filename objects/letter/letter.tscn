@@ -41,8 +41,10 @@ shape = SubResource( 1 )
 
 [node name="Particles" type="Particles" parent="."]
 emitting = false
+lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
+visibility_aabb = AABB( -3.5569, -1.54578, -0.880021, 7.15609, 2.99683, 2.87712 )
 local_coords = false
 process_material = SubResource( 5 )
 draw_pass_1 = SubResource( 2 )

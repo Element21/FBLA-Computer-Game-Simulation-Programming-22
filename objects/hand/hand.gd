@@ -17,8 +17,9 @@ onready var hand: MeshInstance = get_child(0)
 onready var raycast: RayCast = get_child(1)
 onready var letter_pickup_area: Area = hand.get_child(0)
 onready var slap_sound_player: AudioStreamPlayer3D = hand.get_child(1)
-onready var hand_animation_state_interval: Timer = self.get_child(2)
-onready var hand_animation_start_timer: Timer = self.get_child(3)
+onready var hand_animation_state_interval: Timer = get_child(2)
+onready var hand_animation_start_timer: Timer = get_child(3)
+onready var particles: Particles = hand.get_node("Particles")
 
 var hand_animation_frames = [
 	preload("res://resources/hand_frames/frame1_hand_3.0.obj"),
@@ -87,6 +88,10 @@ func next_grabbing_state():
 	
 	if grabbing_state == GRABBING_STATE.DIPPING:
 		grabbing_state = GRABBING_STATE.PULLING
+		
+		print(particles)
+		
+		particles.emitting = true
 		
 		slap_sound_player.play()
 		
