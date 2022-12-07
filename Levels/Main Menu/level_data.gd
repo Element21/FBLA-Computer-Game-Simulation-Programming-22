@@ -22,13 +22,12 @@ func _ready():
 	play_button.connect("button_down", self, "play")
 
 
-func select_level(idx: int, name: String, scene: PackedScene):
-	level_idx = idx
+func select_level(level_idx: int, name: String, scene: PackedScene):
 	level_scene = scene
 	
 	level_label.text = name
 	
-	var highscore = LeaderboardManager.highscore_for(idx)
+	var highscore = LeaderboardManager.highscore_for(level_idx)
 	
 	if highscore == null:
 		highscore_label.text = ""
@@ -45,6 +44,8 @@ func select_level(idx: int, name: String, scene: PackedScene):
 		var score_label = Label.new()
 		score_label.text = String(leaderboard_entries[i][1])
 		leaderboard_scores.add_child(score_label)
+	
+	play_button.disabled = !LeaderboardManager.level_unlocked(level_idx)
 	
 	self.show()
 

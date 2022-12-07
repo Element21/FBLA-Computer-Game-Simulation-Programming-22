@@ -12,7 +12,6 @@ export(NodePath) onready var level_data = get_node(level_data) as LevelData
 
 
 func _ready():
-	
 	for i in range(0, level_names.size()):
 		var button = Button.new()
 		var spacer = Control.new()
