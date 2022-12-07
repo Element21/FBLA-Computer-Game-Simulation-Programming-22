@@ -20,9 +20,17 @@ func apply_buoyancy_to_thing(thing: RigidBody, delta: float):
 	thing.apply_torque_impulse(-thing.angular_velocity * drag * delta)
 	
 	# Keeping letters facing upwards
+	# apply_torque_impulse applies a torque clockwise to the vector inputted, the cross product is useful for getting at that vector
+	# It also reduces in magnitude the more similar the vectors are, which is also exactly what I need
 	var direction_facing_vector = thing.get_global_transform().basis.y.normalized()
 	var upwards = Vector3(0, 1, 0)
-	thing.apply_torque_impulse(direction_facing_vector.cross(upwards) * making_upright_acceleration * delta)
+	var torque = direction_facing_vector.cross(upwards) * making_upright_acceleration * delta
+	
+	if direction_facing_vector.y > 0:
+		thing.apply_torque_impulse(torque)
+	else:
+		# Prevent it from flipping over if it's upside down
+		thing.apply_torque_impulse(-torque)
 
 
 func maybe_apply_buoyancy_to_thing(thing: RigidBody, delta: float):
