@@ -93,7 +93,9 @@ func next_platform_position():
 	
 	var index = letters_placed.find(null)
 	
-	return Vector2(self.global_translation.x, self.global_translation.z) + Vector2(platform_index_to_x_position(index), 0)
+	var platform = platforms.get_child(index)
+	
+	return Vector2(platform.global_translation.x, platform.global_translation.z)
 
 
 func _input(event):
