@@ -16,6 +16,10 @@ func apply_buoyancy_to_thing(thing: RigidBody, delta: float):
 
 	# Drag
 	thing.apply_central_impulse(-thing.linear_velocity * drag * delta)
+	thing.apply_torque_impulse(-thing.angular_velocity * drag * delta)
+	
+	# Keeping letters facing upwards
+	
 
 
 func maybe_apply_buoyancy_to_thing(thing: RigidBody, delta: float):
