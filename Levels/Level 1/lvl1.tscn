@@ -34,7 +34,6 @@ data = PoolVector3Array( 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0.1093, -1, 1, 0.1093, 0
 
 [node name="Level" parent="." instance=ExtResource( 13 )]
 time_given = 10
-countdown = false
 next_level = ExtResource( 4 )
 camera = NodePath("../Camera")
 

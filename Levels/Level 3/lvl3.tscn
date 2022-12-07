@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objects/level/level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Level 3/fountainversion1.obj" type="ArrayMesh" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Level" parent="." instance=ExtResource( 1 )]
+level_index = 2
+camera = NodePath("../Camera")
+
+[node name="Camera" type="Camera" parent="."]
+
+[node name="Environment" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Environment"]
+mesh = ExtResource( 2 )

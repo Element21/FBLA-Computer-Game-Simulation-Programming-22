@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://objects/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level 2/pot2.0.obj" type="ArrayMesh" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://objects/bubble_spawner/bubble_spawner.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/Level 2/sidecountertop.obj" type="ArrayMesh" id=10]
 [ext_resource path="res://Levels/Level 2/soupCan.obj" type="ArrayMesh" id=11]
+[ext_resource path="res://Levels/Level 2/soupCanopen.obj" type="ArrayMesh" id=12]
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 1, 9, 0.2 )
@@ -25,6 +26,9 @@ height = 8.73
 height = 8.73
 radius = 4.42
 
+[sub_resource type="SpatialMaterial" id=5]
+params_cull_mode = 2
+
 [sub_resource type="SpatialMaterial" id=3]
 params_cull_mode = 2
 
@@ -32,8 +36,6 @@ params_cull_mode = 2
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22611, 0 )
-countdown = false
-enable_timer = false
 level_index = 1
 camera = NodePath("../Camera")
 
@@ -190,6 +192,15 @@ mesh = ExtResource( 11 )
 [node name="MeshInstance6" type="MeshInstance" parent="Environment/Soup cans"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 13.8979, 3.15461, 0.226637 )
 mesh = ExtResource( 11 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="Environment/Soup cans"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 12.6152, 0.0872974, -9.34117 )
+mesh = ExtResource( 12 )
+material/0 = SubResource( 5 )
+material/1 = SubResource( 5 )
+material/2 = SubResource( 5 )
+material/3 = SubResource( 5 )
+material/4 = SubResource( 5 )
 
 [node name="Stove" type="MeshInstance" parent="Environment"]
 transform = Transform( -9, 0, -7.86805e-07, 0, 9, 0, 7.86805e-07, 0, -9, -7.02188, -21.247, -8.54824 )
