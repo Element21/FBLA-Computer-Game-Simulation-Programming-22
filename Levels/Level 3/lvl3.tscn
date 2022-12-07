@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://objects/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level 3/fountainversion1.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://objects/hand/hand.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/soup/soup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=5]
+[ext_resource path="res://objects/word_manager/word_manager.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CylinderMesh" id=1]
+material = ExtResource( 5 )
+top_radius = 9.0
+bottom_radius = 9.0
+height = 1.17
+
+[sub_resource type="CylinderShape" id=2]
+height = 1.17
+radius = 9.0
 
 [node name="Spatial" type="Spatial"]
 
@@ -10,8 +24,43 @@ level_index = 2
 camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.542559, 0.840018, 0, -0.840018, 0.542559, 0, 18.821, 10.603 )
+far = 332.5
 
 [node name="Environment" type="Spatial" parent="."]
 
+[node name="OmniLight" type="OmniLight" parent="Environment"]
+transform = Transform( 1, 0, 0, 0, 1, 0.000471239, 0, -0.000471239, 1, 3.73838, 30.9203, 17.8759 )
+shadow_enabled = true
+omni_range = 4096.0
+omni_attenuation = 1e-05
+omni_shadow_mode = 0
+omni_shadow_detail = 0
+
 [node name="MeshInstance" type="MeshInstance" parent="Environment"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 mesh = ExtResource( 2 )
+
+[node name="Soup" parent="Environment" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.567275, 0, 0.297831 )
+level = NodePath("../../Level")
+surface = 0.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Environment/Soup"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.638825, 0 )
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Environment/Soup"]
+shape = SubResource( 2 )
+
+[node name="Hand" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.487351, 1.97738, 5.90069 )
+camera = NodePath("../Camera")
+word_manager = NodePath("../Word manager")
+level = NodePath("../Level")
+
+[node name="Word manager" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.58329, 0, -9.39023 )
+word_length = 3
+camera = NodePath("../Camera")
+level = NodePath("../Level")

@@ -126,7 +126,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.497, 0 )
 camera = NodePath("../Camera")
 word_manager = NodePath("../Word manager")
 level = NodePath("../Level")
-arm_pivot = Vector2( -2, 35 )
 
 [node name="Soup" parent="." instance=ExtResource( 8 )]
 level = NodePath("../Level")

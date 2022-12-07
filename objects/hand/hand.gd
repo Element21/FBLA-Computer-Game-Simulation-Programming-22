@@ -5,7 +5,7 @@ extends Spatial
 export(NodePath) onready var camera = get_node(camera) as Camera
 export(NodePath) onready var word_manager = get_node(word_manager) as WordManager
 export(NodePath) onready var level = get_node(level) as Level
-export(Vector2) var arm_pivot = Vector2(2, -15)
+export(Vector2) var arm_pivot = Vector2(-2, 35)
 
 var hand_height = 2
 
