@@ -36,6 +36,9 @@ func select_level(level_idx: int, name: String, scene: PackedScene):
 	
 	var leaderboard_entries = LeaderboardManager.leaderboard_data.get_sorted_leaderboard_for(level_idx)
 	
+	remove_children(leaderboard_names)
+	remove_children(leaderboard_scores)
+	
 	for i in range(0, min(max_leaderboard_entries, leaderboard_entries.size())):
 		var name_label = Label.new()
 		name_label.text = leaderboard_entries[i][0]
@@ -56,3 +59,9 @@ func play():
 	Music.end_ambience()
 	
 	assert(status == OK)
+
+
+func remove_children(node: Node):
+	for child in node.get_children():
+		node.remove_child(child)
+		child.queue_free()
