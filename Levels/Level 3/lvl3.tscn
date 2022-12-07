@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://objects/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level 3/fountainversion1.obj" type="ArrayMesh" id=2]
@@ -17,6 +17,12 @@ height = 1.17
 height = 1.17
 radius = 9.0
 
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1, 9, 0.2 )
+
+[sub_resource type="CylinderShape" id=4]
+radius = 5.054
+
 [node name="Spatial" type="Spatial"]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
@@ -32,14 +38,11 @@ far = 332.5
 [node name="OmniLight" type="OmniLight" parent="Environment"]
 transform = Transform( 1, 0, 0, 0, 1, 0.000471239, 0, -0.000471239, 1, 3.73838, 30.9203, 17.8759 )
 shadow_enabled = true
+shadow_color = Color( 0.517647, 0.517647, 0.517647, 1 )
 omni_range = 4096.0
 omni_attenuation = 1e-05
 omni_shadow_mode = 0
 omni_shadow_detail = 0
-
-[node name="MeshInstance" type="MeshInstance" parent="Environment"]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
-mesh = ExtResource( 2 )
 
 [node name="Soup" parent="Environment" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.567275, 0, 0.297831 )
@@ -52,6 +55,140 @@ mesh = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Environment/Soup"]
 shape = SubResource( 2 )
+
+[node name="Pool" type="MeshInstance" parent="Environment"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+mesh = ExtResource( 2 )
+
+[node name="Pool walls" type="StaticBody" parent="Environment"]
+transform = Transform( 1.95, 0, 0, 0, 1, 0, 0, 0, 1.95, 0.499097, -9.11295, 0.278304 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.451, 4.492 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( -0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, -0.906308, -1.934, 0.451, 4.07 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( -0.677056, 0, 0.735932, 0, 1, 0, -0.735932, 0, -0.677056, -3.335, 0.451, 2.982 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( -0.290953, 0, 0.956737, 0, 1, 0, -0.956737, 0, -0.290953, -4.33303, 0.476, 1.26494 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( 0.0841125, 0, 0.996456, 0, 1, 0, -0.996456, 0, 0.0841125, -4.47909, 0.476, -0.399523 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( 0.501782, 0, 0.864994, 0, 1, 0, -0.864994, 0, 0.501782, -3.90324, 0.476, -2.28312 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( 0.802453, 0, 0.596715, 0, 1, 0, -0.596715, 0, 0.802453, -2.61717, 0.476, -3.68898 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape9" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( 0.990416, 0, 0.138119, 0, 1, 0, -0.138119, 0, 0.990416, -0.792409, 0.476, -4.43163 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( 0.964525, 0, -0.263991, 0, 1, 0, 0.263991, 0, 0.964525, 1.14376, 0.476, -4.36104 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( 0.770669, 0, -0.637236, 0, 1, 0, 0.637236, 0, 0.770669, 2.84818, 0.476, -3.48778 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape12" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( 0.461919, 0, -0.886922, 0, 1, 0, 0.886922, 0, 0.461919, 4.04095, 0.476, -2.00813 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape13" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( 0.0322481, 0, -0.99948, 0, 1, 0, 0.99948, 0, 0.0322481, 4.51259, 0.476, -0.113481 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape14" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( -0.414153, 0, -0.910207, 0, 1, 0, 0.910207, 0, -0.414153, 4.11885, 0.476, 1.81081 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape15" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( -0.757622, 0, -0.652693, 0, 1, 0, 0.652693, 0, -0.757622, 2.96207, 0.476, 3.35814 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape16" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( -0.934235, 0, -0.356656, 0, 1, 0, 0.356656, 0, -0.934235, 1.59202, 0.476, 4.21947 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Environment/Pool walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.89047, 0 )
+shape = SubResource( 4 )
+
+[node name="Tube walls" type="StaticBody" parent="Environment"]
+transform = Transform( 0.25, 0, 0, 0, 0.72, 0, 0, 0, 0.25, 0.64208, 6.08335, 0.204029 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.451, 4.492 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( -0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, -0.906308, -1.934, 0.451, 4.07 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( -0.677056, 0, 0.735932, 0, 1, 0, -0.735932, 0, -0.677056, -3.335, 0.451, 2.982 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( -0.290953, 0, 0.956737, 0, 1, 0, -0.956737, 0, -0.290953, -4.33303, 0.476, 1.26494 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( 0.0841125, 0, 0.996456, 0, 1, 0, -0.996456, 0, 0.0841125, -4.47909, 0.476, -0.399523 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( 0.501782, 0, 0.864994, 0, 1, 0, -0.864994, 0, 0.501782, -3.90324, 0.476, -2.28312 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( 0.802453, 0, 0.596715, 0, 1, 0, -0.596715, 0, 0.802453, -2.61717, 0.476, -3.68898 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape9" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( 0.990416, 0, 0.138119, 0, 1, 0, -0.138119, 0, 0.990416, -0.792409, 0.476, -4.43163 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( 0.964525, 0, -0.263991, 0, 1, 0, 0.263991, 0, 0.964525, 1.14376, 0.476, -4.36104 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( 0.770669, 0, -0.637236, 0, 1, 0, 0.637236, 0, 0.770669, 2.84818, 0.476, -3.48778 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape12" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( 0.461919, 0, -0.886922, 0, 1, 0, 0.886922, 0, 0.461919, 4.04095, 0.476, -2.00813 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape13" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( 0.0322481, 0, -0.99948, 0, 1, 0, 0.99948, 0, 0.0322481, 4.51259, 0.476, -0.113481 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape14" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( -0.414153, 0, -0.910207, 0, 1, 0, 0.910207, 0, -0.414153, 4.11885, 0.476, 1.81081 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape15" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( -0.757622, 0, -0.652693, 0, 1, 0, 0.652693, 0, -0.757622, 2.96207, 0.476, 3.35814 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape16" type="CollisionShape" parent="Environment/Tube walls"]
+transform = Transform( -0.934235, 0, -0.356656, 0, 1, 0, 0.356656, 0, -0.934235, 1.59202, 0.476, 4.21947 )
+shape = SubResource( 3 )
 
 [node name="Hand" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.487351, 1.97738, 5.90069 )

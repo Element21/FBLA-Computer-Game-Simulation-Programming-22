@@ -89,8 +89,6 @@ func next_grabbing_state():
 	if grabbing_state == GRABBING_STATE.DIPPING:
 		grabbing_state = GRABBING_STATE.PULLING
 		
-		print(particles)
-		
 		particles.emitting = true
 		
 		slap_sound_player.play()
