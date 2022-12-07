@@ -166,7 +166,7 @@ which_letter = "t"
 level = NodePath("../Level")
 
 [node name="Letter2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12549, 14.5467, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12549, 15.1464, 0 )
 which_letter = "a"
 level = NodePath("../Level")
 

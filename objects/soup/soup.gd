@@ -7,6 +7,7 @@ export(NodePath) onready var level = get_node(level) as Level
 export var surface = 8.73
 
 var buoyancy_acceleration = 9.81 * 1.5
+var making_upright_acceleration = 5
 var drag = 3
 
 
@@ -19,7 +20,9 @@ func apply_buoyancy_to_thing(thing: RigidBody, delta: float):
 	thing.apply_torque_impulse(-thing.angular_velocity * drag * delta)
 	
 	# Keeping letters facing upwards
-	
+	var direction_facing_vector = thing.get_global_transform().basis.y.normalized()
+	var upwards = Vector3(0, 1, 0)
+	thing.apply_torque_impulse(direction_facing_vector.cross(upwards) * making_upright_acceleration * delta)
 
 
 func maybe_apply_buoyancy_to_thing(thing: RigidBody, delta: float):
