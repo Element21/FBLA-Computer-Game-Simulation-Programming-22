@@ -44,6 +44,8 @@ transform = Transform( 1, 0, 0, 0, 0.490599, 0.871385, 0, -0.871385, 0.490599, 0
 
 [node name="Word manager" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.74265, -8.79778 )
+word_length = 3
+launch_vector = Vector3( 0, 4, 5 )
 camera = NodePath("../Camera")
 level = NodePath("../Level")
 
@@ -149,6 +151,16 @@ omni_shadow_mode = 0
 [node name="Letter" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.2657, 0 )
 which_letter = "a"
+level = NodePath("../Level")
+
+[node name="Letter2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.2657, 0 )
+which_letter = "p"
+level = NodePath("../Level")
+
+[node name="Letter3" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.2657, 0 )
+which_letter = "t"
 level = NodePath("../Level")
 
 [node name="Bubble spawner" parent="." instance=ExtResource( 9 )]

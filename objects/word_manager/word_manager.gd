@@ -4,7 +4,7 @@ class_name WordManager
 
 
 export var word_length = 5
-export(Vector2) var launch_vector = Vector2(2, 5)
+export(Vector3) var launch_vector = Vector3(0, 2, 5)
 export(NodePath) onready var camera = get_node(camera) as Camera
 export(NodePath) onready var level = get_node(level) as Level
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://objects/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level 3/fountainversion1.obj" type="ArrayMesh" id=2]
@@ -27,8 +27,24 @@ radius = 5.054
 [sub_resource type="CubeMesh" id=5]
 size = Vector3( 100, 2, 100 )
 
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.435294, 0.435294, 0.435294, 1 )
+metallic_specular = 0.0
+
 [sub_resource type="BoxShape" id=6]
 extents = Vector3( 50, 1, 50 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 1
+emission_sphere_radius = 0.68
+direction = Vector3( 0, 1, 0 )
+spread = 10.31
+initial_velocity = 10.68
+
+[sub_resource type="SphereMesh" id=7]
+material = ExtResource( 5 )
+radius = 0.4
+height = 0.8
 
 [node name="Spatial" type="Spatial"]
 
@@ -203,9 +219,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.93221, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Environment/Ground"]
 mesh = SubResource( 5 )
+material/0 = SubResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Environment/Ground"]
 shape = SubResource( 6 )
+
+[node name="Particles" type="Particles" parent="Environment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5611, 12.4826, 0.165942 )
+amount = 1000
+lifetime = 4.55
+process_material = SubResource( 8 )
+draw_pass_1 = SubResource( 7 )
 
 [node name="Hand" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.487351, 1.97738, 5.90069 )
@@ -216,6 +240,7 @@ level = NodePath("../Level")
 [node name="Word manager" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.58329, 0, -9.39023 )
 word_length = 3
+launch_vector = Vector3( -3, 6.8, 7 )
 camera = NodePath("../Camera")
 level = NodePath("../Level")
 

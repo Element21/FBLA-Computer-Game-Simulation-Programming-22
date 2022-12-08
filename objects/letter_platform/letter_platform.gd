@@ -3,11 +3,12 @@ extends RigidBody
 class_name LetterPlatform
 
 var action_time = 1
-var launch_vector = Vector2(2, 5)
+var launch_vector = Vector3(0, 2, 5)
 
 var score = null
 onready var score_mesh: MeshInstance = get_node("Score")
 onready var whoosh_sound: AudioStreamPlayer3D = get_node("Whoosh")
+onready var original_x = self.translation.x
 
 var action = null
 var time = null
@@ -30,7 +31,7 @@ func launch():
 	if letter != null:
 		letter.collision_layer = 0
 		letter.collision_mask = 0
-		original_letter_position = letter.translation
+		original_letter_position = letter.global_translation
 	
 	whoosh_sound.play()
 
@@ -83,17 +84,16 @@ func do_launch_transformation():
 	
 	var lerp_amt = Tweening.smooth_up_and_down(t)
 	
-	self.translation.y = lerp(0, launch_vector.y, lerp_amt)
-	self.translation.z = lerp(0, launch_vector.x, lerp_amt)
+	self.translation = lerp(Vector3(original_x, 0, 0), launch_vector + Vector3(original_x, 0, 0), lerp_amt)
+	
+	var global_launch_vector = self.to_global(launch_vector) - self.global_translation
 	
 	if letter != null && t < launch_curve_inflection_point:
 		var lerp_amt_derivative = Tweening.smooth_up_and_down_derivative(t) / action_time
 		
-		letter.linear_velocity.y = launch_vector.y * lerp_amt_derivative
-		letter.linear_velocity.z = launch_vector.x * lerp_amt_derivative
+		letter.linear_velocity = global_launch_vector * lerp_amt_derivative
 		
-		letter.translation.y = original_letter_position.y + lerp(0, launch_vector.y, lerp_amt)
-		letter.translation.z = original_letter_position.z + lerp(0, launch_vector.x, lerp_amt)
+		letter.global_translation = original_letter_position + lerp(Vector3(0, 0, 0), global_launch_vector, lerp_amt)
 	
 	if t > 0.5:
 		score_mesh.translation.z = lerp(1.5, 0.334, Tweening.smoothify((t - 0.5) * 2))
