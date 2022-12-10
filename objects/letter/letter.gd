@@ -6,8 +6,10 @@ onready var mesh_instance: MeshInstance = get_node("Mesh")
 onready var letter_slap_sound: AudioStreamPlayer3D = get_node("Slap")
 onready var particles: Particles = get_node("Particles")
 
-export var which_letter: String
-export(NodePath) onready var level = get_node(level)
+export var which_letter: String = 'a'
+
+export(NodePath) onready var level_node
+onready var level = get_node(level_node)
 
 # Refactor when we get 3d models from Daniel
 func set_mesh():
@@ -40,7 +42,6 @@ func undo_mesh_translation(mesh: ArrayMesh):
 
 func _ready():
 	set_mesh()
-	
 	level.put_letter_in_play(self)
 
 
