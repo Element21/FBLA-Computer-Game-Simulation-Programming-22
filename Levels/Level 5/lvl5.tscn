@@ -1,17 +1,69 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://objects/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level 5/volcano.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=3]
+[ext_resource path="res://objects/soup/soup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/hand/hand.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/word_manager/word_manager.tscn" type="PackedScene" id=6]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="PlaneMesh" id=2]
+material = ExtResource( 3 )
+size = Vector2( 800, 400 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 400, 200, 400 )
 
 [node name="Spatial" type="Spatial"]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
+countdown = false
+enable_timer = false
+level_index = 4
+camera = NodePath("../Camera")
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.775815, 0.63096, 0, -0.63096, 0.775815, 0, 15.288, 36.746 )
+far = 8192.0
 
 [node name="Environment" type="Spatial" parent="."]
 
-[node name="MeshInstance" type="MeshInstance" parent="Environment"]
+[node name="Volcano" type="MeshInstance" parent="Environment"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -3.88548, 0 )
 mesh = ExtResource( 2 )
+material/2 = SubResource( 1 )
 
 [node name="OmniLight" type="OmniLight" parent="Environment"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0928, 11.7911, 16.0031 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.95059, 17.2897, 24.2219 )
+shadow_enabled = true
+shadow_color = Color( 0.384314, 0.384314, 0.384314, 1 )
 omni_range = 4096.0
+omni_attenuation = 0.00170029
+omni_shadow_mode = 0
+
+[node name="Soup" parent="Environment" instance=ExtResource( 4 )]
+level = NodePath("../../Level")
+surface = 0.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Environment/Soup"]
+mesh = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Environment/Soup"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -200, 0 )
+shape = SubResource( 3 )
+
+[node name="Hand" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.92705, 0 )
+camera = NodePath("../Camera")
+word_manager = NodePath("../Word manager")
+level = NodePath("../Level")
+arm_pivot = Vector2( -4, 50 )
+
+[node name="Word manager" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.149, 15 )
+camera = NodePath("../Camera")
+level = NodePath("../Level")

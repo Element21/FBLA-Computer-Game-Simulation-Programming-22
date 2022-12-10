@@ -247,14 +247,11 @@ level = NodePath("../Level")
 [node name="Letter" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50472, 2.29921, 3.95316 )
 which_letter = "k"
-level = NodePath("../Level")
 
 [node name="Letter2" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.38449, 1.10589, 3.50161 )
 which_letter = "d"
-level = NodePath("../Level")
 
 [node name="Letter3" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40147, 3.9324 )
 which_letter = "e"
-level = NodePath("../Level")
