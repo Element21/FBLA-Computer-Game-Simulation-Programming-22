@@ -12,7 +12,7 @@ func go_to_main_menu(_from_signal):
 	var name = name_input.text
 	
 	if name == "":
-		empty_name_error.visible_characters = -1
+		empty_name_error.visible = true
 	else:
 		LeaderboardManager.set_player_name(name)
 		
