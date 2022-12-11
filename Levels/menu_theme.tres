@@ -35,7 +35,10 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id=8]
-content_margin_left = 4.0
+content_margin_left = 8.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
 bg_color = Color( 0.333333, 0.133333, 0, 0.741176 )
 border_width_bottom = 2
 border_color = Color( 1, 1, 1, 0.501961 )
@@ -43,13 +46,12 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-expand_margin_left = 4.0
-expand_margin_right = 4.0
-expand_margin_top = 4.0
-expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id=5]
-content_margin_left = 4.0
+content_margin_left = 8.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
 bg_color = Color( 0, 0, 0, 0.741176 )
 border_width_bottom = 2
 border_color = Color( 1, 1, 1, 0.501961 )
@@ -57,10 +59,6 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-expand_margin_left = 4.0
-expand_margin_right = 4.0
-expand_margin_top = 4.0
-expand_margin_bottom = 4.0
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 1 )
