@@ -8,7 +8,7 @@ onready var particles: Particles = get_node("Particles")
 
 export var which_letter: String = 'a'
 
-export(NodePath) onready var level_node
+export(NodePath) onready var level_node = "../../Level"
 onready var level = get_node(level_node)
 
 # Refactor when we get 3d models from Daniel
