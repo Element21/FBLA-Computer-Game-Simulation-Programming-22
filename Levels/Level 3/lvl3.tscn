@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://objects/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level 3/fountainversion1.obj" type="ArrayMesh" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=5]
 [ext_resource path="res://objects/word_manager/word_manager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/letter/letter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/fountain/fountain.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CylinderMesh" id=1]
 material = ExtResource( 5 )
@@ -45,6 +46,10 @@ initial_velocity = 10.68
 material = ExtResource( 5 )
 radius = 0.4
 height = 0.8
+
+[sub_resource type="CylinderShape" id=10]
+height = 0.001
+radius = 0.2
 
 [node name="Spatial" type="Spatial"]
 
@@ -226,6 +231,7 @@ shape = SubResource( 6 )
 
 [node name="Particles" type="Particles" parent="Environment"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5611, 12.4826, 0.165942 )
+visible = false
 amount = 500
 lifetime = 4.55
 process_material = SubResource( 8 )
@@ -243,6 +249,13 @@ word_length = 3
 launch_vector = Vector3( -3, 6.8, 7 )
 camera = NodePath("../Camera")
 level = NodePath("../Level")
+
+[node name="Fountain" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.698214, 0, 0.215625 )
+peak_sucking_force_distance = 10.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Fountain"]
+shape = SubResource( 10 )
 
 [node name="Letter" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50472, 2.29921, 3.95316 )
