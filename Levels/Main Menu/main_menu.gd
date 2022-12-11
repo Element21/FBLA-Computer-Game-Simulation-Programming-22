@@ -18,3 +18,7 @@ func _ready():
 		button.connect("button_down", level_data, "select_level", [i, level_names[i], levels[i]])
 		
 		level_buttons.add_child(button)
+
+
+func quit():
+	Quitter.quit()
