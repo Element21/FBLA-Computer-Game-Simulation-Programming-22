@@ -29,7 +29,7 @@ material = ExtResource( 1 )
 radius = 0.1
 height = 0.2
 
-[node name="Bubble" type="RigidBody"]
+[node name="Bubble" type="RigidBody" groups=["Bubbles"]]
 contacts_reported = 16
 contact_monitor = true
 script = ExtResource( 2 )

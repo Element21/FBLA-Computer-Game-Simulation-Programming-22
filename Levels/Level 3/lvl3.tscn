@@ -236,6 +236,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.487351, 1.97738, 5.90069 )
 camera = NodePath("../Camera")
 word_manager = NodePath("../Word manager")
 level = NodePath("../Level")
+arm_pivot = null
 
 [node name="Word manager" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.58329, 0, -9.39023 )

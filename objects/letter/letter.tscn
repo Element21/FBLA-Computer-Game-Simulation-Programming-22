@@ -24,7 +24,7 @@ material = ExtResource( 2 )
 radius = 0.2
 height = 0.4
 
-[node name="Letter" type="RigidBody"]
+[node name="Letter" type="RigidBody" groups=["Letters"]]
 continuous_cd = true
 contacts_reported = 16
 contact_monitor = true

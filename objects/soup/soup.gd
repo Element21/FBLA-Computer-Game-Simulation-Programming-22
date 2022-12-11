@@ -39,10 +39,10 @@ func maybe_apply_buoyancy_to_thing(thing: RigidBody, delta: float):
 
 
 func _process(delta):
-	for letter in level.letters_in_play:
+	for letter in get_tree().get_nodes_in_group("Letters"):
 		maybe_apply_buoyancy_to_thing(letter, delta)
 	
-	for bubble in level.bubbles_in_play:
+	for bubble in get_tree().get_nodes_in_group("Bubbles"):
 		if overlaps_body(bubble):
 			if bubble.global_translation.y < surface:
 				apply_buoyancy_to_thing(bubble, delta)

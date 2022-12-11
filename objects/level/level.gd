@@ -17,17 +17,6 @@ onready var time_left = time_given
 var score = 0
 var playing = false
 
-var letters_in_play = []
-var bubbles_in_play = []
-
-
-func put_letter_in_play(letter):
-	letters_in_play.push_back(letter)
-
-
-func remove_letter_from_play(letter):
-	letters_in_play.remove(letters_in_play.find(letter))
-
 
 func start():
 	playing = true
@@ -48,7 +37,6 @@ func _process(delta):
 		time_left -= delta
 	
 	if time_left < 0 && playing:
-		letters_in_play.clear()
 		playing = false
 		
 		LeaderboardManager.add_score(level_index, score)

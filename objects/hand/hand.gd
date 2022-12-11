@@ -99,7 +99,7 @@ func next_grabbing_state():
 		
 		var min_distance = INF
 		
-		for letter in level.letters_in_play:
+		for letter in get_tree().get_nodes_in_group("Letters"):
 			
 			if letter_pickup_area.overlaps_body(letter):
 				
@@ -112,7 +112,7 @@ func next_grabbing_state():
 		
 		if letter_being_grabbed:
 			letter_being_grabbed.mode = RigidBody.MODE_KINEMATIC
-			level.remove_letter_from_play(letter_being_grabbed)
+			letter_being_grabbed.remove_from_group("Letters")
 		else:
 			start_hand_animation()
 		

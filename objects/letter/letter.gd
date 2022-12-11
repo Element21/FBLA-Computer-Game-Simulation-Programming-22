@@ -8,10 +8,7 @@ onready var particles: Particles = get_node("Particles")
 
 export var which_letter: String = 'a'
 
-export(NodePath) onready var level_node = "../../Level"
-onready var level = get_node(level_node)
 
-# Refactor when we get 3d models from Daniel
 func set_mesh():
 	var mesh: ArrayMesh = load("res://resources/letters/" + which_letter + ".obj") as ArrayMesh
 	
@@ -42,7 +39,6 @@ func undo_mesh_translation(mesh: ArrayMesh):
 
 func _ready():
 	set_mesh()
-	level.put_letter_in_play(self)
 
 
 func on_collision(node: Node):
