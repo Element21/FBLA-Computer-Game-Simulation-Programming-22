@@ -1,6 +1,7 @@
 extends Area
 
-export var launching_impulse = 25.0
+
+export(NodePath) onready var fountain_output = get_node(fountain_output) as FountainOutput
 
 export var peak_sucking_force = 20.0
 export var peak_sucking_force_distance = 1.0
@@ -21,13 +22,14 @@ func _process(delta):
 		letter.apply_central_impulse(-displacement / dist * peak_sucking_force * force_profile(dist / peak_sucking_force_distance) * delta)
 		
 		# Sinking
-		letter.apply_central_impulse(Vector3(0, -peak_sinking_force, 0) * force_profile(dist / peak_sinking_force_distance) * delta)
+		letter.apply_central_impulse(Vector3(0, -peak_sinking_force, 0) * pow(force_profile(dist / peak_sinking_force_distance), 2) * delta)
 
 
+# Higher as it gets closer, but goes to zero as it gets really close (to avoid instabilities)
 func force_profile(dist: float) -> float:
-	return dist / (pow(dist, 2) + 1)
+	return 2 * dist / (pow(dist, 2) + 1)
 
 
 func object_entered(object):
-	if object is Letter:
-		object.apply_central_impulse(Vector3(0, launching_impulse, 0))
+	if object is RigidBody:
+		fountain_output.launch_object(object)

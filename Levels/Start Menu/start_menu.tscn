@@ -86,7 +86,6 @@ margin_bottom = 99.0
 custom_styles/normal = SubResource( 2 )
 text = "Name must not be empty"
 align = 1
-percent_visible = -0.0555556
 __meta__ = {
 "_editor_description_": ""
 }
@@ -114,7 +113,7 @@ Click to grab
 Right Click or Backspace to delete
 
 Escape to quit"
-text = "[center]Grab letters from the soup to make words
+text = "Grab letters from the soup to make words
 Words that share fewer letters with other words get more points
 
 Click to grab

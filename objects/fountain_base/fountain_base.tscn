@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://objects/fountain/fountain.gd" type="Script" id=1]
+[ext_resource path="res://objects/fountain_base/fountain_base.gd" type="Script" id=1]
 
-[node name="Fountain" type="Area"]
+[node name="Fountain base" type="Area"]
 script = ExtResource( 1 )
 
 [connection signal="body_entered" from="." to="." method="object_entered"]

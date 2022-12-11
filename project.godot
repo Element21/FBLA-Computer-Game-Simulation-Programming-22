@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Spatial",
+"class": "FountainOutput",
+"language": "GDScript",
+"path": "res://objects/fountain_output/fountain_output.gd"
+}, {
 "base": "Resource",
 "class": "LeaderboardData",
 "language": "GDScript",
@@ -55,6 +60,7 @@ _global_script_classes=[ {
 "path": "res://objects/word_manager/word_manager.gd"
 } ]
 _global_script_class_icons={
+"FountainOutput": "",
 "LeaderboardData": "",
 "Letter": "",
 "LetterPlatform": "",
