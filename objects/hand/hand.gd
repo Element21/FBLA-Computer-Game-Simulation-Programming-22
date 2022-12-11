@@ -8,6 +8,7 @@ export(NodePath) onready var level = get_node(level) as Level
 export(Vector2) var arm_pivot = Vector2(-2, 35)
 
 var hand_height = 2
+var drop_height = 3
 
 var inverse_arm_response = 0.2
 
@@ -120,10 +121,10 @@ func next_grabbing_state():
 		if letter_being_grabbed:
 			grabbing_state = GRABBING_STATE.DROPPING
 			
-			var local_drop_pos = word_manager.next_platform_position() - Vector2(self.translation.x, self.translation.z)
+			var local_drop_pos = self.to_local(word_manager.next_platform_position())
 			
 			start_hand_translation = hand.translation
-			final_hand_translation = Vector3(local_drop_pos.x, hand_height, local_drop_pos.y)
+			final_hand_translation = local_drop_pos + Vector3(0, drop_height, 0)
 			
 			hand_animation_start_timer.start()
 		

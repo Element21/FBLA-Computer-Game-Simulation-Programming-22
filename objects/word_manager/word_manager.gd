@@ -89,13 +89,13 @@ func launch_all_platforms():
 		child.launch()
 
 
-func next_platform_position():
+func next_platform_position() -> Vector3:
 	
 	var index = letters_placed.find(null)
 	
 	var platform = platforms.get_child(index)
 	
-	return Vector2(platform.global_translation.x, platform.global_translation.z)
+	return platform.global_translation
 
 
 func _input(event):
