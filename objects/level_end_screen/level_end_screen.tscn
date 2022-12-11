@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Levels/menu_theme.tres" type="Theme" id=1]
 [ext_resource path="res://resources/big_label_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://objects/level_end_screen/level_end_screen.gd" type="Script" id=3]
+[ext_resource path="res://objects/quit_button/quit_button.tscn" type="PackedScene" id=4]
 
 [node name="Level end screen" type="ViewportContainer"]
 anchor_right = 1.0
@@ -54,24 +55,26 @@ text = "25"
 align = 1
 
 [node name="Next Level" type="Button" parent="Viewport/Control/VBoxContainer"]
-margin_left = 118.0
+margin_left = 104.0
 margin_top = 174.0
-margin_right = 214.0
-margin_bottom = 197.0
+margin_right = 228.0
+margin_bottom = 217.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Next Level"
 
 [node name="Main Menu" type="Button" parent="Viewport/Control/VBoxContainer"]
-margin_left = 122.0
-margin_top = 237.0
-margin_right = 211.0
-margin_bottom = 260.0
+margin_left = 108.0
+margin_top = 257.0
+margin_right = 225.0
+margin_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Main Menu"
+
+[node name="Button" parent="Viewport/Control" instance=ExtResource( 4 )]
 
 [connection signal="button_down" from="Viewport/Control/VBoxContainer/Next Level" to="." method="next_level"]
 [connection signal="button_down" from="Viewport/Control/VBoxContainer/Main Menu" to="." method="main_menu"]

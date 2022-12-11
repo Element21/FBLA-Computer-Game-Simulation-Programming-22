@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Levels/menu_theme.tres" type="Theme" id=1]
 [ext_resource path="res://resources/big_label_font.tres" type="DynamicFont" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Levels/Level 3/lvl3.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/Level 5/lvl5.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/Level 4/lvl4.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/quit_button/quit_button.tscn" type="PackedScene" id=10]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -132,13 +133,4 @@ dragger_visibility = 1
 margin_left = 12.0
 margin_right = 12.0
 
-[node name="Quit" type="Button" parent="."]
-anchor_left = 0.9
-anchor_top = 0.9
-anchor_right = 0.9
-anchor_bottom = 0.9
-margin_right = 40.0
-margin_bottom = 19.0
-text = "Quit"
-
-[connection signal="button_down" from="Quit" to="." method="quit"]
+[node name="Button" parent="." instance=ExtResource( 10 )]

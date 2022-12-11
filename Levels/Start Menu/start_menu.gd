@@ -20,9 +20,5 @@ func go_to_main_menu(_from_signal):
 		assert(status == OK)
 
 
-func quit():
-	Quitter.quit()
-
-
 func _ready():
 	Music.start_ambience()
