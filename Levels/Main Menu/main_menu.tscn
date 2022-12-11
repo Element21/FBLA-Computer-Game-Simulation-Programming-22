@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/menu_theme.tres" type="Theme" id=1]
 [ext_resource path="res://resources/big_label_font.tres" type="DynamicFont" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Levels/Main Menu/main_menu.gd" type="Script" id=5]
 [ext_resource path="res://Levels/Level 2/lvl2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Level 3/lvl3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Level 5/lvl5.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/Level 4/lvl4.tscn" type="PackedScene" id=9]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -15,8 +17,8 @@ margin_right = 40.0
 margin_bottom = 40.0
 theme = ExtResource( 1 )
 script = ExtResource( 5 )
-levels = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ) ]
-level_names = [ "Level 1", "Level 2", "Level 3" ]
+levels = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ) ]
+level_names = [ "Level 1", "Level 2", "Level 3", "Level 4", "Level 5" ]
 level_button_distance = 10
 level_buttons = NodePath("HBoxContainer/Level buttons")
 level_data = NodePath("HBoxContainer/Level data")

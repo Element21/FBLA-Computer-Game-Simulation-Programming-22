@@ -35,5 +35,5 @@ func main_menu():
 
 
 func next_level():
-	var status = get_tree().change_scene(next_level)
+	var status = get_tree().change_scene_to(next_level)
 	assert(status == OK)
