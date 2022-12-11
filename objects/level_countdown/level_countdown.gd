@@ -17,6 +17,8 @@ var time = 3
 func start(camera: Camera):
 	var camera_normal = camera.project_ray_normal(get_viewport().size / 2)
 	
+	mesh_instance.mesh.text = "3"
+	
 	self.global_translation = camera.global_translation + camera_normal * distance_from_camera
 	
 	self.rotation = camera.rotation
