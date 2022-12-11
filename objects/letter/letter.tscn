@@ -1,8 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://objects/letter/letter.gd" type="Script" id=1]
 [ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=2]
 [ext_resource path="res://resources/sounds/letter-slap-1.ogg" type="AudioStream" id=3]
+
+[sub_resource type="PhysicsMaterial" id=7]
+friction = 0.0
+bounce = 1.0
+absorbent = true
 
 [sub_resource type="CylinderShape" id=1]
 height = 0.208
@@ -25,6 +30,7 @@ radius = 0.2
 height = 0.4
 
 [node name="Letter" type="RigidBody" groups=["Letters"]]
+physics_material_override = SubResource( 7 )
 continuous_cd = true
 contacts_reported = 16
 contact_monitor = true

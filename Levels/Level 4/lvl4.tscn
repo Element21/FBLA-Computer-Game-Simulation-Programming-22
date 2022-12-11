@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://objects/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level 4/pool.obj" type="ArrayMesh" id=2]
@@ -15,6 +15,10 @@ size = Vector2( 100, 100 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 100, 100, 100 )
+
+[sub_resource type="PhysicsMaterial" id=6]
+friction = 0.52
+rough = true
 
 [sub_resource type="CylinderShape" id=3]
 height = 20.261
@@ -63,6 +67,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0 )
 shape = SubResource( 2 )
 
 [node name="Pool boundaries" type="StaticBody" parent="Environment"]
+physics_material_override = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Environment/Pool boundaries"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.18053, -6.02021, 0 )
@@ -239,7 +244,7 @@ word_manager = NodePath("../Word manager")
 level = NodePath("../Level")
 
 [node name="Word manager" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892, 11.606, 10.506 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892, 7.39978, 5.96458 )
 camera = NodePath("../Camera")
 level = NodePath("../Level")
 
