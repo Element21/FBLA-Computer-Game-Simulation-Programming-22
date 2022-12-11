@@ -29,8 +29,6 @@ func start(camera: Camera):
 func timeout():
 	time -= 1
 	
-	click_sound.play()
-	
 	mesh_instance.mesh.text = String(time)
 	
 	if time == 0:
@@ -39,3 +37,5 @@ func timeout():
 		emit_signal("started")
 		
 		timer.stop()
+	else:
+		click_sound.play()
