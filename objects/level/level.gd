@@ -30,6 +30,7 @@ func _ready():
 		start()
 	
 	level_end_screen.next_level = next_level
+	level_end_screen.level_index = level_index
 
 
 func _process(delta):

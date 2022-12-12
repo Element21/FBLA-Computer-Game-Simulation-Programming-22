@@ -22,7 +22,7 @@ func add_score(level_index: int, score: int):
 	if !leaderboard.has(player_name):
 		leaderboard[player_name] = 0
 	
-	if score > leaderboard[player_name]:
+	if score >= leaderboard[player_name]:
 		leaderboard[player_name] = score
 		ResourceSaver.save("user://leaderboard_data.res", leaderboard_data)
 
