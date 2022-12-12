@@ -2,12 +2,13 @@ extends ViewportContainer
 
 class_name LevelEndScreen
 
-
+export(int) var level_index
 export(PackedScene) var next_level
 
 export(NodePath) onready var main_menu_button = get_node(main_menu_button) as Button
 export(NodePath) onready var next_level_button = get_node(next_level_button) as Button
 export(NodePath) onready var score_label = get_node(score_label) as Label
+export(NodePath) onready var leaderboard = get_node(leaderboard) as Leaderboard
 
 func _ready():
 	self.hide()
@@ -19,6 +20,8 @@ func _ready():
 
 func level_ended(score: int):
 	score_label.text = String(score)
+	
+	leaderboard.show_leaderboard_for(level_index)
 	
 	self.show()
 	main_menu_button.show()
