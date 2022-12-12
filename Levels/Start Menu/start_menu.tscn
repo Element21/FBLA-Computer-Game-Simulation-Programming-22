@@ -53,9 +53,9 @@ margin_bottom = 41.0
 rect_min_size = Vector2( 0, 10 )
 
 [node name="Button" type="Button" parent="VBoxContainer"]
-margin_left = 116.0
+margin_left = 118.0
 margin_top = 45.0
-margin_right = 183.0
+margin_right = 181.0
 margin_bottom = 88.0
 size_flags_horizontal = 4
 text = "Play"
