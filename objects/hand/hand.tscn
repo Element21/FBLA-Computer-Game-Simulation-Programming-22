@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/hand_frames/frame1_hand_3.0.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://objects/hand/hand.gd" type="Script" id=2]
 [ext_resource path="res://resources/sounds/hand-slap-1.ogg" type="AudioStream" id=3]
-[ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=4]
+[ext_resource path="res://resources/materials/soup_material.tres" type="Material" id=4]
 
 [sub_resource type="SpatialMaterial" id=11]
 albedo_color = Color( 0.501961, 0.815686, 0.807843, 1 )

@@ -68,21 +68,15 @@ rect_min_size = Vector2( 0, 10 )
 
 [node name="Empty name error" type="Label" parent="VBoxContainer"]
 visible = false
-margin_top = 80.0
-margin_right = 620.0
-margin_bottom = 99.0
+margin_top = 106.0
+margin_right = 300.0
+margin_bottom = 125.0
 custom_styles/normal = SubResource( 2 )
 text = "Name must not be empty"
 align = 1
 __meta__ = {
 "_editor_description_": ""
 }
-
-[node name="Control3" type="Control" parent="VBoxContainer"]
-margin_top = 106.0
-margin_right = 300.0
-margin_bottom = 116.0
-rect_min_size = Vector2( 0, 10 )
 
 [node name="Button" parent="." instance=ExtResource( 4 )]
 

@@ -4,7 +4,7 @@
 [ext_resource path="res://Levels/Level 3/fountainversion1.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://objects/hand/hand.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/soup/soup.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=5]
+[ext_resource path="res://resources/materials/soup_material.tres" type="Material" id=5]
 [ext_resource path="res://objects/word_manager/word_manager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/letter/letter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/fountain_base/fountain_base.tscn" type="PackedScene" id=8]

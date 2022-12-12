@@ -4,7 +4,7 @@
 [ext_resource path="res://resources/materials/wood.tres" type="Material" id=2]
 [ext_resource path="res://objects/room/Room.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://Levels/Level 2/lvl2.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=5]
+[ext_resource path="res://resources/materials/soup_material.tres" type="Material" id=5]
 [ext_resource path="res://Levels/Level 1/Level 1 Bowl Interior.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://objects/soup/soup.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/room/Table.obj" type="ArrayMesh" id=8]

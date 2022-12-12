@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://objects/soup/soup_material.tres" type="Material" id=1]
+[ext_resource path="res://resources/materials/soup_material.tres" type="Material" id=1]
 [ext_resource path="res://objects/bubble/bubble.gd" type="Script" id=2]
 [ext_resource path="res://objects/bubble/pop.ogg" type="AudioStream" id=3]
 

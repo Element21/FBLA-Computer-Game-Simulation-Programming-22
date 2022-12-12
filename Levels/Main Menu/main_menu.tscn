@@ -57,7 +57,7 @@ rect_min_size = Vector2( 150, 0 )
 
 [node name="Level data" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 273.0
-margin_right = 435.0
+margin_right = 405.0
 margin_bottom = 199.0
 script = ExtResource( 3 )
 level_label = NodePath("Level label")
@@ -67,7 +67,7 @@ leaderboard_names = NodePath("HSplitContainer/VBoxContainer")
 leaderboard_scores = NodePath("HSplitContainer/VBoxContainer2")
 
 [node name="Level label" type="Label" parent="HBoxContainer/Level data"]
-margin_right = 162.0
+margin_right = 132.0
 margin_bottom = 48.0
 custom_fonts/font = ExtResource( 2 )
 text = "Level Q"
@@ -75,14 +75,14 @@ align = 1
 
 [node name="Control" type="Control" parent="HBoxContainer/Level data"]
 margin_top = 52.0
-margin_right = 162.0
+margin_right = 132.0
 margin_bottom = 66.0
 rect_min_size = Vector2( 0, 14 )
 
 [node name="Button" type="Button" parent="HBoxContainer/Level data"]
-margin_left = 47.0
+margin_left = 34.0
 margin_top = 70.0
-margin_right = 114.0
+margin_right = 97.0
 margin_bottom = 113.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -90,34 +90,34 @@ text = "Play"
 
 [node name="Control2" type="Control" parent="HBoxContainer/Level data"]
 margin_top = 117.0
-margin_right = 162.0
+margin_right = 132.0
 margin_bottom = 137.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Highscore" type="Label" parent="HBoxContainer/Level data"]
 margin_top = 141.0
-margin_right = 162.0
+margin_right = 132.0
 margin_bottom = 160.0
 text = "Your highscore: -8"
 align = 1
 
 [node name="Control3" type="Control" parent="HBoxContainer/Level data"]
 margin_top = 164.0
-margin_right = 162.0
+margin_right = 132.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 0, 8 )
 
 [node name="Leaderboard label" type="Label" parent="HBoxContainer/Level data"]
 margin_top = 176.0
-margin_right = 162.0
+margin_right = 132.0
 margin_bottom = 195.0
 text = "Leaderboard"
 align = 1
 
 [node name="HSplitContainer" type="HSplitContainer" parent="HBoxContainer/Level data"]
-margin_left = 75.0
+margin_left = 60.0
 margin_top = 199.0
-margin_right = 87.0
+margin_right = 72.0
 margin_bottom = 199.0
 grow_horizontal = 2
 grow_vertical = 2
