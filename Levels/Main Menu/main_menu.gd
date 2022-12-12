@@ -9,8 +9,13 @@ export var level_button_distance = 20
 export(NodePath) onready var level_buttons = get_node(level_buttons) as Control
 export(NodePath) onready var level_data = get_node(level_data) as LevelData
 
+onready var instructions = get_node("Instructions")
+
 
 func _ready():
+	if !LeaderboardManager.level_unlocked(1):
+		instructions.popup()
+	
 	for i in range(0, level_names.size()):
 		var button = Button.new()
 		
