@@ -33,10 +33,10 @@ extents = Vector3( 1, 9, 0.2 )
 radius = 5.054
 
 [sub_resource type="CubeMesh" id=5]
-size = Vector3( 100, 2, 100 )
+size = Vector3( 200, 2, 200 )
 
 [sub_resource type="BoxShape" id=6]
-extents = Vector3( 50, 1, 50 )
+extents = Vector3( 100, 1, 100 )
 
 [sub_resource type="ParticlesMaterial" id=8]
 emission_shape = 1
