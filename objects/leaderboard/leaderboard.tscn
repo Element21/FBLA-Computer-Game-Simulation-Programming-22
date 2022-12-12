@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://objects/leaderboard/leaderboard.gd" type="Script" id=1]
+
+[node name="Leaderboard" type="VBoxContainer"]
+script = ExtResource( 1 )
+names = NodePath("HSplitContainer/Names")
+scores = NodePath("HSplitContainer/Scores")
+
+[node name="Leaderboard label" type="Label" parent="."]
+margin_right = 79.0
+margin_bottom = 14.0
+text = "Leaderboard"
+align = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+margin_left = 33.0
+margin_top = 18.0
+margin_right = 45.0
+margin_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+dragger_visibility = 1
+
+[node name="Names" type="VBoxContainer" parent="HSplitContainer"]
+
+[node name="Scores" type="VBoxContainer" parent="HSplitContainer"]
+margin_left = 12.0
+margin_right = 12.0
