@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://objects/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level 3/fountainversion1.obj" type="ArrayMesh" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://objects/fountain_output/fountain_output.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/Level 4/lvl4.tscn" type="PackedScene" id=10]
 [ext_resource path="res://resources/materials/fountain/can_wrapping.tres" type="Material" id=11]
+[ext_resource path="res://resources/materials/bubble.tres" type="Material" id=12]
 [ext_resource path="res://resources/materials/concrete.tres" type="Material" id=14]
 [ext_resource path="res://resources/materials/plants.tres" type="Material" id=15]
 
@@ -44,7 +45,7 @@ spread = 10.31
 initial_velocity = 10.68
 
 [sub_resource type="SphereMesh" id=7]
-material = ExtResource( 5 )
+material = ExtResource( 12 )
 radius = 0.4
 height = 0.8
 
@@ -54,6 +55,7 @@ height = 1.0
 [node name="Spatial2" type="Spatial"]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
+time_given = 150
 next_level = ExtResource( 10 )
 level_index = 2
 camera = NodePath("../Camera")
@@ -277,10 +279,12 @@ level = NodePath("../Level")
 
 [node name="Word manager" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.58329, 0, -9.39023 )
-word_length = 3
+word_length = 4
 launch_vector = Vector3( -3, 6.8, 7 )
 camera = NodePath("../Camera")
 level = NodePath("../Level")
 
 [node name="Letter Spawner" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7604, 0, 0.225881 )
+horizontal_velocity = 0.0
 level = NodePath("../Level")
