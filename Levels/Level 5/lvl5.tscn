@@ -9,7 +9,7 @@
 [ext_resource path="res://resources/materials/invisible.tres" type="Material" id=7]
 [ext_resource path="res://resources/materials/volcano/volcano.tres" type="Material" id=8]
 [ext_resource path="res://Levels/Level 5/volcano_hole.gd" type="Script" id=10]
-[ext_resource path="res://resources/letter_spawner/letter_spawner.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/letter_spawner/letter_spawner.tscn" type="PackedScene" id=11]
 
 [sub_resource type="PlaneMesh" id=2]
 material = ExtResource( 3 )
@@ -38,6 +38,7 @@ camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 24.674, 20.911 )
+current = true
 far = 8192.0
 
 [node name="Environment" type="Spatial" parent="."]

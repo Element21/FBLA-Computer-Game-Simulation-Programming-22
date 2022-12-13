@@ -39,29 +39,29 @@ alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
 margin_right = 300.0
-margin_bottom = 27.0
+margin_bottom = 38.0
 rect_min_size = Vector2( 300, 0 )
 align = 1
 placeholder_text = "Enter your name"
 
 [node name="Control" type="Control" parent="VBoxContainer"]
-margin_top = 31.0
+margin_top = 42.0
 margin_right = 300.0
-margin_bottom = 41.0
+margin_bottom = 52.0
 rect_min_size = Vector2( 0, 10 )
 
 [node name="Button" type="Button" parent="VBoxContainer"]
-margin_left = 118.0
-margin_top = 45.0
-margin_right = 181.0
-margin_bottom = 88.0
+margin_left = 108.0
+margin_top = 56.0
+margin_right = 192.0
+margin_bottom = 110.0
 size_flags_horizontal = 4
 text = "Play"
 
 [node name="Control2" type="Control" parent="VBoxContainer"]
-margin_top = 92.0
+margin_top = 114.0
 margin_right = 300.0
-margin_bottom = 102.0
+margin_bottom = 124.0
 rect_min_size = Vector2( 0, 10 )
 
 [node name="Empty name error" type="Label" parent="VBoxContainer"]

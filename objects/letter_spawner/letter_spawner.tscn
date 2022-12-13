@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://resources/letter_spawner/letter_spawner.gd" type="Script" id=1]
+[ext_resource path="res://objects/letter_spawner/letter_spawner.gd" type="Script" id=1]
 
 [node name="Letter Spawner" type="Spatial"]
 script = ExtResource( 1 )

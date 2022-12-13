@@ -14,7 +14,7 @@
 [ext_resource path="res://resources/materials/pool/flamingo.tres" type="Material" id=13]
 [ext_resource path="res://resources/materials/pool/towel.tres" type="Material" id=14]
 [ext_resource path="res://resources/materials/pool/chair.tres" type="Material" id=15]
-[ext_resource path="res://resources/letter_spawner/letter_spawner.tscn" type="PackedScene" id=16]
+[ext_resource path="res://objects/letter_spawner/letter_spawner.tscn" type="PackedScene" id=16]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 100, 100 )

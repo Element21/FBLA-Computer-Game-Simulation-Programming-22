@@ -6,7 +6,7 @@
 [ext_resource path="res://objects/soup/soup.tscn" type="PackedScene" id=4]
 [ext_resource path="res://resources/materials/soup_material.tres" type="Material" id=5]
 [ext_resource path="res://objects/word_manager/word_manager.tscn" type="PackedScene" id=6]
-[ext_resource path="res://resources/letter_spawner/letter_spawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/letter_spawner/letter_spawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/fountain_base/fountain_base.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/fountain_output/fountain_output.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/Level 4/lvl4.tscn" type="PackedScene" id=10]
@@ -51,7 +51,7 @@ height = 0.8
 [sub_resource type="CylinderShape" id=10]
 height = 1.0
 
-[node name="Spatial" type="Spatial"]
+[node name="Spatial2" type="Spatial"]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
 next_level = ExtResource( 10 )
