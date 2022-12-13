@@ -1,11 +1,17 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://resources/materials/soup_material.tres" type="Material" id=1]
 [ext_resource path="res://objects/bubble/bubble.gd" type="Script" id=2]
 [ext_resource path="res://objects/bubble/pop.ogg" type="AudioStream" id=3]
 
-[sub_resource type="SphereMesh" id=1]
-material = ExtResource( 1 )
+[sub_resource type="SpatialMaterial" id=10]
+flags_transparent = true
+params_cull_mode = 2
+albedo_color = Color( 0.698039, 0.211765, 0, 0.564706 )
+roughness = 0.41
+
+[sub_resource type="SphereMesh" id=9]
+material = SubResource( 10 )
 radius = 0.3
 height = 0.6
 
@@ -35,7 +41,7 @@ contact_monitor = true
 script = ExtResource( 2 )
 
 [node name="Bubble mesh" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
+mesh = SubResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 2 )

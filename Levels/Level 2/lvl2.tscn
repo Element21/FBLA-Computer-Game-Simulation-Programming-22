@@ -40,6 +40,7 @@ radius = 4.42
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22611, 0 )
+time_given = 120
 next_level = ExtResource( 13 )
 level_index = 1
 camera = NodePath("../Camera")
@@ -155,13 +156,13 @@ omni_range = 82.7533
 omni_shadow_mode = 0
 
 [node name="Bubble spawner" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.734446, 2.92553, -1.53757 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.96764, 2.92553, -1.53757 )
 
 [node name="Bubble spawner2" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44571, 2.5322, 1.05047 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44571, 2.5322, 2.9667 )
 
 [node name="Bubble spawner3" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59477, 2.81483, 0.270587 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59477, 2.81483, -2.66899 )
 
 [node name="Environment" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.056078, 0, -0.601492 )
@@ -261,4 +262,6 @@ material/4 = ExtResource( 17 )
 material/5 = ExtResource( 17 )
 
 [node name="Letter Spawner" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.74613, 0 )
+spawn_interval = 2.0
 level = NodePath("../Level")

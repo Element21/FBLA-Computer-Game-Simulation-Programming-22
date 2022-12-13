@@ -1,9 +1,9 @@
 extends Spatial
 
 export var upward_velocity: float = 0
-export var horizontal_velocity: float = 0
-export var spawn_amnt: int = 10
-export var spawn_interval: float = 3.0
+export var horizontal_velocity: float = 2
+export var spawn_amnt: int = 1
+export var spawn_interval: float = 1.0
 export(NodePath) var level
 
 onready var timer = $Timer
