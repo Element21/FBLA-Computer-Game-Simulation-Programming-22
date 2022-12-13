@@ -6,7 +6,6 @@
 [ext_resource path="res://objects/word_manager/word_manager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/soup/soup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://resources/materials/soup_material.tres" type="Material" id=6]
-[ext_resource path="res://objects/letter/letter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/jet/jet.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/Level 5/lvl5.tscn" type="PackedScene" id=9]
 [ext_resource path="res://resources/materials/plants.tres" type="Material" id=10]
@@ -15,6 +14,7 @@
 [ext_resource path="res://resources/materials/pool/flamingo.tres" type="Material" id=13]
 [ext_resource path="res://resources/materials/pool/towel.tres" type="Material" id=14]
 [ext_resource path="res://resources/materials/pool/chair.tres" type="Material" id=15]
+[ext_resource path="res://resources/letter_spawner/letter_spawner.tscn" type="PackedScene" id=16]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 100, 100 )
@@ -302,5 +302,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892, 7.39978, 5.96458 )
 camera = NodePath("../Camera")
 level = NodePath("../Level")
 
-[node name="Letter" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.43681, 15.2959 )
+[node name="Letter Spawner" parent="." instance=ExtResource( 16 )]
+spawn_point = Vector3( 20, 1, 0 )
+level = NodePath("../Level")

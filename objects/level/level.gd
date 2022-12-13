@@ -17,6 +17,7 @@ onready var time_left = time_given
 var score = 0
 var playing = false
 
+signal level_ended
 
 func start():
 	playing = true
@@ -38,6 +39,7 @@ func _process(delta):
 		time_left -= delta
 	
 	if time_left < 0 && playing:
+		emit_signal("level_ended")
 		playing = false
 		
 		LeaderboardManager.add_score(level_index, score)
