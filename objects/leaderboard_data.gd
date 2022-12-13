@@ -9,9 +9,10 @@ export var data: Array = []
 
 class LeaderboardDataSorter:
 	static func sort_descending(a, b):
-		return a[0] > b[0]
+		return a[1] > b[1]
 
 
+# Returns an array where each entry is an array of [name, score], sorted by score
 func get_sorted_leaderboard_for(idx: int) -> Array:
 	var data_dictionary = get_leaderboard_for(idx)
 	
@@ -25,6 +26,7 @@ func get_sorted_leaderboard_for(idx: int) -> Array:
 	return data_array
 
 
+# Returns a dictionary mapping names to scores
 func get_leaderboard_for(idx: int) -> Dictionary:
 	if data.size() <= idx:
 		data.resize(idx + 1)

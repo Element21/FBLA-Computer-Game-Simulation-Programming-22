@@ -47,9 +47,11 @@ func _process(delta):
 			if bubble.global_translation.y < surface:
 				apply_buoyancy_to_thing(bubble, delta)
 			else:
+				# Maybe pop it if it's above the surface
 				bubble.maybe_pop(delta)
 
 
+# Tell the letters to do the particle thing
 func object_entered(node: Node):
 	if node is Letter:
 		node.contacted_soup()

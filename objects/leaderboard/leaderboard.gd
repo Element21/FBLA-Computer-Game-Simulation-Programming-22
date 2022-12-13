@@ -13,6 +13,7 @@ export(NodePath) onready var scores = get_node(scores) as VBoxContainer
 func show_leaderboard_for(level_index: int):
 	var leaderboard_entries = LeaderboardManager.leaderboard_data.get_sorted_leaderboard_for(level_index)
 	
+	# Remove the previous leaderboard data
 	remove_children(names)
 	remove_children(scores)
 	

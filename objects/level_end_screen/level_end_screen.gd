@@ -13,7 +13,7 @@ export(NodePath) onready var leaderboard = get_node(leaderboard) as Leaderboard
 func _ready():
 	self.hide()
 	
-	# Prevent buttons from being clicked on (even though they're hidden by the root thing, idk)
+	# Prevent buttons from being clicked on in game (even though they're already hidden, idk)
 	main_menu_button.hide()
 	next_level_button.hide()
 
@@ -30,13 +30,13 @@ func level_ended(score: int):
 		next_level_button.show()
 
 
-func main_menu():
+func go_to_main_menu():
 	var status = get_tree().change_scene("res://Levels/Main Menu/main_menu.tscn")
 	assert(status == OK)
 	
 	Music.start_ambience()
 
 
-func next_level():
+func go_to_next_level():
 	var status = get_tree().change_scene_to(next_level)
 	assert(status == OK)

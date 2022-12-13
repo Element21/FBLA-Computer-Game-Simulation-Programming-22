@@ -5,13 +5,14 @@ extends Node
 onready var words: Array = load_words()
 
 
+# Create the words array from the list
 func load_words() -> Array:
-	
 	var f = File.new()
 	f.open("res://objects/words.txt", File.READ)
 	
 	var new_words = []
 	
+	# The longest word is 31 letters
 	for _i in range(0, 31):
 		new_words.push_back([])
 	
@@ -26,7 +27,7 @@ func load_words() -> Array:
 
 
 func matches_word(letters: Array) -> bool:
-	
+	# Check all the words of the same length to make sure the word is valid
 	for word in words[letters.size() - 1]:
 		if compare_word(word, letters):
 			return true
@@ -35,7 +36,7 @@ func matches_word(letters: Array) -> bool:
 
 
 func calculate_score_added(letters: Array):
-	var amt_could_be_placed = letters_that_could_be_used(letters)
+	var amt_could_be_placed = letters_that_could_be_used_next(letters)
 	
 	if amt_could_be_placed == 0:
 		return null
@@ -43,8 +44,7 @@ func calculate_score_added(letters: Array):
 	return 27 - amt_could_be_placed
 
 
-func letters_that_could_be_used(letters: Array) -> int:
-	
+func letters_that_could_be_used_next(letters: Array) -> int:
 	var empty_index = letters.find(null)
 	
 	var could_be_placed = []
@@ -61,7 +61,6 @@ func letters_that_could_be_used(letters: Array) -> int:
 
 # Assumes word & letters are the same length
 func compare_word(word: String, letters: Array) -> bool:
-		
 	for i in range(0, word.length()):
 		if letters[i] == null:
 			continue

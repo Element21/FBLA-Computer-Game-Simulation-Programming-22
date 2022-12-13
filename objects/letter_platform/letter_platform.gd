@@ -29,6 +29,7 @@ func launch():
 	time = 0
 	
 	if letter != null:
+		# Disable collision for the letter, prevents shenanigans
 		letter.collision_layer = 0
 		letter.collision_mask = 0
 		original_letter_position = letter.global_translation
@@ -36,6 +37,7 @@ func launch():
 	whoosh_sound.play()
 
 
+# Show the score granted by a letter
 func set_score(new_score):
 	score = new_score
 	
@@ -55,9 +57,7 @@ func set_score(new_score):
 
 
 func _physics_process(delta):
-	
 	if time != null:
-		
 		if action == "flip":
 			do_flip_transformation()
 		elif action == "launch":
@@ -91,10 +91,11 @@ func do_launch_transformation():
 	if letter != null && t < launch_curve_inflection_point:
 		var lerp_amt_derivative = Tweening.smooth_up_and_down_derivative(t) / action_time
 		
+		# Manually set the translation and velocity, making the physics engine do this is unreliable
 		letter.linear_velocity = global_launch_vector * lerp_amt_derivative
-		
 		letter.global_translation = original_letter_position + lerp(Vector3(0, 0, 0), global_launch_vector, lerp_amt)
 	
+	# Pull the score back in
 	if t > 0.5:
 		score_mesh.translation.z = lerp(1.5, 0.334, Tweening.smoothify((t - 0.5) * 2))
 

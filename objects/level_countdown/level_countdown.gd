@@ -15,13 +15,12 @@ var time = 3
 
 
 func start(camera: Camera):
+	# Move it in front of the camera
 	var camera_normal = camera.project_ray_normal(get_viewport().size / 2)
+	self.global_translation = camera.global_translation + camera_normal * distance_from_camera
+	self.rotation = camera.rotation
 	
 	mesh_instance.mesh.text = "3"
-	
-	self.global_translation = camera.global_translation + camera_normal * distance_from_camera
-	
-	self.rotation = camera.rotation
 	
 	click_sound.play()
 	

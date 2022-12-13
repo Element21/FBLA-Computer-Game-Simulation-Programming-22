@@ -13,5 +13,5 @@ script = ExtResource( 1 )
 transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.365, 0, 0 )
 mesh = SubResource( 1 )
 __meta__ = {
-"_editor_description_": "For the editor"
+"_editor_description_": "Indicates which direction the jet pushes nodes, hidden in game"
 }

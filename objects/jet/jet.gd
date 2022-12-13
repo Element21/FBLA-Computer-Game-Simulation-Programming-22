@@ -6,6 +6,7 @@ export var dropoff = 1.0
 
 
 func _ready():
+	# It's helpful for the editor, but bad in the game
 	get_node("Direction indicator").hide()
 
 
@@ -18,5 +19,6 @@ func _process(delta):
 		letter.apply_central_impulse(self.transform.basis.x * force_profile(dist / dropoff) * power * delta)
 
 
+# 1 when the distance is 0, 0 when distance is infinity, looks like a bell curve
 func force_profile(dist: float) -> float:
 	return 1 / (pow(dist, 2) + 1)

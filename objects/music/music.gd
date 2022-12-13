@@ -34,5 +34,6 @@ func end_gameplay_music():
 	fade_out.start()
 
 
+# Prevent the music from continuing to silently play when it's done fading out
 func done_fading_out(object: Object, key: NodePath):
 	object.stop()

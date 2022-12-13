@@ -30,6 +30,7 @@ func force_profile(dist: float) -> float:
 	return 2 * dist / (pow(dist, 2) + 1)
 
 
+# Launch the letter when it enters the fountain base
 func object_entered(object):
 	if object is RigidBody:
 		fountain_output.launch_object(object)

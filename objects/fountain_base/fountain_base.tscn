@@ -4,5 +4,8 @@
 
 [node name="Fountain base" type="Area"]
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [connection signal="body_entered" from="." to="." method="object_entered"]

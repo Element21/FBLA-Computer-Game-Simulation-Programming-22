@@ -16,12 +16,13 @@ func _ready():
 	if !LeaderboardManager.level_unlocked(1):
 		instructions.popup()
 	
+	# Add buttons for each level
 	for i in range(0, level_names.size()):
 		var button = Button.new()
 		
 		button.text = level_names[i]
 		button.connect("button_down", level_data, "select_level", [i, level_names[i], levels[i]])
 		
-		#button.disabled = !LeaderboardManager.level_unlocked(i)
+		button.disabled = !LeaderboardManager.is_level_unlocked(i)
 		
 		level_buttons.add_child(button)

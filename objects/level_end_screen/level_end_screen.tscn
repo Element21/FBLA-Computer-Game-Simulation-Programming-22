@@ -92,5 +92,5 @@ text = "Main Menu"
 
 [node name="Button" parent="Viewport/Control" instance=ExtResource( 4 )]
 
-[connection signal="button_down" from="Viewport/Control/VBoxContainer/VBoxContainer/Next Level" to="." method="next_level"]
-[connection signal="button_down" from="Viewport/Control/VBoxContainer/VBoxContainer/Main Menu" to="." method="main_menu"]
+[connection signal="button_down" from="Viewport/Control/VBoxContainer/VBoxContainer/Next Level" to="." method="go_to_next_level"]
+[connection signal="button_down" from="Viewport/Control/VBoxContainer/VBoxContainer/Main Menu" to="." method="go_to_main_menu"]

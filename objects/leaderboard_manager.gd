@@ -6,6 +6,7 @@ var leaderboard_data: LeaderboardData
 
 
 func _ready():
+	# Load the leaderboard data from storage, or create a new one
 	if ResourceLoader.exists("user://leaderboard_data.res"):
 		leaderboard_data = ResourceLoader.load("user://leaderboard_data.res")
 	else:
@@ -16,6 +17,7 @@ func set_player_name(new_player_name: String):
 	player_name = new_player_name
 
 
+# Add a score to the leaderboard, does nothing if it isn't a high score
 func add_score(level_index: int, score: int):
 	var leaderboard = leaderboard_data.get_leaderboard_for(level_index)
 	
@@ -27,11 +29,11 @@ func add_score(level_index: int, score: int):
 		ResourceSaver.save("user://leaderboard_data.res", leaderboard_data)
 
 
-func highscore_for(level_index: int):
+func get_highscore_for(level_index: int):
 	return leaderboard_data.get_leaderboard_for(level_index).get(player_name, null)
 
 
-func level_unlocked(level_index: int) -> bool:
+func is_level_unlocked(level_index: int) -> bool:
 	if level_index == 0:
 		return true
 	

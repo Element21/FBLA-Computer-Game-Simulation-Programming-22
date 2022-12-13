@@ -156,4 +156,4 @@ Right Click or Backspace to delete
 Escape to quit"
 fit_content_height = true
 
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/Play button" to="HBoxContainer/VBoxContainer" method="play"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/Play button" to="HBoxContainer/VBoxContainer" method="play_button_clicked"]

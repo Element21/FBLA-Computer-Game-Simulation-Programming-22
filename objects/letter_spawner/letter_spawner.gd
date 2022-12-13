@@ -8,7 +8,7 @@ export(NodePath) var level
 onready var packed_scene = preload("res://objects/letter/letter.tscn")
 
 
-func spawn_letter(sp: Vector3=spawn_point, iv: Vector3=initial_velocity, sa: int = spawn_amnt):
+func spawn_letters(sp: Vector3=spawn_point, iv: Vector3=initial_velocity, sa: int = spawn_amnt):
 	for _i in range(sa):
 		var letter = packed_scene.instance()
 		add_child(letter)
@@ -16,12 +16,15 @@ func spawn_letter(sp: Vector3=spawn_point, iv: Vector3=initial_velocity, sa: int
 		letter.global_transform.origin = sp
 		letter.apply_central_impulse(iv)
 
+
 func _ready():
 	get_node(level).connect("level_ended", self, "_on_level_ended")
+
 
 func _on_level_ended():
 	print("level ended")
 	$"Timer".stop()
 
+
 func _on_Timer_timeout():
-	spawn_letter()
+	spawn_letters()

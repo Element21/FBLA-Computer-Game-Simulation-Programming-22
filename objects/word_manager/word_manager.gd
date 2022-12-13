@@ -20,15 +20,16 @@ var platform_margin = 0.5
 
 var letter_platform_scene = preload("res://objects/letter_platform/letter_platform.tscn")
 
+
+# Get the local x position of a given platform
 func platform_index_to_x_position(index: int) -> float:
-	
 	return (index - word_length / 2) * (1 + platform_margin)
 
 
 func _ready():
-	
 	letters_placed.resize(word_length)
 	
+	# Instantiate all the platforms
 	for index in range(0, word_length):
 		var platform = letter_platform_scene.instance()
 		
@@ -37,20 +38,20 @@ func _ready():
 		
 		platforms.add_child(platform)
 	
+	# Point the score counter & timer at the camera
 	var camera_displacement_from_ui = camera.global_translation - ui.global_translation
 	
 	ui.rotation.x = atan2(camera_displacement_from_ui.z, camera_displacement_from_ui.y)
 
 
 func _process(delta):
-	
 	# Making it go fast at the beginning makes the beginning more exciting because the timer is going fast, and more exciting at the end because it looks like you don't have much time left (and makes succeeding anyways that much better)
 	# This is a common trick with health bars
 	time_indicator.scale.x = 1 - Tweening.fast_then_slow(1 - level.time_left / level.time_given)
 
 
+# Called when the hand drops a letter, tells the platform that a letter was dropped on it, validates the letter sequence, and calculates score
 func place_letter(letter: Letter):
-	
 	var index = letters_placed.find(null)
 	
 	var platform: LetterPlatform = platforms.get_child(index)
@@ -73,7 +74,6 @@ func place_letter(letter: Letter):
 
 
 func word_made():
-	
 	for platform in platforms.get_children():
 		level.score += platform.score
 	
@@ -89,8 +89,8 @@ func launch_all_platforms():
 		child.launch()
 
 
+# Get the position of the next empty platform
 func next_platform_position() -> Vector3:
-	
 	var index = letters_placed.find(null)
 	
 	var platform = platforms.get_child(index)
@@ -103,8 +103,8 @@ func _input(event):
 		delete()
 
 
+# Delete a letter
 func delete():
-	
 	var last_letter_index = null
 		
 	for i in range(0, letters_placed.size()):

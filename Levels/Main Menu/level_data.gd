@@ -31,13 +31,14 @@ func _ready():
 func select_level(level_idx: int, name: String, scene: PackedScene):
 	level_scene = scene
 	
-	var highscore = LeaderboardManager.highscore_for(level_idx)
+	var highscore = LeaderboardManager.get_highscore_for(level_idx)
 	
 	if highscore == null:
 		highscore_label.text = ""
 	else:
 		highscore_label.text = "Your highscore: " + String(highscore)
 	
+	# AspectRatioContainer doesn't expand to the same size as its child so I have to do this
 	image_container.rect_min_size.x = image.rect_size.x
 	image.texture = images[level_idx]
 	
@@ -46,9 +47,10 @@ func select_level(level_idx: int, name: String, scene: PackedScene):
 	self.show()
 
 
-func play():
+func play_button_clicked():
 	var status = get_tree().change_scene_to(level_scene)
 	
 	Music.end_ambience()
 	
 	assert(status == OK)
+
