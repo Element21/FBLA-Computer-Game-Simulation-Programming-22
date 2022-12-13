@@ -169,4 +169,4 @@ omni_shadow_detail = 0
 
 [node name="Letter Spawner" parent="." instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.7847, 0 )
-initial_velocity = Vector3( 0, 10, 0 )
+level = NodePath("../Level")

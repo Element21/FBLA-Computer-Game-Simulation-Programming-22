@@ -8,8 +8,8 @@
 [ext_resource path="res://objects/word_manager/word_manager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/materials/invisible.tres" type="Material" id=7]
 [ext_resource path="res://resources/materials/volcano/volcano.tres" type="Material" id=8]
-[ext_resource path="res://objects/letter/letter.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/Level 5/volcano_hole.gd" type="Script" id=10]
+[ext_resource path="res://resources/letter_spawner/letter_spawner.tscn" type="PackedScene" id=11]
 
 [sub_resource type="PlaneMesh" id=2]
 material = ExtResource( 3 )
@@ -103,9 +103,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4905, 7.75409 )
 camera = NodePath("../Camera")
 level = NodePath("../Level")
 
-[node name="Letter" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.13107, 0 )
-linear_velocity = Vector3( 5, 5, 0 )
+[node name="Letter Spawner" parent="." instance=ExtResource( 11 )]
+level = NodePath("../Level")
 
 [connection signal="body_entered" from="Environment/Volcano hole" to="Environment/Volcano hole" method="object_entered"]
 [connection signal="body_exited" from="Environment/Volcano hole" to="Environment/Volcano hole" method="object_exited"]

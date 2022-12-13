@@ -6,14 +6,14 @@ onready var mesh_instance: MeshInstance = get_node("Mesh")
 onready var letter_slap_sound: AudioStreamPlayer3D = get_node("Slap")
 onready var particles: Particles = get_node("Particles")
 
-export var which_letter: String = 'a'
+var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+var which_letter: String = alphabet[randi() % alphabet.size()] # Pick random letter from "alphabet" to spawn
 
 
 func set_mesh():
 	var mesh: ArrayMesh = load("res://resources/letters/" + which_letter + ".obj") as ArrayMesh
-	
 	mesh_instance.mesh = mesh
-	
 	undo_mesh_translation(mesh)
 
 
