@@ -22,6 +22,6 @@ func _ready():
 		button.text = level_names[i]
 		button.connect("button_down", level_data, "select_level", [i, level_names[i], levels[i]])
 		
-		button.disabled = !LeaderboardManager.level_unlocked(i)
+		#button.disabled = !LeaderboardManager.level_unlocked(i)
 		
 		level_buttons.add_child(button)

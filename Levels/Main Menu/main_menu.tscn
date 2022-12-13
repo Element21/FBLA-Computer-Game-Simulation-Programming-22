@@ -21,7 +21,7 @@ levels = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 
 level_names = [ "Level 1", "Level 2", "Level 3", "Level 4", "Level 5" ]
 level_button_distance = 10
 level_buttons = NodePath("HBoxContainer/Level buttons")
-level_data = NodePath("HBoxContainer/Level data")
+level_data = NodePath("HBoxContainer/VBoxContainer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -33,12 +33,10 @@ anchor_left = 0.05
 anchor_top = 0.05
 anchor_right = 0.05
 anchor_bottom = 0.05
-margin_right = 40.0
-margin_bottom = 40.0
 
 [node name="Level buttons" type="VBoxContainer" parent="HBoxContainer"]
 margin_right = 115.0
-margin_bottom = 199.0
+margin_bottom = 129.0
 grow_horizontal = 2
 custom_constants/separation = 35
 
@@ -52,61 +50,68 @@ text = "Levels"
 
 [node name="Control" type="Control" parent="HBoxContainer"]
 margin_left = 119.0
-margin_right = 269.0
-margin_bottom = 199.0
-rect_min_size = Vector2( 150, 0 )
+margin_right = 219.0
+margin_bottom = 129.0
+rect_min_size = Vector2( 100, 0 )
 
-[node name="Level data" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 273.0
-margin_right = 405.0
-margin_bottom = 199.0
+[node name="ImageContainer" type="AspectRatioContainer" parent="HBoxContainer"]
+margin_left = 223.0
+margin_right = 352.0
+margin_bottom = 129.0
+rect_min_size = Vector2( 129, 0 )
+stretch_mode = 1
+alignment_horizontal = 0
+alignment_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ImageContainer"]
+margin_right = 129.0
+margin_bottom = 129.0
+expand = true
+stretch_mode = 6
+
+[node name="ImageSpacer" type="Control" parent="HBoxContainer"]
+margin_left = 356.0
+margin_right = 388.0
+rect_min_size = Vector2( 32, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 392.0
+margin_right = 524.0
+margin_bottom = 129.0
+alignment = 1
 script = ExtResource( 3 )
 
-[node name="Level label" type="Label" parent="HBoxContainer/Level data"]
-margin_right = 132.0
-margin_bottom = 48.0
-custom_fonts/font = ExtResource( 2 )
-text = "Level Q"
-align = 1
-
-[node name="Control" type="Control" parent="HBoxContainer/Level data"]
-margin_top = 52.0
-margin_right = 132.0
-margin_bottom = 66.0
-rect_min_size = Vector2( 0, 14 )
-
-[node name="Play button" type="Button" parent="HBoxContainer/Level data"]
+[node name="Play button" type="Button" parent="HBoxContainer/VBoxContainer"]
 margin_left = 34.0
-margin_top = 70.0
 margin_right = 97.0
-margin_bottom = 113.0
+margin_bottom = 43.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Play"
 
-[node name="Control2" type="Control" parent="HBoxContainer/Level data"]
-margin_top = 117.0
+[node name="Control2" type="Control" parent="HBoxContainer/VBoxContainer"]
+margin_top = 47.0
 margin_right = 132.0
-margin_bottom = 137.0
+margin_bottom = 67.0
 rect_min_size = Vector2( 0, 20 )
 
-[node name="Highscore" type="Label" parent="HBoxContainer/Level data"]
-margin_top = 141.0
+[node name="Highscore" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 71.0
 margin_right = 132.0
-margin_bottom = 160.0
+margin_bottom = 90.0
 text = "Your highscore: -8"
 align = 1
 
-[node name="Control3" type="Control" parent="HBoxContainer/Level data"]
-margin_top = 164.0
+[node name="Control3" type="Control" parent="HBoxContainer/VBoxContainer"]
+margin_top = 94.0
 margin_right = 132.0
-margin_bottom = 172.0
+margin_bottom = 102.0
 rect_min_size = Vector2( 0, 8 )
 
-[node name="Leaderboard" parent="HBoxContainer/Level data" instance=ExtResource( 11 )]
-margin_top = 176.0
+[node name="Leaderboard" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 11 )]
+margin_top = 106.0
 margin_right = 132.0
-margin_bottom = 199.0
+margin_bottom = 129.0
 
 [node name="Button" parent="." instance=ExtResource( 10 )]
 
@@ -148,5 +153,3 @@ Right Click or Backspace to delete
 
 Escape to quit"
 fit_content_height = true
-
-[connection signal="button_down" from="HBoxContainer/Level data/Play button" to="HBoxContainer/Level data" method="play"]
