@@ -145,7 +145,7 @@ Click to grab
 Right Click or Backspace to delete
 
 Escape to quit"
-text = "Instructions
+text = "[center]Instructions
 
 Grab letters from the soup to make words
 Words that share fewer letters with other words get more points
