@@ -25,6 +25,7 @@ func start():
 
 
 func _ready():
+	randomize()
 	if countdown:
 		level_countdown.start(camera)
 	else:

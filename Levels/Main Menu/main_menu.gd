@@ -13,7 +13,7 @@ onready var instructions = get_node("Instructions")
 
 
 func _ready():
-	if !LeaderboardManager.level_unlocked(1):
+	if !LeaderboardManager.is_level_unlocked(1):
 		instructions.popup()
 	
 	# Add buttons for each level

@@ -10,10 +10,13 @@ var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 
 var which_letter: String = alphabet[randi() % alphabet.size()] # Pick random letter from "alphabet" to spawn
 
+var material = preload("res://resources/materials/letter/letter.tres")
+
 
 func set_mesh():
 	var mesh: ArrayMesh = load("res://resources/letters/" + which_letter + ".obj") as ArrayMesh
 	mesh_instance.mesh = mesh
+	mesh_instance.set_surface_material(0, material)
 	undo_mesh_translation(mesh)
 
 
