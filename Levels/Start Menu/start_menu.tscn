@@ -81,6 +81,7 @@ __meta__ = {
 [node name="Button" parent="." instance=ExtResource( 4 )]
 
 [node name="Transition" parent="." instance=ExtResource( 5 )]
+visible = false
 script = ExtResource( 6 )
 start_menu_node_passthrough = NodePath("..")
 
