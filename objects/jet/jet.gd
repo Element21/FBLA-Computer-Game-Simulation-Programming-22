@@ -3,7 +3,7 @@ extends Spatial
 
 export var power = 1.0
 export var dropoff = 1.0
-export var stream_pulling_force = 0.1
+export var stream_pulling_force = 3.0
 export var stream_pulling_distance = 3.5
 
 
@@ -26,7 +26,7 @@ func _process(delta):
 		# Pull letters towards the jet, prevents the letters from going out the the stream due to centripetal force
 		var letter_local_pos = self.to_local(letter.global_translation)
 		
-		letter.apply_central_impulse(-self.global_transform.basis.z * stream_pulling_force * force_scale * stream_force_profile(letter_local_pos.z / stream_pulling_distance))
+		letter.apply_central_impulse(-self.global_transform.basis.z * delta * stream_pulling_force * force_scale * stream_force_profile(letter_local_pos.z / stream_pulling_distance))
 
 
 # 1 when the distance is 0, 0 when distance is infinity, looks like a bell curve
@@ -34,9 +34,9 @@ func force_profile(dist: float) -> float:
 	return 1 / (pow(dist, 2) + 1)
 
 
-# -1 at z=-1, 0 at z=0, 1 at z=1, drops off outside that range
+# -1 at z=-1, 0 at z=0, 1 at z=1, drops off outside that range. Derivative is zero at z= -1, 0, 1
 func stream_force_profile(z: float) -> float:
-	var v = 1.5 * z - 0.5 * pow(z, 3)
+	var v = 2.5 * pow(z, 3) - 1.5 * pow(z, 5)
 	
 	if z > 0:
 		return max(v, 0)

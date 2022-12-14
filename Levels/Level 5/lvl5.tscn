@@ -100,6 +100,8 @@ arm_pivot = Vector2( -4, 50 )
 
 [node name="Word manager" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4905, 7.75409 )
+word_length = 4
+launch_vector = Vector3( 0, 4.6, 5 )
 camera = NodePath("../Camera")
 level = NodePath("../Level")
 

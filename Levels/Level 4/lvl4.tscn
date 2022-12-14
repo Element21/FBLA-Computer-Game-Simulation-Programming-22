@@ -301,7 +301,7 @@ level = NodePath("../Level")
 
 [node name="Word manager" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892, 7.39978, 5.96458 )
-word_length = 1
+word_length = 4
 launch_vector = Vector3( -0.2, 5, 5 )
 camera = NodePath("../Camera")
 level = NodePath("../Level")
