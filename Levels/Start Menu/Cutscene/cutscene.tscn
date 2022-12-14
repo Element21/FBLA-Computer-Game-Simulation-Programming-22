@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/shaders/transition.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Start Menu/Cutscene/cutscene.gd" type="Script" id=2]
+[ext_resource path="res://Levels/Start Menu/Cutscene/Slide.gd" type="Script" id=3]
+
+[node name="Control" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+
+[node name="Transition" parent="." instance=ExtResource( 1 )]
+
+[node name="Slide" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )

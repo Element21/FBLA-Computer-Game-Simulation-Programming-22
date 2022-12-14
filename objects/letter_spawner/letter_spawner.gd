@@ -29,7 +29,6 @@ func _ready():
 
 
 func _on_level_ended():
-	print("level ended")
 	timer.stop()
 
 
