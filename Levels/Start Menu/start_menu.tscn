@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Levels/Start Menu/soupcover.png" type="Texture" id=1]
 [ext_resource path="res://Levels/menu_theme.tres" type="Theme" id=2]
 [ext_resource path="res://Levels/Start Menu/start_menu.gd" type="Script" id=3]
 [ext_resource path="res://objects/bottom_buttons/bottom_buttons.tscn" type="PackedScene" id=4]
 [ext_resource path="res://resources/shaders/transition.tscn" type="PackedScene" id=5]
-[ext_resource path="res://resources/shaders/transition.gd" type="Script" id=6]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0, 0, 0.741176 )
@@ -81,8 +80,7 @@ __meta__ = {
 [node name="Button" parent="." instance=ExtResource( 4 )]
 
 [node name="Transition" parent="." instance=ExtResource( 5 )]
-script = ExtResource( 6 )
-start_menu_node_passthrough = NodePath("..")
+visible = false
 
 [connection signal="text_entered" from="VBoxContainer/LineEdit" to="." method="go_to_main_menu"]
 [connection signal="button_down" from="VBoxContainer/Button" to="." method="go_to_main_menu" binds= [ "The LineEdit gives a string argument so I have to too" ]]

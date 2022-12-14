@@ -1,24 +1,27 @@
-extends Node2D
+extends Control
 
 onready var slideNode = $Slide
-onready var transitionNode = $Transition
 
 var slide_counter = 0
 
 var slideList = ["slide_1", "slide_2", "slide_3", "slide_4", "slide_5", "slide_6", "slide_7", "slide_8", "slide_9"]
 
+var main_menu_scene: PackedScene = preload("res://Levels/Main Menu/main_menu.tscn")
+
 func fadeIn():
-	$ColorRect/AnimationPlayer.play("fadeIn")
+	$Transition/AnimationPlayer.play("fadeIn")
 
 func fadeOut():
-	$ColorRect/AnimationPlayer.play("fadeOut")
+	$Transition/AnimationPlayer.play("fadeOut")
 
-func _start_menu_node_on_first_play():
-	slideNode.texture = "res://resources/cutscene_frames/" + slideList[slide_counter] + ".png"
-	self.hidden = false
-	fadeIn()
+func _slide_on_gui_input():
+	if slide_counter == 8:
+		get_tree().change_scene_to(main_menu_scene)
+	slide_counter += 1
+	slideNode.set_texture(load("res://resources/cutscene_frames/" + slideList[slide_counter] + ".png"))
 
 func _ready():
-	self.hidden = true
-	transitionNode.start_menu_node_passthough.connect("first_play", self, "_start_menu_node_on_first_play")
+	slideNode.set_texture(load("res://resources/cutscene_frames/" + slideList[slide_counter] + ".png"))
+	fadeIn()
+	self.visible = true
 	slideNode.connect("gui_input", self, "_slide_on_gui_input")

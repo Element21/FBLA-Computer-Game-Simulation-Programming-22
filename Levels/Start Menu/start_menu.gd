@@ -10,13 +10,14 @@ export(NodePath) onready var name_input = get_node(name_input) as LineEdit
 onready var empty_name_error = get_node("VBoxContainer/Empty name error")
 
 func go_to_main_menu(_from_signal):
-	if not LeaderboardManager.is_level_unlocked(1):
+	if not LeaderboardManager.is_level_unlocked(2):
 		"Assume this is first run, lauch cutscene"
+		print("CUTSCENE")
 		self.visible = false
+		$Transition.visible = true
 		$Transition/AnimationPlayer.play("fadeOut")
 		var status = get_tree().change_scene_to(cutscene_scene)
 		assert(status == OK)
-		emit_signal("first_play")
 
 	var name = name_input.text
 	
