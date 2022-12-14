@@ -61,7 +61,7 @@ func pointing_at_valid_soup_surface() -> bool:
 
 
 func _input(event):
-	if event.is_action_pressed("click") && pointing_at_valid_soup_surface():
+	if event.is_action_pressed("click") && pointing_at_valid_soup_surface() && !word_manager.no_spots_left():
 		grabbing_state = GRABBING_STATE.DIPPING
 		
 		start_hand_translation = hand.translation

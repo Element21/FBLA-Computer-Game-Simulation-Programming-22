@@ -84,6 +84,10 @@ func word_made():
 	launch_word_timer.start()
 
 
+func no_spots_left() -> bool:
+	return letters_placed.find(null) == -1
+
+
 func launch_all_platforms():
 	for child in platforms.get_children():
 		child.launch()
