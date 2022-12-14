@@ -40,6 +40,7 @@ extents = Vector3( 10, 10, 1 )
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
 time_given = 150
+countdown = false
 next_level = ExtResource( 9 )
 level_index = 3
 camera = NodePath("../Camera")
@@ -300,7 +301,8 @@ level = NodePath("../Level")
 
 [node name="Word manager" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892, 7.39978, 5.96458 )
-word_length = 4
+word_length = 1
+launch_vector = Vector3( -0.2, 5, 5 )
 camera = NodePath("../Camera")
 level = NodePath("../Level")
 
