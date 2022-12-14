@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://resources/shaders/transition.tres" type="Shader" id=1]
 [ext_resource path="res://resources/shaders/transiton_masks/from_center.png" type="Texture" id=2]
+[ext_resource path="res://resources/shaders/transition.gd" type="Script" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
-shader_param/cutoff = 1.0
+shader_param/cutoff = 0.0
 shader_param/smooth_size = 0.2
 shader_param/transitionMask = ExtResource( 2 )
 
@@ -32,7 +33,7 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1 )
+"times": PoolRealArray( 0, 0.5 )
 }
 
 [sub_resource type="Animation" id=4]
@@ -45,14 +46,17 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1 )
+"times": PoolRealArray( 0, 0.5 )
 }
 
 [node name="ColorRect" type="ColorRect"]
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 896.0
+margin_bottom = 480.0
 color = Color( 0, 0, 0, 1 )
+script = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
