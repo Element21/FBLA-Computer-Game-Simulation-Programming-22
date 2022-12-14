@@ -39,6 +39,7 @@ extents = Vector3( 10, 10, 1 )
 [node name="Spatial" type="Spatial"]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
+time_given = 150
 next_level = ExtResource( 9 )
 level_index = 3
 camera = NodePath("../Camera")
@@ -222,73 +223,73 @@ shape = SubResource( 5 )
 [node name="Jets" type="Spatial" parent="Environment"]
 
 [node name="Jet" parent="Environment/Jets" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732095, 14.7145 )
-power = 10.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732, 14.715 )
+power = 8.0
 dropoff = 3.0
 
 [node name="Jet2" parent="Environment/Jets" instance=ExtResource( 8 )]
 transform = Transform( 0.838433, 0, 0.545005, 0, 1, 0, -0.545005, 0, 0.838433, 9.18265, 0.732095, 13.9293 )
-power = 10.0
+power = 8.0
 dropoff = 3.0
 
 [node name="Jet3" parent="Environment/Jets" instance=ExtResource( 8 )]
 transform = Transform( 0.641677, 0, 0.766975, 0, 1, 0, -0.766975, 0, 0.641677, 16.2725, 0.732095, 8.90399 )
-power = 10.0
+power = 8.0
 dropoff = 3.0
 
 [node name="Jet4" parent="Environment/Jets" instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.9245, 0.732095, 0.472229 )
-power = 10.0
+power = 8.0
 dropoff = 3.0
 
 [node name="Jet5" parent="Environment/Jets" instance=ExtResource( 8 )]
 transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 17.3745, 0.732095, -7.60832 )
-power = 10.0
+power = 8.0
 dropoff = 3.0
 
 [node name="Jet6" parent="Environment/Jets" instance=ExtResource( 8 )]
 transform = Transform( -0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, 11.0214, 0.732095, -12.874 )
-power = 10.0
+power = 8.0
 dropoff = 3.0
 
 [node name="Jet7" parent="Environment/Jets" instance=ExtResource( 8 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.02818, 0.732095, -14.9214 )
-power = 10.0
+power = 8.0
 dropoff = 3.0
 
 [node name="Jet8" parent="Environment/Jets" instance=ExtResource( 8 )]
 transform = Transform( -0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, -6.10083, 0.732095, -14.6831 )
-power = 10.0
+power = 8.0
 dropoff = 3.0
 
 [node name="Jet9" parent="Environment/Jets" instance=ExtResource( 8 )]
 transform = Transform( -0.781411, 0, -0.624016, 0, 1, 0, 0.624016, 0, -0.781411, -13.6017, 0.732095, -11.9301 )
-power = 10.0
+power = 8.0
 dropoff = 3.0
 
 [node name="Jet10" parent="Environment/Jets" instance=ExtResource( 8 )]
 transform = Transform( -0.34202, 0, -0.939692, 0, 1, 0, 0.939692, 0, -0.34202, -18.9811, 0.732095, -6.76269 )
-power = 10.0
+power = 8.0
 dropoff = 3.0
 
 [node name="Jet11" parent="Environment/Jets" instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.1529, 0.732095, 0.0388269 )
-power = 10.0
+power = 8.0
 dropoff = 3.0
 
 [node name="Jet12" parent="Environment/Jets" instance=ExtResource( 8 )]
 transform = Transform( 0.577687, 0, -0.816259, 0, 1, 0, 0.816259, 0, 0.577687, -18.7393, 0.732095, 7.19377 )
-power = 10.0
+power = 8.0
 dropoff = 3.0
 
 [node name="Jet13" parent="Environment/Jets" instance=ExtResource( 8 )]
 transform = Transform( 0.856555, 0, -0.516055, 0, 1, 0, 0.516055, 0, 0.856555, -14.1883, 0.732095, 11.8584 )
-power = 10.0
+power = 8.0
 dropoff = 3.0
 
 [node name="Jet14" parent="Environment/Jets" instance=ExtResource( 8 )]
 transform = Transform( 0.968544, 0, -0.248842, 0, 1, 0, 0.248842, 0, 0.968544, -7.8666, 0.732095, 13.9449 )
-power = 10.0
+power = 8.0
 dropoff = 3.0
 
 [node name="Hand" parent="." instance=ExtResource( 3 )]
@@ -299,9 +300,10 @@ level = NodePath("../Level")
 
 [node name="Word manager" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892, 7.39978, 5.96458 )
+word_length = 4
 camera = NodePath("../Camera")
 level = NodePath("../Level")
 
 [node name="Letter Spawner" parent="." instance=ExtResource( 16 )]
-spawn_point = Vector3( 20, 1, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.768514, -16.1616 )
 level = NodePath("../Level")
