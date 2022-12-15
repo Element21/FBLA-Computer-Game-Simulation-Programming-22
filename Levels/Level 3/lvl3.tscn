@@ -55,7 +55,7 @@ height = 1.0
 [node name="Spatial2" type="Spatial"]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
-time_given = 150
+time_given = 60
 next_level = ExtResource( 10 )
 level_index = 2
 camera = NodePath("../Camera")

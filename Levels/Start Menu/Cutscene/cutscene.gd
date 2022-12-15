@@ -4,7 +4,17 @@ onready var slideNode = $Slide
 
 var slide_counter = 0
 
-var slideList = ["slide_1", "slide_2", "slide_3", "slide_4", "slide_5", "slide_6", "slide_7", "slide_8", "slide_9"]
+var slideList = [
+	preload("res://resources/cutscene_frames/frame_1.png"),
+	preload("res://resources/cutscene_frames/frame_2.png"),
+	preload("res://resources/cutscene_frames/frame_3.png"),
+	preload("res://resources/cutscene_frames/frame_4.png"),
+	preload("res://resources/cutscene_frames/frame_5.png"),
+	preload("res://resources/cutscene_frames/frame_7.png"),
+	preload("res://resources/cutscene_frames/frame_8.png"),
+	preload("res://resources/cutscene_frames/frame_6.png"),
+	preload("res://resources/cutscene_frames/frame_9.png"),
+]
 
 var main_menu_scene: PackedScene = preload("res://Levels/Main Menu/main_menu.tscn")
 
@@ -14,16 +24,28 @@ func fadeIn():
 func fadeOut():
 	$Transition/AnimationPlayer.play("fadeOut")
 
-func _slide_on_gui_input():
+func _slide_on_gui_input(event: InputEvent):
+	if !event.is_action_pressed("click"):
+		return
+	
 	if slide_counter == 8:
 		get_tree().change_scene_to(main_menu_scene)
+		return
+	
 	slide_counter += 1
 	fadeOut()
-	slideNode.set_texture(load("res://resources/cutscene_frames/" + slideList[slide_counter] + ".png"))
+
+
+func fade_out_done(anim_name: String):
+	if anim_name != "fadeOut":
+		return
+	
+	slideNode.set_texture(slideList[slide_counter])
 	fadeIn()
 
+
 func _ready():
-	slideNode.set_texture(load("res://resources/cutscene_frames/" + slideList[slide_counter] + ".png"))
-	fadeIn()
 	self.visible = true
-	slideNode.connect("gui_input", self, "_slide_on_gui_input")
+	fade_out_done("fadeOut")
+	$Transition/AnimationPlayer.connect("animation_finished", self, "fade_out_done")
+

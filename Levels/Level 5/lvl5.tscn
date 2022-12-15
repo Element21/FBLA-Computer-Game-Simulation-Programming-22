@@ -31,7 +31,7 @@ radius = 3.07453
 [node name="Spatial" type="Spatial"]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
-time_given = 90
+time_given = 60
 level_index = 4
 camera = NodePath("../Camera")
 

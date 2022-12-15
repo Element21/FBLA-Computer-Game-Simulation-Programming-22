@@ -39,7 +39,7 @@ extents = Vector3( 10, 10, 1 )
 [node name="Spatial" type="Spatial"]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
-time_given = 150
+time_given = 60
 countdown = false
 next_level = ExtResource( 9 )
 level_index = 3
