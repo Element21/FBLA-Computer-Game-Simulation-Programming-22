@@ -6,7 +6,7 @@ render_mode unshaded;
 
 uniform float cutoff : hint_range(0.0, 1.0);
 uniform float smooth_size : hint_range(0.0, 1.0);
-uniform sampler2D transitionMask : hint_albedo;
+uniform sampler2D transitionMask : source_color;
 
 void fragment() {
 	float value = texture(transitionMask, UV).r;

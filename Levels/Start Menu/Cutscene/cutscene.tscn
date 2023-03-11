@@ -2,7 +2,7 @@
 
 [ext_resource path="res://resources/shaders/transition.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Start Menu/Cutscene/cutscene.gd" type="Script" id=2]
-[ext_resource path="res://resources/cutscene_frames/frame_1.png" type="Texture" id=3]
+[ext_resource path="res://resources/cutscene_frames/frame_1.png" type="Texture2D" id=3]
 
 [node name="Control" type="Control"]
 visible = false

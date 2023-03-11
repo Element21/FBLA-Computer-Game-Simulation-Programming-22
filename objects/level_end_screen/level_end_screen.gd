@@ -1,42 +1,38 @@
-extends ViewportContainer
+extends SubViewportContainer
 
 class_name LevelEndScreen
 
-export(int) var level_index
-export(PackedScene) var next_level
+@export var level_index: int
+@export var next_level: PackedScene
 
-export(NodePath) onready var main_menu_button = get_node(main_menu_button) as Button
-export(NodePath) onready var next_level_button = get_node(next_level_button) as Button
-export(NodePath) onready var score_label = get_node(score_label) as Label
-export(NodePath) onready var leaderboard = get_node(leaderboard) as Leaderboard
 
 func _ready():
 	self.hide()
 	
 	# Prevent buttons from being clicked on in game (even though they're already hidden, idk)
-	main_menu_button.hide()
-	next_level_button.hide()
+	%"Main menu button".hide()
+	%"Next level button".hide()
 
 
 func level_ended(score: int):
-	score_label.text = String(score)
+	%"Score label".text = String.num_int64(score)
 	
-	leaderboard.show_leaderboard_for(level_index)
+	%Leaderboard.show_leaderboard_for(level_index)
 	
 	self.show()
-	main_menu_button.show()
+	%"Main menu button".show()
 	
 	if next_level:
-		next_level_button.show()
+		%"Next level button".show()
 
 
 func go_to_main_menu():
-	var status = get_tree().change_scene("res://Levels/Main Menu/main_menu.tscn")
+	var status = get_tree().change_scene_to_file("res://Levels/Main Menu/main_menu.tscn")
 	assert(status == OK)
 	
 	Music.start_ambience()
 
 
 func go_to_next_level():
-	var status = get_tree().change_scene_to(next_level)
+	var status = get_tree().change_scene_to_packed(next_level)
 	assert(status == OK)

@@ -1,20 +1,21 @@
 [remap]
 
 importer="wavefront_obj"
+importer_version=1
 type="Mesh"
-path="res://.import/c.obj-1008ae0d242f960f2ad9c77aef8ce083.mesh"
+uid="uid://clnhipxnek5du"
+path="res://.godot/imported/c.obj-1008ae0d242f960f2ad9c77aef8ce083.mesh"
 
 [deps]
 
-files=[ "res://.import/c.obj-1008ae0d242f960f2ad9c77aef8ce083.mesh" ]
+files=["res://.godot/imported/c.obj-1008ae0d242f960f2ad9c77aef8ce083.mesh"]
 
 source_file="res://resources/letters/c.obj"
-dest_files=[ "res://.import/c.obj-1008ae0d242f960f2ad9c77aef8ce083.mesh", "res://.import/c.obj-1008ae0d242f960f2ad9c77aef8ce083.mesh" ]
+dest_files=["res://.godot/imported/c.obj-1008ae0d242f960f2ad9c77aef8ce083.mesh", "res://.godot/imported/c.obj-1008ae0d242f960f2ad9c77aef8ce083.mesh"]
 
 [params]
 
 generate_tangents=true
-scale_mesh=Vector3( 1, 1, 1 )
-offset_mesh=Vector3( 0, 0, 0 )
-octahedral_compression=true
-optimize_mesh_flags=4286
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

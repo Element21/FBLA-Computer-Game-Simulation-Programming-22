@@ -1,19 +1,17 @@
-extends Spatial
+extends Node3D
 
-export var upward_velocity: float = 0
-export var horizontal_velocity: float = 2
-export var spawn_amnt: int = 1
-export var spawn_interval: float = 1.0
-export(NodePath) var level
+@export var upward_velocity: float = 0
+@export var horizontal_velocity: float = 2
+@export var spawn_amnt: int = 1
+@export var spawn_interval: float = 1.0
+@export var level: Level
 
-onready var timer = $Timer
-
-onready var packed_scene = preload("res://objects/letter/letter.tscn")
+@onready var packed_scene = preload("res://objects/letter/letter.tscn")
 
 
 func spawn_letters():
 	for _i in range(spawn_amnt):
-		var letter = packed_scene.instance()
+		var letter = packed_scene.instantiate()
 		add_child(letter)
 		letter.add_to_group("Letter")
 		
@@ -24,13 +22,5 @@ func spawn_letters():
 
 
 func _ready():
-	get_node(level).connect("level_ended", self, "_on_level_ended")
-	timer.wait_time = spawn_interval
-
-
-func _on_level_ended():
-	timer.stop()
-
-
-func _on_Timer_timeout():
-	spawn_letters()
+	level.connect("level_ended", func(): %Timer.stop())
+	%Timer.wait_time = spawn_interval

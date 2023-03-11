@@ -1,67 +1,79 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://csr7ae2r8ldmy"]
 
-[ext_resource path="res://resources/shaders/transition.tres" type="Shader" id=1]
-[ext_resource path="res://resources/shaders/transiton_masks/from_center.png" type="Texture" id=2]
-[ext_resource path="res://resources/shaders/transition.gd" type="Script" id=3]
+[ext_resource type="Shader" path="res://resources/shaders/transition.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://chhtx8bpgbqpp" path="res://resources/shaders/transiton_masks/from_center.png" id="2"]
+[ext_resource type="Script" path="res://resources/shaders/transition.gd" id="3"]
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 1 )
-shader_param/cutoff = 0.0947538
-shader_param/smooth_size = 0.2
-shader_param/transitionMask = ExtResource( 2 )
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("1")
+shader_parameter/cutoff = 0.0947538
+shader_parameter/smooth_size = 0.2
+shader_parameter/transitionMask = ExtResource("2")
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="3"]
 length = 0.001
 tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:material:shader_param/cutoff")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id="4"]
 resource_name = "fadeIn"
 length = 0.3
 tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:material:shader_param/cutoff")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.3 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "fadeOut"
 length = 0.3
 tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:material:shader_param/cutoff")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.3 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vtr33"]
+_data = {
+"RESET": SubResource("3"),
+"fadeIn": SubResource("4"),
+"fadeOut": SubResource("2")
 }
 
 [node name="ColorRect" type="ColorRect"]
-material = SubResource( 1 )
+material = SubResource("1")
+custom_minimum_size = Vector2(1024, 600)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 1024, 600 )
-color = Color( 0, 0, 0, 1 )
-script = ExtResource( 3 )
+color = Color(0, 0, 0, 1)
+script = ExtResource("3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 reset_on_save = false
 method_call_mode = 1
-anims/RESET = SubResource( 3 )
-anims/fadeIn = SubResource( 4 )
-anims/fadeOut = SubResource( 2 )
+libraries = {
+"": SubResource("AnimationLibrary_vtr33")
+}

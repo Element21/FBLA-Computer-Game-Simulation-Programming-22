@@ -1,17 +1,17 @@
-extends Area
+extends Area3D
 
 class_name Soup
 
 
-export(NodePath) onready var level = get_node(level) as Level
-export var surface = 8.73
+@export var level: Level
+@export var surface = 8.73
 
 var buoyancy_acceleration = 9.81 * 1.5
 var making_upright_acceleration = 5
 var drag = 3
 
 
-func apply_buoyancy_to_thing(thing: RigidBody, delta: float):
+func apply_buoyancy_to_thing(thing: RigidBody3D, delta: float):
 	# Buoyancy
 	thing.apply_central_impulse(Vector3(0, 19.62, 0) * thing.mass * delta)
 
@@ -33,7 +33,7 @@ func apply_buoyancy_to_thing(thing: RigidBody, delta: float):
 		thing.apply_torque_impulse(-torque)
 
 
-func maybe_apply_buoyancy_to_thing(thing: RigidBody, delta: float):
+func maybe_apply_buoyancy_to_thing(thing: RigidBody3D, delta: float):
 	if thing.global_translation.y < surface && overlaps_body(thing):
 		apply_buoyancy_to_thing(thing, delta)
 

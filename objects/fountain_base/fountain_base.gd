@@ -1,14 +1,14 @@
-extends Area
+extends Area3D
 
 
-export(NodePath) onready var fountain_output = get_node(fountain_output) as FountainOutput
+@export var fountain_output: FountainOutput
 
-export var peak_sucking_force = 20.0
-export var peak_sucking_force_distance = 1.0
+@export var peak_sucking_force = 20.0
+@export var peak_sucking_force_distance = 1.0
 
 # Sinking functionality is to make letters to go under a fountain's collision box
-export var peak_sinking_force = 20.0
-export var peak_sinking_force_distance = 1.0
+@export var peak_sinking_force = 20.0
+@export var peak_sinking_force_distance = 1.0
 
 
 func _process(delta):
@@ -32,5 +32,5 @@ func force_profile(dist: float) -> float:
 
 # Launch the letter when it enters the fountain base
 func object_entered(object):
-	if object is RigidBody:
+	if object is RigidBody3D:
 		fountain_output.launch_object(object)

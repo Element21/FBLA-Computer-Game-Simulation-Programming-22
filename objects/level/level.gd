@@ -1,19 +1,17 @@
-extends Spatial
+extends Node3D
 
 class_name Level
 
 
-export var time_given = 30
-export var countdown = true
-export var enable_timer = true
-export(PackedScene) var next_level
-export(int) var level_index
-export(NodePath) onready var camera = get_node(camera) as Camera
+@export var time_given = 30
+@export var countdown = true
+@export var enable_timer = true
+@export var next_level: PackedScene
+@export var level_index: int
+@export var camera: Camera3D
 
-onready var level_countdown = get_child(0) as LevelCountdown
-onready var level_end_screen = get_child(1) as LevelEndScreen
 
-onready var time_left = time_given
+@onready var time_left = time_given
 var score = 0
 var playing = false
 
@@ -27,12 +25,12 @@ func start():
 func _ready():
 	randomize()
 	if countdown:
-		level_countdown.start(camera)
+		%"Level countdown".start(camera)
 	else:
 		start()
 	
-	level_end_screen.next_level = next_level
-	level_end_screen.level_index = level_index
+	%"Level end screen".next_level = next_level
+	%"Level end screen".level_index = level_index
 
 
 func _process(delta):
@@ -47,5 +45,5 @@ func _process(delta):
 		
 		Music.end_gameplay_music()
 		
-		level_end_screen.level_ended(score)
+		%"Level end screen".level_ended(score)
 

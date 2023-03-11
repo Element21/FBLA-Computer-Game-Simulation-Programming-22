@@ -6,11 +6,11 @@
 top_radius = 0.263
 bottom_radius = 0.0
 
-[node name="Jet" type="Spatial"]
+[node name="Jet" type="Node3D"]
 script = ExtResource( 1 )
 
-[node name="Direction indicator" type="MeshInstance" parent="."]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.365, 0, 0 )
+[node name="Direction indicator" type="MeshInstance3D" parent="."]
+transform = Transform3D( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.365, 0, 0 )
 mesh = SubResource( 1 )
 __meta__ = {
 "_editor_description_": "Indicates which direction the jet pushes nodes, hidden in game"

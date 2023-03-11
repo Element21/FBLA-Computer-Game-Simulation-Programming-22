@@ -2,13 +2,12 @@ extends Node
 
 # https://github.com/dwyl/english-words
 # 2D array, first index is word length minus 1, second is the index of the word; this helps with optimization
-onready var words: Array = load_words()
+@onready var words: Array = load_words()
 
 
 # Create the words array from the list
 func load_words() -> Array:
-	var f = File.new()
-	f.open("res://objects/words.txt", File.READ)
+	var f = FileAccess.open("res://objects/words.txt", FileAccess.READ)
 	
 	var new_words = []
 	
@@ -26,7 +25,7 @@ func load_words() -> Array:
 	return new_words
 
 
-func matches_word(letters: Array) -> bool:
+func matches_word(letters: Array[Letter]) -> bool:
 	# Check all the words of the same length to make sure the word is valid
 	for word in words[letters.size() - 1]:
 		if compare_word(word, letters):
@@ -35,7 +34,7 @@ func matches_word(letters: Array) -> bool:
 	return false
 
 
-func calculate_score_added(letters: Array):
+func calculate_score_added(letters: Array[Letter]):
 	var amt_could_be_placed = letters_that_could_be_used_next(letters)
 	
 	if amt_could_be_placed == 0:
@@ -44,7 +43,7 @@ func calculate_score_added(letters: Array):
 	return 27 - amt_could_be_placed
 
 
-func letters_that_could_be_used_next(letters: Array) -> int:
+func letters_that_could_be_used_next(letters: Array[Letter]) -> int:
 	var empty_index = letters.find(null)
 	
 	var could_be_placed = []
@@ -60,7 +59,7 @@ func letters_that_could_be_used_next(letters: Array) -> int:
 
 
 # Assumes word & letters are the same length
-func compare_word(word: String, letters: Array) -> bool:
+func compare_word(word: String, letters: Array[Letter]) -> bool:
 	for i in range(0, word.length()):
 		if letters[i] == null:
 			continue

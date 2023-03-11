@@ -1,150 +1,117 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=3 uid="uid://20aq5fj6wi5f"]
 
-[ext_resource path="res://Levels/menu_theme.tres" type="Theme" id=1]
-[ext_resource path="res://resources/big_label_font.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Levels/Main Menu/level_data.gd" type="Script" id=3]
-[ext_resource path="res://Levels/Level 1/lvl1.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Levels/Main Menu/main_menu.gd" type="Script" id=5]
-[ext_resource path="res://Levels/Level 2/lvl2.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Levels/Level 3/lvl3.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Levels/Level 5/lvl5.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Levels/Level 4/lvl4.tscn" type="PackedScene" id=9]
-[ext_resource path="res://objects/bottom_buttons/bottom_buttons.tscn" type="PackedScene" id=10]
-[ext_resource path="res://objects/leaderboard/leaderboard.tscn" type="PackedScene" id=11]
+[ext_resource type="Theme" uid="uid://dubog3hc6383i" path="res://Levels/menu_theme.tres" id="1"]
+[ext_resource type="Script" path="res://Levels/Main Menu/level_data.gd" id="3"]
+[ext_resource type="PackedScene" path="res://Levels/Level 1/lvl1.tscn" id="4"]
+[ext_resource type="Script" path="res://Levels/Main Menu/main_menu.gd" id="5"]
+[ext_resource type="PackedScene" path="res://Levels/Level 2/lvl2.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://bhpaglfnbruvn" path="res://Levels/Level 3/lvl3.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://Levels/Level 5/lvl5.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://Levels/Level 4/lvl4.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://objects/bottom_buttons/bottom_buttons.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://8yrg3uggl3m3" path="res://objects/leaderboard/leaderboard.tscn" id="11"]
 
 [node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 1 )
-script = ExtResource( 5 )
-levels = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ) ]
-level_names = [ "Level 1", "Level 2", "Level 3", "Level 4", "Level 5" ]
+theme = ExtResource("1")
+script = ExtResource("5")
+levels = [ExtResource("4"), ExtResource("6"), ExtResource("7"), ExtResource("9"), ExtResource("8")]
+level_names = ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"]
 level_button_distance = 10
-level_buttons = NodePath("HBoxContainer/Level buttons")
-level_data = NodePath("HBoxContainer/VBoxContainer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.415686, 0.117647, 0, 1 )
+color = Color(0.415686, 0.117647, 0, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
 anchor_left = 0.05
 anchor_top = 0.05
 anchor_right = 0.05
 anchor_bottom = 0.05
 
 [node name="Level buttons" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 159.0
-margin_bottom = 162.0
-grow_horizontal = 2
-custom_constants/separation = 35
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="Levels" type="Label" parent="HBoxContainer/Level buttons"]
-margin_right = 159.0
-margin_bottom = 61.0
-grow_horizontal = 2
-grow_vertical = 2
-custom_fonts/font = ExtResource( 2 )
+layout_mode = 2
 text = "Levels"
 
 [node name="Control" type="Control" parent="HBoxContainer"]
-margin_left = 163.0
-margin_right = 263.0
-margin_bottom = 162.0
-rect_min_size = Vector2( 100, 0 )
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
 
 [node name="ImageContainer" type="AspectRatioContainer" parent="HBoxContainer"]
-margin_left = 267.0
-margin_right = 396.0
-margin_bottom = 162.0
-rect_min_size = Vector2( 129, 0 )
+unique_name_in_owner = true
+custom_minimum_size = Vector2(129, 0)
+layout_mode = 2
 stretch_mode = 1
 alignment_horizontal = 0
 alignment_vertical = 0
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ImageContainer"]
-margin_right = 162.0
-margin_bottom = 162.0
-expand = true
+[node name="Image" type="TextureRect" parent="HBoxContainer/ImageContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1
 stretch_mode = 6
 
 [node name="ImageSpacer" type="Control" parent="HBoxContainer"]
-margin_left = 400.0
-margin_right = 432.0
-margin_bottom = 162.0
-rect_min_size = Vector2( 32, 0 )
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 436.0
-margin_right = 647.0
-margin_bottom = 162.0
+[node name="Level data" type="VBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 alignment = 1
-script = ExtResource( 3 )
+script = ExtResource("3")
 
-[node name="Play button" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_left = 63.0
-margin_right = 147.0
-margin_bottom = 54.0
+[node name="Play button" type="Button" parent="HBoxContainer/Level data"]
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Play"
 
-[node name="Control2" type="Control" parent="HBoxContainer/VBoxContainer"]
-margin_top = 58.0
-margin_right = 211.0
-margin_bottom = 78.0
-rect_min_size = Vector2( 0, 20 )
+[node name="Control2" type="Control" parent="HBoxContainer/Level data"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 
-[node name="Highscore" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 82.0
-margin_right = 211.0
-margin_bottom = 112.0
+[node name="Highscore" type="Label" parent="HBoxContainer/Level data"]
+unique_name_in_owner = true
+layout_mode = 2
 text = "Your highscore: -8"
-align = 1
 
-[node name="Control3" type="Control" parent="HBoxContainer/VBoxContainer"]
-margin_top = 116.0
-margin_right = 211.0
-margin_bottom = 124.0
-rect_min_size = Vector2( 0, 8 )
+[node name="Control3" type="Control" parent="HBoxContainer/Level data"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
 
-[node name="Leaderboard" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 11 )]
-margin_top = 128.0
-margin_right = 211.0
-margin_bottom = 162.0
+[node name="Leaderboard" parent="HBoxContainer/Level data" instance=ExtResource("11")]
+unique_name_in_owner = true
+layout_mode = 2
 
-[node name="Bottom buttons" parent="." instance=ExtResource( 10 )]
+[node name="Bottom buttons" parent="." instance=ExtResource("10")]
+layout_mode = 0
 
-[node name="Instructions" type="PopupDialog" parent="."]
+[node name="Instructions" type="Popup" parent="."]
+unique_name_in_owner = true
+size = Vector2i(400, 100)
 visible = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 750, 400 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Instructions"]
+custom_minimum_size = Vector2(700, 0)
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-rect_min_size = Vector2( 700, 0 )
-custom_constants/line_separation = 12
 bbcode_enabled = true
-bbcode_text = "[center]Instructions
-
-Grab letters from the soup to make words
-Words that share fewer letters with other words get more points
-
-Click to grab
-Right Click or Backspace to delete
-
-Escape to quit"
 text = "Instructions
 
 Grab letters from the soup to make words
@@ -154,6 +121,5 @@ Click to grab
 Right Click or Backspace to delete
 
 Escape to quit"
-fit_content_height = true
 
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/Play button" to="HBoxContainer/VBoxContainer" method="play_button_clicked"]
+[connection signal="button_down" from="HBoxContainer/Level data/Play button" to="HBoxContainer/Level data" method="play_button_clicked"]

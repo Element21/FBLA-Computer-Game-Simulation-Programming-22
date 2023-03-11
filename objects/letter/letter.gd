@@ -1,10 +1,7 @@
-extends RigidBody
+extends RigidBody3D
 
 class_name Letter
 
-onready var mesh_instance: MeshInstance = get_node("Mesh")
-onready var letter_slap_sound: AudioStreamPlayer3D = get_node("Slap")
-onready var particles: Particles = get_node("Particles")
 
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
@@ -15,12 +12,12 @@ var material = preload("res://resources/materials/letter/letter.tres")
 
 func set_mesh():
 	var mesh: ArrayMesh = load("res://resources/letters/" + which_letter + ".obj") as ArrayMesh
-	mesh_instance.mesh = mesh
-	mesh_instance.set_surface_material(0, material)
+	%Mesh.mesh = mesh
+	%Mesh.set_surface_override_material(0, material)
 	undo_mesh_translation(mesh)
 
 
-# Daniel's letter models are offset, this undoes the translation
+# Daniel's letter models are offset, this undoes the position
 # This assumes that the vertices are about evenly spread out, otherwise the average will be biased towards where there's a higher density of vertices
 func undo_mesh_translation(mesh: ArrayMesh):
 	var avg_translation = Vector3(0, 0, 0)
@@ -37,7 +34,7 @@ func undo_mesh_translation(mesh: ArrayMesh):
 		avg_translation += vertex * inverse_vertex_count
 	
 	
-	mesh_instance.translation -= avg_translation
+	%Mesh.position -= avg_translation
 
 
 func _ready():
@@ -45,7 +42,7 @@ func _ready():
 
 
 func on_collision(node: Node):
-	if !node is RigidBody:
+	if !node is RigidBody3D:
 		return
 	
 	# I can't use `is` because that makes a cyclic reference >:-(
@@ -53,7 +50,7 @@ func on_collision(node: Node):
 		# Letter on letter sound
 		pass
 	elif node is LetterPlatform:
-		letter_slap_sound.play()
+		%Slap.play()
 		soup_particle_burst()
 
 
@@ -62,5 +59,5 @@ func contacted_soup():
 
 
 func soup_particle_burst():
-	particles.rotation = -self.rotation
-	particles.emitting = true
+	%Particles.rotation = -self.rotation
+	%Particles.emitting = true

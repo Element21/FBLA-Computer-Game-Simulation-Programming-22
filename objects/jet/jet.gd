@@ -1,10 +1,10 @@
-extends Spatial
+extends Node3D
 
 
-export var power = 1.0
-export var dropoff = 1.0
-export var stream_pulling_force = 3.0
-export var stream_pulling_distance = 3.5
+@export var power = 1.0
+@export var dropoff = 1.0
+@export var stream_pulling_force = 3.0
+@export var stream_pulling_distance = 3.5
 
 
 func _ready():

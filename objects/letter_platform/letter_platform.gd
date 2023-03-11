@@ -1,4 +1,4 @@
-extends RigidBody
+extends RigidBody3D
 
 class_name LetterPlatform
 
@@ -6,9 +6,8 @@ var action_time = 1
 var launch_vector = Vector3(0, 2, 5)
 
 var score = null
-onready var score_mesh: MeshInstance = get_node("Score")
-onready var whoosh_sound: AudioStreamPlayer3D = get_node("Whoosh")
-onready var original_x = self.translation.x
+
+@onready var original_x = self.position.x
 
 var action = null
 var time = null
@@ -21,7 +20,7 @@ func flip():
 	action = "flip"
 	time = 0
 	
-	whoosh_sound.play()
+	%Whoosh.play()
 
 
 func launch():
@@ -34,7 +33,7 @@ func launch():
 		letter.collision_mask = 0
 		original_letter_position = letter.global_translation
 	
-	whoosh_sound.play()
+	%Whoosh.play()
 
 
 # Show the score granted by a letter
@@ -50,7 +49,7 @@ func set_score(new_score):
 	else:
 		mesh.text = String(new_score)
 	
-	score_mesh.mesh = mesh
+	%"Score mesh".mesh = mesh
 	
 	action = "setting score"
 	time = 0
@@ -76,7 +75,7 @@ func do_flip_transformation():
 	
 	self.rotation_degrees.x = lerp(0, 360, Tweening.smoothify(t))
 	
-	score_mesh.translation.z = lerp(1.5, 0.334, Tweening.smoothify(t))
+	%"Score mesh".position.z = lerp(1.5, 0.334, Tweening.smoothify(t))
 
 
 func do_launch_transformation():
@@ -84,25 +83,25 @@ func do_launch_transformation():
 	
 	var lerp_amt = Tweening.smooth_up_and_down(t)
 	
-	self.translation = lerp(Vector3(original_x, 0, 0), launch_vector + Vector3(original_x, 0, 0), lerp_amt)
+	self.position = lerp(Vector3(original_x, 0, 0), launch_vector + Vector3(original_x, 0, 0), lerp_amt)
 	
 	var global_launch_vector = self.to_global(launch_vector) - self.global_translation
 	
 	if letter != null && t < launch_curve_inflection_point:
 		var lerp_amt_derivative = Tweening.smooth_up_and_down_derivative(t) / action_time
 		
-		# Manually set the translation and velocity, making the physics engine do this is unreliable
+		# Manually set the position and velocity, making the physics engine do this is unreliable
 		letter.linear_velocity = global_launch_vector * lerp_amt_derivative
 		letter.global_translation = original_letter_position + lerp(Vector3(0, 0, 0), global_launch_vector, lerp_amt)
 	
 	# Pull the score back in
 	if t > 0.5:
-		score_mesh.translation.z = lerp(1.5, 0.334, Tweening.smoothify((t - 0.5) * 2))
+		%"Score mesh".position.z = lerp(1.5, 0.334, Tweening.smoothify((t - 0.5) * 2))
 
 
 func do_move_score():
 	
-	score_mesh.translation.z = lerp(0.334, 1.5, Tweening.smoothify(time / action_time))
+	%"Score mesh".position.z = lerp(0.334, 1.5, Tweening.smoothify(time / action_time))
 
 
 # When the platform starts slowing down rather than speeding up

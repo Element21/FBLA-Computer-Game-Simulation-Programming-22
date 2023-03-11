@@ -1,35 +1,31 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://b5nwlmskosbcl"]
 
-[ext_resource path="res://Levels/Start Menu/soupcover.png" type="Texture" id=1]
-[ext_resource path="res://Levels/menu_theme.tres" type="Theme" id=2]
-[ext_resource path="res://Levels/Start Menu/start_menu.gd" type="Script" id=3]
-[ext_resource path="res://objects/bottom_buttons/bottom_buttons.tscn" type="PackedScene" id=4]
-[ext_resource path="res://resources/shaders/transition.tscn" type="PackedScene" id=5]
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0, 0, 0, 0.741176 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-expand_margin_top = 4.0
-expand_margin_bottom = 4.0
+[ext_resource type="Texture2D" uid="uid://dgkfimytrcb72" path="res://Levels/Start Menu/soupcover.png" id="1"]
+[ext_resource type="Theme" uid="uid://dubog3hc6383i" path="res://Levels/menu_theme.tres" id="2"]
+[ext_resource type="Script" path="res://Levels/Start Menu/start_menu.gd" id="3"]
+[ext_resource type="PackedScene" path="res://objects/bottom_buttons/bottom_buttons.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://csr7ae2r8ldmy" path="res://resources/shaders/transition.tscn" id="5"]
 
 [node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 2 )
-script = ExtResource( 3 )
-name_input = NodePath("VBoxContainer/LineEdit")
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2")
+script = ExtResource("3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 1 )
-expand = true
+texture = ExtResource("1")
+expand_mode = 1
 stretch_mode = 7
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -38,49 +34,46 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
-margin_right = 300.0
-margin_bottom = 38.0
-rect_min_size = Vector2( 300, 0 )
-align = 1
+[node name="Name input" type="LineEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
 placeholder_text = "Enter your name"
 
 [node name="Control" type="Control" parent="VBoxContainer"]
-margin_top = 42.0
-margin_right = 300.0
-margin_bottom = 52.0
-rect_min_size = Vector2( 0, 10 )
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
 
 [node name="Button" type="Button" parent="VBoxContainer"]
-margin_left = 108.0
-margin_top = 56.0
-margin_right = 192.0
-margin_bottom = 110.0
+layout_mode = 2
 size_flags_horizontal = 4
 text = "Play"
 
 [node name="Control2" type="Control" parent="VBoxContainer"]
-margin_top = 114.0
-margin_right = 300.0
-margin_bottom = 124.0
-rect_min_size = Vector2( 0, 10 )
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
 
 [node name="Empty name error" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
 visible = false
-margin_top = 106.0
-margin_right = 300.0
-margin_bottom = 125.0
-custom_styles/normal = SubResource( 2 )
+layout_mode = 2
 text = "Name must not be empty"
-align = 1
-__meta__ = {
-"_editor_description_": ""
-}
 
-[node name="Button" parent="." instance=ExtResource( 4 )]
+[node name="Button" parent="." instance=ExtResource("4")]
+layout_mode = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
 
-[node name="Transition" parent="." instance=ExtResource( 5 )]
+[node name="Transition" parent="." instance=ExtResource("5")]
+unique_name_in_owner = true
 visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 
-[connection signal="text_entered" from="VBoxContainer/LineEdit" to="." method="go_to_main_menu"]
-[connection signal="button_down" from="VBoxContainer/Button" to="." method="go_to_main_menu" binds= [ "The LineEdit gives a string argument so I have to too" ]]
+[connection signal="text_submitted" from="VBoxContainer/Name input" to="." method="go_to_main_menu"]
+[connection signal="button_down" from="VBoxContainer/Button" to="." method="go_to_main_menu" binds= ["The LineEdit gives a string argument so I have to too"]]

@@ -1,20 +1,21 @@
 [remap]
 
 importer="wavefront_obj"
+importer_version=1
 type="Mesh"
-path="res://.import/frame2_hand_3.0.obj-caad7fe9516cd5ab838c163e19ed0987.mesh"
+uid="uid://7p7nxmbqs1iv"
+path="res://.godot/imported/frame2_hand_3.0.obj-caad7fe9516cd5ab838c163e19ed0987.mesh"
 
 [deps]
 
-files=[ "res://.import/frame2_hand_3.0.obj-caad7fe9516cd5ab838c163e19ed0987.mesh" ]
+files=["res://.godot/imported/frame2_hand_3.0.obj-caad7fe9516cd5ab838c163e19ed0987.mesh"]
 
 source_file="res://resources/hand_frames/frame2_hand_3.0.obj"
-dest_files=[ "res://.import/frame2_hand_3.0.obj-caad7fe9516cd5ab838c163e19ed0987.mesh", "res://.import/frame2_hand_3.0.obj-caad7fe9516cd5ab838c163e19ed0987.mesh" ]
+dest_files=["res://.godot/imported/frame2_hand_3.0.obj-caad7fe9516cd5ab838c163e19ed0987.mesh", "res://.godot/imported/frame2_hand_3.0.obj-caad7fe9516cd5ab838c163e19ed0987.mesh"]
 
 [params]
 
 generate_tangents=true
-scale_mesh=Vector3( 1, 1, 1 )
-offset_mesh=Vector3( 0, 0, 0 )
-octahedral_compression=true
-optimize_mesh_flags=4286
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

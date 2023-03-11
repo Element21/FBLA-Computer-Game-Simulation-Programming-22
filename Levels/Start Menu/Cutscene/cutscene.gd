@@ -1,6 +1,6 @@
 extends Control
 
-onready var slideNode = $Slide
+@onready var slideNode = $Slide
 
 var slide_counter = 0
 
@@ -29,7 +29,7 @@ func _slide_on_gui_input(event: InputEvent):
 		return
 	
 	if slide_counter == 8:
-		get_tree().change_scene_to(main_menu_scene)
+		get_tree().change_scene_to_packed(main_menu_scene)
 		return
 	
 	slide_counter += 1
@@ -47,5 +47,5 @@ func fade_out_done(anim_name: String):
 func _ready():
 	self.visible = true
 	fade_out_done("fadeOut")
-	$Transition/AnimationPlayer.connect("animation_finished", self, "fade_out_done")
+	$Transition/AnimationPlayer.connect("animation_finished",Callable(self,"fade_out_done"))
 

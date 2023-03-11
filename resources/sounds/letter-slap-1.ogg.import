@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/letter-slap-1.ogg-04bec3db7c9c91733cf24a2b40e21456.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cg67ylv5b40d1"
+path="res://.godot/imported/letter-slap-1.ogg-04bec3db7c9c91733cf24a2b40e21456.oggvorbisstr"
 
 [deps]
 
 source_file="res://resources/sounds/letter-slap-1.ogg"
-dest_files=[ "res://.import/letter-slap-1.ogg-04bec3db7c9c91733cf24a2b40e21456.oggstr" ]
+dest_files=["res://.godot/imported/letter-slap-1.ogg-04bec3db7c9c91733cf24a2b40e21456.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

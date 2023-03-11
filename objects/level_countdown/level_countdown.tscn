@@ -1,23 +1,26 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://dasuxaa2pi3k5"]
 
-[ext_resource path="res://objects/level_countdown/level_countdown.gd" type="Script" id=1]
-[ext_resource path="res://resources/letter_font.tres" type="DynamicFont" id=2]
-[ext_resource path="res://resources/sounds/click.ogg" type="AudioStream" id=3]
+[ext_resource type="Script" path="res://objects/level_countdown/level_countdown.gd" id="1"]
+[ext_resource type="FontFile" path="res://resources/letter_font.tres" id="2"]
+[ext_resource type="AudioStream" uid="uid://dtmyhq6ua31k8" path="res://resources/sounds/click.ogg" id="3"]
 
-[sub_resource type="TextMesh" id=1]
+[sub_resource type="TextMesh" id="1"]
 text = "3"
-font = ExtResource( 2 )
+font = ExtResource("2")
 
-[node name="Level coundown" type="Spatial"]
-script = ExtResource( 1 )
+[node name="Level coundown" type="Node3D"]
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
+[node name="Counter mesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+mesh = SubResource("1")
 
 [node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
 
 [node name="Click sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-bus = "SFX"
+unique_name_in_owner = true
+stream = ExtResource("3")
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="timeout"]

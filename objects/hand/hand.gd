@@ -1,11 +1,11 @@
 # Soup must be on collision layer 2
 
-extends Spatial
+extends Node3D
 
-export(NodePath) onready var camera = get_node(camera) as Camera
-export(NodePath) onready var word_manager = get_node(word_manager) as WordManager
-export(NodePath) onready var level = get_node(level) as Level
-export(Vector2) var arm_pivot = Vector2(-2, 35)
+@export var camera: Camera3D
+@export var word_manager: WordManager
+@export var level: Level
+@export var arm_pivot: Vector2 = Vector2(-2, 35)
 
 var hand_height = 2
 var drop_height = 3
@@ -14,13 +14,6 @@ var arm_response = 5
 
 var hand_animation_part_time = 0.5
 
-onready var hand: MeshInstance = get_child(0)
-onready var raycast: RayCast = get_child(1)
-onready var letter_pickup_area: Area = hand.get_child(0)
-onready var slap_sound_player: AudioStreamPlayer3D = hand.get_child(1)
-onready var hand_animation_state_interval: Timer = get_child(2)
-onready var hand_animation_start_timer: Timer = get_child(3)
-onready var particles: Particles = hand.get_node("Particles")
 
 var hand_animation_frames = [
 	preload("res://resources/hand_frames/frame1_hand_3.0.obj"),
@@ -31,7 +24,7 @@ var hand_animation_frames = [
 ]
 var current_hand_animation_frame = 0
 
-onready var target_pos: Vector3 = hand.translation
+@onready var target_pos: Vector3 = %Hand.position
 
 enum GRABBING_STATE { NOT, DIPPING, PULLING, DROPPING }
 
@@ -50,10 +43,10 @@ func _ready():
 
 # Check if the mouse is pointing at the surface of soup
 func pointing_at_valid_soup_surface() -> bool:
-	if !raycast.is_colliding():
+	if !%Raycast.is_colliding():
 		return false
 	
-	var normal = raycast.get_collision_normal()
+	var normal = %Raycast.get_collision_normal()
 	
 	# Make sure the soup is flat, the side of the soup should be invisible
 	# Allows for margin of error because normal calculations aren't perfect
@@ -64,14 +57,14 @@ func _input(event):
 	if event.is_action_pressed("click") && pointing_at_valid_soup_surface() && !word_manager.no_spots_left():
 		grabbing_state = GRABBING_STATE.DIPPING
 		
-		start_hand_translation = hand.translation
-		final_hand_translation = hand.translation - Vector3(0, hand_height, 0)
+		start_hand_translation = %Hand.position
+		final_hand_translation = %Hand.position - Vector3(0, hand_height, 0)
 		
-		hand_animation_start_timer.start()
+		%"Hand animation start timer".start()
 
 
 func start_hand_animation():
-	hand_animation_state_interval.start()
+	%"Hand animation state interval".start()
 
 
 # Progress the animation of the hand opening and closing
@@ -82,9 +75,9 @@ func next_hand_animation_frame():
 		current_hand_animation_frame -= 1
 	
 	if current_hand_animation_frame == 0 || current_hand_animation_frame == hand_animation_frames.size() - 1:
-		hand_animation_state_interval.stop()
+		%"Hand animation state interval".stop()
 	
-	hand.mesh = hand_animation_frames[current_hand_animation_frame]
+	%Hand.mesh = hand_animation_frames[current_hand_animation_frame]
 
 
 func next_grabbing_state():
@@ -112,13 +105,13 @@ func _process(delta: float):
 	
 	# Make sure the letter stays in the hand when grabbing
 	if (grabbing_state == GRABBING_STATE.PULLING || grabbing_state == GRABBING_STATE.DROPPING) && letter_being_grabbed:
-		letter_being_grabbed.global_translation = hand.global_translation
+		letter_being_grabbed.global_translation = %Hand.global_translation
 	
 	# Progress the hand animation
 	if grabbing_state != GRABBING_STATE.NOT:
 		time += delta
 		
-		hand.translation = lerp(start_hand_translation, final_hand_translation, Tweening.smoothify(time / hand_animation_part_time))
+		%Hand.position = lerp(start_hand_translation, final_hand_translation, Tweening.smoothify(time / hand_animation_part_time))
 	
 	fix_arm_rotation()
 
@@ -126,33 +119,33 @@ func _process(delta: float):
 # Change the angle of the arm such that it pivots around point
 # This makes the arm look like an arm because arms pivot around a point in real life
 func fix_arm_rotation():
-	var top_down_position = Vector2(hand.translation.x, hand.translation.z)
-	var arm_pivot_position_local = arm_pivot - Vector2(self.translation.x, self.translation.y)
+	var top_down_position = Vector2(%Hand.position.x, %Hand.position.z)
+	var arm_pivot_position_local = arm_pivot - Vector2(self.position.x, self.position.y)
 	
-	hand.rotation.y = -top_down_position.angle_to_point(arm_pivot_position_local) - PI / 2
+	%Hand.rotation.y = -top_down_position.angle_to_point(arm_pivot_position_local) - PI / 2
 
 
 func move_hand_towards_mouse(delta: float):
-	hand.translation += (target_pos - hand.translation) * arm_response * delta
+	%Hand.position += (target_pos - %Hand.position) * arm_response * delta
 	
 	var mouse_pos = get_viewport().get_mouse_position()
 	
 	var from = camera.project_ray_origin(mouse_pos)
 	var to = camera.project_ray_normal(mouse_pos) * 1000
 	
-	raycast.cast_to = to - self.translation
-	raycast.translation = from - self.translation
+	%Raycast.target_position = to - self.position
+	%Raycast.position = from - self.position
 
 	if pointing_at_valid_soup_surface():
-		target_pos = raycast.get_collision_point() + Vector3(0, hand_height, 0) - self.translation
+		target_pos = %Raycast.get_collision_point() + Vector3(0, hand_height, 0) - self.position
 
 
 func done_dipping():
 	grabbing_state = GRABBING_STATE.PULLING
 		
-	particles.emitting = true
+	%Particles.emitting = true
 	
-	slap_sound_player.play()
+	%Slap.play()
 	
 	var tmp = start_hand_translation
 	start_hand_translation = final_hand_translation
@@ -161,7 +154,7 @@ func done_dipping():
 	letter_being_grabbed = letter_to_be_picked_up()
 	
 	if letter_being_grabbed:
-		letter_being_grabbed.mode = RigidBody.MODE_KINEMATIC
+		letter_being_grabbed.freeze = true
 		letter_being_grabbed.remove_from_group("Letters")
 	else:
 		start_hand_animation()
@@ -173,10 +166,10 @@ func done_pulling():
 		
 		var local_drop_pos = self.to_local(word_manager.next_platform_position())
 		
-		start_hand_translation = hand.translation
+		start_hand_translation = %Hand.position
 		final_hand_translation = local_drop_pos + Vector3(0, drop_height, 0)
 		
-		hand_animation_start_timer.start()
+		%"Hand animation start timer".start()
 	
 	else:
 		grabbing_state = GRABBING_STATE.NOT
@@ -184,7 +177,7 @@ func done_pulling():
 
 func done_dropping():
 	if letter_being_grabbed:
-		letter_being_grabbed.mode = RigidBody.MODE_RIGID
+		letter_being_grabbed.freeze = false
 		word_manager.place_letter(letter_being_grabbed)
 		letter_being_grabbed = null
 	
@@ -198,8 +191,8 @@ func letter_to_be_picked_up() -> Letter:
 		
 	for letter in get_tree().get_nodes_in_group("Letters"):
 		# Make sure the letter is inside the hand
-		if letter_pickup_area.overlaps_body(letter):
-			var distance = hand.global_translation.distance_to(letter.global_translation)
+		if %"Letter pickup area".overlaps_body(letter):
+			var distance = %Hand.global_translation.distance_to(letter.global_translation)
 			
 			if distance < min_distance:
 				min_distance = distance

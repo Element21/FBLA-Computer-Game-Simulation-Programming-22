@@ -2,7 +2,7 @@
 
 [ext_resource path="res://objects/soup/soup.gd" type="Script" id=1]
 
-[node name="Soup" type="Area"]
+[node name="Soup" type="Area3D"]
 collision_layer = 2
 script = ExtResource( 1 )
 

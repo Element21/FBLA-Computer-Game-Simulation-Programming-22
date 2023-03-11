@@ -1,5 +1,7 @@
 extends ColorRect
 
+@onready var animation_player = %AnimationPlayer
+
 func _ready():
-	self.rect_min_size = OS.window_size
+	self.custom_minimum_size = get_window().size
  
