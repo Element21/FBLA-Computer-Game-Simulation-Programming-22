@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dgkfimytrcb72" path="res://Levels/Start Menu/soupcover.png" id="1"]
 [ext_resource type="Theme" uid="uid://dubog3hc6383i" path="res://Levels/menu_theme.tres" id="2"]
 [ext_resource type="Script" path="res://Levels/Start Menu/start_menu.gd" id="3"]
-[ext_resource type="PackedScene" path="res://objects/bottom_buttons/bottom_buttons.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dcvr28pvllk7c" path="res://objects/bottom_buttons/bottom_buttons.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://csr7ae2r8ldmy" path="res://resources/shaders/transition.tscn" id="5"]
 
 [node name="Control" type="Control"]
@@ -17,15 +17,19 @@ theme = ExtResource("2")
 script = ExtResource("3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1")
 expand_mode = 1
-stretch_mode = 7
+stretch_mode = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -60,12 +64,16 @@ layout_mode = 2
 text = "Name must not be empty"
 
 [node name="Button" parent="." instance=ExtResource("4")]
-layout_mode = 0
+layout_mode = 2
+anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-grow_horizontal = 1
+offset_left = 899.0
+offset_top = 580.0
+offset_right = 1140.0
+offset_bottom = 636.0
 
 [node name="Transition" parent="." instance=ExtResource("5")]
 unique_name_in_owner = true

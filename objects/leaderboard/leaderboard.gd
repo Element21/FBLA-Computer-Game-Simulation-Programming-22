@@ -19,7 +19,7 @@ func show_leaderboard_for(level_index: int):
 		%Names.add_child(name_label)
 		
 		var score_label = Label.new()
-		score_label.text = String(leaderboard_entries[i][1])
+		score_label.text = String.num_int64(leaderboard_entries[i][1])
 		%Scores.add_child(score_label)
 
 

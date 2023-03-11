@@ -6,9 +6,9 @@
 [ext_resource type="Script" path="res://Levels/Main Menu/main_menu.gd" id="5"]
 [ext_resource type="PackedScene" path="res://Levels/Level 2/lvl2.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://bhpaglfnbruvn" path="res://Levels/Level 3/lvl3.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://Levels/Level 5/lvl5.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://b4kyequ7vdxby" path="res://Levels/Level 5/lvl5.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://Levels/Level 4/lvl4.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://objects/bottom_buttons/bottom_buttons.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://dcvr28pvllk7c" path="res://objects/bottom_buttons/bottom_buttons.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://8yrg3uggl3m3" path="res://objects/leaderboard/leaderboard.tscn" id="11"]
 
 [node name="Control" type="Control"]
@@ -16,6 +16,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1")
 script = ExtResource("5")
 levels = [ExtResource("4"), ExtResource("6"), ExtResource("7"), ExtResource("9"), ExtResource("8")]
@@ -23,31 +25,37 @@ level_names = ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"]
 level_button_distance = 10
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.415686, 0.117647, 0, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-anchor_left = 0.05
-anchor_top = 0.05
-anchor_right = 0.05
-anchor_bottom = 0.05
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
 
-[node name="Level buttons" type="VBoxContainer" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Level buttons" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Levels" type="Label" parent="HBoxContainer/Level buttons"]
+[node name="Levels" type="Label" parent="MarginContainer/HBoxContainer/Level buttons"]
 layout_mode = 2
 text = "Levels"
 
-[node name="Control" type="Control" parent="HBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="ImageContainer" type="AspectRatioContainer" parent="HBoxContainer"]
+[node name="ImageContainer" type="AspectRatioContainer" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(129, 0)
 layout_mode = 2
@@ -55,71 +63,80 @@ stretch_mode = 1
 alignment_horizontal = 0
 alignment_vertical = 0
 
-[node name="Image" type="TextureRect" parent="HBoxContainer/ImageContainer"]
+[node name="Image" type="TextureRect" parent="MarginContainer/HBoxContainer/ImageContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 6
 
-[node name="ImageSpacer" type="Control" parent="HBoxContainer"]
+[node name="ImageSpacer" type="Control" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Level data" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Level data" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 script = ExtResource("3")
 
-[node name="Play button" type="Button" parent="HBoxContainer/Level data"]
+[node name="Play button" type="Button" parent="MarginContainer/HBoxContainer/Level data"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Play"
 
-[node name="Control2" type="Control" parent="HBoxContainer/Level data"]
+[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer/Level data"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Highscore" type="Label" parent="HBoxContainer/Level data"]
+[node name="Highscore" type="Label" parent="MarginContainer/HBoxContainer/Level data"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Your highscore: -8"
 
-[node name="Control3" type="Control" parent="HBoxContainer/Level data"]
+[node name="Control3" type="Control" parent="MarginContainer/HBoxContainer/Level data"]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="Leaderboard" parent="HBoxContainer/Level data" instance=ExtResource("11")]
+[node name="Leaderboard" parent="MarginContainer/HBoxContainer/Level data" instance=ExtResource("11")]
 unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Bottom buttons" parent="." instance=ExtResource("10")]
-layout_mode = 0
+layout_mode = 1
+offset_left = -241.0
+offset_top = -56.0
 
-[node name="Instructions" type="Popup" parent="."]
+[node name="Instructions" type="PopupPanel" parent="."]
 unique_name_in_owner = true
-size = Vector2i(400, 100)
+transparent_bg = true
+size = Vector2i(724, 204)
 visible = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Instructions"]
-custom_minimum_size = Vector2(700, 0)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-text = "Instructions
+[node name="MarginContainer" type="MarginContainer" parent="Instructions"]
+offset_right = 724.0
+offset_bottom = 204.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Instructions/MarginContainer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]
+Instructions
+ 
 Grab letters from the soup to make words
 Words that share fewer letters with other words get more points
-
+ 
 Click to grab
 Right Click or Backspace to delete
+ 
+Escape to quit
+[/center]"
+fit_content = true
+scroll_active = false
 
-Escape to quit"
-
-[connection signal="button_down" from="HBoxContainer/Level data/Play button" to="HBoxContainer/Level data" method="play_button_clicked"]
+[connection signal="button_down" from="MarginContainer/HBoxContainer/Level data/Play button" to="MarginContainer/HBoxContainer/Level data" method="play_button_clicked"]

@@ -7,10 +7,7 @@ extends Control
 @export var level_button_distance = 20
 
 
-func _ready():
-	if !LeaderboardManager.is_level_unlocked(1):
-		%Instructions.popup()
-	
+func _ready():	
 	# Add buttons for each level
 	for i in range(0, level_names.size()):
 		var button = Button.new()
@@ -21,3 +18,11 @@ func _ready():
 		button.disabled = !LeaderboardManager.is_level_unlocked(i)
 		
 		%"Level buttons".add_child(button)
+	
+	
+	if !LeaderboardManager.is_level_unlocked(1):
+		# The popup will close instantly if I don't do these awaits, idk why
+		await get_tree().process_frame
+		await get_tree().process_frame
+		%Instructions.popup_centered_clamped()
+
