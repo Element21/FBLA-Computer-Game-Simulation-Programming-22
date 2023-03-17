@@ -1,7 +1,5 @@
 extends Control
 
-@onready var slideNode = $Slide
-
 var slide_counter = 0
 
 var slideList = [
@@ -19,10 +17,10 @@ var slideList = [
 var main_menu_scene: PackedScene = preload("res://Levels/Main Menu/main_menu.tscn")
 
 func fadeIn():
-	$Transition/AnimationPlayer.play("fadeIn")
+	%Transition.animation_player.play("fadeIn")
 
 func fadeOut():
-	$Transition/AnimationPlayer.play("fadeOut")
+	%Transition.animation_player.play("fadeOut")
 
 func _slide_on_gui_input(event: InputEvent):
 	if !event.is_action_pressed("click"):
@@ -40,12 +38,12 @@ func fade_out_done(anim_name: String):
 	if anim_name != "fadeOut":
 		return
 	
-	slideNode.set_texture(slideList[slide_counter])
+	%Slide.set_texture(slideList[slide_counter])
 	fadeIn()
 
 
 func _ready():
 	self.visible = true
 	fade_out_done("fadeOut")
-	$Transition/AnimationPlayer.connect("animation_finished",Callable(self,"fade_out_done"))
+	%Transition.animation_player.connect("animation_finished", fade_out_done)
 

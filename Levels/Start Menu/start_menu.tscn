@@ -63,17 +63,10 @@ visible = false
 layout_mode = 2
 text = "Name must not be empty"
 
-[node name="Button" parent="." instance=ExtResource("4")]
-layout_mode = 2
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 899.0
-offset_top = 580.0
-offset_right = 1140.0
-offset_bottom = 636.0
+[node name="Bottom buttons" parent="." instance=ExtResource("4")]
+layout_mode = 1
+offset_left = -241.0
+offset_top = -56.0
 
 [node name="Transition" parent="." instance=ExtResource("5")]
 unique_name_in_owner = true

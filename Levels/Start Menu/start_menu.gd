@@ -5,7 +5,7 @@ signal first_play
 var main_menu_scene: PackedScene = preload("res://Levels/Main Menu/main_menu.tscn")
 var cutscene_scene: PackedScene = preload("res://Levels/Start Menu/Cutscene/cutscene.tscn")
 
-func _on_animationPlayer_animation_finshed(anim_name):
+func transition_finshed(anim_name):
 	if anim_name == "fadeOut":
 		self.visible = false
 		var status = get_tree().change_scene_to_packed(cutscene_scene)
@@ -29,5 +29,5 @@ func go_to_main_menu(_from_signal):
 
 
 func _ready():
-	%Transition.animation_player.connect("animation_finished", Callable(self,"_on_animationPlayer_animation_finshed"))
+	%Transition.animation_player.connect("animation_finished", transition_finshed)
 	Music.start_ambience()
