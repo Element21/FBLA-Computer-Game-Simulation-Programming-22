@@ -9,21 +9,23 @@ var which_letter: String = alphabet[randi() % alphabet.size()] # Pick random let
 
 var material = preload("res://resources/materials/letter/letter.tres")
 
+@onready var mesh: MeshInstance3D = %Mesh
+@onready var particles: GPUParticles3D = %Particles
 
 func set_mesh():
-	var mesh: ArrayMesh = load("res://resources/letters/" + which_letter + ".obj") as ArrayMesh
-	%Mesh.mesh = mesh
-	%Mesh.set_surface_override_material(0, material)
-	undo_mesh_translation(mesh)
+	var new_mesh: ArrayMesh = load("res://resources/letters/" + which_letter + ".obj") as ArrayMesh
+	mesh.mesh = new_mesh
+	mesh.set_surface_override_material(0, material)
+	undo_mesh_translation(new_mesh)
 
 
 # Daniel's letter models are offset, this undoes the position
 # This assumes that the vertices are about evenly spread out, otherwise the average will be biased towards where there's a higher density of vertices
-func undo_mesh_translation(mesh: ArrayMesh):
+func undo_mesh_translation(new_mesh: ArrayMesh):
 	var avg_translation = Vector3(0, 0, 0)
 	
 	var mesh_data_tool = MeshDataTool.new()
-	mesh_data_tool.create_from_surface(mesh, 0)
+	assert(OK == mesh_data_tool.create_from_surface(new_mesh, 0))
 	
 	var vertex_count = mesh_data_tool.get_vertex_count()
 	var inverse_vertex_count = 1.0 / vertex_count
@@ -34,7 +36,7 @@ func undo_mesh_translation(mesh: ArrayMesh):
 		avg_translation += vertex * inverse_vertex_count
 	
 	
-	%Mesh.position -= avg_translation
+	mesh.position -= avg_translation
 
 
 func _ready():
@@ -50,7 +52,7 @@ func on_collision(node: Node):
 		# Letter on letter sound
 		pass
 	elif node is LetterPlatform:
-		%Slap.play()
+		(%Slap as AudioStreamPlayer3D).play()
 		soup_particle_burst()
 
 
@@ -59,5 +61,5 @@ func contacted_soup():
 
 
 func soup_particle_burst():
-	%Particles.rotation = -self.rotation
-	%Particles.emitting = true
+	particles.rotation = -self.rotation
+	particles.emitting = true

@@ -28,9 +28,9 @@ radius = 3.07453
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Level" parent="." instance=ExtResource("1")]
-time_given = 60
+[node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1")]
 level_index = 4
+camera = NodePath("../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 24.674, 20.911)
@@ -46,7 +46,8 @@ omni_range = 4096.0
 omni_attenuation = 0.00170029
 omni_shadow_mode = 0
 
-[node name="Soup" parent="Environment" instance=ExtResource("4")]
+[node name="Soup" parent="Environment" node_paths=PackedStringArray("level") instance=ExtResource("4")]
+level = NodePath("../../Level")
 surface = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Soup"]
@@ -80,21 +81,25 @@ script = ExtResource("10")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.56328, 0)
 shape = SubResource("6")
 
-[node name="Hand" parent="." instance=ExtResource("5")]
+[node name="Hand" parent="." node_paths=PackedStringArray("word_manager", "level") instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.92705, 0)
+word_manager = NodePath("../Word manager")
+level = NodePath("../Level")
 arm_pivot = Vector2(-4, 50)
 
-[node name="Word manager" parent="." instance=ExtResource("6")]
+[node name="Word manager" parent="." node_paths=PackedStringArray("level") instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4905, 7.75409)
 word_length = 4
 launch_vector = Vector3(0, 4.6, 5)
+level = NodePath("../Level")
 
-[node name="Letter Spawner" parent="." instance=ExtResource("11")]
+[node name="Letter Spawner" parent="." node_paths=PackedStringArray("level") instance=ExtResource("11")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.96659, 0)
 upward_velocity = 10.0
 horizontal_velocity = 5.0
 spawn_amnt = 8
 spawn_interval = 3.0
+level = NodePath("../Level")
 
 [connection signal="body_entered" from="Environment/Volcano hole" to="Environment/Volcano hole" method="object_entered"]
 [connection signal="body_exited" from="Environment/Volcano hole" to="Environment/Volcano hole" method="object_exited"]

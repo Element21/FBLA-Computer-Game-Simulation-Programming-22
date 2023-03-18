@@ -26,11 +26,11 @@ func add_score(level_index: int, score: int):
 	
 	if score >= leaderboard[player_name]:
 		leaderboard[player_name] = score
-		ResourceSaver.save(leaderboard_data, "user://leaderboard_data.res")
+		assert(OK == ResourceSaver.save(leaderboard_data, "user://leaderboard_data.res"))
 
 
 ## Returns a dictionary mapping names to scores
-func get_highscore_for(level_index: int) -> int:
+func get_highscore_for(level_index: int):
 	return leaderboard_data.get_leaderboard_for(level_index).get(player_name, null)
 
 

@@ -29,6 +29,7 @@ func get_sorted_leaderboard_for(idx: int) -> Array:
 ## Returns a dictionary mapping names to scores
 func get_leaderboard_for(idx: int) -> Dictionary:
 	if data.size() <= idx:
+		@warning_ignore("return_value_discarded")
 		data.resize(idx + 1)
 	
 	if data[idx] == null:

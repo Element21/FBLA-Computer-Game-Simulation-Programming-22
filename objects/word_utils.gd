@@ -18,7 +18,7 @@ func load_words() -> Array:
 	while not f.eof_reached():
 		var word = f.get_line()
 
-		new_words[word.length() - 1].push_back(word)
+		(new_words[word.length() - 1] as Array[String]).push_back(word)
 	
 	f.close()
 	
@@ -48,12 +48,13 @@ func letters_that_could_be_used_next(letters: Array[Letter]) -> int:
 	
 	var could_be_placed = []
 	
+	@warning_ignore("return_value_discarded")
 	could_be_placed.resize(26)
 	could_be_placed.fill(false)
 	
-	for word in words[letters.size() - 1]:
+	for word in words[letters.size() - 1] as Array[String]:
 		if compare_word(word, letters):
-			could_be_placed[word.ord_at(empty_index) - 97] = true
+			could_be_placed[word.unicode_at(empty_index) - 97] = true
 	
 	return could_be_placed.count(true)
 

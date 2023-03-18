@@ -13,16 +13,17 @@ func _ready():
 		var button = Button.new()
 		
 		button.text = level_names[i]
-		button.connect("button_down", func(): %"Level data".select_level(i, level_names[i], levels[i]))
+		var err = button.connect("button_down", func(): (%"Level data" as LevelData).select_level(i, levels[i]))
+		assert(err == OK)
 		
 		button.disabled = !LeaderboardManager.is_level_unlocked(i)
 		
-		%"Level buttons".add_child(button)
+		(%"Level buttons" as BoxContainer).add_child(button)
 	
 	
 	if !LeaderboardManager.is_level_unlocked(1):
 		# The popup will close instantly if I don't do these awaits, idk why
 		await get_tree().process_frame
 		await get_tree().process_frame
-		%Instructions.popup_centered_clamped()
+		(%Instructions as PopupPanel).popup_centered_clamped()
 

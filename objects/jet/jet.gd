@@ -9,22 +9,22 @@ extends Node3D
 
 func _ready():
 	# It's helpful for the editor, but bad in the game
-	get_node("Direction indicator").hide()
+	(%"Direction indicator" as MeshInstance3D).hide()
 	print(self.global_transform.basis.z)
 
 
 func _process(delta):
 	for letter_untyped in get_tree().get_nodes_in_group("Letters"):
-		var letter = letter_untyped as Letter
+		var letter: Letter = letter_untyped
 		
-		var dist = letter.global_translation.distance_to(self.global_translation)
+		var dist = letter.global_position.distance_to(self.global_position)
 		
 		var force_scale = force_profile(dist / dropoff)
 		
 		letter.apply_central_impulse(self.transform.basis.x * force_scale * power * delta)
 		
 		# Pull letters towards the jet, prevents the letters from going out the the stream due to centripetal force
-		var letter_local_pos = self.to_local(letter.global_translation)
+		var letter_local_pos = self.to_local(letter.global_position)
 		
 		letter.apply_central_impulse(-self.global_transform.basis.z * delta * stream_pulling_force * force_scale * stream_force_profile(letter_local_pos.z / stream_pulling_distance))
 

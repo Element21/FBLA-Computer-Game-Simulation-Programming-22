@@ -15,12 +15,15 @@ var original_letter_position = null
 
 var letter = null
 
+@onready var whoosh = %Whoosh as AudioStreamPlayer3D
+@onready var score_mesh = %"Score mesh" as MeshInstance3D
+
 
 func flip():
 	action = "flip"
 	time = 0
 	
-	%Whoosh.play()
+	whoosh.play()
 
 
 func launch():
@@ -33,7 +36,7 @@ func launch():
 		letter.collision_mask = 0
 		original_letter_position = letter.global_translation
 	
-	%Whoosh.play()
+	whoosh.play()
 
 
 # Show the score granted by a letter
@@ -49,7 +52,7 @@ func set_score(new_score):
 	else:
 		mesh.text = String(new_score)
 	
-	%"Score mesh".mesh = mesh
+	score_mesh.mesh = mesh
 	
 	action = "setting score"
 	time = 0
@@ -75,7 +78,7 @@ func do_flip_transformation():
 	
 	self.rotation_degrees.x = lerp(0, 360, Tweening.smoothify(t))
 	
-	%"Score mesh".position.z = lerp(1.5, 0.334, Tweening.smoothify(t))
+	score_mesh.position.z = lerp(1.5, 0.334, Tweening.smoothify(t))
 
 
 func do_launch_transformation():
@@ -85,7 +88,7 @@ func do_launch_transformation():
 	
 	self.position = lerp(Vector3(original_x, 0, 0), launch_vector + Vector3(original_x, 0, 0), lerp_amt)
 	
-	var global_launch_vector = self.to_global(launch_vector) - self.global_translation
+	var global_launch_vector = self.to_global(launch_vector) - self.global_position
 	
 	if letter != null && t < launch_curve_inflection_point:
 		var lerp_amt_derivative = Tweening.smooth_up_and_down_derivative(t) / action_time
@@ -96,12 +99,11 @@ func do_launch_transformation():
 	
 	# Pull the score back in
 	if t > 0.5:
-		%"Score mesh".position.z = lerp(1.5, 0.334, Tweening.smoothify((t - 0.5) * 2))
+		score_mesh.position.z = lerp(1.5, 0.334, Tweening.smoothify((t - 0.5) * 2))
 
 
 func do_move_score():
-	
-	%"Score mesh".position.z = lerp(0.334, 1.5, Tweening.smoothify(time / action_time))
+	score_mesh.position.z = lerp(0.334, 1.5, Tweening.smoothify(time / action_time))
 
 
 # When the platform starts slowing down rather than speeding up

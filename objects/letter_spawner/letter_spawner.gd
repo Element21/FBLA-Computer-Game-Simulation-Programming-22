@@ -8,10 +8,11 @@ extends Node3D
 
 @onready var packed_scene = preload("res://objects/letter/letter.tscn")
 
+@onready var timer: Timer = %Timer
 
 func spawn_letters():
 	for _i in range(spawn_amnt):
-		var letter = packed_scene.instantiate()
+		var letter: Letter = packed_scene.instantiate()
 		add_child(letter)
 		letter.add_to_group("Letter")
 		
@@ -22,5 +23,5 @@ func spawn_letters():
 
 
 func _ready():
-	level.connect("level_ended", func(): %Timer.stop())
-	%Timer.wait_time = spawn_interval
+	assert(OK == level.connect("level_ended", func(): timer.stop()))
+	timer.wait_time = spawn_interval

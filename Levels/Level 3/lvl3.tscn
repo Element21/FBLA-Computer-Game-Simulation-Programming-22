@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bvg1o8hnwtey6" path="res://objects/letter_spawner/letter_spawner.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://pjx704npe374" path="res://objects/fountain_base/fountain_base.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://objects/fountain_output/fountain_output.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://Levels/Level 4/lvl4.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://mrcrmxl653fq" path="res://Levels/Level 4/lvl4.tscn" id="10"]
 [ext_resource type="Material" path="res://resources/materials/bubble.tres" id="12"]
 
 [sub_resource type="CylinderMesh" id="1"]
@@ -50,10 +50,10 @@ height = 1.0
 
 [node name="Spatial2" type="Node3D"]
 
-[node name="Level" parent="." instance=ExtResource("1")]
-time_given = 60
+[node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1")]
 next_level = ExtResource("10")
 level_index = 2
+camera = NodePath("../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.542559, 0.840018, 0, -0.840018, 0.542559, 0, 18.821, 10.603)
@@ -68,8 +68,9 @@ omni_range = 4096.0
 omni_attenuation = 1e-05
 omni_shadow_mode = 0
 
-[node name="Soup" parent="Environment" instance=ExtResource("4")]
+[node name="Soup" parent="Environment" node_paths=PackedStringArray("level") instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.567275, 0, 0.297831)
+level = NodePath("../../Level")
 surface = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Soup"]
@@ -244,14 +245,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.670583, 12.7125, 0.250069)
 vertical_velocity = 7
 horizontal_velocity = 4
 
-[node name="Hand" parent="." instance=ExtResource("3")]
+[node name="Hand" parent="." node_paths=PackedStringArray("word_manager", "level") instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.487351, 1.97738, 5.90069)
+word_manager = NodePath("../Word manager")
+level = NodePath("../Level")
 
-[node name="Word manager" parent="." instance=ExtResource("6")]
+[node name="Word manager" parent="." node_paths=PackedStringArray("level") instance=ExtResource("6")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.58329, 0, -9.39023)
 word_length = 4
 launch_vector = Vector3(-3, 6.8, 7)
+level = NodePath("../Level")
 
-[node name="Letter Spawner" parent="." instance=ExtResource("7")]
+[node name="Letter Spawner" parent="." node_paths=PackedStringArray("level") instance=ExtResource("7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7604, 0, 0.225881)
 horizontal_velocity = 0.0
+level = NodePath("../Level")

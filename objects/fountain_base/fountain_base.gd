@@ -15,7 +15,7 @@ func _process(delta):
 	for letter_untyped in get_tree().get_nodes_in_group("Letters"):
 		var letter = letter_untyped as Letter
 		
-		var displacement = letter.global_translation - self.global_translation
+		var displacement: Vector3 = letter.global_position - self.global_position
 		var dist = displacement.length()
 		
 		# Sucking

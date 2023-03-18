@@ -9,30 +9,26 @@ var distance_from_camera = 5
 
 var time = 3
 
+@onready var counter_mesh: MeshInstance3D = %"Counter mesh"
+@onready var click_sound: AudioStreamPlayer = %"Click sound"
+
 
 func start(camera: Camera3D):
 	# Move it in front of the camera
-	var camera_normal = camera.project_ray_normal(get_viewport().size / 2)
-	self.global_translation = camera.global_translation + camera_normal * distance_from_camera
+	var camera_normal = camera.project_ray_normal(get_window().size / 2)
+	self.global_position = camera.global_position + camera_normal * distance_from_camera
 	self.rotation = camera.rotation
 	
-	%"Counter mesh".mesh.text = "3"
-	
-	%"Click sound".play()
-	
-	%Timer.start()
-
-
-func timeout():
-	time -= 1
-	
-	%"Counter mesh".mesh.text = String.num_int64(time)
-	
-	if time == 0:
-		%"Counter mesh".hide()
+	while time != 0:
+		(counter_mesh.mesh as TextMesh).text = String.num_int64(time)
+		click_sound.play()
 		
-		emit_signal("started")
+		time -= 1
 		
-		%Timer.stop()
-	else:
-		%"Click sound".play()
+		await get_tree().create_timer(1.).timeout
+	
+	
+	counter_mesh.hide()
+	click_sound.play()
+	
+	assert(OK == emit_signal("started"))

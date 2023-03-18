@@ -5,7 +5,6 @@ class_name WordManager
 
 @export var word_length = 5
 @export var launch_vector: Vector3 = Vector3(0, 2, 5)
-@export var camera: Camera3D
 @export var level: Level
 
 var letters_placed = []
@@ -14,13 +13,17 @@ var platform_margin = 0.5
 
 var letter_platform_scene = preload("res://objects/letter_platform/letter_platform.tscn")
 
+@onready var platforms: Node3D = %Platforms
+@onready var ui: Node3D = %UI
+
 
 # Get the local x position of a given platform
 func platform_index_to_x_position(index: int) -> float:
-	return (index - word_length / 2) * (1 + platform_margin)
+	return (index - word_length / 2.) * (1 + platform_margin)
 
 
 func _ready():
+	@warning_ignore("return_value_discarded")
 	letters_placed.resize(word_length)
 	
 	# Instantiate all the platforms
@@ -30,25 +33,25 @@ func _ready():
 		platform.launch_vector = launch_vector
 		platform.position.x = platform_index_to_x_position(index)
 		
-		%Platforms.add_child(platform)
+		platforms.add_child(platform)
 	
 	# Point the score counter & timer at the camera
-	var camera_displacement_from_ui = camera.global_translation - $UI.global_translation
+	var camera_displacement_from_ui = level.camera.global_position - ui.global_position
 	
-	$UI.rotation.x = atan2(camera_displacement_from_ui.z, camera_displacement_from_ui.y)
+	ui.rotation.x = atan2(camera_displacement_from_ui.z, camera_displacement_from_ui.y)
 
 
-func _process(delta):
+func _process(_delta):
 	# Making it go fast at the beginning makes the beginning more exciting because the timer is going fast, and more exciting at the end because it looks like you don't have much time left (and makes succeeding anyways that much better)
 	# This is a common trick with health bars
-	%"Time indicator".scale.x = 1 - Tweening.fast_then_slow(1 - level.time_left / level.time_given)
+	(%"Time indicator" as Node3D).scale.x = 1 - Tweening.fast_then_slow(1 - level.time_left / level.time_given)
 
 
 # Called when the hand drops a letter, tells the platform that a letter was dropped on it, validates the letter sequence, and calculates score
 func place_letter(letter: Letter):
 	var index = letters_placed.find(null)
 	
-	var platform: LetterPlatform = %Platforms.get_child(index)
+	var platform: LetterPlatform = platforms.get_child(index)
 	
 	var matches_before = WordUtils.matches_word(letters_placed)
 	
@@ -68,14 +71,15 @@ func place_letter(letter: Letter):
 
 
 func word_made():
-	for platform in %Platforms.get_children():
+	for platform in platforms.get_children() as Array[LetterPlatform]:
 		level.score += platform.score
 	
-	%"Score mesh".mesh.text = String(level.score)
+	((%"Score mesh" as MeshInstance3D).mesh as TextMesh).text = String(level.score)
 	
 	letters_placed.fill(null)
 	
-	%"Launch word timer".start()
+	await get_tree().create_timer(1.).timeout
+	launch_all_platforms()
 
 
 func no_spots_left() -> bool:
@@ -83,7 +87,7 @@ func no_spots_left() -> bool:
 
 
 func launch_all_platforms():
-	for child in %Platforms.get_children():
+	for child in platforms.get_children() as Array[LetterPlatform]:
 		child.launch()
 
 
@@ -91,12 +95,12 @@ func launch_all_platforms():
 func next_platform_position() -> Vector3:
 	var index = letters_placed.find(null)
 	
-	var platform = %Platforms.get_child(index)
+	var platform = platforms.get_child(index)
 	
 	return platform.global_translation
 
 
-func _input(event):
+func _input(event: InputEvent):
 	if level.playing && event.is_action_pressed("delete_letter"):
 		delete()
 
@@ -113,4 +117,4 @@ func delete():
 		
 		letters_placed[last_letter_index] = null
 		
-		%Platforms.get_child(last_letter_index).flip()
+		(platforms.get_child(last_letter_index) as LetterPlatform).flip()

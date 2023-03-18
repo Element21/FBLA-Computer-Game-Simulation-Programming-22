@@ -10,7 +10,7 @@ class_name FountainOutput
 # Teleport the letter to the output, give it a random velocity
 # The teleportation is necessary because I found that launching it through the tube was inconsistent
 func launch_object(object: RigidBody3D):
-	object.global_translation = self.global_translation
+	object.global_position = self.global_position
 	
 	var angle = randf() * PI * 2
 	

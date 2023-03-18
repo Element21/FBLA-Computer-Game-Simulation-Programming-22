@@ -58,9 +58,3 @@ explosiveness = 1.0
 visibility_aabb = AABB(-1.88982, -2.23659, -1.69437, 3.76067, 2.65921, 3.25666)
 process_material = SubResource("8")
 draw_pass_1 = SubResource("7")
-
-[node name="Delete timer" type="Timer" parent="."]
-unique_name_in_owner = true
-one_shot = true
-
-[connection signal="timeout" from="Delete timer" to="." method="delete"]

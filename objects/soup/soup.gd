@@ -34,7 +34,7 @@ func apply_buoyancy_to_thing(thing: RigidBody3D, delta: float):
 
 
 func maybe_apply_buoyancy_to_thing(thing: RigidBody3D, delta: float):
-	if thing.global_translation.y < surface && overlaps_body(thing):
+	if thing.global_position.y < surface && overlaps_body(thing):
 		apply_buoyancy_to_thing(thing, delta)
 
 
@@ -42,9 +42,9 @@ func _process(delta):
 	for letter in get_tree().get_nodes_in_group("Letters"):
 		maybe_apply_buoyancy_to_thing(letter, delta)
 	
-	for bubble in get_tree().get_nodes_in_group("Bubbles"):
+	for bubble in get_tree().get_nodes_in_group("Bubbles") as Array[Bubble]:
 		if overlaps_body(bubble):
-			if bubble.global_translation.y < surface:
+			if bubble.global_position.y < surface:
 				apply_buoyancy_to_thing(bubble, delta)
 			else:
 				# Maybe pop it if it's above the surface
@@ -54,4 +54,4 @@ func _process(delta):
 # Tell the letters to do the particle thing
 func object_entered(node: Node):
 	if node is Letter:
-		node.contacted_soup()
+		(node as Letter).contacted_soup()

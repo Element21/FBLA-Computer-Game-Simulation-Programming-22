@@ -71,10 +71,4 @@ collide_with_bodies = false
 unique_name_in_owner = true
 wait_time = 0.05
 
-[node name="Hand animation start timer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 0.25
-one_shot = true
-
 [connection signal="timeout" from="Hand animation state interval" to="." method="next_hand_animation_frame"]
-[connection signal="timeout" from="Hand animation start timer" to="." method="start_hand_animation"]

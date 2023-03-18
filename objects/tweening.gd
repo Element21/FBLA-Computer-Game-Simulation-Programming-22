@@ -28,4 +28,4 @@ func unsmoothed_up_and_down_derivative(t):
 
 # Increases fast, then slows down. Not smoothed
 func fast_then_slow(t):
-	return 5/3*t - 2/3*t*t
+	return 5./3.*t - 2./3.*t*t

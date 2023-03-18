@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+class_name Bubble
+
 
 # When the bubble is popped, the node isn't deleted immediately because that would prevent the sound and the particles from happening
 
@@ -11,11 +13,8 @@ func maybe_pop(delta: float):
 	if is_instance_valid(%"Bubble mesh") && randf() < probability_of_pop_in_one_second * delta:
 		%"Bubble mesh".queue_free()
 		
-		%"Pop sound".play()
-		%Particles.emitting = true
+		(%"Pop sound" as AudioStreamPlayer3D).play()
+		(%Particles as GPUParticles3D).emitting = true
 		
-		%"Delete timer".start()
-
-
-func delete():
-	self.queue_free()
+		await get_tree().create_timer(1.).timeout
+		self.queue_free()
