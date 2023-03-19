@@ -268,7 +268,6 @@ horizontal_velocity = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.487351, 1.97738, 5.90069)
 word_manager = NodePath("../Word manager")
 level = NodePath("../Level")
-arm_pivot = Vector2(2, -35)
 
 [node name="Word manager" parent="." node_paths=PackedStringArray("level") instance=ExtResource("6")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.58329, 0, -9.39023)

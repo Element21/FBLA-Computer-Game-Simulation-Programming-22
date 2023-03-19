@@ -129,7 +129,7 @@ func fix_arm_rotation():
 	var top_down_position = Vector2(hand.position.x, hand.position.z)
 	var arm_pivot_position_local = arm_pivot - Vector2(self.position.x, self.position.y)
 	
-	hand.rotation.y = -top_down_position.angle_to_point(arm_pivot_position_local) - PI / 2
+	hand.rotation.y = -top_down_position.angle_to_point(arm_pivot_position_local) + PI / 2
 
 
 func move_hand_towards_mouse(delta: float):

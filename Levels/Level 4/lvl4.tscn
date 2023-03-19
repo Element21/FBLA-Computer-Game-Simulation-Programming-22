@@ -296,7 +296,6 @@ dropoff = 3.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00907, 19.565)
 word_manager = NodePath("../Word manager")
 level = NodePath("../Level")
-arm_pivot = Vector2(2, -35)
 
 [node name="Word manager" parent="." node_paths=PackedStringArray("level") instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892, 7.39978, 5.96458)

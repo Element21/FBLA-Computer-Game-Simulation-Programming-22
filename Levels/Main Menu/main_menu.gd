@@ -6,8 +6,13 @@ extends Control
 
 @export var level_button_distance = 20
 
+@onready var instructions: PopupPanel = %Instructions
 
-func _ready():	
+
+func _ready():
+	# Prevent it from opening automatically
+	instructions.hide()
+	
 	# Add buttons for each level
 	for i in range(0, level_names.size()):
 		var button = Button.new()
@@ -25,5 +30,5 @@ func _ready():
 		# The popup will close instantly if I don't do these awaits, idk why
 		await get_tree().process_frame
 		await get_tree().process_frame
-		(%Instructions as PopupPanel).popup_centered_clamped()
+		instructions.popup_centered_clamped()
 

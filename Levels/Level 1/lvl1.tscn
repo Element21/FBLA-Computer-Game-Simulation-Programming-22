@@ -145,7 +145,6 @@ shape = SubResource("13")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.734, 0)
 word_manager = NodePath("../Word manager")
 level = NodePath("../Level")
-arm_pivot = Vector2(2, -35)
 
 [node name="Word manager" parent="." node_paths=PackedStringArray("level") instance=ExtResource("10")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.864, -7.254)
