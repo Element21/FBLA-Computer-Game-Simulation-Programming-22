@@ -25,7 +25,7 @@ func load_words() -> Array:
 	return new_words
 
 
-func matches_word(letters: Array[Letter]) -> bool:
+func matches_word(letters: Array) -> bool:
 	# Check all the words of the same length to make sure the word is valid
 	for word in words[letters.size() - 1]:
 		if compare_word(word, letters):
@@ -34,7 +34,7 @@ func matches_word(letters: Array[Letter]) -> bool:
 	return false
 
 
-func calculate_score_added(letters: Array[Letter]):
+func calculate_score_added(letters: Array):
 	var amt_could_be_placed = letters_that_could_be_used_next(letters)
 	
 	if amt_could_be_placed == 0:
@@ -43,7 +43,7 @@ func calculate_score_added(letters: Array[Letter]):
 	return 27 - amt_could_be_placed
 
 
-func letters_that_could_be_used_next(letters: Array[Letter]) -> int:
+func letters_that_could_be_used_next(letters: Array) -> int:
 	var empty_index = letters.find(null)
 	
 	var could_be_placed = []
@@ -60,7 +60,7 @@ func letters_that_could_be_used_next(letters: Array[Letter]) -> int:
 
 
 # Assumes word & letters are the same length
-func compare_word(word: String, letters: Array[Letter]) -> bool:
+func compare_word(word: String, letters: Array) -> bool:
 	for i in range(0, word.length()):
 		if letters[i] == null:
 			continue

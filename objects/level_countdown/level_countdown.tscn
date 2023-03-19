@@ -7,6 +7,7 @@
 [sub_resource type="TextMesh" id="1"]
 text = "3"
 font = ExtResource("2")
+font_size = 100
 
 [node name="Level coundown" type="Node3D"]
 script = ExtResource("1")

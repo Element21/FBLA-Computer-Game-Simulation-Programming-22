@@ -31,4 +31,4 @@ func start(camera: Camera3D):
 	counter_mesh.hide()
 	click_sound.play()
 	
-	assert(OK == emit_signal("started"))
+	started.emit()

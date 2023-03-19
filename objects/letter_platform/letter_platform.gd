@@ -34,7 +34,7 @@ func launch():
 		# Disable collision for the letter, prevents shenanigans
 		letter.collision_layer = 0
 		letter.collision_mask = 0
-		original_letter_position = letter.global_translation
+		original_letter_position = letter.global_position
 	
 	whoosh.play()
 
@@ -45,12 +45,13 @@ func set_score(new_score):
 	
 	var mesh = TextMesh.new()
 	
-	mesh.font = load("res://resources/letter_font.tres")
+	mesh.font = preload("res://resources/FredokaOne-Regular.ttf")
+	mesh.font_size = 70
 	
 	if score == null:
 		mesh.text = "X"
 	else:
-		mesh.text = String(new_score)
+		mesh.text = String.num_int64(new_score)
 	
 	score_mesh.mesh = mesh
 	
@@ -95,7 +96,7 @@ func do_launch_transformation():
 		
 		# Manually set the position and velocity, making the physics engine do this is unreliable
 		letter.linear_velocity = global_launch_vector * lerp_amt_derivative
-		letter.global_translation = original_letter_position + lerp(Vector3(0, 0, 0), global_launch_vector, lerp_amt)
+		letter.global_position = original_letter_position + lerp(Vector3(0, 0, 0), global_launch_vector, lerp_amt)
 	
 	# Pull the score back in
 	if t > 0.5:

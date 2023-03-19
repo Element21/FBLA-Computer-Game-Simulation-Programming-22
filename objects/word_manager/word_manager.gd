@@ -74,7 +74,7 @@ func word_made():
 	for platform in platforms.get_children() as Array[LetterPlatform]:
 		level.score += platform.score
 	
-	((%"Score mesh" as MeshInstance3D).mesh as TextMesh).text = String(level.score)
+	((%"Score mesh" as MeshInstance3D).mesh as TextMesh).text = String.num_int64(level.score)
 	
 	letters_placed.fill(null)
 	
@@ -95,9 +95,9 @@ func launch_all_platforms():
 func next_platform_position() -> Vector3:
 	var index = letters_placed.find(null)
 	
-	var platform = platforms.get_child(index)
+	var platform: LetterPlatform = platforms.get_child(index)
 	
-	return platform.global_translation
+	return platform.global_position
 
 
 func _input(event: InputEvent):

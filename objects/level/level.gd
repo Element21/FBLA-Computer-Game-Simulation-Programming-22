@@ -40,7 +40,7 @@ func _process(delta):
 		time_left -= delta
 	
 	if time_left < 0 && playing:
-		assert(OK == emit_signal("level_ended"))
+		level_ended.emit()
 		playing = false
 		
 		LeaderboardManager.add_score(level_index, score)
