@@ -1,19 +1,26 @@
-[gd_scene load_steps=15 format=3 uid="uid://mrcrmxl653fq"]
+[gd_scene load_steps=22 format=3 uid="uid://mrcrmxl653fq"]
 
 [ext_resource type="PackedScene" uid="uid://c6sm62eie3fwh" path="res://objects/level/level.tscn" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://bmmogb03k1ebk" path="res://Levels/Level 4/pool.obj" id="2"]
 [ext_resource type="PackedScene" uid="uid://c3s7gyx61jw4a" path="res://objects/hand/hand.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://br82x7v0lrtnj" path="res://objects/word_manager/word_manager.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://objects/soup/soup.tscn" id="5"]
+[ext_resource type="Material" path="res://resources/materials/plants.tres" id="4_hyrkw"]
+[ext_resource type="PackedScene" uid="uid://c0hnudt3vp12o" path="res://objects/soup/soup.tscn" id="5"]
+[ext_resource type="Material" path="res://resources/materials/concrete.tres" id="5_u53hf"]
+[ext_resource type="Material" path="res://resources/materials/metal.tres" id="6_rpuyq"]
+[ext_resource type="Material" path="res://resources/materials/pool/flamingo.tres" id="7_dx80j"]
 [ext_resource type="PackedScene" uid="uid://d107jgdxqoufc" path="res://objects/jet/jet.tscn" id="8"]
+[ext_resource type="Material" path="res://resources/materials/pool/towel.tres" id="8_7343t"]
 [ext_resource type="PackedScene" uid="uid://b4kyequ7vdxby" path="res://Levels/Level 5/lvl5.tscn" id="9"]
+[ext_resource type="Material" path="res://resources/materials/pool/chair.tres" id="9_lwtow"]
+[ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="11_ly4wk"]
 [ext_resource type="PackedScene" uid="uid://bvg1o8hnwtey6" path="res://objects/letter_spawner/letter_spawner.tscn" id="16"]
 
 [sub_resource type="PlaneMesh" id="1"]
 size = Vector2(100, 100)
 
 [sub_resource type="BoxShape3D" id="2"]
-size = Vector3(100, 100, 100)
+size = Vector3(200, 200, 200)
 
 [sub_resource type="PhysicsMaterial" id="6"]
 friction = 0.52
@@ -32,6 +39,7 @@ size = Vector3(10, 10, 1)
 [node name="Node3D" type="Node3D"]
 
 [node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1")]
+time_given = 60.0
 countdown = false
 next_level = ExtResource("9")
 level_index = 3
@@ -45,6 +53,54 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 22.906,
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, -4.94834, 0)
 mesh = ExtResource("2")
+surface_material_override/0 = ExtResource("4_hyrkw")
+surface_material_override/1 = ExtResource("5_u53hf")
+surface_material_override/2 = ExtResource("6_rpuyq")
+surface_material_override/3 = ExtResource("6_rpuyq")
+surface_material_override/4 = ExtResource("6_rpuyq")
+surface_material_override/5 = ExtResource("6_rpuyq")
+surface_material_override/6 = ExtResource("7_dx80j")
+surface_material_override/7 = ExtResource("7_dx80j")
+surface_material_override/8 = ExtResource("7_dx80j")
+surface_material_override/9 = ExtResource("8_7343t")
+surface_material_override/10 = ExtResource("8_7343t")
+surface_material_override/11 = ExtResource("8_7343t")
+surface_material_override/12 = ExtResource("8_7343t")
+surface_material_override/13 = ExtResource("8_7343t")
+surface_material_override/14 = ExtResource("8_7343t")
+surface_material_override/15 = ExtResource("4_hyrkw")
+surface_material_override/16 = ExtResource("4_hyrkw")
+surface_material_override/17 = ExtResource("4_hyrkw")
+surface_material_override/18 = ExtResource("4_hyrkw")
+surface_material_override/19 = ExtResource("4_hyrkw")
+surface_material_override/20 = ExtResource("4_hyrkw")
+surface_material_override/21 = ExtResource("4_hyrkw")
+surface_material_override/22 = ExtResource("4_hyrkw")
+surface_material_override/23 = ExtResource("9_lwtow")
+surface_material_override/24 = ExtResource("6_rpuyq")
+surface_material_override/25 = ExtResource("9_lwtow")
+surface_material_override/26 = ExtResource("9_lwtow")
+surface_material_override/27 = ExtResource("6_rpuyq")
+surface_material_override/28 = ExtResource("9_lwtow")
+surface_material_override/29 = ExtResource("6_rpuyq")
+surface_material_override/30 = ExtResource("9_lwtow")
+surface_material_override/31 = ExtResource("6_rpuyq")
+surface_material_override/32 = ExtResource("9_lwtow")
+surface_material_override/33 = ExtResource("6_rpuyq")
+surface_material_override/34 = ExtResource("9_lwtow")
+surface_material_override/35 = ExtResource("6_rpuyq")
+surface_material_override/36 = ExtResource("9_lwtow")
+surface_material_override/37 = ExtResource("6_rpuyq")
+surface_material_override/38 = ExtResource("9_lwtow")
+surface_material_override/39 = ExtResource("6_rpuyq")
+surface_material_override/40 = ExtResource("9_lwtow")
+surface_material_override/41 = ExtResource("6_rpuyq")
+surface_material_override/42 = ExtResource("9_lwtow")
+surface_material_override/43 = ExtResource("6_rpuyq")
+surface_material_override/44 = ExtResource("9_lwtow")
+surface_material_override/45 = ExtResource("6_rpuyq")
+surface_material_override/46 = ExtResource("9_lwtow")
+surface_material_override/47 = ExtResource("6_rpuyq")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0829, 80.7733, 48.2642)
@@ -59,6 +115,7 @@ surface = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Soup"]
 mesh = SubResource("1")
+surface_material_override/0 = ExtResource("11_ly4wk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Soup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
@@ -239,6 +296,7 @@ dropoff = 3.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00907, 19.565)
 word_manager = NodePath("../Word manager")
 level = NodePath("../Level")
+arm_pivot = Vector2(2, -35)
 
 [node name="Word manager" parent="." node_paths=PackedStringArray("level") instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892, 7.39978, 5.96458)

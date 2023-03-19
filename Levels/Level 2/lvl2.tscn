@@ -40,6 +40,7 @@ radius = 4.42
 
 [node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22611, 0)
+time_given = 60.0
 next_level = ExtResource("13")
 level_index = 1
 camera = NodePath("../Camera3D")
