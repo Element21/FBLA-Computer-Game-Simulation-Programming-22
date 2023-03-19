@@ -15,6 +15,7 @@ var letter_platform_scene = preload("res://objects/letter_platform/letter_platfo
 
 @onready var platforms: Node3D = %Platforms
 @onready var ui: Node3D = %UI
+@onready var score_mesh: MeshInstance3D = %"Score mesh"
 
 
 # Get the local x position of a given platform
@@ -25,6 +26,8 @@ func platform_index_to_x_position(index: int) -> float:
 func _ready():
 	@warning_ignore("return_value_discarded")
 	letters_placed.resize(word_length)
+	
+	(score_mesh.mesh as TextMesh).text = "0"
 	
 	# Instantiate all the platforms
 	for index in range(0, word_length):
@@ -74,7 +77,7 @@ func word_made():
 	for platform in platforms.get_children() as Array[LetterPlatform]:
 		level.score += platform.score
 	
-	((%"Score mesh" as MeshInstance3D).mesh as TextMesh).text = String.num_int64(level.score)
+	(score_mesh.mesh as TextMesh).text = String.num_int64(level.score)
 	
 	letters_placed.fill(null)
 	

@@ -7,11 +7,13 @@ class_name Bubble
 
 var probability_of_pop_in_one_second = 0.5
 
+@onready var bubble_mesh: MeshInstance3D = %"Bubble mesh"
+
 
 func maybe_pop(delta: float):
 	# Pop if this bubble hasn't been popped before, and the random roll succeeds
-	if is_instance_valid(%"Bubble mesh") && randf() < probability_of_pop_in_one_second * delta:
-		%"Bubble mesh".queue_free()
+	if is_instance_valid(bubble_mesh) && randf() < probability_of_pop_in_one_second * delta:
+		bubble_mesh.queue_free()
 		
 		(%"Pop sound" as AudioStreamPlayer3D).play()
 		(%Particles as GPUParticles3D).emitting = true

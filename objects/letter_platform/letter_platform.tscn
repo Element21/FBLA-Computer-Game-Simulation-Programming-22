@@ -17,7 +17,7 @@ font_size = 70
 size = Vector3(1.2, 0.25, 1.2)
 
 [sub_resource type="BoxShape3D" id="2"]
-size = Vector3(0.6, 0.17, 0.6)
+size = Vector3(1.2, 0.25, 1.2)
 
 [node name="RigidBody3D" type="RigidBody3D"]
 physics_material_override = SubResource("6")

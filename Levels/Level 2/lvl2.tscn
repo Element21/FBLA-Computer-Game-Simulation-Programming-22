@@ -1,21 +1,30 @@
-[gd_scene load_steps=17 format=3 uid="uid://cohxbv62o78gh"]
+[gd_scene load_steps=26 format=3 uid="uid://cohxbv62o78gh"]
 
 [ext_resource type="PackedScene" uid="uid://c6sm62eie3fwh" path="res://objects/level/level.tscn" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://c4m8n11ytae44" path="res://Levels/Level 2/pot2.0.obj" id="2"]
 [ext_resource type="PackedScene" uid="uid://br82x7v0lrtnj" path="res://objects/word_manager/word_manager.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://c3s7gyx61jw4a" path="res://objects/hand/hand.tscn" id="4"]
 [ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="5"]
+[ext_resource type="Material" path="res://resources/materials/metal.tres" id="5_hljo1"]
 [ext_resource type="ArrayMesh" uid="uid://1mgdty0wky10" path="res://Levels/Level 2/ovenstove.obj" id="6"]
 [ext_resource type="PackedScene" uid="uid://bvg1o8hnwtey6" path="res://objects/letter_spawner/letter_spawner.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://objects/soup/soup.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://c0hnudt3vp12o" path="res://objects/soup/soup.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://dgsjstln6eldc" path="res://objects/bubble_spawner/bubble_spawner.tscn" id="9"]
 [ext_resource type="ArrayMesh" uid="uid://k01b3ya2eqwu" path="res://Levels/Level 2/sidecountertop.obj" id="10"]
 [ext_resource type="ArrayMesh" uid="uid://dguymf4lve448" path="res://Levels/Level 2/soupCan.obj" id="11"]
+[ext_resource type="Material" path="res://resources/materials/soup_can/wrapping_top.tres" id="11_chu7k"]
 [ext_resource type="ArrayMesh" uid="uid://c0gduoivj7ltj" path="res://Levels/Level 2/soupCanopen.obj" id="12"]
+[ext_resource type="Material" path="res://resources/materials/soup_can/wrapping_bottom.tres" id="12_bcqdu"]
 [ext_resource type="PackedScene" uid="uid://bhpaglfnbruvn" path="res://Levels/Level 3/lvl3.tscn" id="13"]
+[ext_resource type="Material" path="res://resources/materials/oven/backsplash.tres" id="15_anxe1"]
+[ext_resource type="Material" path="res://resources/materials/oven/burner.tres" id="16_l3ecs"]
+[ext_resource type="Material" path="res://resources/materials/oven/knob.tres" id="17_6ov5i"]
+[ext_resource type="Material" path="res://resources/materials/wood.tres" id="19_eq7m8"]
+[ext_resource type="Material" path="res://resources/materials/countertop/surface.tres" id="20_nu7x8"]
+[ext_resource type="Material" path="res://resources/materials/countertop/backsplash.tres" id="21_lvk0n"]
 
 [sub_resource type="BoxShape3D" id="4"]
-size = Vector3(1, 9, 0.2)
+size = Vector3(2, 18, 0.4)
 
 [sub_resource type="CylinderMesh" id="2"]
 material = ExtResource("5")
@@ -44,18 +53,13 @@ word_length = 3
 launch_vector = Vector3(0, 4, 5)
 level = NodePath("../Level")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4124, 26.395, 22.2764)
-shadow_enabled = true
-omni_range = 69.4678
-omni_shadow_mode = 0
-
 [node name="Pot" type="StaticBody3D" parent="."]
 
 [node name="Pot mesh" type="MeshInstance3D" parent="Pot"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 mesh = ExtResource("2")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_hljo1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.451, 4.492)
@@ -121,6 +125,7 @@ shape = SubResource("4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.497, 0)
 word_manager = NodePath("../Word manager")
 level = NodePath("../Level")
+arm_pivot = Vector2(2, -35)
 
 [node name="Soup" parent="." node_paths=PackedStringArray("level") instance=ExtResource("8")]
 level = NodePath("../Level")
@@ -134,9 +139,16 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.42, 0)
 shape = SubResource("1")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4124, 26.395, 22.2764)
+light_energy = 16.0
+shadow_enabled = true
+omni_range = 69.4678
+omni_shadow_mode = 0
+
 [node name="OmniLight2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6979, 26.0407, -4.42988)
-light_energy = 0.646
+light_energy = 16.0
 omni_range = 82.7533
 omni_shadow_mode = 0
 
@@ -157,45 +169,93 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.056078, 0, -0.601492)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Soup cans"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -26.5745, 0.101906, -11.3713)
 mesh = ExtResource("11")
+surface_material_override/0 = ExtResource("5_hljo1")
+surface_material_override/1 = ExtResource("5_hljo1")
+surface_material_override/2 = ExtResource("11_chu7k")
+surface_material_override/3 = ExtResource("12_bcqdu")
 
 [node name="MeshInstance2" type="MeshInstance3D" parent="Environment/Soup cans"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -27.9117, 0.0872974, -3.85084)
 mesh = ExtResource("11")
+surface_material_override/0 = ExtResource("5_hljo1")
+surface_material_override/1 = ExtResource("5_hljo1")
+surface_material_override/2 = ExtResource("11_chu7k")
+surface_material_override/3 = ExtResource("12_bcqdu")
 
 [node name="MeshInstance3" type="MeshInstance3D" parent="Environment/Soup cans"]
 transform = Transform3D(0.25, 0.433013, -1.89276e-08, 0, -2.18557e-08, -0.5, -0.433013, 0.25, -1.09278e-08, -26.0909, -0.408165, -5.12009)
 mesh = ExtResource("11")
+surface_material_override/0 = ExtResource("5_hljo1")
+surface_material_override/1 = ExtResource("5_hljo1")
+surface_material_override/2 = ExtResource("11_chu7k")
+surface_material_override/3 = ExtResource("12_bcqdu")
 
 [node name="MeshInstance4" type="MeshInstance3D" parent="Environment/Soup cans"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 13.0616, 0.0872974, -0.798737)
 mesh = ExtResource("11")
+surface_material_override/0 = ExtResource("5_hljo1")
+surface_material_override/1 = ExtResource("5_hljo1")
+surface_material_override/2 = ExtResource("11_chu7k")
+surface_material_override/3 = ExtResource("12_bcqdu")
 
 [node name="MeshInstance5" type="MeshInstance3D" parent="Environment/Soup cans"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 15.1302, 0.0872974, 1.21265)
 mesh = ExtResource("11")
+surface_material_override/0 = ExtResource("5_hljo1")
+surface_material_override/1 = ExtResource("5_hljo1")
+surface_material_override/2 = ExtResource("11_chu7k")
+surface_material_override/3 = ExtResource("12_bcqdu")
 
 [node name="MeshInstance6" type="MeshInstance3D" parent="Environment/Soup cans"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 13.8979, 3.15461, 0.226637)
 mesh = ExtResource("11")
+surface_material_override/0 = ExtResource("5_hljo1")
+surface_material_override/1 = ExtResource("5_hljo1")
+surface_material_override/2 = ExtResource("11_chu7k")
+surface_material_override/3 = ExtResource("12_bcqdu")
 
 [node name="MeshInstance7" type="MeshInstance3D" parent="Environment/Soup cans"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 12.6152, 0.0872974, -9.34117)
 mesh = ExtResource("12")
+surface_material_override/0 = ExtResource("5_hljo1")
+surface_material_override/1 = ExtResource("5_hljo1")
+surface_material_override/2 = ExtResource("11_chu7k")
+surface_material_override/3 = ExtResource("12_bcqdu")
 
 [node name="Stove" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(-9, 0, -7.86805e-07, 0, 9, 0, 7.86805e-07, 0, -9, -7.02188, -21.247, -8.54824)
 mesh = ExtResource("6")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_hljo1")
+surface_material_override/1 = ExtResource("5_hljo1")
+surface_material_override/2 = ExtResource("15_anxe1")
+surface_material_override/3 = ExtResource("16_l3ecs")
+surface_material_override/4 = ExtResource("17_6ov5i")
+surface_material_override/5 = ExtResource("17_6ov5i")
+surface_material_override/6 = ExtResource("17_6ov5i")
+surface_material_override/7 = ExtResource("17_6ov5i")
 
 [node name="Left countertop" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(-9, 0, -7.86805e-07, 0, 9, 0, 7.86805e-07, 0, -9, -40.9895, -21.247, -8.548)
 mesh = ExtResource("10")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("19_eq7m8")
+surface_material_override/1 = ExtResource("20_nu7x8")
+surface_material_override/2 = ExtResource("21_lvk0n")
+surface_material_override/3 = ExtResource("19_eq7m8")
+surface_material_override/4 = ExtResource("19_eq7m8")
+surface_material_override/5 = ExtResource("19_eq7m8")
 
 [node name="Right countertop" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(-9, 0, -7.86805e-07, 0, 9, 0, 7.86805e-07, 0, -9, 26.9305, -21.247, -8.548)
 mesh = ExtResource("10")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("19_eq7m8")
+surface_material_override/1 = ExtResource("20_nu7x8")
+surface_material_override/2 = ExtResource("21_lvk0n")
+surface_material_override/3 = ExtResource("19_eq7m8")
+surface_material_override/4 = ExtResource("19_eq7m8")
+surface_material_override/5 = ExtResource("19_eq7m8")
 
 [node name="Letter Spawner" parent="." node_paths=PackedStringArray("level") instance=ExtResource("7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.74613, 0)
