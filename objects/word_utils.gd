@@ -70,6 +70,60 @@ func random_letter(word_len: int) -> String:
 	
 	return 'z'
 
+var letter_meshes: Array[ArrayMesh] = [
+	preload("res://resources/letters/a.obj"),
+	preload("res://resources/letters/b.obj"),
+	preload("res://resources/letters/c.obj"),
+	preload("res://resources/letters/e.obj"),
+	preload("res://resources/letters/f.obj"),
+	preload("res://resources/letters/g.obj"),
+	preload("res://resources/letters/h.obj"),
+	preload("res://resources/letters/i.obj"),
+	preload("res://resources/letters/j.obj"),
+	preload("res://resources/letters/k.obj"),
+	preload("res://resources/letters/l.obj"),
+	preload("res://resources/letters/m.obj"),
+	preload("res://resources/letters/n.obj"),
+	preload("res://resources/letters/o.obj"),
+	preload("res://resources/letters/p.obj"),
+	preload("res://resources/letters/q.obj"),
+	preload("res://resources/letters/r.obj"),
+	preload("res://resources/letters/s.obj"),
+	preload("res://resources/letters/t.obj"),
+	preload("res://resources/letters/u.obj"),
+	preload("res://resources/letters/v.obj"),
+	preload("res://resources/letters/w.obj"),
+	preload("res://resources/letters/x.obj"),
+	preload("res://resources/letters/y.obj"),
+	preload("res://resources/letters/z.obj"),
+]
+
+func mesh_of(letter: String) -> ArrayMesh:
+	return letter_meshes[letter.unicode_at(0) - 97]
+
+@onready var inverse_mesh_translations: PackedVector3Array = PackedVector3Array(letter_meshes.map(inverse_mesh_translation))
+
+func inverse_translation_of(letter: String) -> Vector3:
+	return inverse_mesh_translations[letter.unicode_at(0) - 97]
+
+# Daniel's letter models are offset, this undoes the position
+# This assumes that the vertices are about evenly spread out, otherwise the average will be biased towards where there's a higher density of vertices
+func inverse_mesh_translation(new_mesh: ArrayMesh) -> Vector3:
+	var avg_translation = Vector3(0, 0, 0)
+	
+	var mesh_data_tool = MeshDataTool.new()
+	assert(OK == mesh_data_tool.create_from_surface(new_mesh, 0))
+	
+	var vertex_count = mesh_data_tool.get_vertex_count()
+	var inverse_vertex_count = 1.0 / vertex_count
+	
+	for i in range(vertex_count):
+		var vertex = mesh_data_tool.get_vertex(i)
+		
+		avg_translation += vertex * inverse_vertex_count
+	
+	return -avg_translation
+
 func matches_word(letters: Array) -> bool:
 	# Check all the words of the same length to make sure the word is valid
 	for word in words[letters.size() - 1]:

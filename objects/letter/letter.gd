@@ -13,33 +13,27 @@ var material = preload("res://resources/materials/letter/letter.tres")
 
 func set_mesh():
 	var new_mesh: ArrayMesh = load("res://resources/letters/" + which_letter + ".obj") as ArrayMesh
-	mesh.mesh = new_mesh
+	mesh.mesh = WordUtils.mesh_of(which_letter)
 	mesh.set_surface_override_material(0, material)
-	undo_mesh_translation(new_mesh)
-
-
-# Daniel's letter models are offset, this undoes the position
-# This assumes that the vertices are about evenly spread out, otherwise the average will be biased towards where there's a higher density of vertices
-func undo_mesh_translation(new_mesh: ArrayMesh):
-	var avg_translation = Vector3(0, 0, 0)
-	
-	var mesh_data_tool = MeshDataTool.new()
-	assert(OK == mesh_data_tool.create_from_surface(new_mesh, 0))
-	
-	var vertex_count = mesh_data_tool.get_vertex_count()
-	var inverse_vertex_count = 1.0 / vertex_count
-	
-	for i in range(vertex_count):
-		var vertex = mesh_data_tool.get_vertex(i)
-		
-		avg_translation += vertex * inverse_vertex_count
-	
-	
-	mesh.position -= avg_translation
+	mesh.position = WordUtils.inverse_translation_of(which_letter)
 
 
 func _ready():
 	set_mesh()
+	change_letter()
+
+
+func change_letter():
+	await get_tree().create_timer(randf() * 10. + 10.).timeout
+	
+	self.apply_central_impulse(Vector3(0, -5, 0))
+	
+	await get_tree().create_timer(.1).timeout
+	
+	which_letter = WordUtils.random_letter(word_length)
+	set_mesh()
+	
+	change_letter()
 
 
 func on_collision(node: Node):
