@@ -26,6 +26,8 @@ func _ready():
 func change_letter():
 	await get_tree().create_timer(randf() * 10. + 10.).timeout
 	
+	if !self.is_in_group("Letters"): return
+	
 	self.apply_central_impulse(Vector3(0, -5, 0))
 	
 	await get_tree().create_timer(.1).timeout

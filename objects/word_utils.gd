@@ -74,6 +74,7 @@ var letter_meshes: Array[ArrayMesh] = [
 	preload("res://resources/letters/a.obj"),
 	preload("res://resources/letters/b.obj"),
 	preload("res://resources/letters/c.obj"),
+	preload("res://resources/letters/d.obj"),
 	preload("res://resources/letters/e.obj"),
 	preload("res://resources/letters/f.obj"),
 	preload("res://resources/letters/g.obj"),
