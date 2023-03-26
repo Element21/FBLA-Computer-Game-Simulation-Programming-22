@@ -303,6 +303,7 @@ word_length = 4
 launch_vector = Vector3(-0.2, 5, 5)
 level = NodePath("../Level")
 
-[node name="Letter Spawner" parent="." node_paths=PackedStringArray("level") instance=ExtResource("16")]
+[node name="Letter Spawner" parent="." node_paths=PackedStringArray("level", "word_manager") instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.768514, -16.1616)
 level = NodePath("../Level")
+word_manager = NodePath("../Word manager")

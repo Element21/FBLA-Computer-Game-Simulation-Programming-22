@@ -3,14 +3,13 @@ extends RigidBody3D
 class_name Letter
 
 
-var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-
-var which_letter: String = alphabet[randi() % alphabet.size()] # Pick random letter from "alphabet" to spawn
+@export var word_length: int
 
 var material = preload("res://resources/materials/letter/letter.tres")
 
 @onready var mesh: MeshInstance3D = %Mesh
 @onready var particles: GPUParticles3D = %Particles
+@onready var which_letter: String = WordUtils.random_letter(word_length)
 
 func set_mesh():
 	var new_mesh: ArrayMesh = load("res://resources/letters/" + which_letter + ".obj") as ArrayMesh
