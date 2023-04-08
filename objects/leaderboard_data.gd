@@ -7,11 +7,6 @@ class_name LeaderboardData
 @export var data: Array[Dictionary] = []
 
 
-class LeaderboardDataSorter:
-	static func sort_descending(a, b):
-		return a[1] > b[1]
-
-
 ## Returns an array where each entry is an array of [name, score], sorted by score
 func get_sorted_leaderboard_for(idx: int) -> Array:
 	var data_dictionary = get_leaderboard_for(idx)
@@ -21,7 +16,7 @@ func get_sorted_leaderboard_for(idx: int) -> Array:
 	for key in data_dictionary.keys():
 		data_array.push_back([key, data_dictionary[key]])
 	
-	data_array.sort_custom(Callable(LeaderboardDataSorter,"sort_descending"))
+	data_array.sort_custom(func(a, b): a[1] > b[1])
 	
 	return data_array
 

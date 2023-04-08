@@ -29,18 +29,22 @@ level_scene = ExtResource("2_ehgci")
 
 [node name="Level 2 Can" parent="." instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.5, 0, 0)
+level_idx = 1
 level_scene = ExtResource("3_0u8gs")
 
 [node name="Level 3 Can" parent="." instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 5, 0, 0)
+level_idx = 2
 level_scene = ExtResource("4_g2703")
 
 [node name="Level 4 Can" parent="." instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7.5, 0, 0)
+level_idx = 3
 level_scene = ExtResource("5_nfrab")
 
 [node name="Level 5 Can" parent="." instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 10, 0, 0)
+level_idx = 4
 level_scene = ExtResource("6_mpq32")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
