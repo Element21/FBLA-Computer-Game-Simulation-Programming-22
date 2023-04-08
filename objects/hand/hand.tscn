@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3s7gyx61jw4a"]
+[gd_scene load_steps=11 format=3 uid="uid://fc00545u7hf4"]
 
 [ext_resource type="ArrayMesh" uid="uid://r4r72ff1r61p" path="res://resources/hand_frames/frame1_hand_3.0.obj" id="1"]
 [ext_resource type="Script" path="res://objects/hand/hand.gd" id="2"]

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c6sm62eie3fwh" path="res://objects/level/level.tscn" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://c4m8n11ytae44" path="res://Levels/Level 2/pot2.0.obj" id="2"]
 [ext_resource type="PackedScene" uid="uid://br82x7v0lrtnj" path="res://objects/word_manager/word_manager.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://c3s7gyx61jw4a" path="res://objects/hand/hand.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://fc00545u7hf4" path="res://objects/hand/hand.tscn" id="4"]
 [ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="5"]
 [ext_resource type="Material" path="res://resources/materials/metal.tres" id="5_hljo1"]
 [ext_resource type="ArrayMesh" uid="uid://1mgdty0wky10" path="res://Levels/Level 2/ovenstove.obj" id="6"]

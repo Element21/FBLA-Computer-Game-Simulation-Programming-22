@@ -1,29 +1,50 @@
-[gd_scene load_steps=7 format=3 uid="uid://djsijup53erc7"]
+[gd_scene load_steps=9 format=3 uid="uid://djsijup53erc7"]
 
 [ext_resource type="PackedScene" uid="uid://cdjke6okxxfwg" path="res://Levels/3D Main Menu/level_can.tscn" id="1_fudtw"]
+[ext_resource type="Script" path="res://Levels/3D Main Menu/3d_main_menu.gd" id="1_wepeb"]
 [ext_resource type="PackedScene" uid="uid://drxd607igbq22" path="res://Levels/Level 1/lvl1.tscn" id="2_ehgci"]
 [ext_resource type="PackedScene" uid="uid://dnv1a3gw0cyd3" path="res://Levels/Level 2/lvl2.tscn" id="3_0u8gs"]
 [ext_resource type="PackedScene" uid="uid://bhpaglfnbruvn" path="res://Levels/Level 3/lvl3.tscn" id="4_g2703"]
 [ext_resource type="PackedScene" uid="uid://mrcrmxl653fq" path="res://Levels/Level 4/lvl4.tscn" id="5_nfrab"]
 [ext_resource type="PackedScene" uid="uid://b4kyequ7vdxby" path="res://Levels/Level 5/lvl5.tscn" id="6_mpq32"]
+[ext_resource type="PackedScene" uid="uid://mrpg2qlfhfug" path="res://objects/environment.tscn" id="8_c8l8o"]
 
 [node name="3D Main Menu" type="Node3D"]
+script = ExtResource("1_wepeb")
+
+[node name="Camera" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.913545, 0.406737, 0, -0.406737, 0.913545, 5, 3.5, 7)
+
+[node name="RayCast" type="RayCast3D" parent="Camera"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.913545, -0.406737, 0, 0.406737, 0.913545, 0, 0, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Level 1 Can" parent="." instance=ExtResource("1_fudtw")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 level_scene = ExtResource("2_ehgci")
 
 [node name="Level 2 Can" parent="." instance=ExtResource("1_fudtw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.5, 0, 0)
 level_scene = ExtResource("3_0u8gs")
 
 [node name="Level 3 Can" parent="." instance=ExtResource("1_fudtw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 5, 0, 0)
 level_scene = ExtResource("4_g2703")
 
 [node name="Level 4 Can" parent="." instance=ExtResource("1_fudtw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7.5, 0, 0)
 level_scene = ExtResource("5_nfrab")
 
 [node name="Level 5 Can" parent="." instance=ExtResource("1_fudtw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 10, 0, 0)
 level_scene = ExtResource("6_mpq32")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.71204, 6.14006)
+omni_range = 30.921
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("8_c8l8o")]

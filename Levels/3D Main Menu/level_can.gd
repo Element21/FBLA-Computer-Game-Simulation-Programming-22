@@ -1,4 +1,6 @@
-extends MeshInstance3D
+extends Area3D
+
+class_name LevelCan
 
 
 @export var level_scene: PackedScene

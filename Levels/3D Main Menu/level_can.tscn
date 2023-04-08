@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdjke6okxxfwg"]
+[gd_scene load_steps=7 format=3 uid="uid://cdjke6okxxfwg"]
 
 [ext_resource type="ArrayMesh" uid="uid://dguymf4lve448" path="res://resources/soupCan.obj" id="1_mthep"]
 [ext_resource type="Material" path="res://resources/materials/metal.tres" id="2_30beh"]
@@ -6,10 +6,20 @@
 [ext_resource type="Material" path="res://resources/materials/soup_can/wrapping_bottom.tres" id="4_iacit"]
 [ext_resource type="Script" path="res://Levels/3D Main Menu/level_can.gd" id="5_k35rf"]
 
-[node name="LevelCan" type="MeshInstance3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kvto1"]
+height = 6.0
+radius = 2.0
+
+[node name="Can Area" type="Area3D"]
+collision_layer = 2
+script = ExtResource("5_k35rf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_kvto1")
+
+[node name="Can Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_mthep")
 surface_material_override/0 = ExtResource("2_30beh")
 surface_material_override/1 = ExtResource("2_30beh")
 surface_material_override/2 = ExtResource("3_nprpr")
 surface_material_override/3 = ExtResource("4_iacit")
-script = ExtResource("5_k35rf")
