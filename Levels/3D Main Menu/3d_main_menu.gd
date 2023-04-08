@@ -24,6 +24,10 @@ func _input(event: InputEvent):
 	if event.is_action_pressed("click"):
 		var maybe_can = %RayCast.get_collider()
 		
+		if maybe_can_focusing_on:
+				maybe_can_focusing_on.hide_level_data()
+				maybe_can_focusing_on = null
+		
 		if maybe_can != null && maybe_can is LevelCan:
 			var can: LevelCan = maybe_can
 			
@@ -37,6 +41,4 @@ func _input(event: InputEvent):
 			var tween = get_tree().create_tween()
 			tween.tween_property(%Camera, "position", start_pos, .5).set_trans(Tween.TRANS_SINE)
 			
-			if maybe_can_focusing_on:
-				maybe_can_focusing_on.hide_level_data()
-				maybe_can_focusing_on = null
+			
