@@ -1,0 +1,15 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdjke6okxxfwg"]
+
+[ext_resource type="ArrayMesh" uid="uid://dguymf4lve448" path="res://resources/soupCan.obj" id="1_mthep"]
+[ext_resource type="Material" path="res://resources/materials/metal.tres" id="2_30beh"]
+[ext_resource type="Material" path="res://resources/materials/soup_can/wrapping_top.tres" id="3_nprpr"]
+[ext_resource type="Material" path="res://resources/materials/soup_can/wrapping_bottom.tres" id="4_iacit"]
+[ext_resource type="Script" path="res://Levels/3D Main Menu/level_can.gd" id="5_k35rf"]
+
+[node name="LevelCan" type="MeshInstance3D"]
+mesh = ExtResource("1_mthep")
+surface_material_override/0 = ExtResource("2_30beh")
+surface_material_override/1 = ExtResource("2_30beh")
+surface_material_override/2 = ExtResource("3_nprpr")
+surface_material_override/3 = ExtResource("4_iacit")
+script = ExtResource("5_k35rf")

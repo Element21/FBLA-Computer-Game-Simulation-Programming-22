@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c02812sjh6yqw"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="PackedScene" uid="uid://csr7ae2r8ldmy" path="res://resources/shaders/transition.tscn" id="1"]
 [ext_resource type="Script" path="res://Levels/Start Menu/Cutscene/cutscene.gd" id="2"]
