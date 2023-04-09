@@ -9,6 +9,10 @@ class_name LevelCan
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if !LeaderboardManager.is_level_unlocked(level_idx):
+		self.hide()
+		return
+	
 	%"Level data viewport".set_clear_mode(SubViewport.CLEAR_MODE_ONCE)
 	
 	var level_data_material = StandardMaterial3D.new()

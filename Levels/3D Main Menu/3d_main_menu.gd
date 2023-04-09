@@ -25,6 +25,8 @@ func _input(event: InputEvent):
 		var raycast_hit = %RayCast.get_collider()
 		
 		if raycast_hit == null:
+			var tween = get_tree().create_tween()
+			tween.tween_property(%Camera, "position", start_pos, .5).set_trans(Tween.TRANS_SINE)
 			unfocus_can()
 			return
 		
@@ -45,11 +47,6 @@ func _input(event: InputEvent):
 		if raycast_hit is PlayButton:
 			play_level()
 			return
-		
-		
-		var tween = get_tree().create_tween()
-		tween.tween_property(%Camera, "position", start_pos, .5).set_trans(Tween.TRANS_SINE)
-		
 
 
 func unfocus_can():
