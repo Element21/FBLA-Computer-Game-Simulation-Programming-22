@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdjke6okxxfwg"]
+[gd_scene load_steps=13 format=3 uid="uid://cdjke6okxxfwg"]
 
 [ext_resource type="ArrayMesh" uid="uid://dguymf4lve448" path="res://resources/soupCan.obj" id="1_mthep"]
 [ext_resource type="Material" path="res://resources/materials/metal.tres" id="2_30beh"]
@@ -6,16 +6,23 @@
 [ext_resource type="Material" path="res://resources/materials/soup_can/wrapping_bottom.tres" id="4_iacit"]
 [ext_resource type="Script" path="res://Levels/3D Main Menu/level_can.gd" id="5_k35rf"]
 [ext_resource type="PackedScene" uid="uid://8yrg3uggl3m3" path="res://objects/leaderboard/leaderboard.tscn" id="6_2snjr"]
+[ext_resource type="Script" path="res://Levels/3D Main Menu/play_button.gd" id="7_uy1pu"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kvto1"]
 height = 6.0
 radius = 2.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_m8db8"]
-size = Vector2(5, 6)
+size = Vector2(4, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k38bm"]
 transparency = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_fagkx"]
+size = Vector2(2, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7fasn"]
+size = Vector3(2, 1.5, 0.2)
 
 [node name="Can Area" type="Area3D"]
 collision_layer = 2
@@ -31,11 +38,21 @@ surface_material_override/1 = ExtResource("2_30beh")
 surface_material_override/2 = ExtResource("3_nprpr")
 surface_material_override/3 = ExtResource("4_iacit")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="Popup" type="Node3D" parent="."]
 unique_name_in_owner = true
-size = Vector2i(500, 600)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.5, -2.8)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport"]
+[node name="ViewportQuad" type="MeshInstance3D" parent="Popup"]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_m8db8")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_k38bm")
+
+[node name="Level data viewport" type="SubViewport" parent="Popup"]
+unique_name_in_owner = true
+size = Vector2i(400, 500)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/Level data viewport"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -43,22 +60,46 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Level name" type="Label" parent="SubViewport/VBoxContainer"]
+[node name="Level name" type="Label" parent="Popup/Level data viewport/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 
-[node name="Highscore" type="Label" parent="SubViewport/VBoxContainer"]
+[node name="Highscore" type="Label" parent="Popup/Level data viewport/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Leaderboard" parent="SubViewport/VBoxContainer" instance=ExtResource("6_2snjr")]
+[node name="Leaderboard" parent="Popup/Level data viewport/VBoxContainer" instance=ExtResource("6_2snjr")]
 layout_mode = 2
 
-[node name="ViewportQuad" type="MeshInstance3D" parent="."]
+[node name="PlayButton" type="Area3D" parent="Popup"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.8563, -2.82937)
-mesh = SubResource("QuadMesh_m8db8")
-surface_material_override/0 = SubResource("StandardMaterial3D_k38bm")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.728663, 0)
+collision_layer = 2
+script = ExtResource("7_uy1pu")
+
+[node name="PlayButtonQuad" type="MeshInstance3D" parent="Popup/PlayButton"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.52095, 0)
+mesh = SubResource("QuadMesh_fagkx")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Popup/PlayButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.53116, 0)
+shape = SubResource("BoxShape3D_7fasn")
+
+[node name="Play button viewport" type="SubViewport" parent="Popup"]
+unique_name_in_owner = true
+transparent_bg = true
+size = Vector2i(200, 150)
+
+[node name="Button" type="Button" parent="Popup/Play button viewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Play"
