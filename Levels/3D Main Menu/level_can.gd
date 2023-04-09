@@ -46,3 +46,8 @@ func show_level_data():
 func hide_level_data():
 	var tween = get_tree().create_tween()
 	tween.tween_property(%Popup, "position", Vector3(0, -7.5, -2.8), 0.5).set_trans(Tween.TRANS_SINE)
+
+
+func play_can_open_animation():
+	# TODO: Replace this code when I get the actual animation
+	%"Can Mesh".mesh = preload("res://resources/soupCanopen.obj")

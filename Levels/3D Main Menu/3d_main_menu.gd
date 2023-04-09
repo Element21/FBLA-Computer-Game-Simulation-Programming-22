@@ -56,6 +56,35 @@ func unfocus_can():
 
 
 func play_level():
+	var can: LevelCan
+	
+	if maybe_can_focusing_on == null:
+		return
+	
+	can = maybe_can_focusing_on
+	
+	can.play_can_open_animation()
+	
+	var tween = get_tree().create_tween()
+	tween.tween_method(camera_animation.bind(%Camera.position), 0., 1., 1)
+	
+	await tween.finished
+	
 	assert(get_tree().change_scene_to_packed(maybe_can_focusing_on.level_scene) == OK)
 	
 	Music.end_ambience()
+
+
+var camera_tilt_down = 24
+var slope = tan(camera_tilt_down * PI / 180.) * can_offset.z / can_offset.y
+var adjust = 1.6
+
+
+func camera_animation(t: float, camera_start_position: Vector3):
+	# f(t) = 3*slope*t^2 + (1-3*slope-adjust)*t^3 + adjust*t^4 is a solution to f(0)=0, f(1)=1, and lim t->0+ f(t)/Tweening.smoothify(t) = slope
+	# This allows the camera to face in the direction of travel without jumping at the beginning because the tangent at the beginning is controlled.
+	# "adjust" is a parameter used to make sure the camera doesn't go through the can
+	var vec = can_offset * Vector3(0, 3*slope*t*t + (1-3*slope-adjust)*t*t*t + adjust*t*t*t*t, Tweening.smoothify(t))
+	
+	%Camera.position = camera_start_position - vec
+	%Camera.rotation.x = -vec.angle_to(Vector3(0, 0, 1))

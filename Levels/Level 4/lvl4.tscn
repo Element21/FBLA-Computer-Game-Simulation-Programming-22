@@ -7,7 +7,7 @@
 [ext_resource type="Material" path="res://resources/materials/plants.tres" id="4_hyrkw"]
 [ext_resource type="PackedScene" uid="uid://c0hnudt3vp12o" path="res://objects/soup/soup.tscn" id="5"]
 [ext_resource type="Material" path="res://resources/materials/concrete.tres" id="5_u53hf"]
-[ext_resource type="Material" path="res://resources/materials/metal.tres" id="6_rpuyq"]
+[ext_resource type="Material" uid="uid://odi615eo1fv2" path="res://resources/materials/metal.tres" id="6_rpuyq"]
 [ext_resource type="Material" path="res://resources/materials/pool/flamingo.tres" id="7_dx80j"]
 [ext_resource type="PackedScene" uid="uid://d107jgdxqoufc" path="res://objects/jet/jet.tscn" id="8"]
 [ext_resource type="Material" path="res://resources/materials/pool/towel.tres" id="8_7343t"]
