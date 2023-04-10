@@ -1,10 +1,10 @@
 extends Node
 
 
-var camera_start_pos = Vector3(5, 3.5, 7)
+@onready var camera_start_pos = %Camera.global_position
 var camera_can_offset = Vector3(0, 3, 4)
 
-var spotlight_can_offset = Vector3(0, 8, 13)
+@onready var spotlight_can_offset = %Spotlight.global_position
 @onready var spotlight_energy = %Spotlight.light_energy
 
 var maybe_can_focusing_on = null
