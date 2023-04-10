@@ -16,7 +16,7 @@ func get_sorted_leaderboard_for(idx: int) -> Array:
 	for key in data_dictionary.keys():
 		data_array.push_back([key, data_dictionary[key]])
 	
-	data_array.sort_custom(func(a, b): a[1] > b[1])
+	data_array.sort_custom(func(a, b): return a[1] > b[1])
 	
 	return data_array
 

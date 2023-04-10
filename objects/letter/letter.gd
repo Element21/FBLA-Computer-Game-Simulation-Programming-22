@@ -12,7 +12,6 @@ var material = preload("res://resources/materials/letter/letter.tres")
 @onready var which_letter: String = WordUtils.random_letter(word_length)
 
 func set_mesh():
-	var new_mesh: ArrayMesh = load("res://resources/letters/" + which_letter + ".obj") as ArrayMesh
 	mesh.mesh = WordUtils.mesh_of(which_letter)
 	mesh.set_surface_override_material(0, material)
 	mesh.position = WordUtils.inverse_translation_of(which_letter)
