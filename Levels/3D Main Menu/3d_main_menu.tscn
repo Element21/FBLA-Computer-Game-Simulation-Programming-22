@@ -52,3 +52,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.71204, 6.14006)
 omni_range = 30.921
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("8_c8l8o")]
+
+[node name="Spotlight" type="SpotLight3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.848972, 0.528438, 0, -0.528438, 0.848972, 0, 8, 13)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 40.412
+spot_angle = 7.72711
+spot_angle_attenuation = 2.73208

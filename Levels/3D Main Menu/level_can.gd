@@ -11,6 +11,8 @@ class_name LevelCan
 func _ready():
 	if !LeaderboardManager.is_level_unlocked(level_idx):
 		self.hide()
+		self.collision_layer = 0
+		%PlayButton.collision_layer = 0
 		return
 	
 	%"Level data viewport".set_clear_mode(SubViewport.CLEAR_MODE_ONCE)
