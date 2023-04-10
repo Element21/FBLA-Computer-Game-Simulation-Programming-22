@@ -19,6 +19,8 @@ func _ready():
 	
 	var level_data_material = StandardMaterial3D.new()
 	level_data_material.albedo_texture = %"Level data viewport".get_texture()
+	level_data_material.emission_enabled = true
+	level_data_material.emission_texture = %"Level data viewport".get_texture()
 	
 	%ViewportQuad.set_surface_override_material(0, level_data_material)
 	
@@ -26,6 +28,8 @@ func _ready():
 	
 	var play_button_material = StandardMaterial3D.new()
 	play_button_material.albedo_texture = %"Play button viewport".get_texture()
+	play_button_material.emission_enabled = true
+	play_button_material.emission_texture = %"Play button viewport".get_texture()
 	
 	%PlayButtonQuad.set_surface_override_material(0, play_button_material)
 	
