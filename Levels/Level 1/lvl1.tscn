@@ -154,7 +154,7 @@ level = NodePath("../Level")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8459, 31.1814, 17.6058)
-light_energy = 16.0
+light_energy = 8.566
 shadow_enabled = true
 shadow_opacity = 0.78
 shadow_blur = 1.694

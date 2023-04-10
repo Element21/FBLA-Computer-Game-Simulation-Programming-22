@@ -141,14 +141,14 @@ shape = SubResource("1")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4124, 26.395, 22.2764)
-light_energy = 16.0
+light_energy = 10.343
 shadow_enabled = true
 omni_range = 69.4678
 omni_shadow_mode = 0
 
 [node name="OmniLight2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6979, 26.0407, -4.42988)
-light_energy = 16.0
+light_energy = 6.303
 omni_range = 82.7533
 omni_shadow_mode = 0
 
