@@ -28,7 +28,7 @@ spotlight_sample_can = NodePath("Level 1 Can")
 
 [node name="Camera" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.952661, 0.304033, 0, -0.304033, 0.952661, -1.867, 13.574, 27.081)
+transform = Transform3D(1, 0, 0, 0, 0.943801, 0.330514, 0, -0.330514, 0.943801, -2.021, 13.574, 27.081)
 
 [node name="RayCast" type="RayCast3D" parent="Camera"]
 unique_name_in_owner = true
@@ -156,3 +156,13 @@ light_energy = 2.586
 shadow_enabled = true
 omni_range = 4096.0
 omni_attenuation = 0.482968
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12182, 14.6747, 17.4565)
+light_energy = 3.232
+omni_range = 9.003
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5449, 14.6747, 17.4565)
+light_energy = 3.232
+omni_range = 9.003
