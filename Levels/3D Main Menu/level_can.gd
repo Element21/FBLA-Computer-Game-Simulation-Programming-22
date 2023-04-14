@@ -14,11 +14,11 @@ class_name LevelCan
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if !LeaderboardManager.is_level_unlocked(level_idx):
-		self.hide()
-		self.collision_layer = 0
-		(%PlayButton as Area3D).collision_layer = 0
-		return
+#	if !LeaderboardManager.is_level_unlocked(level_idx):
+#		self.hide()
+#		self.collision_layer = 0
+#		(%PlayButton as Area3D).collision_layer = 0
+#		return
 	
 	level_data_viewport.set_clear_mode(SubViewport.CLEAR_MODE_ONCE)
 	

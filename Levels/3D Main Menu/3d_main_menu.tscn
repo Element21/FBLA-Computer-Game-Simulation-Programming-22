@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://djsijup53erc7"]
+[gd_scene load_steps=18 format=3 uid="uid://djsijup53erc7"]
 
 [ext_resource type="PackedScene" uid="uid://cdjke6okxxfwg" path="res://Levels/3D Main Menu/level_can.tscn" id="1_fudtw"]
 [ext_resource type="Script" path="res://Levels/3D Main Menu/3d_main_menu.gd" id="1_wepeb"]
@@ -12,13 +12,23 @@
 [ext_resource type="PackedScene" uid="uid://mrpg2qlfhfug" path="res://objects/environment.tscn" id="8_c8l8o"]
 [ext_resource type="PackedScene" uid="uid://v4ot0f61cmk0" path="res://resources/cans/can_level_3.gltf" id="8_kl10b"]
 [ext_resource type="PackedScene" uid="uid://ctxupo1dnt58g" path="res://resources/cans/can_default.gltf" id="10_nxtuc"]
+[ext_resource type="PackedScene" uid="uid://dhro7gdgikp5l" path="res://resources/grocery-store-no-block.tscn" id="13_42djg"]
+[ext_resource type="PackedScene" uid="uid://bs7i6kvg4x5wt" path="res://Levels/3D Main Menu/part_of_light.tscn" id="14_8wu8q"]
+[ext_resource type="Material" path="res://resources/materials/plants.tres" id="15_lua0t"]
 
-[node name="3D Main Menu" type="Node3D"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_i3sww"]
+size = Vector2(100, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rtefw"]
+size = Vector2(100, 100)
+
+[node name="3D Main Menu" type="Node3D" node_paths=PackedStringArray("spotlight_sample_can")]
 script = ExtResource("1_wepeb")
+spotlight_sample_can = NodePath("Level 1 Can")
 
 [node name="Camera" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.913545, 0.406737, 0, -0.406737, 0.913545, 5, 3.5, 7)
+transform = Transform3D(1, 0, 0, 0, 0.952661, 0.304033, 0, -0.304033, 0.952661, -1.867, 13.574, 27.081)
 
 [node name="RayCast" type="RayCast3D" parent="Camera"]
 unique_name_in_owner = true
@@ -28,50 +38,121 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="Level 1 Can" parent="." instance=ExtResource("1_fudtw")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+transform = Transform3D(0.399522, 0, 0.0195399, 0, 0.4, 0, -0.0195399, 0, 0.399522, -6.69078, 11.7072, 16.0438)
 level_scene = ExtResource("2_ehgci")
 
 [node name="can_level_1" parent="Level 1 Can" instance=ExtResource("4_6qso0")]
 
 [node name="Level 2 Can" parent="." instance=ExtResource("1_fudtw")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.5, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -4.20976, 11.7071, 16.0202)
 level_idx = 1
 level_scene = ExtResource("3_0u8gs")
 
 [node name="can_level_2" parent="Level 2 Can" instance=ExtResource("6_qcjqm")]
 
 [node name="Level 3 Can" parent="." instance=ExtResource("1_fudtw")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 5, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -1.92054, 11.7072, 16.0438)
 level_idx = 2
 level_scene = ExtResource("4_g2703")
 
 [node name="can_level_3" parent="Level 3 Can" instance=ExtResource("8_kl10b")]
 
 [node name="Level 4 Can" parent="." instance=ExtResource("1_fudtw")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7.5, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.372, 11.7071, 16.0672)
 level_idx = 3
 level_scene = ExtResource("5_nfrab")
 
 [node name="can_default" parent="Level 4 Can" instance=ExtResource("10_nxtuc")]
 
 [node name="Level 5 Can" parent="." instance=ExtResource("1_fudtw")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 10, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.88138, 11.7072, 16.0438)
 level_idx = 4
 level_scene = ExtResource("6_mpq32")
 
 [node name="can_default" parent="Level 5 Can" instance=ExtResource("10_nxtuc")]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.71204, 6.14006)
-omni_range = 30.921
-
 [node name="WorldEnvironment" parent="." instance=ExtResource("8_c8l8o")]
 
 [node name="Spotlight" type="SpotLight3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.848972, 0.528438, 0, -0.528438, 0.848972, 0, 8, 13)
+transform = Transform3D(1, 0, 0, 0, 0.848972, 0.528438, 0, -0.528438, 0.848972, -6.50911, 19.7071, 29.0442)
 light_energy = 16.0
 shadow_enabled = true
 spot_range = 40.412
 spot_angle = 7.72711
 spot_angle_attenuation = 2.73208
+
+[node name="grocery-store2" parent="." instance=ExtResource("13_42djg")]
+transform = Transform3D(-6.725e-07, 0, 15.385, 0, 15.385, 0, -15.385, 0, -6.725e-07, -8.617, 0, 4.394)
+
+[node name="Part of light" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, -2.22045e-16, 0, 0.0649984, 0, 2.22045e-16, 0, 0.0649984, 0.0656706, 1.67033, -0.495977)
+
+[node name="Part of light2" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 0.0656706, 1.67033, 0.0338282)
+
+[node name="Part of light3" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 0.0656706, 1.67033, -2.43027)
+
+[node name="Part of light4" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 0.0656706, 1.67033, -1.87823)
+
+[node name="Part of light5" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 0.0656706, 1.67033, 1.42772)
+
+[node name="Part of light6" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 0.0656706, 1.67033, 2.06379)
+
+[node name="Part of light7" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, -1.89999, 1.67, -0.49597)
+
+[node name="Part of light8" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, -1.89999, 1.67, -1.92024)
+
+[node name="Part of light9" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, -1.89999, 1.67, -2.50491)
+
+[node name="Part of light10" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, -1.89999, 1.67, 1.50229)
+
+[node name="Part of light11" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, -1.89999, 1.67, 2.10915)
+
+[node name="Part of light12" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, -1.49764, 1.67, 0.0661255)
+
+[node name="Part of light13" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 1.88991, 1.67, -0.49597)
+
+[node name="Part of light14" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 1.88991, 1.67, -1.92024)
+
+[node name="Part of light15" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 1.88991, 1.67, -2.50491)
+
+[node name="Part of light16" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 1.88991, 1.67, 1.50229)
+
+[node name="Part of light17" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 1.88991, 1.67, 2.10915)
+
+[node name="Part of light18" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 1.88991, 1.67, 0.0661255)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="grocery-store2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.64592e-06, 0, 2.95639e-05)
+mesh = SubResource("PlaneMesh_i3sww")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_lua0t")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="grocery-store2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.66493, 0, 2.94447e-05)
+mesh = SubResource("PlaneMesh_rtefw")
+skeleton = NodePath("")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="grocery-store2"]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 1.23498, 1.94995, -5.58983)
+light_energy = 2.586
+shadow_enabled = true
+omni_range = 4096.0
+omni_attenuation = 0.482968

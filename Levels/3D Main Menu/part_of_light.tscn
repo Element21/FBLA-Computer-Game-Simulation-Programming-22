@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bs7i6kvg4x5wt"]
+
+[node name="Part of light" type="OmniLight3D"]
+transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 0.065664, 1.67033, -0.496007)
+shadow_enabled = true
+shadow_opacity = 0.68
+shadow_blur = 10.0
+omni_range = 4096.0

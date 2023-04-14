@@ -8,7 +8,8 @@ extends Node
 @onready var camera_start_pos = camera.global_position
 var camera_can_offset = Vector3(0, 3, 4)
 
-@onready var spotlight_can_offset = spotlight.global_position
+@export var spotlight_sample_can: LevelCan
+@onready var spotlight_can_offset = spotlight.global_position - spotlight_sample_can.global_position
 @onready var spotlight_energy = spotlight.light_energy
 
 var maybe_can_focusing_on = null

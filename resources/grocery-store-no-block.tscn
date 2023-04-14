@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhro7gdgikp5l"]
+
+[ext_resource type="PackedScene" uid="uid://dbgg0h8x6ev" path="res://resources/grocery-store.gltf" id="1_pdsg8"]
+
+[node name="grocery-store" instance=ExtResource("1_pdsg8")]
+
+[node name="sCube" parent="." index="36"]
+visible = false
