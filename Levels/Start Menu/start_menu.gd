@@ -2,7 +2,7 @@ extends Control
 
 signal first_play
 
-var main_menu_scene: PackedScene = preload("res://Levels/Main Menu/main_menu.tscn")
+var main_menu_scene: PackedScene = preload("res://Levels/3D Main Menu/3d_main_menu.tscn")
 var cutscene_scene: PackedScene = preload("res://Levels/Start Menu/Cutscene/cutscene.tscn")
 
 @onready var transition: Transition = %Transition

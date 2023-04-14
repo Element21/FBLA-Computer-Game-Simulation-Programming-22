@@ -29,7 +29,7 @@ func level_ended(score: int):
 
 
 func go_to_main_menu():
-	var status = get_tree().change_scene_to_file("res://Levels/Main Menu/main_menu.tscn")
+	var status = get_tree().change_scene_to_file("res://Levels/3D Main Menu/3d_main_menu.tscn")
 	assert(status == OK)
 	
 	Music.start_ambience()

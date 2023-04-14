@@ -14,7 +14,7 @@ var slideList = [
 	preload("res://resources/cutscene_frames/frame_9.png"),
 ]
 
-var main_menu_scene: PackedScene = preload("res://Levels/Main Menu/main_menu.tscn")
+var main_menu_scene: PackedScene = preload("res://Levels/3D Main Menu/3d_main_menu.tscn")
 
 @onready var transition: Transition = %Transition
 
