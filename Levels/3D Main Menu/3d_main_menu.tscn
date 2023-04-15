@@ -44,7 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 0.943801, 0.330514, 0, -0.330514, 0.943801, 
 
 [node name="RayCast" type="RayCast3D" parent="Camera"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.913545, -0.406737, 0, 0.406737, 0.913545, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false

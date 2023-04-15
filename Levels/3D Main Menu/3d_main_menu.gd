@@ -25,7 +25,7 @@ func _process(_delta):
 	var mouse_pos = get_viewport().get_mouse_position()
 	
 	raycast.global_position = camera.global_position
-	raycast.target_position = camera.project_ray_normal(mouse_pos) * 1000
+	raycast.target_position = camera.project_local_ray_normal(mouse_pos) * 1000
 	
 	var raycast_hit = raycast.get_collider()
 	

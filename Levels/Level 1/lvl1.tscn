@@ -32,7 +32,7 @@ data = PackedVector3Array(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0.1093, -1, 1, 0.1093, 
 [node name="Level 1" type="Node3D"]
 
 [node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("13")]
-time_given = 1.0
+time_given = 60.0
 next_level = ExtResource("4")
 camera = NodePath("../Camera3D")
 
