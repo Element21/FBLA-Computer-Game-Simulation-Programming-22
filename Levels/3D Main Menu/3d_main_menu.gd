@@ -85,9 +85,10 @@ func play_level():
 	
 	var tween = get_tree().create_tween()
 	@warning_ignore("return_value_discarded")
-	tween.tween_method(camera_animation.bind(camera.position), 0., 1., 1)
+	tween.tween_method(camera_animation.bind(camera.position), 0., 1., 1.5)
 	
 	await tween.finished
+	await get_tree().create_timer(0.3).timeout
 	
 	assert(get_tree().change_scene_to_packed(maybe_can_focusing_on.level_scene) == OK)
 	

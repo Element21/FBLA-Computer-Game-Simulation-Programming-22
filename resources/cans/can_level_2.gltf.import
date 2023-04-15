@@ -32,6 +32,9 @@ _subresources={
 "nodes": {
 "PATH:Can Top001": {
 "import/skip_import": true
+},
+"PATH:Label Wrap": {
+"import/skip_import": true
 }
 }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdjke6okxxfwg"]
+[gd_scene load_steps=12 format=3 uid="uid://cdjke6okxxfwg"]
 
 [ext_resource type="Theme" uid="uid://dubog3hc6383i" path="res://Levels/menu_theme.tres" id="2_ye6i7"]
 [ext_resource type="Script" path="res://Levels/3D Main Menu/level_can.gd" id="5_k35rf"]
@@ -8,6 +8,16 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kvto1"]
 height = 6.0
 radius = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_b4rbm"]
+top_radius = 1.9
+bottom_radius = 1.9
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tkd3"]
+cull_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_m8db8"]
 size = Vector2(4, 5)
@@ -28,6 +38,11 @@ script = ExtResource("5_k35rf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_kvto1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_b4rbm")
+surface_material_override/0 = SubResource("StandardMaterial3D_8tkd3")
 
 [node name="Popup" type="Node3D" parent="."]
 unique_name_in_owner = true
