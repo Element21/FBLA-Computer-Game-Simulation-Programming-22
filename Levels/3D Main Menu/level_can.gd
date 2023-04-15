@@ -8,9 +8,11 @@ class_name LevelCan
 @onready var play_button_viewport: SubViewport = %"Play button viewport"
 @onready var highscore_label: Label = %Highscore
 @onready var popup: Node3D = %Popup
+@onready var animation_player: AnimationPlayer = can.find_child("AnimationPlayer")
 
 @export var level_idx: int
 @export var level_scene: PackedScene
+@export var can: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,6 +21,8 @@ func _ready():
 #		self.collision_layer = 0
 #		(%PlayButton as Area3D).collision_layer = 0
 #		return
+
+	assert(animation_player != null)
 	
 	level_data_viewport.set_clear_mode(SubViewport.CLEAR_MODE_ONCE)
 	
@@ -64,5 +68,9 @@ func hide_level_data():
 
 
 func play_can_open_animation():
-	# TODO: Replace this code when I get the actual animation
-	pass
+	# I can't play two animations at once, so I have to do this
+	# I tried using an AnimationTree but that didn't work. This works just as well though.
+	var tween = get_tree().create_tween()
+	tween.tween_property(can.find_child("Can Top"), "blend_shapes/Can Top.001", 1, 1.)
+	
+	animation_player.play("Open TabAction001")
