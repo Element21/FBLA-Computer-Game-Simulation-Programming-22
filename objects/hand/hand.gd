@@ -2,6 +2,8 @@
 
 extends Node3D
 
+class_name Hand
+
 @export var word_manager: WordManager
 @export var level: Level
 @export var arm_pivot: Vector2 = Vector2(-2, 35)
@@ -206,3 +208,13 @@ func letter_to_be_picked_up() -> Letter:
 				closest_letter = letter
 	
 	return closest_letter
+
+
+func letter_deleted():
+	if grabbing_state == GRABBING_STATE.DROPPING:
+		var t = Tweening.smoothify(time / hand_animation_part_time)
+		final_hand_translation = self.to_local(word_manager.next_platform_position()) + Vector3(0, drop_height, 0)
+		# Move the start position such that the hand can change direction without jumping
+		start_hand_translation = (hand.position - t * final_hand_translation) / (1 - t)
+
+

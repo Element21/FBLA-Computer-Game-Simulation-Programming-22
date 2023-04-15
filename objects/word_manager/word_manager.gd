@@ -6,6 +6,7 @@ class_name WordManager
 @export var word_length = 5
 @export var launch_vector: Vector3 = Vector3(0, 2, 5)
 @export var level: Level
+@export var hand: Hand
 
 var letters_placed = []
 
@@ -121,3 +122,5 @@ func delete():
 		letters_placed[last_letter_index] = null
 		
 		(platforms.get_child(last_letter_index) as LetterPlatform).flip()
+	
+	hand.letter_deleted()

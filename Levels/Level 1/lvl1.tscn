@@ -149,11 +149,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.734, 0)
 word_manager = NodePath("../Word manager")
 level = NodePath("../Level")
 
-[node name="Word manager" parent="." node_paths=PackedStringArray("level") instance=ExtResource("10")]
+[node name="Word manager" parent="." node_paths=PackedStringArray("level", "hand") instance=ExtResource("10")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.864, -7.254)
 word_length = 3
 launch_vector = Vector3(0, 3, 5)
 level = NodePath("../Level")
+hand = NodePath("../Hand")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8459, 31.1814, 17.6058)

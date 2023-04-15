@@ -20,10 +20,16 @@ var letter = null
 
 
 func flip():
-	action = "flip"
-	time = 0
+	var tween = get_tree().create_tween()
+	tween.set_parallel()
+	tween.tween_property(self, "rotation_degrees", Vector3(360, 0, 0), action_time).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(score_mesh, "position", Vector3(0, 0, 0.334), action_time).set_trans(Tween.TRANS_SINE)
 	
 	whoosh.play()
+	
+	await tween.finished
+	
+	self.rotation_degrees = Vector3(0, 0, 0)
 
 
 func launch():
@@ -55,31 +61,18 @@ func set_score(new_score):
 	
 	score_mesh.mesh = mesh
 	
-	action = "setting score"
-	time = 0
+	var tween = get_tree().create_tween()
+	tween.tween_property(score_mesh, "position", Vector3(0, 0, 1.5), action_time).set_trans(Tween.TRANS_SINE)
 
 
 func _physics_process(delta):
 	if time != null:
-		if action == "flip":
-			do_flip_transformation()
-		elif action == "launch":
-			do_launch_transformation()
-		elif action == "setting score":
-			do_move_score()
+		do_launch_transformation()
 		
 		time += delta
 		
 		if time > action_time:
 			time = null
-
-
-func do_flip_transformation():
-	var t = time / action_time
-	
-	self.rotation_degrees.x = lerp(0, 360, Tweening.smoothify(t))
-	
-	score_mesh.position.z = lerp(1.5, 0.334, Tweening.smoothify(t))
 
 
 func do_launch_transformation():
@@ -101,10 +94,6 @@ func do_launch_transformation():
 	# Pull the score back in
 	if t > 0.5:
 		score_mesh.position.z = lerp(1.5, 0.334, Tweening.smoothify((t - 0.5) * 2))
-
-
-func do_move_score():
-	score_mesh.position.z = lerp(0.334, 1.5, Tweening.smoothify(time / action_time))
 
 
 # When the platform starts slowing down rather than speeding up
