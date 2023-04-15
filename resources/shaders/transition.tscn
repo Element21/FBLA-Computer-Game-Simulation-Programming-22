@@ -10,7 +10,7 @@ shader_parameter/cutoff = 0.0
 shader_parameter/smooth_size = 0.2
 shader_parameter/transitionMask = ExtResource("2")
 
-[node name="ColorRect" type="ColorRect"]
+[node name="Transition" type="ColorRect"]
 material = SubResource("1")
 custom_minimum_size = Vector2(1024, 600)
 anchors_preset = 15

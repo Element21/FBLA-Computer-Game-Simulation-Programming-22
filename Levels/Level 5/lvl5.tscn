@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4kyequ7vdxby"]
+[gd_scene load_steps=17 format=3 uid="uid://b4kyequ7vdxby"]
 
 [ext_resource type="PackedScene" uid="uid://c6sm62eie3fwh" path="res://objects/level/level.tscn" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://c7m33dm8sp2t3" path="res://Levels/Level 5/volcano.obj" id="2"]
+[ext_resource type="PackedScene" uid="uid://csr7ae2r8ldmy" path="res://resources/shaders/transition.tscn" id="2_lq7b1"]
 [ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="3"]
 [ext_resource type="PackedScene" uid="uid://c0hnudt3vp12o" path="res://objects/soup/soup.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://fc00545u7hf4" path="res://objects/hand/hand.tscn" id="5"]
@@ -38,6 +39,8 @@ camera = NodePath("../Camera3D")
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 24.674, 20.911)
 current = true
 far = 8192.0
+
+[node name="Transition" parent="Camera3D" instance=ExtResource("2_lq7b1")]
 
 [node name="Environment" type="Node3D" parent="."]
 

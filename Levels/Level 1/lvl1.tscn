@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://drxd607igbq22"]
+[gd_scene load_steps=19 format=3 uid="uid://drxd607igbq22"]
 
 [ext_resource type="ArrayMesh" uid="uid://4ykvx6qu3ywx" path="res://Levels/Level 1/Level 1 Bowl.obj" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://cnr1coaerxthm" path="res://objects/room/Room.obj" id="3"]
 [ext_resource type="Material" path="res://resources/materials/wood.tres" id="3_162qd"]
+[ext_resource type="PackedScene" uid="uid://csr7ae2r8ldmy" path="res://resources/shaders/transition.tscn" id="3_ktd1c"]
 [ext_resource type="PackedScene" uid="uid://dnv1a3gw0cyd3" path="res://Levels/Level 2/lvl2.tscn" id="4"]
 [ext_resource type="ArrayMesh" uid="uid://cysan5cs64iyj" path="res://Levels/Level 1/Level 1 Bowl Interior.obj" id="6"]
 [ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="6_t0glt"]
@@ -31,12 +32,14 @@ data = PackedVector3Array(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0.1093, -1, 1, 0.1093, 
 [node name="Level 1" type="Node3D"]
 
 [node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("13")]
-time_given = 60.0
+time_given = 1.0
 next_level = ExtResource("4")
 camera = NodePath("../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 23.331, 5.213)
+
+[node name="Transition" parent="Camera3D" instance=ExtResource("3_ktd1c")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.2553, 0)

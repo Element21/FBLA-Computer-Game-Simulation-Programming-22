@@ -4,6 +4,7 @@ class_name LevelEndScreen
 
 @export var level_index: int
 @export var next_level: PackedScene
+@export var transition: Transition
 
 @onready var main_menu_button: Button = %"Main menu button"
 @onready var next_level_button: Button = %"Next level button"
@@ -29,12 +30,12 @@ func level_ended(score: int):
 
 
 func go_to_main_menu():
-	var status = get_tree().change_scene_to_file("res://Levels/3D Main Menu/3d_main_menu.tscn")
-	assert(status == OK)
+	# preload doesn't work for some kind of cyclic reference reason, I'll probably make an issue about it soon
+	transition.change_scene(load("res://Levels/3D Main Menu/3d_main_menu.tscn"))
 	
 	Music.start_ambience()
 
 
 func go_to_next_level():
-	var status = get_tree().change_scene_to_packed(next_level)
-	assert(status == OK)
+	transition.change_scene(next_level)
+

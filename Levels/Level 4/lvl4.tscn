@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://mrcrmxl653fq"]
+[gd_scene load_steps=23 format=3 uid="uid://mrcrmxl653fq"]
 
 [ext_resource type="PackedScene" uid="uid://c6sm62eie3fwh" path="res://objects/level/level.tscn" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://bmmogb03k1ebk" path="res://Levels/Level 4/pool.obj" id="2"]
 [ext_resource type="PackedScene" uid="uid://fc00545u7hf4" path="res://objects/hand/hand.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://csr7ae2r8ldmy" path="res://resources/shaders/transition.tscn" id="3_0lq4a"]
 [ext_resource type="PackedScene" uid="uid://br82x7v0lrtnj" path="res://objects/word_manager/word_manager.tscn" id="4"]
 [ext_resource type="Material" path="res://resources/materials/plants.tres" id="4_hyrkw"]
 [ext_resource type="PackedScene" uid="uid://c0hnudt3vp12o" path="res://objects/soup/soup.tscn" id="5"]
@@ -47,6 +48,8 @@ camera = NodePath("../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 22.906, 21.225)
+
+[node name="Transition" parent="Camera3D" instance=ExtResource("3_0lq4a")]
 
 [node name="Environment" type="Node3D" parent="."]
 

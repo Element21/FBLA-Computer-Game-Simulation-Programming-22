@@ -10,7 +10,7 @@ class_name Level
 @export var level_index: int
 @export var camera: Camera3D
 
-
+@onready var transition: Transition = camera.find_child("Transition", false)
 @onready var time_left = time_given
 var score = 0
 var playing = false
@@ -31,8 +31,11 @@ func _ready():
 	else:
 		start()
 	
+	assert(transition != null)
+	
 	level_end_screen.next_level = next_level
 	level_end_screen.level_index = level_index
+	level_end_screen.transition = transition
 
 
 func _process(delta):

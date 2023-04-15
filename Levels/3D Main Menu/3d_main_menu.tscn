@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://djsijup53erc7"]
+[gd_scene load_steps=22 format=3 uid="uid://djsijup53erc7"]
 
 [ext_resource type="PackedScene" uid="uid://cdjke6okxxfwg" path="res://Levels/3D Main Menu/level_can.tscn" id="1_fudtw"]
 [ext_resource type="Script" path="res://Levels/3D Main Menu/3d_main_menu.gd" id="1_wepeb"]
 [ext_resource type="PackedScene" uid="uid://drxd607igbq22" path="res://Levels/Level 1/lvl1.tscn" id="2_ehgci"]
+[ext_resource type="PackedScene" uid="uid://csr7ae2r8ldmy" path="res://resources/shaders/transition.tscn" id="2_l163r"]
 [ext_resource type="PackedScene" uid="uid://dnv1a3gw0cyd3" path="res://Levels/Level 2/lvl2.tscn" id="3_0u8gs"]
 [ext_resource type="PackedScene" uid="uid://bix73ntpqumav" path="res://resources/cans/can_level_1.gltf" id="4_6qso0"]
 [ext_resource type="PackedScene" uid="uid://bhpaglfnbruvn" path="res://Levels/Level 3/lvl3.tscn" id="4_g2703"]
@@ -47,6 +48,9 @@ transform = Transform3D(1, 0, 0, 0, 0.913545, -0.406737, 0, 0.406737, 0.913545, 
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Transition" parent="Camera" instance=ExtResource("2_l163r")]
+unique_name_in_owner = true
 
 [node name="Level 1 Can" parent="." instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.399522, 0, 0.0195399, 0, 0.4, 0, -0.0195399, 0, 0.399522, -6.69078, 11.7072, 16.0438)
