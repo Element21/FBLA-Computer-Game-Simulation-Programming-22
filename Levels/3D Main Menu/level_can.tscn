@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdjke6okxxfwg"]
+[gd_scene load_steps=10 format=3 uid="uid://cdjke6okxxfwg"]
 
+[ext_resource type="Theme" uid="uid://dubog3hc6383i" path="res://Levels/menu_theme.tres" id="2_ye6i7"]
 [ext_resource type="Script" path="res://Levels/3D Main Menu/level_can.gd" id="5_k35rf"]
 [ext_resource type="PackedScene" uid="uid://8yrg3uggl3m3" path="res://objects/leaderboard/leaderboard.tscn" id="6_2snjr"]
 [ext_resource type="Script" path="res://Levels/3D Main Menu/play_button.gd" id="7_uy1pu"]
@@ -48,6 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_ye6i7")
 theme_override_constants/separation = 20
 
 [node name="Level name" type="Label" parent="Popup/Level data viewport/VBoxContainer"]
@@ -83,6 +85,7 @@ shape = SubResource("BoxShape3D_7fasn")
 
 [node name="Play button viewport" type="SubViewport" parent="Popup"]
 unique_name_in_owner = true
+transparent_bg = true
 size = Vector2i(200, 150)
 
 [node name="Button" type="Button" parent="Popup/Play button viewport"]
@@ -91,5 +94,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_ye6i7")
 theme_override_font_sizes/font_size = 50
 text = "Play"
