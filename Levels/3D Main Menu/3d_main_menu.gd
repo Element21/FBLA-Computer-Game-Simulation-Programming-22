@@ -35,7 +35,9 @@ func _process(_delta):
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("click"):
+		print("click")
 		var raycast_hit = raycast.get_collider()
+		print(raycast_hit)
 		
 		if raycast_hit == null:
 			var tween = get_tree().create_tween()

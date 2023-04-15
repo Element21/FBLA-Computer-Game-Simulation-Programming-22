@@ -18,34 +18,26 @@ var main_menu_scene: PackedScene = preload("res://Levels/3D Main Menu/3d_main_me
 
 @onready var transition: Transition = %Transition
 
-func fadeIn():
-	transition.animation_player.play("fadeIn")
-
-func fadeOut():
-	transition.animation_player.play("fadeOut")
 
 func _slide_on_gui_input(event: InputEvent):
 	if !event.is_action_pressed("click"):
 		return
 	
 	if slide_counter == 8:
-		assert(OK == get_tree().change_scene_to_packed(main_menu_scene))
+		transition.change_scene(main_menu_scene)
 		return
 	
 	slide_counter += 1
-	fadeOut()
-
-
-func fade_out_done(anim_name: String):
-	if anim_name != "fadeOut":
-		return
 	
+	await transition.fade_out()
+	next_slide()
+
+
+func next_slide():
 	(%Slide as TextureRect).set_texture(slideList[slide_counter])
-	fadeIn()
+	transition.fade_in()
 
 
 func _ready():
-	self.visible = true
-	fade_out_done("fadeOut")
-	assert(OK == transition.animation_player.connect("animation_finished", fade_out_done))
+	next_slide()
 

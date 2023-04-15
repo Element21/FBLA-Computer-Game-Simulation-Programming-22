@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://doik3ojee8ec3" path="res://Levels/Start Menu/Cutscene/arrow.svg" id="4_ub4td"]
 
 [node name="Control" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,4 +59,4 @@ layout_mode = 1
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="gui_input" from="AspectRatioContainer/Control/Transition" to="." method="_slide_on_gui_input"]
+[connection signal="gui_input" from="AspectRatioContainer/Control/Slide" to="." method="_slide_on_gui_input"]

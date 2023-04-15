@@ -7,11 +7,6 @@ var cutscene_scene: PackedScene = preload("res://Levels/Start Menu/Cutscene/cuts
 
 @onready var transition: Transition = %Transition
 
-func transition_finshed(anim_name):
-	if anim_name == "fadeOut":
-		self.visible = false
-		var status = get_tree().change_scene_to_packed(cutscene_scene)
-		assert(status == OK)
 
 func go_to_main_menu(_from_signal):
 	var name_given = (%"Name input" as LineEdit).text
@@ -21,15 +16,12 @@ func go_to_main_menu(_from_signal):
 	else:
 		LeaderboardManager.set_player_name(name_given)
 		if not LeaderboardManager.is_level_unlocked(1):
-			"Assume this is first run, lauch cutscene"
-			transition.visible = true
-			transition.animation_player.play("fadeOut")
+			# Assume this is first run, lauch cutscene
+			transition.change_scene(cutscene_scene)
 
 		else:
-			var status = get_tree().change_scene_to_packed(main_menu_scene)
-			assert(status == OK)
+			transition.change_scene(main_menu_scene)
 
 
 func _ready():
-	assert(OK == transition.animation_player.connect("animation_finished", transition_finshed))
 	Music.start_ambience()

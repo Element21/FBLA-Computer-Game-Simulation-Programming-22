@@ -70,11 +70,9 @@ offset_top = -56.0
 
 [node name="Transition" parent="." instance=ExtResource("5")]
 unique_name_in_owner = true
-visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
+layout_mode = 1
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="text_submitted" from="VBoxContainer/Name input" to="." method="go_to_main_menu"]
 [connection signal="button_down" from="VBoxContainer/Button" to="." method="go_to_main_menu" binds= ["The LineEdit gives a string argument so I have to too"]]
