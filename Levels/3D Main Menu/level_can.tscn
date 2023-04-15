@@ -83,7 +83,6 @@ shape = SubResource("BoxShape3D_7fasn")
 
 [node name="Play button viewport" type="SubViewport" parent="Popup"]
 unique_name_in_owner = true
-transparent_bg = true
 size = Vector2i(200, 150)
 
 [node name="Button" type="Button" parent="Popup/Play button viewport"]

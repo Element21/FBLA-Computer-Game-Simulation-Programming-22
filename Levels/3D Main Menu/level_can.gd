@@ -26,6 +26,7 @@ func _ready():
 	level_data_material.albedo_texture = level_data_viewport.get_texture()
 	level_data_material.emission_enabled = true
 	level_data_material.emission_texture = level_data_viewport.get_texture()
+	level_data_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	
 	(%ViewportQuad as MeshInstance3D).set_surface_override_material(0, level_data_material)
 	
@@ -35,6 +36,7 @@ func _ready():
 	play_button_material.albedo_texture = play_button_viewport.get_texture()
 	play_button_material.emission_enabled = true
 	play_button_material.emission_texture = play_button_viewport.get_texture()
+	level_data_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	
 	(%PlayButtonQuad as MeshInstance3D).set_surface_override_material(0, play_button_material)
 	

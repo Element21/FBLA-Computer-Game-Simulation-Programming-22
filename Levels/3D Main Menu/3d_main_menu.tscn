@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://djsijup53erc7"]
+[gd_scene load_steps=21 format=3 uid="uid://djsijup53erc7"]
 
 [ext_resource type="PackedScene" uid="uid://cdjke6okxxfwg" path="res://Levels/3D Main Menu/level_can.tscn" id="1_fudtw"]
 [ext_resource type="Script" path="res://Levels/3D Main Menu/3d_main_menu.gd" id="1_wepeb"]
@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dbtvkni108ygl" path="res://resources/cans/can_level_2.gltf" id="6_qcjqm"]
 [ext_resource type="PackedScene" uid="uid://mrpg2qlfhfug" path="res://objects/environment.tscn" id="8_c8l8o"]
 [ext_resource type="PackedScene" uid="uid://v4ot0f61cmk0" path="res://resources/cans/can_level_3.gltf" id="8_kl10b"]
-[ext_resource type="PackedScene" uid="uid://ctxupo1dnt58g" path="res://resources/cans/can_default.gltf" id="10_nxtuc"]
+[ext_resource type="PackedScene" uid="uid://csm0t7owqc4vk" path="res://resources/cans/can_level_4.gltf" id="10_wujfk"]
+[ext_resource type="PackedScene" uid="uid://bavct8mbfq1rj" path="res://resources/cans/can_level_5.gltf" id="12_5in81"]
 [ext_resource type="PackedScene" uid="uid://dhro7gdgikp5l" path="res://resources/grocery-store-no-block.tscn" id="13_42djg"]
 [ext_resource type="PackedScene" uid="uid://bs7i6kvg4x5wt" path="res://Levels/3D Main Menu/part_of_light.tscn" id="14_8wu8q"]
 [ext_resource type="Material" path="res://resources/materials/plants.tres" id="15_lua0t"]
@@ -21,6 +22,16 @@ size = Vector2(100, 100)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_rtefw"]
 size = Vector2(100, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f3non"]
+size = Vector2(0.2, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f173d"]
+resource_name = "Material.009"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.127222, 0.143146, 0.279997, 1)
+roughness = 0.5
 
 [node name="3D Main Menu" type="Node3D" node_paths=PackedStringArray("spotlight_sample_can")]
 script = ExtResource("1_wepeb")
@@ -62,14 +73,14 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.372, 11.7071, 16.0672
 level_idx = 3
 level_scene = ExtResource("5_nfrab")
 
-[node name="can_default" parent="Level 4 Can" instance=ExtResource("10_nxtuc")]
+[node name="can_level_4" parent="Level 4 Can" instance=ExtResource("10_wujfk")]
 
 [node name="Level 5 Can" parent="." instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.88138, 11.7072, 16.0438)
 level_idx = 4
 level_scene = ExtResource("6_mpq32")
 
-[node name="can_default" parent="Level 5 Can" instance=ExtResource("10_nxtuc")]
+[node name="can_level_5" parent="Level 5 Can" instance=ExtResource("12_5in81")]
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("8_c8l8o")]
 
@@ -156,6 +167,11 @@ light_energy = 2.586
 shadow_enabled = true
 omni_range = 4096.0
 omni_attenuation = 0.482968
+
+[node name="Menu hider" type="MeshInstance3D" parent="grocery-store2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.692, 0.57043, 0.448506)
+mesh = SubResource("PlaneMesh_f3non")
+surface_material_override/0 = SubResource("StandardMaterial3D_f173d")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12182, 14.6747, 17.4565)
