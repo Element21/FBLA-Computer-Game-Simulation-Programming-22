@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dnv1a3gw0cyd3"]
+[gd_scene load_steps=26 format=3 uid="uid://dnv1a3gw0cyd3"]
 
 [ext_resource type="PackedScene" uid="uid://c6sm62eie3fwh" path="res://objects/level/level.tscn" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://c4m8n11ytae44" path="res://Levels/Level 2/pot2.0.obj" id="2"]
@@ -15,7 +15,6 @@
 [ext_resource type="Material" path="res://resources/materials/soup_can/wrapping_top.tres" id="11_chu7k"]
 [ext_resource type="ArrayMesh" uid="uid://c0gduoivj7ltj" path="res://resources/soupCanopen.obj" id="11_joqeu"]
 [ext_resource type="Material" path="res://resources/materials/soup_can/wrapping_bottom.tres" id="12_bcqdu"]
-[ext_resource type="PackedScene" uid="uid://bhpaglfnbruvn" path="res://Levels/Level 3/lvl3.tscn" id="13"]
 [ext_resource type="PackedScene" uid="uid://ctxupo1dnt58g" path="res://resources/cans/can_default.gltf" id="13_sekbp"]
 [ext_resource type="Material" path="res://resources/materials/oven/backsplash.tres" id="15_anxe1"]
 [ext_resource type="Material" path="res://resources/materials/oven/burner.tres" id="16_l3ecs"]
@@ -42,7 +41,6 @@ radius = 4.42
 [node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22611, 0)
 time_given = 60.0
-next_level = ExtResource("13")
 level_index = 1
 camera = NodePath("../Camera3D")
 song = 3

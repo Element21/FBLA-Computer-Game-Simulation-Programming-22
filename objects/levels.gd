@@ -13,4 +13,4 @@ func get_by_index(idx: int):
 	if idx >= level_scenes.size():
 		return null
 	
-	return level_scenes.get(idx)
+	return level_scenes[idx]
