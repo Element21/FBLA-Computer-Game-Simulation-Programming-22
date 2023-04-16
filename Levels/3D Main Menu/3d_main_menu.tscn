@@ -104,57 +104,75 @@ transform = Transform3D(-6.725e-07, 0, 15.385, 0, 15.385, 0, -15.385, 0, -6.725e
 
 [node name="Part of light" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, -2.22045e-16, 0, 0.0649984, 0, 2.22045e-16, 0, 0.0649984, 0.0656706, 1.67033, -0.495977)
+omni_shadow_mode = 0
 
 [node name="Part of light2" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 0.0656706, 1.67033, 0.0338282)
+omni_shadow_mode = 0
 
 [node name="Part of light3" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 0.0656706, 1.67033, -2.43027)
+omni_shadow_mode = 0
 
 [node name="Part of light4" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 0.0656706, 1.67033, -1.87823)
+omni_shadow_mode = 0
 
 [node name="Part of light5" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 0.0656706, 1.67033, 1.42772)
+omni_shadow_mode = 0
 
 [node name="Part of light6" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 0.0656706, 1.67033, 2.06379)
+omni_shadow_mode = 0
 
 [node name="Part of light7" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, -1.89999, 1.67, -0.49597)
+omni_shadow_mode = 0
 
 [node name="Part of light8" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, -1.89999, 1.67, -1.92024)
+omni_shadow_mode = 0
 
 [node name="Part of light9" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, -1.89999, 1.67, -2.50491)
+omni_shadow_mode = 0
 
 [node name="Part of light10" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, -1.89999, 1.67, 1.50229)
+omni_shadow_mode = 0
 
 [node name="Part of light11" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, -1.89999, 1.67, 2.10915)
+omni_shadow_mode = 0
 
 [node name="Part of light12" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, -1.49764, 1.67, 0.0661255)
+omni_shadow_mode = 0
 
 [node name="Part of light13" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 1.88991, 1.67, -0.49597)
+omni_shadow_mode = 0
 
 [node name="Part of light14" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 1.88991, 1.67, -1.92024)
+omni_shadow_mode = 0
 
 [node name="Part of light15" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 1.88991, 1.67, -2.50491)
+omni_shadow_mode = 0
 
 [node name="Part of light16" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 1.88991, 1.67, 1.50229)
+omni_shadow_mode = 0
 
 [node name="Part of light17" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 1.88991, 1.67, 2.10915)
+omni_shadow_mode = 0
 
 [node name="Part of light18" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 1.88991, 1.67, 0.0661255)
+omni_shadow_mode = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="grocery-store2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.64592e-06, 0, 2.95639e-05)
