@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Cooking.mp3-32bd24e0ad131fab642009b3b8421466.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
