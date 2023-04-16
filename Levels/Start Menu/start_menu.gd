@@ -6,10 +6,11 @@ var main_menu_scene: PackedScene = preload("res://Levels/3D Main Menu/3d_main_me
 var cutscene_scene: PackedScene = preload("res://Levels/Start Menu/Cutscene/cutscene.tscn")
 
 @onready var transition: Transition = %Transition
+@onready var name_input = %"Name input"
 
 
 func go_to_main_menu(_from_signal):
-	var name_given = (%"Name input" as LineEdit).text
+	var name_given = name_input.text
 	
 	if name_given == "":
 		(%"Empty name error" as Label).visible = true
@@ -24,4 +25,5 @@ func go_to_main_menu(_from_signal):
 
 
 func _ready():
+	name_input.grab_focus()
 	Music.play(MusicPlayer.Song.LocalForecast)
