@@ -156,7 +156,7 @@ hand = NodePath("../Hand")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8459, 31.1814, 17.6058)
-light_energy = 0.381
+light_energy = 0.448
 shadow_enabled = true
 shadow_opacity = 0.78
 shadow_blur = 1.694
