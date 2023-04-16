@@ -46,7 +46,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8tkd3")
 
 [node name="Popup" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.96434, -2.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, -2.8)
 
 [node name="ViewportQuad" type="MeshInstance3D" parent="Popup"]
 unique_name_in_owner = true

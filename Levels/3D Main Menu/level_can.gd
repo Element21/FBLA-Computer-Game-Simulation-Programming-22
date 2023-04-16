@@ -9,10 +9,13 @@ class_name LevelCan
 @onready var highscore_label: Label = %Highscore
 @onready var popup: Node3D = %Popup
 @onready var animation_player: AnimationPlayer = can.find_child("AnimationPlayer")
+@onready var start_pos = self.position
 
 @export var level_idx: int
 @export var level_scene: PackedScene
 @export var can: Node3D
+
+static func come_out_amt() -> Vector3: return Vector3(0, 0, 3)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -57,14 +60,18 @@ func _ready():
 
 func show_level_data():
 	var tween = get_tree().create_tween()
+	tween.set_parallel()
 	@warning_ignore("return_value_discarded")
 	tween.tween_property(popup, "position", Vector3(0, 7.5, -2.8), 0.5).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "position", start_pos + Vector3(0, 0, 3), 0.5).set_trans(Tween.TRANS_SINE)
 
 
 func hide_level_data():
 	var tween = get_tree().create_tween()
+	tween.set_parallel()
 	@warning_ignore("return_value_discarded")
-	tween.tween_property(popup, "position", Vector3(0, -7.5, -2.8), 0.5).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(popup, "position", Vector3(0, 20, -2.8), 0.5).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "position", start_pos + come_out_amt(), 0.5).set_trans(Tween.TRANS_SINE)
 
 
 func play_can_open_animation():

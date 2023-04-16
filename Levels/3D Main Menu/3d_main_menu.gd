@@ -53,7 +53,7 @@ func _input(event: InputEvent):
 			
 			var tween = get_tree().create_tween()
 			@warning_ignore("return_value_discarded")
-			tween.tween_property(camera, "position", can.position + camera_can_offset, .5).set_trans(Tween.TRANS_SINE)
+			tween.tween_property(camera, "position", can.position + camera_can_offset + LevelCan.come_out_amt(), .5).set_trans(Tween.TRANS_SINE)
 			
 			can.show_level_data()
 			
@@ -95,7 +95,7 @@ func play_level():
 	Music.end_ambience()
 
 
-var camera_tilt_down = 24
+var camera_tilt_down = 19
 var slope = tan(camera_tilt_down * PI / 180.) * camera_can_offset.z / camera_can_offset.y
 var adjust = 1.6
 
@@ -104,7 +104,7 @@ func camera_animation(t: float, camera_start_position: Vector3):
 	# f(t) = 3*slope*t^2 + (1-3*slope-adjust)*t^3 + adjust*t^4 is a solution to f(0)=0, f(1)=1, and lim t->0+ f(t)/Tweening.smoothify(t) = slope
 	# This allows the camera to face in the direction of travel without jumping at the beginning because the tangent at the beginning is controlled.
 	# "adjust" is a parameter used to make sure the camera doesn't go through the can
-	var vec = camera_can_offset * Vector3(0, 3*slope*t*t + (1-3*slope-adjust)*t*t*t + adjust*t*t*t*t, Tweening.smoothify(t))
+	var vec = camera_can_offset*Vector3(0, 3*slope*t*t + (1-3*slope-adjust)*t*t*t + adjust*t*t*t*t, Tweening.smoothify(t))
 	
 	camera.position = camera_start_position - vec
 	camera.rotation.x = -vec.angle_to(Vector3(0, 0, 1))
