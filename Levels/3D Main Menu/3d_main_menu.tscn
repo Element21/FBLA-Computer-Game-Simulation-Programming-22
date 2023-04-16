@@ -62,7 +62,7 @@ level_idx = 1
 can = NodePath("can_level_2")
 
 [node name="can_level_2" parent="Level 2 Can" instance=ExtResource("6_qcjqm")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-0.101056, 0, -0.994881, 0, 1, 0, 0.994881, 0, -0.101056, 0, 0, 0)
 
 [node name="Level 3 Can" parent="." node_paths=PackedStringArray("can") instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -1.92054, 11.7072, 16.0438)
@@ -70,7 +70,7 @@ level_idx = 2
 can = NodePath("can_level_3")
 
 [node name="can_level_3" parent="Level 3 Can" instance=ExtResource("8_kl10b")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-0.201078, 0, -0.979575, 0, 1, 0, 0.979575, 0, -0.201078, 0, 0, 0)
 
 [node name="Level 4 Can" parent="." node_paths=PackedStringArray("can") instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.372, 11.7071, 16.0672)
@@ -78,7 +78,7 @@ level_idx = 3
 can = NodePath("can_level_4")
 
 [node name="can_level_4" parent="Level 4 Can" instance=ExtResource("10_wujfk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-0.393942, 0, -0.919135, 0, 1, 0, 0.919135, 0, -0.393942, 0, 0, 0)
 
 [node name="Level 5 Can" parent="." node_paths=PackedStringArray("can") instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.88138, 11.7072, 16.0438)
@@ -86,7 +86,7 @@ level_idx = 4
 can = NodePath("can_level_5")
 
 [node name="can_level_5" parent="Level 5 Can" instance=ExtResource("12_5in81")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-0.607376, 0, -0.794415, 0, 1, 0, 0.794415, 0, -0.607376, 0, 0, 0)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("8_c8l8o")]
 
