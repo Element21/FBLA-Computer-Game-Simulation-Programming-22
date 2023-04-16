@@ -24,17 +24,16 @@ bus = &"Music"
 [node name="Local Forecast" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("4_h4nln")
-volume_db = -8.0
+volume_db = -4.0
 bus = &"Music"
 
 [node name="Cooking" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("5_5owd2")
-volume_db = -8.0
+volume_db = -4.0
 bus = &"Music"
 
 [node name="George Street Shuffle" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("6_2715y")
-volume_db = -8.0
 bus = &"Music"
