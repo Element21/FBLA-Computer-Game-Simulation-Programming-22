@@ -6,7 +6,6 @@ class_name Level
 @export var time_given = 30.
 @export var countdown = true
 @export var enable_timer = true
-@export var next_level: PackedScene
 @export var level_index: int
 @export var camera: Camera3D
 @export var song: MusicPlayer.Song
@@ -34,7 +33,6 @@ func _ready():
 	
 	assert(transition != null)
 	
-	level_end_screen.next_level = next_level
 	level_end_screen.level_index = level_index
 	level_end_screen.transition = transition
 

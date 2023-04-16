@@ -12,7 +12,6 @@ class_name LevelCan
 @onready var start_pos = self.position
 
 @export var level_idx: int
-@export var level_scene: PackedScene
 @export var can: Node3D
 
 static func come_out_amt() -> Vector3: return Vector3(0, 0, 2)

@@ -3,7 +3,6 @@ extends SubViewportContainer
 class_name LevelEndScreen
 
 @export var level_index: int
-@export var next_level: PackedScene
 @export var transition: Transition
 
 @onready var main_menu_button: Button = %"Main menu button"
@@ -25,6 +24,8 @@ func level_ended(score: int):
 	self.show()
 	main_menu_button.show()
 	
+	var next_level = Levels.get_by_index(level_index + 1)
+	
 	if next_level:
 		next_level_button.show()
 
@@ -34,6 +35,10 @@ func go_to_main_menu():
 	transition.change_scene(load("res://Levels/3D Main Menu/3d_main_menu.tscn"))
 
 
+func retry_level():
+	transition.change_scene(Levels.get_by_index(level_index))
+
+
 func go_to_next_level():
-	transition.change_scene(next_level)
+	transition.change_scene(Levels.get_by_index(level_index + 1))
 

@@ -22,6 +22,7 @@ WordUtils="*res://objects/word_utils.gd"
 LeaderboardManager="*res://objects/leaderboard_manager.gd"
 Quitter="*res://objects/quitter.gd"
 Music="*res://objects/music/music.tscn"
+Levels="*res://objects/levels.gd"
 
 [debug]
 

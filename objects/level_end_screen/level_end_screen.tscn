@@ -74,6 +74,13 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Next Level"
 
+[node name="Retry" type="Button" parent="SubViewport/Control/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = " Try Again "
+
 [node name="Main menu button" type="Button" parent="SubViewport/Control/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -87,4 +94,5 @@ offset_left = -241.0
 offset_top = -56.0
 
 [connection signal="button_down" from="SubViewport/Control/VBoxContainer/VBoxContainer/Next level button" to="." method="go_to_next_level"]
+[connection signal="button_down" from="SubViewport/Control/VBoxContainer/VBoxContainer/Retry" to="." method="retry_level"]
 [connection signal="button_down" from="SubViewport/Control/VBoxContainer/VBoxContainer/Main menu button" to="." method="go_to_main_menu"]

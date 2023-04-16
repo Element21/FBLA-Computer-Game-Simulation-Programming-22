@@ -1,15 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://djsijup53erc7"]
+[gd_scene load_steps=18 format=3 uid="uid://djsijup53erc7"]
 
 [ext_resource type="PackedScene" uid="uid://cdjke6okxxfwg" path="res://Levels/3D Main Menu/level_can.tscn" id="1_fudtw"]
 [ext_resource type="Script" path="res://Levels/3D Main Menu/3d_main_menu.gd" id="1_wepeb"]
-[ext_resource type="PackedScene" uid="uid://drxd607igbq22" path="res://Levels/Level 1/lvl1.tscn" id="2_ehgci"]
 [ext_resource type="PackedScene" uid="uid://csr7ae2r8ldmy" path="res://resources/shaders/transition.tscn" id="2_l163r"]
-[ext_resource type="PackedScene" uid="uid://dnv1a3gw0cyd3" path="res://Levels/Level 2/lvl2.tscn" id="3_0u8gs"]
 [ext_resource type="PackedScene" uid="uid://dcvr28pvllk7c" path="res://objects/bottom_buttons/bottom_buttons.tscn" id="3_rcrxp"]
 [ext_resource type="PackedScene" uid="uid://bix73ntpqumav" path="res://resources/cans/can_level_1.gltf" id="4_6qso0"]
-[ext_resource type="PackedScene" uid="uid://bhpaglfnbruvn" path="res://Levels/Level 3/lvl3.tscn" id="4_g2703"]
-[ext_resource type="PackedScene" uid="uid://mrcrmxl653fq" path="res://Levels/Level 4/lvl4.tscn" id="5_nfrab"]
-[ext_resource type="PackedScene" uid="uid://1ckx22iosk81" path="res://Levels/Level 5/lvl5.tscn" id="6_mpq32"]
 [ext_resource type="PackedScene" uid="uid://dbtvkni108ygl" path="res://resources/cans/can_level_2.gltf" id="6_qcjqm"]
 [ext_resource type="PackedScene" uid="uid://mrpg2qlfhfug" path="res://objects/environment.tscn" id="8_c8l8o"]
 [ext_resource type="PackedScene" uid="uid://v4ot0f61cmk0" path="res://resources/cans/can_level_3.gltf" id="8_kl10b"]
@@ -56,7 +51,6 @@ unique_name_in_owner = true
 
 [node name="Level 1 Can" parent="." node_paths=PackedStringArray("can") instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.399522, 0, 0.0195399, 0, 0.4, 0, -0.0195399, 0, 0.399522, -6.69078, 11.7072, 16.0438)
-level_scene = ExtResource("2_ehgci")
 can = NodePath("can_level_1")
 
 [node name="can_level_1" parent="Level 1 Can" instance=ExtResource("4_6qso0")]
@@ -65,7 +59,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 [node name="Level 2 Can" parent="." node_paths=PackedStringArray("can") instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -4.20976, 11.7071, 16.0202)
 level_idx = 1
-level_scene = ExtResource("3_0u8gs")
 can = NodePath("can_level_2")
 
 [node name="can_level_2" parent="Level 2 Can" instance=ExtResource("6_qcjqm")]
@@ -74,7 +67,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 [node name="Level 3 Can" parent="." node_paths=PackedStringArray("can") instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -1.92054, 11.7072, 16.0438)
 level_idx = 2
-level_scene = ExtResource("4_g2703")
 can = NodePath("can_level_3")
 
 [node name="can_level_3" parent="Level 3 Can" instance=ExtResource("8_kl10b")]
@@ -83,7 +75,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 [node name="Level 4 Can" parent="." node_paths=PackedStringArray("can") instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.372, 11.7071, 16.0672)
 level_idx = 3
-level_scene = ExtResource("5_nfrab")
 can = NodePath("can_level_4")
 
 [node name="can_level_4" parent="Level 4 Can" instance=ExtResource("10_wujfk")]
@@ -92,7 +83,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 [node name="Level 5 Can" parent="." node_paths=PackedStringArray("can") instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.88138, 11.7072, 16.0438)
 level_idx = 4
-level_scene = ExtResource("6_mpq32")
 can = NodePath("can_level_5")
 
 [node name="can_level_5" parent="Level 5 Can" instance=ExtResource("12_5in81")]

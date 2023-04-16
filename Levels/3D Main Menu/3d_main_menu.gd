@@ -91,8 +91,7 @@ func play_level():
 	await tween.finished
 	await get_tree().create_timer(0.3).timeout
 	
-	assert(get_tree().change_scene_to_packed(maybe_can_focusing_on.level_scene) == OK)
-	
+	assert(get_tree().change_scene_to_packed(Levels.get_by_index(maybe_can_focusing_on.level_idx)) == OK)
 
 
 var camera_tilt_down = 19
