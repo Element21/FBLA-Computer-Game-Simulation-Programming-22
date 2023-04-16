@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://do04e8oxry4pn"]
+[gd_scene load_steps=7 format=3 uid="uid://do04e8oxry4pn"]
 
 [ext_resource type="AudioStream" uid="uid://cytbqlbh02avh" path="res://objects/music/Sienexilin.mp3" id="1"]
 [ext_resource type="AudioStream" uid="uid://cj2pwrq14jqrj" path="res://objects/music/My Song 6.mp3" id="2"]
 [ext_resource type="Script" path="res://objects/music/music.gd" id="3"]
+[ext_resource type="AudioStream" uid="uid://6708irufvrp4" path="res://objects/music/Local Forecast.mp3" id="4_h4nln"]
+[ext_resource type="AudioStream" uid="uid://1ibwiy5opxx6" path="res://objects/music/Cooking.mp3" id="5_5owd2"]
+[ext_resource type="AudioStream" uid="uid://bhpajetxhakoo" path="res://objects/music/George Street Shuffle.mp3" id="6_2715y"]
 
 [node name="Node" type="Node"]
 script = ExtResource("3")
@@ -15,5 +18,23 @@ bus = &"Music"
 [node name="My Song 6" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2")
+volume_db = -8.0
+bus = &"Music"
+
+[node name="Local Forecast" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_h4nln")
+volume_db = -8.0
+bus = &"Music"
+
+[node name="Cooking" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_5owd2")
+volume_db = -8.0
+bus = &"Music"
+
+[node name="George Street Shuffle" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_2715y")
 volume_db = -8.0
 bus = &"Music"

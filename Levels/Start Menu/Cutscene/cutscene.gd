@@ -40,5 +40,6 @@ func next_slide():
 
 
 func _ready():
+	Music.play(MusicPlayer.Song.Sienexilin)
 	next_slide()
 

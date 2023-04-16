@@ -24,4 +24,4 @@ func go_to_main_menu(_from_signal):
 
 
 func _ready():
-	Music.play(MusicPlayer.Song.Sienexilin)
+	Music.play(MusicPlayer.Song.LocalForecast)

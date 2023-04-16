@@ -9,7 +9,10 @@ var transition_duration = 2.0
 enum Song {
 	None = -1,
 	Sienexilin = 0,
-	MySong6 = 1,
+	LocalForecast = 1,
+	MySong6 = 2,
+	Cooking = 3,
+	GeorgeStreetShuffle = 4,
 }
 
 var playing: Song = Song.None
@@ -17,7 +20,10 @@ var playing: Song = Song.None
 
 @onready var songs: Array[AudioStreamPlayer] = [
 	%Sienexilin as AudioStreamPlayer,
+	%"Local Forecast" as AudioStreamPlayer,
 	%"My Song 6" as AudioStreamPlayer,
+	%Cooking as AudioStreamPlayer,
+	%"George Street Shuffle" as AudioStreamPlayer,
 ]
 
 @onready var volumes: PackedFloat64Array = PackedFloat64Array(songs.map(func(v): return v.volume_db))

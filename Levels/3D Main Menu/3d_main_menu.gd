@@ -18,7 +18,7 @@ var maybe_can_focusing_on = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spotlight.light_energy = 0.
-	Music.play(MusicPlayer.Song.Sienexilin)
+	Music.play(MusicPlayer.Song.LocalForecast)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

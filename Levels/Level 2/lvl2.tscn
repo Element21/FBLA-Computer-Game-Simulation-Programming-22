@@ -45,6 +45,7 @@ time_given = 60.0
 next_level = ExtResource("13")
 level_index = 1
 camera = NodePath("../Camera3D")
+song = 3
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.490599, 0.871385, 0, -0.871385, 0.490599, 0, 18.8478, 6.15397)
