@@ -23,7 +23,7 @@ func _process(delta):
 func erupt():
 	target_shake_amt = 1.
 	
-	for letter in get_tree().get_nodes_in_group("Letters") as Array[RigidBody3D]:
-		var theta = randf() * TAU
-		letter.apply_central_impulse(Vector3(2 * sin(theta), 5., 2 * cos(theta)) * letter.mass)
+#	for letter in get_tree().get_nodes_in_group("Letters") as Array[RigidBody3D]:
+#		var theta = randf() * TAU
+#		letter.apply_central_impulse(Vector3(2 * sin(theta), 5., 2 * cos(theta)) * letter.mass)
 

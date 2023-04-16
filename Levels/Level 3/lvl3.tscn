@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bhpaglfnbruvn"]
+[gd_scene load_steps=24 format=3 uid="uid://bhpaglfnbruvn"]
 
 [ext_resource type="PackedScene" uid="uid://c6sm62eie3fwh" path="res://objects/level/level.tscn" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://ydbk3tpjn71c" path="res://Levels/Level 3/fountainversion1.obj" id="2"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://pjx704npe374" path="res://objects/fountain_base/fountain_base.tscn" id="8"]
 [ext_resource type="Material" path="res://resources/materials/plants.tres" id="8_tr3l2"]
 [ext_resource type="PackedScene" path="res://objects/fountain_output/fountain_output.tscn" id="9"]
-[ext_resource type="PackedScene" uid="uid://mrcrmxl653fq" path="res://Levels/Level 4/lvl4.tscn" id="10"]
 [ext_resource type="Material" path="res://resources/materials/bubble.tres" id="12"]
 
 [sub_resource type="CylinderMesh" id="1"]
@@ -56,7 +55,6 @@ height = 1.0
 
 [node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1")]
 time_given = 60.0
-next_level = ExtResource("10")
 level_index = 2
 camera = NodePath("../Camera3D")
 song = 4

@@ -10,6 +10,7 @@ var material = preload("res://resources/materials/letter/letter.tres")
 @onready var mesh: MeshInstance3D = %Mesh
 @onready var particles: GPUParticles3D = %Particles
 @onready var which_letter: String = WordUtils.random_letter(word_length)
+@onready var hand: Hand
 
 func set_mesh():
 	mesh.mesh = WordUtils.mesh_of(which_letter)
@@ -25,16 +26,21 @@ func _ready():
 func change_letter():
 	await get_tree().create_timer(randf() * 10. + 10.).timeout
 	
+	change_letter()
+	
+	if hand.hand.global_position.distance_to(self.global_position) < 5.:
+		return
+	
 	if !self.is_in_group("Letters"): return
 	
 	self.apply_central_impulse(Vector3(0, -5, 0))
 	
 	await get_tree().create_timer(.1).timeout
 	
+	if !self.is_in_group("Letters"): return
+	
 	which_letter = WordUtils.random_letter(word_length)
 	set_mesh()
-	
-	change_letter()
 
 
 func on_collision(node: Node):

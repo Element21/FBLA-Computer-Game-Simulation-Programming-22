@@ -21,6 +21,7 @@ func spawn_letters():
 		letter.word_length = word_manager.word_length
 		add_child(letter)
 		letter.add_to_group("Letter")
+		letter.hand = word_manager.hand
 		
 		letter.apply_central_impulse(Vector3(0, upward_velocity, 0))
 		
