@@ -19,20 +19,21 @@ static func come_out_amt() -> Vector3: return Vector3(0, 0, 2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	if !LeaderboardManager.is_level_unlocked(level_idx):
-#		self.hide()
-#		self.collision_layer = 0
-#		(%PlayButton as Area3D).collision_layer = 0
-#		return
+	if !LeaderboardManager.is_level_unlocked(level_idx):
+		self.hide()
+		self.collision_layer = 0
+		(%PlayButton as Area3D).collision_layer = 0
+		return
 
 	assert(animation_player != null)
+	
+	(%Leaderboard as Leaderboard).show_leaderboard_for(level_idx)
 	
 	level_data_viewport.set_clear_mode(SubViewport.CLEAR_MODE_ONCE)
 	
 	var level_data_material = StandardMaterial3D.new()
 	level_data_material.albedo_texture = level_data_viewport.get_texture()
 	level_data_material.emission_enabled = true
-	level_data_material.emission_texture = level_data_viewport.get_texture()
 	level_data_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	
 	(%ViewportQuad as MeshInstance3D).set_surface_override_material(0, level_data_material)

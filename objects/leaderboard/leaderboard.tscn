@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://8yrg3uggl3m3"]
+[gd_scene load_steps=3 format=3 uid="uid://8yrg3uggl3m3"]
 
 [ext_resource type="Script" path="res://objects/leaderboard/leaderboard.gd" id="1"]
+[ext_resource type="Theme" uid="uid://dubog3hc6383i" path="res://Levels/menu_theme.tres" id="1_x127k"]
 
 [node name="Leaderboard" type="VBoxContainer"]
+theme = ExtResource("1_x127k")
 alignment = 1
 script = ExtResource("1")
 

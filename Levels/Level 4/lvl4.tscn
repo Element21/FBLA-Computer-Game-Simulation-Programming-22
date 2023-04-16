@@ -40,7 +40,7 @@ size = Vector3(10, 10, 1)
 [node name="Node3D" type="Node3D"]
 
 [node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1")]
-time_given = 60.0
+time_given = 90.0
 countdown = false
 next_level = ExtResource("9")
 level_index = 3

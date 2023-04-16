@@ -16,10 +16,12 @@ func show_leaderboard_for(level_index: int):
 	for i in range(0, min(max_entries, leaderboard_entries.size())):
 		var name_label = Label.new()
 		name_label.text = leaderboard_entries[i][0]
+		name_label.add_theme_font_size_override("font_size", 20)
 		%Names.add_child(name_label)
 		
 		var score_label = Label.new()
 		score_label.text = String.num_int64(leaderboard_entries[i][1])
+		score_label.add_theme_font_size_override("font_size", 20)
 		%Scores.add_child(score_label)
 
 

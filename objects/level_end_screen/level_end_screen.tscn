@@ -43,15 +43,19 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 23
 alignment = 1
 
 [node name="Level complete" type="Label" parent="SubViewport/Control/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "Level Complete"
+horizontal_alignment = 1
 
 [node name="Score label" type="Label" parent="SubViewport/Control/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "25"
 horizontal_alignment = 1
 
