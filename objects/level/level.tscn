@@ -7,6 +7,7 @@
 
 [node name="Level" type="Node3D"]
 script = ExtResource("2")
+song = 1
 
 [node name="Level countdown" parent="." instance=ExtResource("4")]
 unique_name_in_owner = true

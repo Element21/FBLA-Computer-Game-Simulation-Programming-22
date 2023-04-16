@@ -35,6 +35,7 @@ func _slide_on_gui_input(event: InputEvent):
 
 func next_slide():
 	(%Slide as TextureRect).set_texture(slideList[slide_counter])
+	@warning_ignore("return_value_discarded")
 	transition.fade_in()
 
 

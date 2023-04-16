@@ -21,8 +21,11 @@ var letter = null
 
 func flip():
 	var tween = get_tree().create_tween()
+	@warning_ignore("return_value_discarded")
 	tween.set_parallel()
+	@warning_ignore("return_value_discarded")
 	tween.tween_property(self, "rotation_degrees", Vector3(360, 0, 0), action_time).set_trans(Tween.TRANS_SINE)
+	@warning_ignore("return_value_discarded")
 	tween.tween_property(score_mesh, "position", Vector3(0, 0, 0.334), action_time).set_trans(Tween.TRANS_SINE)
 	
 	whoosh.play()
@@ -62,6 +65,7 @@ func set_score(new_score):
 	score_mesh.mesh = mesh
 	
 	var tween = get_tree().create_tween()
+	@warning_ignore("return_value_discarded")
 	tween.tween_property(score_mesh, "position", Vector3(0, 0, 1.5), action_time).set_trans(Tween.TRANS_SINE)
 
 

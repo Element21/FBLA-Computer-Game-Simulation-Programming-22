@@ -15,4 +15,5 @@ bus = &"Music"
 [node name="My Song 6" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2")
+volume_db = -8.0
 bus = &"Music"

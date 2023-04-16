@@ -60,24 +60,29 @@ func _ready():
 
 func show_level_data():
 	var tween = get_tree().create_tween()
+	@warning_ignore("return_value_discarded")
 	tween.set_parallel()
 	@warning_ignore("return_value_discarded")
 	tween.tween_property(popup, "position", Vector3(0, 7.5, -2.8), 0.5).set_trans(Tween.TRANS_SINE)
+	@warning_ignore("return_value_discarded")
 	tween.tween_property(self, "position", start_pos + Vector3(0, 0, 3), 0.5).set_trans(Tween.TRANS_SINE)
 
 
 func hide_level_data():
 	var tween = get_tree().create_tween()
+	@warning_ignore("return_value_discarded")
 	tween.set_parallel()
 	@warning_ignore("return_value_discarded")
 	tween.tween_property(popup, "position", Vector3(0, 20, -2.8), 0.5).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(self, "position", start_pos + come_out_amt(), 0.5).set_trans(Tween.TRANS_SINE)
+	@warning_ignore("return_value_discarded")
+	tween.tween_property(self, "position", start_pos + LevelCan.come_out_amt(), 0.5).set_trans(Tween.TRANS_SINE)
 
 
 func play_can_open_animation():
 	# I can't play two animations at once, so I have to do this
 	# I tried using an AnimationTree but that didn't work. This works just as well though.
 	var tween = get_tree().create_tween()
+	@warning_ignore("return_value_discarded")
 	tween.tween_property(can.find_child("Can Top"), "blend_shapes/Can Top.001", 1, 1.)
 	
 	animation_player.play("Open TabAction001")

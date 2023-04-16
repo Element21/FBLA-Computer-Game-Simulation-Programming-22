@@ -18,6 +18,7 @@ var maybe_can_focusing_on = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spotlight.light_energy = 0.
+	Music.play(MusicPlayer.Song.Sienexilin)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -92,7 +93,6 @@ func play_level():
 	
 	assert(get_tree().change_scene_to_packed(maybe_can_focusing_on.level_scene) == OK)
 	
-	Music.end_ambience()
 
 
 var camera_tilt_down = 19

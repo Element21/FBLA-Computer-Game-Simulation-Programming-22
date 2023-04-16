@@ -1,39 +1,55 @@
 extends Node
 
+class_name MusicPlayer
+
 
 var transition_duration = 2.0
-var ambience_volume = 0.0
-var gameplay_volume = -8.0
-
-@onready var sienexilin: AudioStreamPlayer = %Sienexilin
-@onready var my_song_6: AudioStreamPlayer = %"My Song 6"
 
 
-func start_ambience():
+enum Song {
+	None = -1,
+	Sienexilin = 0,
+	MySong6 = 1,
+}
+
+var playing: Song = Song.None
+
+
+@onready var songs: Array[AudioStreamPlayer] = [
+	%Sienexilin as AudioStreamPlayer,
+	%"My Song 6" as AudioStreamPlayer,
+]
+
+@onready var volumes: PackedFloat64Array = PackedFloat64Array(songs.map(func(v): return v.volume_db))
+
+
+func _ready():
+	for song in songs:
+		song.volume_db = -80
+
+
+func play(song: Song):
+	if song == playing:
+		return
+	
+	if song != Song.None:
+		var tween = get_tree().create_tween()
+		
+		@warning_ignore("return_value_discarded")
+		tween.tween_property(songs[song], "volume_db", volumes[song], transition_duration).set_trans(Tween.TRANS_SINE)
+		songs[song].play()
+	
+	if playing != Song.None:
+		_stop()
+	
+	playing = song
+
+
+func _stop():
 	var tween = get_tree().create_tween()
+	
+	var player = songs[playing]
 	@warning_ignore("return_value_discarded")
-	tween.tween_property(sienexilin, "volume_db", ambience_volume, transition_duration).set_trans(Tween.TRANS_SINE)
-	sienexilin.play()
-
-
-func end_ambience():
-	var tween = get_tree().create_tween()
-	@warning_ignore("return_value_discarded")
-	tween.tween_property(sienexilin, "volume_db", -80, transition_duration).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(player, "volume_db", -80, transition_duration).set_trans(Tween.TRANS_SINE)
 	await tween.finished
-	sienexilin.stop()
-
-
-func start_gameplay_music():
-	var tween = get_tree().create_tween()
-	@warning_ignore("return_value_discarded")
-	tween.tween_property(my_song_6, "volume_db", gameplay_volume, transition_duration).set_trans(Tween.TRANS_SINE)
-	my_song_6.play()
-
-
-func end_gameplay_music():
-	var tween = get_tree().create_tween()
-	@warning_ignore("return_value_discarded")
-	tween.tween_property(my_song_6, "volume_db", -80, transition_duration).set_trans(Tween.TRANS_SINE)
-	await tween.finished
-	my_song_6.stop()
+	player.stop()

@@ -32,8 +32,6 @@ func level_ended(score: int):
 func go_to_main_menu():
 	# preload doesn't work for some kind of cyclic reference reason, I'll probably make an issue about it soon
 	transition.change_scene(load("res://Levels/3D Main Menu/3d_main_menu.tscn"))
-	
-	Music.start_ambience()
 
 
 func go_to_next_level():

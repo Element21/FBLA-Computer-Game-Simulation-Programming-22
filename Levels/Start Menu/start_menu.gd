@@ -24,4 +24,4 @@ func go_to_main_menu(_from_signal):
 
 
 func _ready():
-	Music.start_ambience()
+	Music.play(MusicPlayer.Song.Sienexilin)

@@ -9,6 +9,7 @@ class_name Level
 @export var next_level: PackedScene
 @export var level_index: int
 @export var camera: Camera3D
+@export var song: MusicPlayer.Song
 
 @onready var transition: Transition = camera.find_child("Transition", false)
 @onready var time_left = time_given
@@ -21,7 +22,7 @@ signal level_ended
 
 func start():
 	playing = true
-	Music.start_gameplay_music()
+	Music.play(song)
 
 
 func _ready():
@@ -48,7 +49,7 @@ func _process(delta):
 		
 		LeaderboardManager.add_score(level_index, score)
 		
-		Music.end_gameplay_music()
+		Music.play(MusicPlayer.Song.Sienexilin)
 		
 		level_end_screen.level_ended(score)
 
