@@ -11,7 +11,11 @@ extends Node3D
 
 @onready var timer: Timer = %Timer
 
+signal letters_spawned
+
 func spawn_letters():
+	letters_spawned.emit()
+	
 	for _i in range(spawn_amnt):
 		var letter: Letter = packed_scene.instantiate()
 		letter.word_length = word_manager.word_length

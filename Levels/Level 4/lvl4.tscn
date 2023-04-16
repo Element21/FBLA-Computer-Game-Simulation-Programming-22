@@ -12,7 +12,7 @@
 [ext_resource type="Material" path="res://resources/materials/pool/flamingo.tres" id="7_dx80j"]
 [ext_resource type="PackedScene" uid="uid://d107jgdxqoufc" path="res://objects/jet/jet.tscn" id="8"]
 [ext_resource type="Material" path="res://resources/materials/pool/towel.tres" id="8_7343t"]
-[ext_resource type="PackedScene" uid="uid://b4kyequ7vdxby" path="res://Levels/Level 5/lvl5.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://1ckx22iosk81" path="res://Levels/Level 5/lvl5.tscn" id="9"]
 [ext_resource type="Material" path="res://resources/materials/pool/chair.tres" id="9_lwtow"]
 [ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="11_ly4wk"]
 [ext_resource type="PackedScene" uid="uid://bvg1o8hnwtey6" path="res://objects/letter_spawner/letter_spawner.tscn" id="16"]

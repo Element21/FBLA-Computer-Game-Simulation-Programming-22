@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://b4kyequ7vdxby"]
+[gd_scene load_steps=18 format=3 uid="uid://1ckx22iosk81"]
 
 [ext_resource type="PackedScene" uid="uid://c6sm62eie3fwh" path="res://objects/level/level.tscn" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://c7m33dm8sp2t3" path="res://Levels/Level 5/volcano.obj" id="2"]
+[ext_resource type="Script" path="res://Levels/Level 5/level_5_effects.gd" id="2_cer0k"]
 [ext_resource type="PackedScene" uid="uid://csr7ae2r8ldmy" path="res://resources/shaders/transition.tscn" id="2_lq7b1"]
 [ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="3"]
 [ext_resource type="PackedScene" uid="uid://c0hnudt3vp12o" path="res://objects/soup/soup.tscn" id="4"]
@@ -29,7 +30,9 @@ bottom_radius = 1.5
 [sub_resource type="CylinderShape3D" id="6"]
 radius = 3.07453
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("camera")]
+script = ExtResource("2_cer0k")
+camera = NodePath("Camera3D")
 
 [node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1")]
 time_given = 90.0
@@ -115,3 +118,4 @@ word_manager = NodePath("../Word manager")
 
 [connection signal="body_entered" from="Environment/Volcano hole" to="Environment/Volcano hole" method="object_entered"]
 [connection signal="body_exited" from="Environment/Volcano hole" to="Environment/Volcano hole" method="object_exited"]
+[connection signal="letters_spawned" from="Letter Spawner" to="." method="erupt"]
