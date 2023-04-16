@@ -2,8 +2,7 @@
 
 [node name="Part of light" type="OmniLight3D"]
 transform = Transform3D(0.0649984, 0, 0, 0, 0.0649984, 0, 0, 0, 0.0649984, 0.065664, 1.67033, -0.496007)
-light_energy = 0.783
-shadow_enabled = true
+light_energy = 0.5
 shadow_opacity = 0.52
 shadow_blur = 10.0
 omni_range = 4096.0

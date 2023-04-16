@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://mrpg2qlfhfug" path="res://objects/environment.tscn" id="8_c8l8o"]
 [ext_resource type="PackedScene" uid="uid://v4ot0f61cmk0" path="res://resources/cans/can_level_3.gltf" id="8_kl10b"]
 [ext_resource type="PackedScene" uid="uid://csm0t7owqc4vk" path="res://resources/cans/can_level_4.gltf" id="10_wujfk"]
+[ext_resource type="PackedScene" uid="uid://dbgg0h8x6ev" path="res://resources/grocery-store.gltf" id="11_ds6bp"]
 [ext_resource type="PackedScene" uid="uid://bavct8mbfq1rj" path="res://resources/cans/can_level_5.gltf" id="12_5in81"]
-[ext_resource type="PackedScene" uid="uid://dhro7gdgikp5l" path="res://resources/grocery-store-no-block.tscn" id="13_42djg"]
 [ext_resource type="PackedScene" uid="uid://bs7i6kvg4x5wt" path="res://Levels/3D Main Menu/part_of_light.tscn" id="14_8wu8q"]
 [ext_resource type="Material" path="res://resources/materials/plants.tres" id="15_lua0t"]
 
@@ -99,7 +99,7 @@ spot_range = 40.412
 spot_angle = 7.72711
 spot_angle_attenuation = 2.73208
 
-[node name="grocery-store2" parent="." instance=ExtResource("13_42djg")]
+[node name="grocery-store2" parent="." instance=ExtResource("11_ds6bp")]
 transform = Transform3D(-6.725e-07, 0, 15.385, 0, 15.385, 0, -15.385, 0, -6.725e-07, -8.617, 0, 4.394)
 
 [node name="Part of light" parent="grocery-store2" instance=ExtResource("14_8wu8q")]
