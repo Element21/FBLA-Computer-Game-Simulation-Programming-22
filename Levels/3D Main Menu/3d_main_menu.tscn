@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bix73ntpqumav" path="res://resources/cans/can_level_1.gltf" id="4_6qso0"]
 [ext_resource type="PackedScene" uid="uid://bhpaglfnbruvn" path="res://Levels/Level 3/lvl3.tscn" id="4_g2703"]
 [ext_resource type="PackedScene" uid="uid://mrcrmxl653fq" path="res://Levels/Level 4/lvl4.tscn" id="5_nfrab"]
-[ext_resource type="PackedScene" uid="uid://b4kyequ7vdxby" path="res://Levels/Level 5/lvl5.tscn" id="6_mpq32"]
+[ext_resource type="PackedScene" uid="uid://1ckx22iosk81" path="res://Levels/Level 5/lvl5.tscn" id="6_mpq32"]
 [ext_resource type="PackedScene" uid="uid://dbtvkni108ygl" path="res://resources/cans/can_level_2.gltf" id="6_qcjqm"]
 [ext_resource type="PackedScene" uid="uid://mrpg2qlfhfug" path="res://objects/environment.tscn" id="8_c8l8o"]
 [ext_resource type="PackedScene" uid="uid://v4ot0f61cmk0" path="res://resources/cans/can_level_3.gltf" id="8_kl10b"]

@@ -15,7 +15,7 @@ class_name LevelCan
 @export var level_scene: PackedScene
 @export var can: Node3D
 
-static func come_out_amt() -> Vector3: return Vector3(0, 0, 3)
+static func come_out_amt() -> Vector3: return Vector3(0, 0, 2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -65,7 +65,7 @@ func show_level_data():
 	@warning_ignore("return_value_discarded")
 	tween.tween_property(popup, "position", Vector3(0, 7.5, -2.8), 0.5).set_trans(Tween.TRANS_SINE)
 	@warning_ignore("return_value_discarded")
-	tween.tween_property(self, "position", start_pos + Vector3(0, 0, 3), 0.5).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "position", start_pos + LevelCan.come_out_amt(), 0.5).set_trans(Tween.TRANS_SINE)
 
 
 func hide_level_data():
@@ -75,7 +75,7 @@ func hide_level_data():
 	@warning_ignore("return_value_discarded")
 	tween.tween_property(popup, "position", Vector3(0, 20, -2.8), 0.5).set_trans(Tween.TRANS_SINE)
 	@warning_ignore("return_value_discarded")
-	tween.tween_property(self, "position", start_pos + LevelCan.come_out_amt(), 0.5).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "position", start_pos, 0.5).set_trans(Tween.TRANS_SINE)
 
 
 func play_can_open_animation():
