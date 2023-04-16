@@ -273,11 +273,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.487351, 1.97738, 5.90069)
 word_manager = NodePath("../Word manager")
 level = NodePath("../Level")
 
-[node name="Word manager" parent="." node_paths=PackedStringArray("level") instance=ExtResource("6")]
+[node name="Word manager" parent="." node_paths=PackedStringArray("level", "hand") instance=ExtResource("6")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.58329, 0, -9.39023)
 word_length = 4
 launch_vector = Vector3(-3, 6.8, 7)
 level = NodePath("../Level")
+hand = NodePath("../Hand")
 
 [node name="Letter Spawner" parent="." node_paths=PackedStringArray("level", "word_manager") instance=ExtResource("7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7604, 0, 0.225881)

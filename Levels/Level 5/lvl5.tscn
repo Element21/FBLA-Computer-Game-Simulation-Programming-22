@@ -97,11 +97,12 @@ word_manager = NodePath("../Word manager")
 level = NodePath("../Level")
 arm_pivot = Vector2(-4, 50)
 
-[node name="Word manager" parent="." node_paths=PackedStringArray("level") instance=ExtResource("6")]
+[node name="Word manager" parent="." node_paths=PackedStringArray("level", "hand") instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4905, 7.75409)
 word_length = 4
 launch_vector = Vector3(0, 4.6, 5)
 level = NodePath("../Level")
+hand = NodePath("../Hand")
 
 [node name="Letter Spawner" parent="." node_paths=PackedStringArray("level", "word_manager") instance=ExtResource("11")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.96659, 0)
