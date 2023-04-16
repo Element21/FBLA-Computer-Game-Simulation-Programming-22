@@ -12,6 +12,7 @@ var slideList = [
 	preload("res://resources/cutscene_frames/frame_8.png"),
 	preload("res://resources/cutscene_frames/frame_6.png"),
 	preload("res://resources/cutscene_frames/frame_9.png"),
+	preload("res://resources/cutscene_frames/how2play.png")
 ]
 
 var main_menu_scene: PackedScene = preload("res://Levels/3D Main Menu/3d_main_menu.tscn")
@@ -23,7 +24,7 @@ func _slide_on_gui_input(event: InputEvent):
 	if !event.is_action_pressed("click"):
 		return
 	
-	if slide_counter == 8:
+	if slide_counter == slideList.size() - 1:
 		transition.change_scene(main_menu_scene)
 		return
 	

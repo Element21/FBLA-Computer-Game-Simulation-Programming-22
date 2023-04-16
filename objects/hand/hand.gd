@@ -139,12 +139,11 @@ func move_hand_towards_mouse(delta: float):
 	
 	var mouse_pos = get_viewport().get_mouse_position()
 	
-	var from = level.camera.project_ray_origin(mouse_pos)
-	var to = level.camera.project_ray_normal(mouse_pos) * 1000
+	raycast.global_rotation = level.camera.global_rotation
+	raycast.global_position = level.camera.global_position
 	
-	raycast.target_position = to - self.position
-	raycast.position = from - self.position
-
+	raycast.target_position = level.camera.project_local_ray_normal(mouse_pos) * 1000
+	
 	if pointing_at_valid_soup_surface():
 		target_pos = raycast.get_collision_point() + Vector3(0, hand_height, 0) - self.position
 

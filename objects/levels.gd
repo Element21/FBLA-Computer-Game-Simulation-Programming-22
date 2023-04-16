@@ -9,5 +9,8 @@ extends Node
 	preload("res://Levels/Level 5/lvl5.tscn"),
 ]
 
-func get_by_index(idx: int) -> PackedScene:
-	return level_scenes[idx]
+func get_by_index(idx: int):
+	if idx >= level_scenes.size():
+		return null
+	
+	return level_scenes.get(idx)
