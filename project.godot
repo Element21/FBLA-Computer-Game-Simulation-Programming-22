@@ -68,8 +68,10 @@ common/enable_pause_aware_picking=true
 
 textures/lossless_compression/force_png=true
 lights_and_shadows/directional_shadow/size=2048
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=1
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=1
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
-lights_and_shadows/positional_shadow/atlas_size=8192
+lights_and_shadows/positional_shadow/atlas_size=16384
 environment/defaults/default_environment="res://default_env.tres"
 vram_compression/import_bptc=true
 vram_compression/import_etc=true
