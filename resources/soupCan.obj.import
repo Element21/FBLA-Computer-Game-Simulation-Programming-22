@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dguymf4lve448"
+path="res://.godot/imported/soupCan.obj-976a6223527d9fb0a6c5c7bf1c2fb2e0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/soupCan.obj-976a6223527d9fb0a6c5c7bf1c2fb2e0.mesh"]
+
+source_file="res://resources/soupCan.obj"
+dest_files=["res://.godot/imported/soupCan.obj-976a6223527d9fb0a6c5c7bf1c2fb2e0.mesh", "res://.godot/imported/soupCan.obj-976a6223527d9fb0a6c5c7bf1c2fb2e0.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6sm62eie3fwh"]
+
+[ext_resource type="PackedScene" uid="uid://mrpg2qlfhfug" path="res://objects/environment.tscn" id="1"]
+[ext_resource type="Script" path="res://objects/level/level.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://bvfiudscr3hn0" path="res://objects/level_end_screen/level_end_screen.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dasuxaa2pi3k5" path="res://objects/level_countdown/level_countdown.tscn" id="4"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("2")
+song = 2
+
+[node name="Level countdown" parent="." instance=ExtResource("4")]
+unique_name_in_owner = true
+
+[node name="Level end screen" parent="." instance=ExtResource("3")]
+unique_name_in_owner = true
+visible = false
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1")]
+
+[connection signal="started" from="Level countdown" to="." method="start"]

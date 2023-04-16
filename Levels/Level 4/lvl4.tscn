@@ -1,0 +1,313 @@
+[gd_scene load_steps=22 format=3 uid="uid://mrcrmxl653fq"]
+
+[ext_resource type="PackedScene" uid="uid://c6sm62eie3fwh" path="res://objects/level/level.tscn" id="1"]
+[ext_resource type="ArrayMesh" uid="uid://bmmogb03k1ebk" path="res://Levels/Level 4/pool.obj" id="2"]
+[ext_resource type="PackedScene" uid="uid://fc00545u7hf4" path="res://objects/hand/hand.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://csr7ae2r8ldmy" path="res://resources/shaders/transition.tscn" id="3_0lq4a"]
+[ext_resource type="PackedScene" uid="uid://br82x7v0lrtnj" path="res://objects/word_manager/word_manager.tscn" id="4"]
+[ext_resource type="Material" path="res://resources/materials/plants.tres" id="4_hyrkw"]
+[ext_resource type="PackedScene" uid="uid://c0hnudt3vp12o" path="res://objects/soup/soup.tscn" id="5"]
+[ext_resource type="Material" path="res://resources/materials/concrete.tres" id="5_u53hf"]
+[ext_resource type="Material" uid="uid://odi615eo1fv2" path="res://resources/materials/metal.tres" id="6_rpuyq"]
+[ext_resource type="Material" path="res://resources/materials/pool/flamingo.tres" id="7_dx80j"]
+[ext_resource type="PackedScene" uid="uid://d107jgdxqoufc" path="res://objects/jet/jet.tscn" id="8"]
+[ext_resource type="Material" path="res://resources/materials/pool/towel.tres" id="8_7343t"]
+[ext_resource type="Material" path="res://resources/materials/pool/chair.tres" id="9_lwtow"]
+[ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="11_ly4wk"]
+[ext_resource type="PackedScene" uid="uid://bvg1o8hnwtey6" path="res://objects/letter_spawner/letter_spawner.tscn" id="16"]
+
+[sub_resource type="PlaneMesh" id="1"]
+size = Vector2(100, 100)
+
+[sub_resource type="BoxShape3D" id="2"]
+size = Vector3(200, 200, 200)
+
+[sub_resource type="PhysicsMaterial" id="6"]
+friction = 0.52
+rough = true
+
+[sub_resource type="CylinderShape3D" id="3"]
+height = 20.261
+radius = 10.833
+
+[sub_resource type="BoxShape3D" id="4"]
+size = Vector3(4, 20, 1)
+
+[sub_resource type="BoxShape3D" id="5"]
+size = Vector3(10, 10, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1")]
+time_given = 90.0
+countdown = false
+level_index = 3
+camera = NodePath("../Camera3D")
+song = 5
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 22.906, 21.225)
+
+[node name="Transition" parent="Camera3D" instance=ExtResource("3_0lq4a")]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, -4.94834, 0)
+mesh = ExtResource("2")
+surface_material_override/0 = ExtResource("4_hyrkw")
+surface_material_override/1 = ExtResource("5_u53hf")
+surface_material_override/2 = ExtResource("6_rpuyq")
+surface_material_override/3 = ExtResource("6_rpuyq")
+surface_material_override/4 = ExtResource("6_rpuyq")
+surface_material_override/5 = ExtResource("6_rpuyq")
+surface_material_override/6 = ExtResource("7_dx80j")
+surface_material_override/7 = ExtResource("7_dx80j")
+surface_material_override/8 = ExtResource("7_dx80j")
+surface_material_override/9 = ExtResource("8_7343t")
+surface_material_override/10 = ExtResource("8_7343t")
+surface_material_override/11 = ExtResource("8_7343t")
+surface_material_override/12 = ExtResource("8_7343t")
+surface_material_override/13 = ExtResource("8_7343t")
+surface_material_override/14 = ExtResource("8_7343t")
+surface_material_override/15 = ExtResource("4_hyrkw")
+surface_material_override/16 = ExtResource("4_hyrkw")
+surface_material_override/17 = ExtResource("4_hyrkw")
+surface_material_override/18 = ExtResource("4_hyrkw")
+surface_material_override/19 = ExtResource("4_hyrkw")
+surface_material_override/20 = ExtResource("4_hyrkw")
+surface_material_override/21 = ExtResource("4_hyrkw")
+surface_material_override/22 = ExtResource("4_hyrkw")
+surface_material_override/23 = ExtResource("9_lwtow")
+surface_material_override/24 = ExtResource("6_rpuyq")
+surface_material_override/25 = ExtResource("9_lwtow")
+surface_material_override/26 = ExtResource("9_lwtow")
+surface_material_override/27 = ExtResource("6_rpuyq")
+surface_material_override/28 = ExtResource("9_lwtow")
+surface_material_override/29 = ExtResource("6_rpuyq")
+surface_material_override/30 = ExtResource("9_lwtow")
+surface_material_override/31 = ExtResource("6_rpuyq")
+surface_material_override/32 = ExtResource("9_lwtow")
+surface_material_override/33 = ExtResource("6_rpuyq")
+surface_material_override/34 = ExtResource("9_lwtow")
+surface_material_override/35 = ExtResource("6_rpuyq")
+surface_material_override/36 = ExtResource("9_lwtow")
+surface_material_override/37 = ExtResource("6_rpuyq")
+surface_material_override/38 = ExtResource("9_lwtow")
+surface_material_override/39 = ExtResource("6_rpuyq")
+surface_material_override/40 = ExtResource("9_lwtow")
+surface_material_override/41 = ExtResource("6_rpuyq")
+surface_material_override/42 = ExtResource("9_lwtow")
+surface_material_override/43 = ExtResource("6_rpuyq")
+surface_material_override/44 = ExtResource("9_lwtow")
+surface_material_override/45 = ExtResource("6_rpuyq")
+surface_material_override/46 = ExtResource("9_lwtow")
+surface_material_override/47 = ExtResource("6_rpuyq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0829, 80.7733, 48.2642)
+light_energy = 0.588
+shadow_enabled = true
+omni_range = 4096.0
+omni_attenuation = 1e-05
+omni_shadow_mode = 0
+
+[node name="Soup" parent="Environment" node_paths=PackedStringArray("level") instance=ExtResource("5")]
+level = NodePath("../../Level")
+surface = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Soup"]
+mesh = SubResource("1")
+surface_material_override/0 = ExtResource("11_ly4wk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Soup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+shape = SubResource("2")
+
+[node name="Pool boundaries" type="StaticBody3D" parent="Environment"]
+physics_material_override = SubResource("6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.18053, -6.02021, 0)
+shape = SubResource("3")
+
+[node name="CollisionShape2" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74085, -6.02021, 0)
+shape = SubResource("3")
+
+[node name="CollisionShape3" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.878, -9.84982)
+shape = SubResource("4")
+
+[node name="CollisionShape4" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.878, 9.80457)
+shape = SubResource("4")
+
+[node name="CollisionShape5" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.4361)
+shape = SubResource("5")
+
+[node name="CollisionShape6" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(0.974142, 0, -0.225937, 0, 1, 0, 0.225937, 0, 0.974142, -10.4174, -9.53674e-07, 18.4971)
+shape = SubResource("5")
+
+[node name="CollisionShape7" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(0.825616, 0, -0.564232, 0, 1, 0, 0.564232, 0, 0.825616, -17.7348, -9.53674e-07, 15.415)
+shape = SubResource("5")
+
+[node name="CollisionShape8" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(0.563007, 0, -0.826452, 0, 1, 0, 0.826452, 0, 0.563007, -22.3443, -9.53674e-07, 11.7544)
+shape = SubResource("5")
+
+[node name="CollisionShape9" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(0.240685, 0, -0.970603, 0, 1, 0, 0.970603, 0, 0.240685, -25.393, -9.53674e-07, 6.14952)
+shape = SubResource("5")
+
+[node name="CollisionShape17" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(0.974142, 0, -0.225937, 0, 1, 0, -0.232457, 0, -1.00225, -10.4174, -9.53674e-07, -17.3759)
+shape = SubResource("5")
+
+[node name="CollisionShape22" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(0.825616, 0, -0.564232, 0, 1, 0, -0.580514, 0, -0.84944, -17.7348, -9.53674e-07, -14.205)
+shape = SubResource("5")
+
+[node name="CollisionShape23" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(0.563007, 0, -0.826452, 0, 1, 0, -0.8503, 0, -0.579253, -22.3443, -9.53674e-07, -10.4387)
+shape = SubResource("5")
+
+[node name="CollisionShape24" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(0.240685, 0, -0.970603, 0, 1, 0, -0.99861, 0, -0.247631, -25.393, -9.53674e-07, -4.67208)
+shape = SubResource("5")
+
+[node name="CollisionShape10" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25.622, -9.53674e-07, -0.680108)
+shape = SubResource("5")
+
+[node name="CollisionShape11" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(-0.999959, 0, -0.00907553, 0, 1, 0, 0.00907553, 0, -0.999959, -1.34064, 0, -18.553)
+shape = SubResource("5")
+
+[node name="CollisionShape12" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(-0.976152, 0, 0.217087, 0, 1, 0, -0.217087, 0, -0.976152, 9.08488, -9.53674e-07, -17.7085)
+shape = SubResource("5")
+
+[node name="CollisionShape13" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(-0.830703, 0, 0.556716, 0, 1, 0, -0.556716, 0, -0.830703, 16.4299, -9.53674e-07, -14.693)
+shape = SubResource("5")
+
+[node name="CollisionShape14" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(-0.570484, 0, 0.821309, 0, 1, 0, -0.821309, 0, -0.570484, 21.0724, -9.53674e-07, -11.0744)
+shape = SubResource("5")
+
+[node name="CollisionShape15" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(-0.249484, 0, 0.968379, 0, 1, 0, -0.968379, 0, -0.249484, 24.1718, -9.53674e-07, -5.49741)
+shape = SubResource("5")
+
+[node name="CollisionShape16" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(-0.00907549, 0, 0.999959, 0, 1, 0, -0.999959, 0, -0.00907549, 24.4629, -9.53674e-07, 1.32986)
+shape = SubResource("5")
+
+[node name="CollisionShape18" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(-0.976152, 0, 0.217087, 0, 1, 0, 0.21948, 0, 0.986912, 9.08488, -9.53674e-07, 18.2514)
+shape = SubResource("5")
+
+[node name="CollisionShape19" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(-0.830703, 0, 0.556716, 0, 1, 0, 0.562853, 0, 0.83986, 16.4299, -9.53674e-07, 15.2027)
+shape = SubResource("5")
+
+[node name="CollisionShape20" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(-0.570484, 0, 0.821309, 0, 1, 0, 0.830362, 0, 0.576773, 21.0724, -9.53674e-07, 11.5441)
+shape = SubResource("5")
+
+[node name="CollisionShape21" type="CollisionShape3D" parent="Environment/Pool boundaries"]
+transform = Transform3D(-0.249484, 0, 0.968379, 0, 1, 0, 0.979053, 0, 0.252234, 24.1718, -9.53674e-07, 5.90568)
+shape = SubResource("5")
+
+[node name="Jets" type="Node3D" parent="Environment"]
+
+[node name="Jet" parent="Environment/Jets" instance=ExtResource("8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732, 14.715)
+power = 8.0
+dropoff = 3.0
+
+[node name="Jet2" parent="Environment/Jets" instance=ExtResource("8")]
+transform = Transform3D(0.838433, 0, 0.545005, 0, 1, 0, -0.545005, 0, 0.838433, 9.18265, 0.732095, 13.9293)
+power = 8.0
+dropoff = 3.0
+
+[node name="Jet3" parent="Environment/Jets" instance=ExtResource("8")]
+transform = Transform3D(0.641677, 0, 0.766975, 0, 1, 0, -0.766975, 0, 0.641677, 16.2725, 0.732095, 8.90399)
+power = 8.0
+dropoff = 3.0
+
+[node name="Jet4" parent="Environment/Jets" instance=ExtResource("8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.9245, 0.732095, 0.472229)
+power = 8.0
+dropoff = 3.0
+
+[node name="Jet5" parent="Environment/Jets" instance=ExtResource("8")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 17.3745, 0.732095, -7.60832)
+power = 8.0
+dropoff = 3.0
+
+[node name="Jet6" parent="Environment/Jets" instance=ExtResource("8")]
+transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, 11.0214, 0.732095, -12.874)
+power = 8.0
+dropoff = 3.0
+
+[node name="Jet7" parent="Environment/Jets" instance=ExtResource("8")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.02818, 0.732095, -14.9214)
+power = 8.0
+dropoff = 3.0
+
+[node name="Jet8" parent="Environment/Jets" instance=ExtResource("8")]
+transform = Transform3D(-0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, -6.10083, 0.732095, -14.6831)
+power = 8.0
+dropoff = 3.0
+
+[node name="Jet9" parent="Environment/Jets" instance=ExtResource("8")]
+transform = Transform3D(-0.781411, 0, -0.624016, 0, 1, 0, 0.624016, 0, -0.781411, -13.6017, 0.732095, -11.9301)
+power = 8.0
+dropoff = 3.0
+
+[node name="Jet10" parent="Environment/Jets" instance=ExtResource("8")]
+transform = Transform3D(-0.34202, 0, -0.939692, 0, 1, 0, 0.939692, 0, -0.34202, -18.9811, 0.732095, -6.76269)
+power = 8.0
+dropoff = 3.0
+
+[node name="Jet11" parent="Environment/Jets" instance=ExtResource("8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.1529, 0.732095, 0.0388269)
+power = 8.0
+dropoff = 3.0
+
+[node name="Jet12" parent="Environment/Jets" instance=ExtResource("8")]
+transform = Transform3D(0.577687, 0, -0.816259, 0, 1, 0, 0.816259, 0, 0.577687, -18.7393, 0.732095, 7.19377)
+power = 8.0
+dropoff = 3.0
+
+[node name="Jet13" parent="Environment/Jets" instance=ExtResource("8")]
+transform = Transform3D(0.856555, 0, -0.516055, 0, 1, 0, 0.516055, 0, 0.856555, -14.1883, 0.732095, 11.8584)
+power = 8.0
+dropoff = 3.0
+
+[node name="Jet14" parent="Environment/Jets" instance=ExtResource("8")]
+transform = Transform3D(0.968544, 0, -0.248842, 0, 1, 0, 0.248842, 0, 0.968544, -7.8666, 0.732095, 13.9449)
+power = 8.0
+dropoff = 3.0
+
+[node name="Hand" parent="." node_paths=PackedStringArray("word_manager", "level") instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00907, 19.565)
+word_manager = NodePath("../Word manager")
+level = NodePath("../Level")
+
+[node name="Word manager" parent="." node_paths=PackedStringArray("level", "hand") instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892, 7.39978, 5.96458)
+word_length = 4
+launch_vector = Vector3(-0.2, 5, 5)
+level = NodePath("../Level")
+hand = NodePath("../Hand")
+
+[node name="Letter Spawner" parent="." node_paths=PackedStringArray("level", "word_manager") instance=ExtResource("16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.768514, -16.1616)
+level = NodePath("../Level")
+word_manager = NodePath("../Word manager")

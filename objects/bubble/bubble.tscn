@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://cyvi5xsqk3u1a"]
+
+[ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="1"]
+[ext_resource type="Script" path="res://objects/bubble/bubble.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://qnu8duygnqem" path="res://objects/bubble/pop.ogg" id="3"]
+[ext_resource type="Material" path="res://resources/materials/bubble.tres" id="4"]
+
+[sub_resource type="SphereMesh" id="9"]
+material = ExtResource("4")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SphereShape3D" id="2"]
+radius = 0.3
+
+[sub_resource type="Curve" id="5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="4"]
+curve = SubResource("5")
+
+[sub_resource type="ParticleProcessMaterial" id="8"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+scale_curve = SubResource("4")
+
+[sub_resource type="SphereMesh" id="7"]
+material = ExtResource("1")
+radius = 0.1
+height = 0.2
+
+[node name="Bubble" type="RigidBody3D" groups=["Bubbles"]]
+max_contacts_reported = 16
+contact_monitor = true
+script = ExtResource("2")
+
+[node name="Bubble mesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+mesh = SubResource("9")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("2")
+
+[node name="Pop sound" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3")
+volume_db = -5.356
+unit_size = 20.0
+bus = &"SFX"
+
+[node name="Particles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+emitting = false
+lifetime = 0.37
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-1.88982, -2.23659, -1.69437, 3.76067, 2.65921, 3.25666)
+process_material = SubResource("8")
+draw_pass_1 = SubResource("7")

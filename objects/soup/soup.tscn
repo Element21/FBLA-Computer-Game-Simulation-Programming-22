@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0hnudt3vp12o"]
+
+[ext_resource type="Script" path="res://objects/soup/soup.gd" id="1"]
+
+[node name="Soup" type="Area3D"]
+collision_layer = 2
+script = ExtResource("1")
+
+[connection signal="body_entered" from="." to="." method="object_entered"]
