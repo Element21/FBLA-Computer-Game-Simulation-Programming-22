@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://fc00545u7hf4"]
+[gd_scene load_steps=12 format=3 uid="uid://fc00545u7hf4"]
 
 [ext_resource type="ArrayMesh" uid="uid://r4r72ff1r61p" path="res://resources/hand_frames/frame1_hand_3.0.obj" id="1"]
 [ext_resource type="Script" path="res://objects/hand/hand.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bxa7jibpn53e1" path="res://resources/sounds/hand-slap-1.ogg" id="3"]
 [ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="4"]
+[ext_resource type="AudioStream" uid="uid://8ee4jp6xogru" path="res://resources/sounds/burn_main.mp3" id="5_ggru1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xevx"]
 albedo_color = Color(0.662745, 1, 1, 1)
@@ -74,5 +75,9 @@ collide_with_bodies = false
 [node name="Hand animation state interval" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.05
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_ggru1")
 
 [connection signal="timeout" from="Hand animation state interval" to="." method="next_hand_animation_frame"]

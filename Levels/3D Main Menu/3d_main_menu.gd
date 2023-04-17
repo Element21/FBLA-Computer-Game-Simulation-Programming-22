@@ -83,9 +83,10 @@ func play_level():
 	can = maybe_can_focusing_on
 	
 	can.play_can_open_animation()
-	
+	%AudioStreamPlayer.play()
 	var tween = get_tree().create_tween()
 	@warning_ignore("return_value_discarded")
+	%CanMove.play()
 	tween.tween_method(camera_animation.bind(camera.position), 0., 1., 1.5)
 	
 	await tween.finished

@@ -13,6 +13,9 @@ enum Song {
 	MySong6 = 2,
 	Cooking = 3,
 	GeorgeStreetShuffle = 4,
+	CasaBosaNova = 5,
+	HotSwing = 6,
+	BeBop25 = 7,
 }
 
 var playing: Song = Song.None
@@ -24,6 +27,9 @@ var playing: Song = Song.None
 	%"My Song 6" as AudioStreamPlayer,
 	%Cooking as AudioStreamPlayer,
 	%"George Street Shuffle" as AudioStreamPlayer,
+	%CasaBosaNova as AudioStreamPlayer,
+	%HotSwing as AudioStreamPlayer,
+	%BeBop25 as AudioStreamPlayer,
 ]
 
 @onready var volumes: PackedFloat64Array = PackedFloat64Array(songs.map(func(v): return v.volume_db))

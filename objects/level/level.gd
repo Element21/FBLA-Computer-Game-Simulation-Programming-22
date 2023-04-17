@@ -21,11 +21,11 @@ signal level_ended
 
 func start():
 	playing = true
-	Music.play(song)
 
 
 func _ready():
 	randomize()
+	Music.play(song)
 	if countdown:
 		(%"Level countdown" as LevelCountdown).start(camera)
 	else:
@@ -47,7 +47,7 @@ func _process(delta):
 		
 		LeaderboardManager.add_score(level_index, score)
 		
-		Music.play(MusicPlayer.Song.Sienexilin)
+		Music.play(MusicPlayer.Song.Cooking)
 		
 		level_end_screen.level_ended(score)
 

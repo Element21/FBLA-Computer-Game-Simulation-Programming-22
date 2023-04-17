@@ -10,7 +10,7 @@ var cutscene_scene: PackedScene = preload("res://Levels/Start Menu/Cutscene/cuts
 
 
 func go_to_main_menu(_from_signal):
-	var name_given = name_input.text
+	var name_given = (%"Name input" as LineEdit).text
 	
 	if name_given == "":
 		(%"Empty name error" as Label).visible = true
@@ -25,5 +25,4 @@ func go_to_main_menu(_from_signal):
 
 
 func _ready():
-	name_input.grab_focus()
-	Music.play(MusicPlayer.Song.LocalForecast)
+	Music.play(MusicPlayer.Song.GeorgeStreetShuffle)

@@ -33,6 +33,7 @@ data = PackedVector3Array(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0.1093, -1, 1, 0.1093, 
 [node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("13")]
 time_given = 60.0
 camera = NodePath("../Camera3D")
+song = 4
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 23.331, 5.213)
@@ -156,12 +157,12 @@ hand = NodePath("../Hand")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8459, 31.1814, 17.6058)
-light_energy = 0.448
+light_energy = 8.566
 shadow_enabled = true
 shadow_opacity = 0.78
 shadow_blur = 1.694
-omni_range = 125.589
-omni_attenuation = 0.0563282
+omni_range = 355.219
+omni_attenuation = 0.840896
 
 [node name="Letter Spawner" parent="." node_paths=PackedStringArray("level", "word_manager") instance=ExtResource("11")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.6237, 0)

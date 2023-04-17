@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://djsijup53erc7"]
+[gd_scene load_steps=20 format=3 uid="uid://djsijup53erc7"]
 
 [ext_resource type="PackedScene" uid="uid://cdjke6okxxfwg" path="res://Levels/3D Main Menu/level_can.tscn" id="1_fudtw"]
 [ext_resource type="Script" path="res://Levels/3D Main Menu/3d_main_menu.gd" id="1_wepeb"]
@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://csm0t7owqc4vk" path="res://resources/cans/can_level_4.gltf" id="10_wujfk"]
 [ext_resource type="PackedScene" uid="uid://dbgg0h8x6ev" path="res://resources/grocery-store.gltf" id="11_ds6bp"]
 [ext_resource type="PackedScene" uid="uid://bavct8mbfq1rj" path="res://resources/cans/can_level_5.gltf" id="12_5in81"]
+[ext_resource type="AudioStream" uid="uid://d3eenfbxgmgjs" path="res://resources/sounds/can_open.mp3" id="14_0abbu"]
 [ext_resource type="PackedScene" uid="uid://bs7i6kvg4x5wt" path="res://Levels/3D Main Menu/part_of_light.tscn" id="14_8wu8q"]
 [ext_resource type="Material" path="res://resources/materials/plants.tres" id="15_lua0t"]
+[ext_resource type="AudioStream" uid="uid://t8iup7m5xyo2" path="res://resources/sounds/can_move.mp3" id="15_m0kc7"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_i3sww"]
 size = Vector2(100, 100)
@@ -206,3 +208,11 @@ omni_range = 9.003
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5449, 14.6747, 17.4565)
 light_energy = 3.232
 omni_range = 9.003
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("14_0abbu")
+
+[node name="CanMove" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("15_m0kc7")
