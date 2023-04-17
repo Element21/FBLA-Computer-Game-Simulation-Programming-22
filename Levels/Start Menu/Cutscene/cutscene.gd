@@ -24,7 +24,7 @@ func _slide_on_gui_input(event: InputEvent):
 	if !event.is_action_pressed("click"):
 		return
 	
-	if slide_counter == 8:
+	if slide_counter == slideList.size() - 1:
 		transition.change_scene(main_menu_scene)
 		return
 	
