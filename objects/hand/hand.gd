@@ -4,8 +4,7 @@ extends Node3D
 
 class_name Hand
 
-@export var word_manager: WordManager
-@export var level: Level
+@onready var level: Level = self.get_parent()
 @export var arm_pivot: Vector2 = Vector2(-2, 35)
 
 var hand_height = 2
@@ -58,7 +57,7 @@ func pointing_at_valid_soup_surface() -> bool:
 
 
 func _input(event: InputEvent):
-	if event.is_action_pressed("click") && pointing_at_valid_soup_surface() && !word_manager.no_spots_left() && grabbing_state == GRABBING_STATE.NOT:
+	if event.is_action_pressed("click") && pointing_at_valid_soup_surface() && !level.word_manager.no_spots_left() && grabbing_state == GRABBING_STATE.NOT:
 		grabbing_state = GRABBING_STATE.DIPPING
 		
 		start_hand_translation = hand.position
@@ -83,7 +82,7 @@ func next_hand_animation_frame():
 	elif grabbing_state == GRABBING_STATE.DROPPING || grabbing_state == GRABBING_STATE.PULLING:
 		current_hand_animation_frame -= 1
 	
-	if current_hand_animation_frame == 0 || current_hand_animation_frame == hand_animation_frames.size() - 1:
+	if current_hand_animation_frame == 0 || current_hand_animation_frame >= hand_animation_frames.size() - 1:
 		hand_animation_state_interval.stop()
 	
 	hand.mesh = hand_animation_frames[current_hand_animation_frame]
@@ -165,7 +164,7 @@ func done_dipping():
 		(letter_being_grabbed as Letter).freeze = true
 		(letter_being_grabbed as Letter).remove_from_group("Letters")
 	else:
-		%AudioStreamPlayer.play()
+		(%AudioStreamPlayer as AudioStreamPlayer).play()
 		start_hand_animation()
 
 
@@ -173,7 +172,7 @@ func done_pulling():
 	if letter_being_grabbed:
 		grabbing_state = GRABBING_STATE.DROPPING
 		
-		var local_drop_pos = self.to_local(word_manager.next_platform_position())
+		var local_drop_pos = self.to_local(level.word_manager.next_platform_position())
 		
 		start_hand_translation = hand.position
 		final_hand_translation = local_drop_pos + Vector3(0, drop_height, 0)
@@ -187,7 +186,7 @@ func done_pulling():
 func done_dropping():
 	if letter_being_grabbed:
 		letter_being_grabbed.freeze = false
-		word_manager.place_letter(letter_being_grabbed)
+		level.word_manager.place_letter(letter_being_grabbed)
 		letter_being_grabbed = null
 	
 	grabbing_state = GRABBING_STATE.NOT
@@ -213,7 +212,7 @@ func letter_to_be_picked_up() -> Letter:
 func letter_deleted():
 	if grabbing_state == GRABBING_STATE.DROPPING:
 		var t = Tweening.smoothify(time / hand_animation_part_time)
-		final_hand_translation = self.to_local(word_manager.next_platform_position()) + Vector3(0, drop_height, 0)
+		final_hand_translation = self.to_local(level.word_manager.next_platform_position()) + Vector3(0, drop_height, 0)
 		# Move the start position such that the hand can change direction without jumping
 		start_hand_translation = (hand.position - t * final_hand_translation) / (1 - t)
 

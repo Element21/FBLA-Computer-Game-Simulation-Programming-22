@@ -10,7 +10,10 @@ class_name Level
 @export var camera: Camera3D
 @export var song: MusicPlayer.Song
 
-@onready var transition: Transition = camera.find_child("Transition", false)
+@onready var hand: Hand = Utils.search(self.get_children(), func(c): return c is Hand)
+@onready var word_manager: WordManager = Utils.search(self.get_children(), func(c): return c is WordManager)
+
+@onready var transition: Transition = Utils.search(camera.get_children(), func(c): return c is Transition)
 @onready var time_left = time_given
 var score = 0
 var playing = false

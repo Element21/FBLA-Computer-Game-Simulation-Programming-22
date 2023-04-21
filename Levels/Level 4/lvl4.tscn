@@ -45,6 +45,14 @@ level_index = 3
 camera = NodePath("../Camera3D")
 song = 5
 
+[node name="Hand" parent="Level" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00907, 19.565)
+
+[node name="Word manager" parent="Level" instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892, 7.39978, 5.96458)
+word_length = 4
+launch_vector = Vector3(-0.2, 5, 5)
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 22.906, 21.225)
 
@@ -295,19 +303,6 @@ transform = Transform3D(0.968544, 0, -0.248842, 0, 1, 0, 0.248842, 0, 0.968544, 
 power = 8.0
 dropoff = 3.0
 
-[node name="Hand" parent="." node_paths=PackedStringArray("word_manager", "level") instance=ExtResource("3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00907, 19.565)
-word_manager = NodePath("../Word manager")
-level = NodePath("../Level")
-
-[node name="Word manager" parent="." node_paths=PackedStringArray("level", "hand") instance=ExtResource("4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892, 7.39978, 5.96458)
-word_length = 4
-launch_vector = Vector3(-0.2, 5, 5)
-level = NodePath("../Level")
-hand = NodePath("../Hand")
-
-[node name="Letter Spawner" parent="." node_paths=PackedStringArray("level", "word_manager") instance=ExtResource("16")]
+[node name="Letter Spawner" parent="." node_paths=PackedStringArray("level") instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.768514, -16.1616)
 level = NodePath("../Level")
-word_manager = NodePath("../Word manager")

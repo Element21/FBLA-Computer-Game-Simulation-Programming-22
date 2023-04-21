@@ -5,7 +5,6 @@ extends Node3D
 @export var spawn_amnt: int = 1
 @export var spawn_interval: float = 1.0
 @export var level: Level
-@export var word_manager: WordManager
 
 @onready var packed_scene = preload("res://objects/letter/letter.tscn")
 
@@ -18,10 +17,10 @@ func spawn_letters():
 	
 	for _i in range(spawn_amnt):
 		var letter: Letter = packed_scene.instantiate()
-		letter.word_length = word_manager.word_length
+		letter.word_length = level.word_manager.word_length
 		add_child(letter)
 		letter.add_to_group("Letter")
-		letter.hand = word_manager.hand
+		letter.hand = level.hand
 		
 		letter.apply_central_impulse(Vector3(0, upward_velocity, 0))
 		
