@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c6sm62eie3fwh" path="res://objects/level/level.tscn" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://bmmogb03k1ebk" path="res://Levels/Level 4/pool.obj" id="2"]
 [ext_resource type="PackedScene" uid="uid://fc00545u7hf4" path="res://objects/hand/hand.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://csr7ae2r8ldmy" path="res://resources/shaders/transition.tscn" id="3_0lq4a"]
 [ext_resource type="PackedScene" uid="uid://br82x7v0lrtnj" path="res://objects/word_manager/word_manager.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://beu8ao7l2vk4i" path="res://objects/game_camera/game_camera.tscn" id="4_edtf7"]
 [ext_resource type="Material" path="res://resources/materials/plants.tres" id="4_hyrkw"]
 [ext_resource type="PackedScene" uid="uid://c0hnudt3vp12o" path="res://objects/soup/soup.tscn" id="5"]
 [ext_resource type="Material" path="res://resources/materials/concrete.tres" id="5_u53hf"]
@@ -42,7 +42,7 @@ size = Vector3(10, 10, 1)
 time_given = 90.0
 countdown = false
 level_index = 3
-camera = NodePath("../Camera3D")
+camera = NodePath("../Game camera")
 song = 5
 
 [node name="Hand" parent="Level" instance=ExtResource("3")]
@@ -53,10 +53,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892, 7.39978, 5.96458)
 word_length = 4
 launch_vector = Vector3(-0.2, 5, 5)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Game camera" parent="." instance=ExtResource("4_edtf7")]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 22.906, 21.225)
-
-[node name="Transition" parent="Camera3D" instance=ExtResource("3_0lq4a")]
 
 [node name="Environment" type="Node3D" parent="."]
 

@@ -1,7 +1,7 @@
 extends Node
 
 
-@onready var camera: Camera3D = %Camera
+@onready var camera: GameCamera = %Camera
 @onready var spotlight: SpotLight3D = %Spotlight
 @onready var raycast: RayCast3D = %RayCast
 

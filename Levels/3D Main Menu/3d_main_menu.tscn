@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cdjke6okxxfwg" path="res://Levels/3D Main Menu/level_can.tscn" id="1_fudtw"]
 [ext_resource type="Script" path="res://Levels/3D Main Menu/3d_main_menu.gd" id="1_wepeb"]
-[ext_resource type="PackedScene" uid="uid://csr7ae2r8ldmy" path="res://resources/shaders/transition.tscn" id="2_l163r"]
+[ext_resource type="PackedScene" uid="uid://beu8ao7l2vk4i" path="res://objects/game_camera/game_camera.tscn" id="2_pgl71"]
 [ext_resource type="PackedScene" uid="uid://dcvr28pvllk7c" path="res://objects/bottom_buttons/bottom_buttons.tscn" id="3_rcrxp"]
 [ext_resource type="PackedScene" uid="uid://bix73ntpqumav" path="res://resources/cans/can_level_1.gltf" id="4_6qso0"]
 [ext_resource type="PackedScene" uid="uid://dbtvkni108ygl" path="res://resources/cans/can_level_2.gltf" id="6_qcjqm"]
@@ -36,20 +36,20 @@ roughness = 0.5
 script = ExtResource("1_wepeb")
 spotlight_sample_can = NodePath("Level 1 Can")
 
-[node name="Camera" type="Camera3D" parent="."]
+[node name="Camera" parent="." instance=ExtResource("2_pgl71")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.943801, 0.330514, 0, -0.330514, 0.943801, -2.021, 13.574, 27.081)
 
 [node name="RayCast" type="RayCast3D" parent="Camera"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, -3.57628e-07, 0, 3.57628e-07, 1, 0, 0, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Transition" parent="Camera" instance=ExtResource("2_l163r")]
-unique_name_in_owner = true
-
 [node name="MarginContainer" parent="Camera" instance=ExtResource("3_rcrxp")]
+offset_left = -195.0
+offset_top = -43.0
 
 [node name="Level 1 Can" parent="." node_paths=PackedStringArray("can") instance=ExtResource("1_fudtw")]
 transform = Transform3D(0.399522, 0, 0.0195399, 0, 0.4, 0, -0.0195399, 0, 0.399522, -6.69078, 11.7072, 16.0438)

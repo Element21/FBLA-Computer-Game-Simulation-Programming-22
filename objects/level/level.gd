@@ -7,7 +7,7 @@ class_name Level
 @export var countdown = true
 @export var enable_timer = true
 @export var level_index: int
-@export var camera: Camera3D
+@export var camera: GameCamera
 @export var song: MusicPlayer.Song
 
 @onready var hand: Hand = Utils.search(self.get_children(), func(c): return c is Hand)

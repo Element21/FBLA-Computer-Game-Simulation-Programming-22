@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://c6sm62eie3fwh" path="res://objects/level/level.tscn" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://ydbk3tpjn71c" path="res://Levels/Level 3/fountainversion1.obj" id="2"]
 [ext_resource type="PackedScene" uid="uid://fc00545u7hf4" path="res://objects/hand/hand.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://csr7ae2r8ldmy" path="res://resources/shaders/transition.tscn" id="3_wyhcy"]
 [ext_resource type="PackedScene" uid="uid://c0hnudt3vp12o" path="res://objects/soup/soup.tscn" id="4"]
 [ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="5"]
 [ext_resource type="PackedScene" uid="uid://br82x7v0lrtnj" path="res://objects/word_manager/word_manager.tscn" id="6"]
@@ -14,6 +13,7 @@
 [ext_resource type="Material" path="res://resources/materials/plants.tres" id="8_tr3l2"]
 [ext_resource type="PackedScene" path="res://objects/fountain_output/fountain_output.tscn" id="9"]
 [ext_resource type="Material" path="res://resources/materials/bubble.tres" id="12"]
+[ext_resource type="PackedScene" uid="uid://beu8ao7l2vk4i" path="res://objects/game_camera/game_camera.tscn" id="15_mjpje"]
 
 [sub_resource type="CylinderMesh" id="1"]
 material = ExtResource("5")
@@ -56,7 +56,7 @@ height = 1.0
 [node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1")]
 time_given = 60.0
 level_index = 2
-camera = NodePath("../Camera3D")
+camera = NodePath("../Game camera")
 song = 6
 
 [node name="Hand" parent="Level" instance=ExtResource("3")]
@@ -67,11 +67,8 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 word_length = 4
 launch_vector = Vector3(-3, 6.8, 7)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.542559, 0.840018, 0, -0.840018, 0.542559, 0, 18.821, 10.603)
-far = 332.5
-
-[node name="Transition" parent="Camera3D" instance=ExtResource("3_wyhcy")]
+[node name="Game camera" parent="." instance=ExtResource("15_mjpje")]
+transform = Transform3D(1, 0, 0, 0, 0.543174, 0.83962, 0, -0.83962, 0.543174, 0, 18.821, 10.603)
 
 [node name="Environment" type="Node3D" parent="."]
 
