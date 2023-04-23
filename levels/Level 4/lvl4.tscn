@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ciu8ljq22xyk0" path="res://objects/level parts/level/level.tscn" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://bmmogb03k1ebk" path="res://levels/Level 4/pool.obj" id="2"]
 [ext_resource type="PackedScene" path="res://objects/level parts/hand/hand.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://objects/level parts/word_manager/word_manager.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cnqgashcl1mh0" path="res://objects/level parts/word_manager/word_manager.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cn3olk5t7g2uj" path="res://objects/level parts/game_camera/game_camera.tscn" id="4_edtf7"]
 [ext_resource type="Material" path="res://resources/materials/plants.tres" id="4_hyrkw"]
 [ext_resource type="PackedScene" uid="uid://boch23jlobcf2" path="res://objects/level parts/soup/soup.tscn" id="5"]

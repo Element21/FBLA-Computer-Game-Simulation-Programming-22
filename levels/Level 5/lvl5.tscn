@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" path="res://objects/level parts/hand/hand.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://cn3olk5t7g2uj" path="res://objects/level parts/game_camera/game_camera.tscn" id="5_2xrtb"]
 [ext_resource type="Material" path="res://resources/materials/volcano/volcano.tres" id="5_q0ca6"]
-[ext_resource type="PackedScene" path="res://objects/level parts/word_manager/word_manager.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://cnqgashcl1mh0" path="res://objects/level parts/word_manager/word_manager.tscn" id="6"]
 [ext_resource type="Material" path="res://resources/materials/invisible.tres" id="6_cke2u"]
 [ext_resource type="Script" path="res://levels/Level 5/volcano_hole.gd" id="10"]
 [ext_resource type="PackedScene" path="res://objects/level parts/letter_spawner/letter_spawner.tscn" id="11"]

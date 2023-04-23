@@ -21,8 +21,10 @@ var playing = false
 @onready var level_end_screen: LevelEndScreen = %"Level end screen"
 
 signal level_ended
+signal level_started
 
 func start():
+	level_started.emit()
 	playing = true
 
 

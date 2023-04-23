@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" path="res://objects/level parts/hand/hand.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://boch23jlobcf2" path="res://objects/level parts/soup/soup.tscn" id="4"]
 [ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="5"]
-[ext_resource type="PackedScene" path="res://objects/level parts/word_manager/word_manager.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://cnqgashcl1mh0" path="res://objects/level parts/word_manager/word_manager.tscn" id="6"]
 [ext_resource type="Material" path="res://resources/materials/concrete.tres" id="6_qdc06"]
 [ext_resource type="PackedScene" path="res://objects/level parts/letter_spawner/letter_spawner.tscn" id="7"]
 [ext_resource type="Material" path="res://resources/materials/fountain/can_wrapping.tres" id="7_l5arp"]

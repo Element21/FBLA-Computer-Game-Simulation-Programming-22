@@ -17,6 +17,10 @@ var letter_platform_scene = preload("res://objects/level parts/word_manager/lett
 @onready var ui: Node3D = %UI
 @onready var score_mesh: MeshInstance3D = %"Score mesh"
 
+signal bad_letter_placed(Vector3)
+signal deleted_letter
+signal made_word
+
 
 # Get the local x position of a given platform
 func platform_index_to_x_position(index: int) -> float:
@@ -67,6 +71,7 @@ func place_letter(letter: Letter):
 	var matches_after = WordUtils.matches_word(letters_placed)
 	
 	if !matches_after:
+		bad_letter_placed.emit(platform.global_position)
 		platform.set_score(null)
 	
 	if letters_placed.find(null) == -1 && matches_after:
@@ -80,6 +85,8 @@ func word_made():
 	(score_mesh.mesh as TextMesh).text = String.num_int64(level.score)
 	
 	letters_placed.fill(null)
+	
+	made_word.emit()
 	
 	await get_tree().create_timer(1.).timeout
 	launch_all_platforms()
@@ -122,4 +129,10 @@ func delete():
 		
 		(platforms.get_child(last_letter_index) as LetterPlatform).flip()
 	
+	deleted_letter.emit()
+	
 	level.hand.letter_deleted()
+
+
+func timer_pos() -> Vector3:
+	return %Timer.global_position

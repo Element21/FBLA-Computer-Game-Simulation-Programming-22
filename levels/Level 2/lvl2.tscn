@@ -1,13 +1,15 @@
-[gd_scene load_steps=26 format=3 uid="uid://nouqi5kgekmf"]
+[gd_scene load_steps=28 format=3 uid="uid://nouqi5kgekmf"]
 
 [ext_resource type="PackedScene" uid="uid://ciu8ljq22xyk0" path="res://objects/level parts/level/level.tscn" id="1"]
+[ext_resource type="Script" path="res://levels/Level 2/lvl2.gd" id="1_itio5"]
 [ext_resource type="ArrayMesh" uid="uid://c4m8n11ytae44" path="res://levels/Level 2/pot2.0.obj" id="2"]
-[ext_resource type="PackedScene" path="res://objects/level parts/word_manager/word_manager.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://cnqgashcl1mh0" path="res://objects/level parts/word_manager/word_manager.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://objects/level parts/hand/hand.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cn3olk5t7g2uj" path="res://objects/level parts/game_camera/game_camera.tscn" id="4_orya4"]
 [ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="5"]
 [ext_resource type="Material" uid="uid://odi615eo1fv2" path="res://resources/materials/metal.tres" id="5_hljo1"]
 [ext_resource type="ArrayMesh" uid="uid://1mgdty0wky10" path="res://levels/Level 2/ovenstove.obj" id="6"]
+[ext_resource type="PackedScene" uid="uid://dl5olwsf3yvlu" path="res://objects/level extras/tutorial/tutorial.tscn" id="6_k8gv8"]
 [ext_resource type="PackedScene" path="res://objects/level parts/letter_spawner/letter_spawner.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://boch23jlobcf2" path="res://objects/level parts/soup/soup.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://objects/level extras/bubble_spawner/bubble_spawner.tscn" id="9"]
@@ -37,8 +39,10 @@ height = 8.73
 radius = 4.42
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_itio5")
 
 [node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1")]
+unique_name_in_owner = true
 time_given = 60.0
 level_index = 1
 camera = NodePath("../Game camera")
@@ -54,6 +58,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.497, 0)
 
 [node name="Game camera" parent="." instance=ExtResource("4_orya4")]
 transform = Transform3D(1, 0, 0, 0, 0.644124, 0.764921, 0, -0.764921, 0.644124, 0, 18.848, 6.154)
+
+[node name="Tutorial" parent="Game camera" instance=ExtResource("6_k8gv8")]
+unique_name_in_owner = true
 
 [node name="Pot" type="StaticBody3D" parent="."]
 
@@ -227,3 +234,5 @@ surface_material_override/5 = ExtResource("19_eq7m8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.74613, 0)
 spawn_interval = 2.0
 level = NodePath("../Level")
+
+[connection signal="level_started" from="Level" to="." method="_level_started"]

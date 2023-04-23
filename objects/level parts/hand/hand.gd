@@ -39,6 +39,8 @@ var final_hand_translation
 var time = 0
 var letter_being_grabbed = null
 
+signal grabbed_letter
+
 
 func _ready():
 	fix_arm_rotation()
@@ -163,6 +165,8 @@ func done_dipping():
 	if letter_being_grabbed:
 		(letter_being_grabbed as Letter).freeze = true
 		(letter_being_grabbed as Letter).remove_from_group("Letters")
+		
+		grabbed_letter.emit()
 	else:
 		(%AudioStreamPlayer as AudioStreamPlayer).play()
 		start_hand_animation()

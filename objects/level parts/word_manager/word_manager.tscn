@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://cnqgashcl1mh0"]
 
 [ext_resource type="Script" path="res://objects/level parts/word_manager/word_manager.gd" id="1"]
 [ext_resource type="FontFile" path="res://resources/letter_font.tres" id="2"]
@@ -39,6 +39,7 @@ mesh = SubResource("1")
 skeleton = NodePath("../..")
 
 [node name="Timer" type="Node3D" parent="UI"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849751, 0, -0.0872575)
 
 [node name="Time indicator" type="Node3D" parent="UI/Timer"]
