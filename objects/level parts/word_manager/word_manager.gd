@@ -63,7 +63,7 @@ func place_letter(letter: Letter):
 	var matches_before = WordUtils.matches_word(letters_placed)
 	
 	if matches_before:
-		platform.set_score(WordUtils.calculate_score_added(letters_placed))
+		platform.set_score(WordUtils.calculate_score_added(letters_placed, letter))
 	
 	letters_placed[index] = letter
 	platform.letter = letter

@@ -100,12 +100,15 @@ var letter_meshes: Array[ArrayMesh] = [
 ]
 
 func mesh_of(letter: String) -> ArrayMesh:
-	return letter_meshes[letter.unicode_at(0) - 97]
+	return letter_meshes[letter_to_idx(letter)]
 
 @onready var inverse_mesh_translations: PackedVector3Array = PackedVector3Array(letter_meshes.map(inverse_mesh_translation))
 
+func letter_to_idx(letter: String) -> int:
+	return letter.unicode_at(0) - 97
+
 func inverse_translation_of(letter: String) -> Vector3:
-	return inverse_mesh_translations[letter.unicode_at(0) - 97]
+	return inverse_mesh_translations[letter_to_idx(letter)]
 
 # Daniel's letter models are offset, this undoes the position
 # This assumes that the vertices are about evenly spread out, otherwise the average will be biased towards where there's a higher density of vertices
@@ -134,16 +137,19 @@ func matches_word(letters: Array) -> bool:
 	return false
 
 
-func calculate_score_added(letters: Array):
-	var amt_could_be_placed = letters_that_could_be_used_next(letters)
+func calculate_score_added(letters: Array, letter: Letter):
+	var probability_ok_letter = probability_of_randomly_choosing_ok_letter(letters)
 	
-	if amt_could_be_placed == 0:
+	if probability_ok_letter == 0.:
 		return null
 	
-	return 27 - amt_could_be_placed
+	var size_idx = letters.size() - 1
+	
+	# Reward uncommon letters as well as words with few letters
+	return max(1., floor(1. / (probability_ok_letter * letter_distributions[size_idx][letter_to_idx(letter.which_letter)])))
 
 
-func letters_that_could_be_used_next(letters: Array) -> int:
+func probability_of_randomly_choosing_ok_letter(letters: Array) -> float:
 	var empty_index = letters.find(null)
 	
 	var could_be_placed = []
@@ -156,7 +162,17 @@ func letters_that_could_be_used_next(letters: Array) -> int:
 		if compare_word(word, letters):
 			could_be_placed[word.unicode_at(empty_index) - 97] = true
 	
-	return could_be_placed.count(true)
+	var distribution = letter_distributions[letters.size() - 1]
+	
+	var total = 0.
+	
+	var i = 0
+	for v in could_be_placed:
+		if v:
+			total += distribution[i]
+		i += 1
+	
+	return total
 
 
 # Assumes word & letters are the same length
