@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://7mmr4xhdy3om"
+path="res://.godot/imported/fountainwater.obj-e264413da2a4d849441d5ab6f988da95.mesh"
+
+[deps]
+
+files=["res://.godot/imported/fountainwater.obj-e264413da2a4d849441d5ab6f988da95.mesh"]
+
+source_file="res://levels/Level 3/fountainwater.obj"
+dest_files=["res://.godot/imported/fountainwater.obj-e264413da2a4d849441d5ab6f988da95.mesh", "res://.godot/imported/fountainwater.obj-e264413da2a4d849441d5ab6f988da95.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

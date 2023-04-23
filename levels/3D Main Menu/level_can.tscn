@@ -1,0 +1,139 @@
+[gd_scene load_steps=17 format=3 uid="uid://dyuxdd6q7i4et"]
+
+[ext_resource type="Script" path="res://levels/3D Main Menu/level_can.gd" id="1_kar65"]
+[ext_resource type="Theme" uid="uid://dubog3hc6383i" path="res://levels/menu_theme.tres" id="2_7gr3i"]
+[ext_resource type="Script" path="res://levels/3D Main Menu/play_button.gd" id="3_n0p2c"]
+[ext_resource type="PackedScene" path="res://objects/ui/leaderboard/leaderboard.tscn" id="3_ue310"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kvto1"]
+height = 6.0
+radius = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_b4rbm"]
+top_radius = 1.9
+bottom_radius = 1.9
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tkd3"]
+cull_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_m8db8"]
+size = Vector2(4, 5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rjyhd"]
+viewport_path = NodePath("Popup/Level data viewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1gdcf"]
+viewport_path = NodePath("Popup/Level data viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k38bm"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_rjyhd")
+metallic_specular = 0.0
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_1gdcf")
+
+[sub_resource type="QuadMesh" id="QuadMesh_fagkx"]
+size = Vector2(2, 1.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0jl60"]
+viewport_path = NodePath("Popup/Play button viewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d1c57"]
+viewport_path = NodePath("Popup/Play button viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vv126"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_0jl60")
+metallic_specular = 0.0
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_d1c57")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7fasn"]
+size = Vector3(2, 1.5, 0.2)
+
+[node name="Can Area" type="Area3D"]
+collision_layer = 2
+script = ExtResource("1_kar65")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_kvto1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_b4rbm")
+surface_material_override/0 = SubResource("StandardMaterial3D_8tkd3")
+
+[node name="Popup" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, -2.8)
+
+[node name="Level data viewport" type="SubViewport" parent="Popup"]
+unique_name_in_owner = true
+size = Vector2i(300, 375)
+render_target_update_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/Level data viewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_7gr3i")
+theme_override_constants/separation = 20
+
+[node name="Level name" type="Label" parent="Popup/Level data viewport/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+
+[node name="Highscore" type="Label" parent="Popup/Level data viewport/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="Leaderboard" parent="Popup/Level data viewport/VBoxContainer" instance=ExtResource("3_ue310")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Play button viewport" type="SubViewport" parent="Popup"]
+unique_name_in_owner = true
+transparent_bg = true
+size = Vector2i(200, 150)
+render_target_update_mode = 4
+
+[node name="Button" type="Button" parent="Popup/Play button viewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_7gr3i")
+theme_override_font_sizes/font_size = 50
+text = "Play"
+
+[node name="ViewportQuad" type="MeshInstance3D" parent="Popup"]
+mesh = SubResource("QuadMesh_m8db8")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_k38bm")
+
+[node name="PlayButton" type="Area3D" parent="Popup"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.728662, 0)
+collision_layer = 2
+script = ExtResource("3_n0p2c")
+
+[node name="PlayButtonQuad" type="MeshInstance3D" parent="Popup/PlayButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.52095, 0)
+mesh = SubResource("QuadMesh_fagkx")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vv126")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Popup/PlayButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.53116, 0)
+shape = SubResource("BoxShape3D_7fasn")

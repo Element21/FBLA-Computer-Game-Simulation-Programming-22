@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://1mgdty0wky10"
+path="res://.godot/imported/ovenstove.obj-f4e8b9a63cbd4e479888be4266b6951f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ovenstove.obj-f4e8b9a63cbd4e479888be4266b6951f.mesh"]
+
+source_file="res://levels/Level 2/ovenstove.obj"
+dest_files=["res://.godot/imported/ovenstove.obj-f4e8b9a63cbd4e479888be4266b6951f.mesh", "res://.godot/imported/ovenstove.obj-f4e8b9a63cbd4e479888be4266b6951f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

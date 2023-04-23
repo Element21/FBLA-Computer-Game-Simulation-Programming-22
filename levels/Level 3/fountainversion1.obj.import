@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ydbk3tpjn71c"
+path="res://.godot/imported/fountainversion1.obj-9a78c47885723cf517857011891ab6af.mesh"
+
+[deps]
+
+files=["res://.godot/imported/fountainversion1.obj-9a78c47885723cf517857011891ab6af.mesh"]
+
+source_file="res://levels/Level 3/fountainversion1.obj"
+dest_files=["res://.godot/imported/fountainversion1.obj-9a78c47885723cf517857011891ab6af.mesh", "res://.godot/imported/fountainversion1.obj-9a78c47885723cf517857011891ab6af.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c7m33dm8sp2t3"
+path="res://.godot/imported/volcano.obj-4e0dcf6c9042761f5f041eee1b13fbde.mesh"
+
+[deps]
+
+files=["res://.godot/imported/volcano.obj-4e0dcf6c9042761f5f041eee1b13fbde.mesh"]
+
+source_file="res://levels/Level 5/volcano.obj"
+dest_files=["res://.godot/imported/volcano.obj-4e0dcf6c9042761f5f041eee1b13fbde.mesh", "res://.godot/imported/volcano.obj-4e0dcf6c9042761f5f041eee1b13fbde.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://objects/level extras/fountain_output/fountain_output.gd" id="1"]
+
+[node name="Fountain output" type="Node3D"]
+script = ExtResource( 1 )

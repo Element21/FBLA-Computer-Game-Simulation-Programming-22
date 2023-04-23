@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cnr1coaerxthm"
+path="res://.godot/imported/Room.obj-5c9d2a7dacd68fea158ae6ad9569718b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Room.obj-5c9d2a7dacd68fea158ae6ad9569718b.mesh"]
+
+source_file="res://levels/Level 1/Room.obj"
+dest_files=["res://.godot/imported/Room.obj-5c9d2a7dacd68fea158ae6ad9569718b.mesh", "res://.godot/imported/Room.obj-5c9d2a7dacd68fea158ae6ad9569718b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

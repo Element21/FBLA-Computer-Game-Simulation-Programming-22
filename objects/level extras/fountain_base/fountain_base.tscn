@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://objects/level extras/fountain_base/fountain_base.gd" id="1"]
+
+[node name="Fountain base" type="Area3D" node_paths=PackedStringArray("fountain_output")]
+script = ExtResource("1")
+fountain_output = NodePath("")
+
+[connection signal="body_entered" from="." to="." method="object_entered"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cysan5cs64iyj"
+path="res://.godot/imported/Level 1 Bowl Interior.obj-7308d98e220efc24720809848be1dd15.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Level 1 Bowl Interior.obj-7308d98e220efc24720809848be1dd15.mesh"]
+
+source_file="res://levels/Level 1/Level 1 Bowl Interior.obj"
+dest_files=["res://.godot/imported/Level 1 Bowl Interior.obj-7308d98e220efc24720809848be1dd15.mesh", "res://.godot/imported/Level 1 Bowl Interior.obj-7308d98e220efc24720809848be1dd15.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

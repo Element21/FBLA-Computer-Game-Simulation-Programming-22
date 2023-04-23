@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Theme" uid="uid://dubog3hc6383i" path="res://levels/menu_theme.tres" id="1"]
+[ext_resource type="Script" path="res://objects/ui/level_end_screen/level_end_screen.gd" id="3"]
+[ext_resource type="PackedScene" path="res://objects/ui/bottom_buttons/bottom_buttons.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://objects/ui/leaderboard/leaderboard.tscn" id="5"]
+
+[node name="Level end screen" type="SubViewportContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+script = ExtResource("3")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1")
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport/Control"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.537255)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Control"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 23
+alignment = 1
+
+[node name="Level complete" type="Label" parent="SubViewport/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Level Complete"
+horizontal_alignment = 1
+
+[node name="Score label" type="Label" parent="SubViewport/Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "25"
+horizontal_alignment = 1
+
+[node name="Leaderboard" parent="SubViewport/Control/VBoxContainer" instance=ExtResource("5")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Control/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Next level button" type="Button" parent="SubViewport/Control/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Next Level"
+
+[node name="Retry" type="Button" parent="SubViewport/Control/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = " Try Again "
+
+[node name="Main menu button" type="Button" parent="SubViewport/Control/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Main Menu"
+
+[node name="Bottom buttons" parent="SubViewport/Control" instance=ExtResource("4")]
+layout_mode = 1
+offset_left = -241.0
+offset_top = -56.0
+
+[connection signal="button_down" from="SubViewport/Control/VBoxContainer/VBoxContainer/Next level button" to="." method="go_to_next_level"]
+[connection signal="button_down" from="SubViewport/Control/VBoxContainer/VBoxContainer/Retry" to="." method="retry_level"]
+[connection signal="button_down" from="SubViewport/Control/VBoxContainer/VBoxContainer/Main menu button" to="." method="go_to_main_menu"]

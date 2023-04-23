@@ -1,0 +1,112 @@
+[gd_scene load_steps=18 format=3 uid="uid://cgm6bqy8wbvqt"]
+
+[ext_resource type="PackedScene" uid="uid://ciu8ljq22xyk0" path="res://objects/level parts/level/level.tscn" id="1"]
+[ext_resource type="ArrayMesh" uid="uid://c7m33dm8sp2t3" path="res://levels/Level 5/volcano.obj" id="2"]
+[ext_resource type="Script" path="res://levels/Level 5/level_5_effects.gd" id="2_cer0k"]
+[ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://boch23jlobcf2" path="res://objects/level parts/soup/soup.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://objects/level parts/hand/hand.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://cn3olk5t7g2uj" path="res://objects/level parts/game_camera/game_camera.tscn" id="5_2xrtb"]
+[ext_resource type="Material" path="res://resources/materials/volcano/volcano.tres" id="5_q0ca6"]
+[ext_resource type="PackedScene" path="res://objects/level parts/word_manager/word_manager.tscn" id="6"]
+[ext_resource type="Material" path="res://resources/materials/invisible.tres" id="6_cke2u"]
+[ext_resource type="Script" path="res://levels/Level 5/volcano_hole.gd" id="10"]
+[ext_resource type="PackedScene" path="res://objects/level parts/letter_spawner/letter_spawner.tscn" id="11"]
+
+[sub_resource type="PlaneMesh" id="2"]
+material = ExtResource("3")
+size = Vector2(800, 400)
+
+[sub_resource type="BoxShape3D" id="3"]
+size = Vector3(800, 400, 800)
+
+[sub_resource type="ConvexPolygonShape3D" id="5"]
+points = PackedVector3Array(4.72291, 2.75334, 3.73298, -0.562993, 2.79796, -5.7691, -0.60941, 2.82729, -6.23492, -1.02587, 7.19245, -0.828295, -5.39318, 2.82729, 3.33018, 5.62647, 2.82729, -2.6993, 0.843919, 7.19245, 1.24911, -5.60202, 2.82729, -3.32338, 0.633858, 2.82729, 6.24172, 1.25793, 7.40076, -0.411837, -6.2261, 2.61945, 0.211019, 3.75424, 2.82729, -5.40201, -3.31456, 2.82729, 5.40881, 5.21001, 3.03513, 3.33018, -1.65117, 6.98461, -0.204218, 6.25055, 2.82729, -0.828295, -2.48286, 2.82729, -5.81847, 0.562517, 6.942, -1.46909, -1.09485, 6.21072, 2.03411, 3.29908, 2.78688, 5.03023, -6.2261, 2.82729, 0.211019, 2.29725, 2.82729, -6.02608, 4.68049, 2.77366, -3.49723, -1.65117, 2.82729, 6.03288, 1.25793, 7.40076, 0.211019, -0.542295, 6.95683, -1.4804, -6.01726, 2.82729, 2.08081, -4.35387, 2.82729, -4.57031, -6.01726, 2.82729, -2.28162, 1.05032, 2.82729, 6.24172, -4.76911, 2.82729, 4.16188, -1.26141, 6.73902, 0.912374, 5.00239, 2.82729, -3.73862, -6.2261, 2.61945, -0.204218, 0.976055, 2.79047, 5.79546, 2.12955, 2.7949, -5.58359, 0.219842, 2.82729, -6.23492, 5.66133, 2.77027, 2.14427, -0.91285, 6.95486, -1.29279, 5.83409, 2.82729, -2.28162, 3.96308, 2.82729, -5.19439, -6.2261, 2.82729, -0.204218, -4.35387, 2.82729, 4.57711, -4.97795, 3.03513, 3.5378, -1.08317, 6.56359, 1.46608, -3.48533, 2.77563, -4.66077, -1.65117, 2.82729, -6.02608, -1.52673, 2.79829, 5.58183, -2.2728, 2.82729, 5.82527)
+
+[sub_resource type="CylinderMesh" id="4"]
+top_radius = 1.5
+bottom_radius = 1.5
+
+[sub_resource type="CylinderShape3D" id="6"]
+radius = 3.07453
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("camera")]
+script = ExtResource("2_cer0k")
+camera = NodePath("")
+
+[node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1")]
+time_given = 90.0
+level_index = 4
+camera = NodePath("../Game camera")
+
+[node name="Hand" parent="Level" instance=ExtResource("5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.92705, 10.6492)
+arm_pivot = Vector2(-4, 50)
+
+[node name="Word manager" parent="Level" instance=ExtResource("6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4905, 7.75409)
+word_length = 4
+launch_vector = Vector3(0, 4.6, 5)
+
+[node name="Game camera" parent="." instance=ExtResource("5_2xrtb")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 24.674, 20.911)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47238, 21.9533, 24.2219)
+light_energy = 0.814
+shadow_enabled = true
+omni_range = 278.438
+omni_attenuation = 1e-05
+
+[node name="Soup" parent="Environment" node_paths=PackedStringArray("level") instance=ExtResource("4")]
+level = NodePath("../../Level")
+surface = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Soup"]
+mesh = SubResource("2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Soup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -200, 0)
+shape = SubResource("3")
+
+[node name="Volcano" type="StaticBody3D" parent="Environment"]
+unique_name_in_owner = true
+
+[node name="Volcano mesh" type="MeshInstance3D" parent="Environment/Volcano"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -3.88548, 0)
+mesh = ExtResource("2")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_q0ca6")
+surface_material_override/1 = ExtResource("5_q0ca6")
+surface_material_override/2 = ExtResource("6_cke2u")
+
+[node name="CollisionShape2" type="CollisionShape3D" parent="Environment/Volcano"]
+transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, 0, -6.538, 0)
+shape = SubResource("5")
+
+[node name="Pool" type="MeshInstance3D" parent="Environment/Volcano"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 6.61252, 0)
+mesh = SubResource("4")
+skeleton = NodePath("../Volcano mesh")
+surface_material_override/0 = ExtResource("3")
+
+[node name="Volcano hole" type="Area3D" parent="Environment"]
+script = ExtResource("10")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Volcano hole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.56328, 0)
+shape = SubResource("6")
+
+[node name="Letter Spawner" parent="." node_paths=PackedStringArray("level") instance=ExtResource("11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.96659, 0)
+upward_velocity = 10.0
+horizontal_velocity = 5.0
+spawn_amnt = 8
+spawn_interval = 3.0
+level = NodePath("../Level")
+
+[connection signal="body_entered" from="Environment/Volcano hole" to="Environment/Volcano hole" method="object_entered"]
+[connection signal="body_exited" from="Environment/Volcano hole" to="Environment/Volcano hole" method="object_exited"]
+[connection signal="letters_spawned" from="Letter Spawner" to="." method="erupt"]

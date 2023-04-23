@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dqnnwonbuani"
+path="res://.godot/imported/BeBop25.mp3-444bf3947b0845466e2c3749b7a908a6.mp3str"
+
+[deps]
+
+source_file="res://global utilities/music/BeBop25.mp3"
+dest_files=["res://.godot/imported/BeBop25.mp3-444bf3947b0845466e2c3749b7a908a6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="ArrayMesh" uid="uid://r4r72ff1r61p" path="res://resources/hand_frames/frame1_hand_3.0.obj" id="1"]
+[ext_resource type="Script" path="res://objects/level parts/hand/hand.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://bxa7jibpn53e1" path="res://resources/sounds/hand-slap-1.ogg" id="3"]
+[ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="4"]
+[ext_resource type="AudioStream" uid="uid://8ee4jp6xogru" path="res://resources/sounds/burn_main.mp3" id="5_ggru1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xevx"]
+albedo_color = Color(0.662745, 1, 1, 1)
+
+[sub_resource type="CylinderShape3D" id="2"]
+height = 1.783
+radius = 0.908
+
+[sub_resource type="Curve" id="7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="6"]
+curve = SubResource("7")
+
+[sub_resource type="ParticleProcessMaterial" id="10"]
+emission_shape = 5
+emission_point_count = 1
+direction = Vector3(0, 1, 0)
+spread = 90.0
+scale_curve = SubResource("6")
+
+[sub_resource type="SphereMesh" id="9"]
+material = ExtResource("4")
+radius = 0.2
+height = 0.4
+
+[node name="Hand" type="Node3D"]
+script = ExtResource("2")
+
+[node name="Hand" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+mesh = ExtResource("1")
+skeleton = NodePath("")
+surface_material_override/1 = SubResource("StandardMaterial3D_0xevx")
+
+[node name="Letter pickup area" type="Area3D" parent="Hand"]
+unique_name_in_owner = true
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hand/Letter pickup area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.315203, -0.32081)
+shape = SubResource("2")
+
+[node name="Slap" type="AudioStreamPlayer3D" parent="Hand"]
+unique_name_in_owner = true
+stream = ExtResource("3")
+unit_size = 20.0
+bus = &"SFX"
+
+[node name="Particles" type="GPUParticles3D" parent="Hand"]
+unique_name_in_owner = true
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-6.42984, -5.29764, -5.73802, 12.3984, 7.72849, 11.4042)
+process_material = SubResource("10")
+draw_pass_1 = SubResource("9")
+
+[node name="Raycast" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Hand animation state interval" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.05
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_ggru1")
+
+[connection signal="timeout" from="Hand animation state interval" to="." method="next_hand_animation_frame"]

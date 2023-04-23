@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bmmogb03k1ebk"
+path="res://.godot/imported/pool.obj-4cfe84d40e5d0e4b3d2337f2f7726f1e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pool.obj-4cfe84d40e5d0e4b3d2337f2f7726f1e.mesh"]
+
+source_file="res://levels/Level 4/pool.obj"
+dest_files=["res://.godot/imported/pool.obj-4cfe84d40e5d0e4b3d2337f2f7726f1e.mesh", "res://.godot/imported/pool.obj-4cfe84d40e5d0e4b3d2337f2f7726f1e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

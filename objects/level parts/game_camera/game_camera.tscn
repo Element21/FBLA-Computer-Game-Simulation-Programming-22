@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn3olk5t7g2uj"]
+
+[ext_resource type="Script" path="res://objects/level parts/game_camera/game_camera.gd" id="1_h781t"]
+[ext_resource type="PackedScene" uid="uid://c6ip5rlgrr22h" path="res://objects/ui/reset/reset.tscn" id="2_dpjp4"]
+[ext_resource type="PackedScene" path="res://objects/ui/transition/transition.tscn" id="3_k3mwc"]
+
+[node name="Game camera" type="Camera3D"]
+script = ExtResource("1_h781t")
+
+[node name="Reset" parent="." node_paths=PackedStringArray("transition") instance=ExtResource("2_dpjp4")]
+unique_name_in_owner = true
+transition = NodePath("../Transition")
+
+[node name="Transition" parent="." instance=ExtResource("3_k3mwc")]
+unique_name_in_owner = true
