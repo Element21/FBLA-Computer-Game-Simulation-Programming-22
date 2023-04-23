@@ -12,7 +12,6 @@ var slideList: Array[String] = [
 	"res://resources/cutscene_frames/frame_8.png",
 	"res://resources/cutscene_frames/frame_6.png",
 	"res://resources/cutscene_frames/frame_9.png",
-	"res://resources/cutscene_frames/how2play.png"
 ]
 
 @onready var transition: Transition = %Transition
