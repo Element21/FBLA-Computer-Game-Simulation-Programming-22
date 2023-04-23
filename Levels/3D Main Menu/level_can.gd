@@ -28,25 +28,6 @@ func _ready():
 	
 	(%Leaderboard as Leaderboard).show_leaderboard_for(level_idx)
 	
-	level_data_viewport.set_clear_mode(SubViewport.CLEAR_MODE_ONCE)
-	
-	var level_data_material = StandardMaterial3D.new()
-	level_data_material.albedo_texture = level_data_viewport.get_texture()
-	level_data_material.emission_enabled = true
-	level_data_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	
-	(%ViewportQuad as MeshInstance3D).set_surface_override_material(0, level_data_material)
-	
-	play_button_viewport.set_clear_mode(SubViewport.CLEAR_MODE_ONCE)
-	
-	var play_button_material = StandardMaterial3D.new()
-	play_button_material.albedo_texture = play_button_viewport.get_texture()
-	play_button_material.emission_enabled = true
-	play_button_material.emission_texture = play_button_viewport.get_texture()
-	level_data_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	
-	(%PlayButtonQuad as MeshInstance3D).set_surface_override_material(0, play_button_material)
-	
 	(%"Level name" as Label).text = "Level " + String.num_int64(level_idx + 1)
 	
 	var highscore = LeaderboardManager.get_highscore_for(level_idx)

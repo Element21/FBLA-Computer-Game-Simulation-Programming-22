@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdjke6okxxfwg"]
+[gd_scene load_steps=17 format=3 uid="uid://cdjke6okxxfwg"]
 
 [ext_resource type="Theme" uid="uid://dubog3hc6383i" path="res://Levels/menu_theme.tres" id="2_ye6i7"]
 [ext_resource type="Script" path="res://Levels/3D Main Menu/level_can.gd" id="5_k35rf"]
@@ -22,12 +22,35 @@ metallic_specular = 0.0
 [sub_resource type="QuadMesh" id="QuadMesh_m8db8"]
 size = Vector2(4, 5)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_rjyhd"]
+viewport_path = NodePath("Popup/Level data viewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1gdcf"]
+viewport_path = NodePath("Popup/Level data viewport")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k38bm"]
+resource_local_to_scene = true
 transparency = 1
+albedo_texture = SubResource("ViewportTexture_rjyhd")
+metallic_specular = 0.0
 emission_enabled = true
+emission_texture = SubResource("ViewportTexture_1gdcf")
 
 [sub_resource type="QuadMesh" id="QuadMesh_fagkx"]
 size = Vector2(2, 1.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0jl60"]
+viewport_path = NodePath("Popup/Play button viewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d1c57"]
+viewport_path = NodePath("Popup/Play button viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vv126"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_0jl60")
+metallic_specular = 0.0
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_d1c57")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7fasn"]
 size = Vector3(2, 1.5, 0.2)
@@ -49,7 +72,6 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, -2.8)
 
 [node name="ViewportQuad" type="MeshInstance3D" parent="Popup"]
-unique_name_in_owner = true
 mesh = SubResource("QuadMesh_m8db8")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_k38bm")
@@ -90,10 +112,10 @@ collision_layer = 2
 script = ExtResource("7_uy1pu")
 
 [node name="PlayButtonQuad" type="MeshInstance3D" parent="Popup/PlayButton"]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.52095, 0)
 mesh = SubResource("QuadMesh_fagkx")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vv126")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Popup/PlayButton"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.53116, 0)
