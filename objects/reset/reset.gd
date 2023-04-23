@@ -14,4 +14,4 @@ func _ready():
 
 
 func _on_reset():
-	transition.change_scene(preload("res://Levels/Start Menu/start_menu.tscn"))
+	transition.change_scene(load("res://Levels/Start Menu/start_menu.tscn"))

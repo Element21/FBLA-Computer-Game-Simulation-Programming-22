@@ -2,9 +2,6 @@ extends Control
 
 signal first_play
 
-var main_menu_scene: PackedScene = preload("res://Levels/3D Main Menu/3d_main_menu.tscn")
-var cutscene_scene: PackedScene = preload("res://Levels/Start Menu/Cutscene/cutscene.tscn")
-
 @onready var transition: Transition = %Transition
 @onready var name_input = %"Name input"
 
@@ -18,10 +15,10 @@ func go_to_main_menu(_from_signal):
 		LeaderboardManager.set_player_name(name_given)
 		if not LeaderboardManager.is_level_unlocked(1):
 			# Assume this is first run, lauch cutscene
-			transition.change_scene(cutscene_scene)
+			transition.change_scene(load("res://Levels/Start Menu/Cutscene/cutscene.tscn"))
 
 		else:
-			transition.change_scene(main_menu_scene)
+			transition.change_scene(load("res://Levels/3D Main Menu/3d_main_menu.tscn"))
 
 
 func _ready():
