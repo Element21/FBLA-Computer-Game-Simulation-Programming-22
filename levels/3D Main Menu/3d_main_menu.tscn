@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bvx1dqt1gjpb1"]
+[gd_scene load_steps=21 format=3 uid="uid://bvx1dqt1gjpb1"]
 
 [ext_resource type="PackedScene" uid="uid://dyuxdd6q7i4et" path="res://levels/3D Main Menu/level_can.tscn" id="1_fudtw"]
 [ext_resource type="Script" path="res://levels/3D Main Menu/3d_main_menu.gd" id="1_wepeb"]
 [ext_resource type="PackedScene" uid="uid://cn3olk5t7g2uj" path="res://objects/level parts/game_camera/game_camera.tscn" id="2_pgl71"]
 [ext_resource type="PackedScene" path="res://objects/ui/bottom_buttons/bottom_buttons.tscn" id="3_rcrxp"]
 [ext_resource type="PackedScene" uid="uid://bix73ntpqumav" path="res://resources/cans/can_level_1.gltf" id="4_6qso0"]
+[ext_resource type="PackedScene" uid="uid://dl5olwsf3yvlu" path="res://objects/level extras/tutorial/tutorial.tscn" id="4_38aqr"]
 [ext_resource type="PackedScene" uid="uid://dbtvkni108ygl" path="res://resources/cans/can_level_2.gltf" id="6_qcjqm"]
 [ext_resource type="PackedScene" uid="uid://mrpg2qlfhfug" path="res://objects/level parts/environment.tscn" id="8_c8l8o"]
 [ext_resource type="PackedScene" uid="uid://v4ot0f61cmk0" path="res://resources/cans/can_level_3.gltf" id="8_kl10b"]
@@ -51,7 +52,11 @@ collide_with_bodies = false
 offset_left = -195.0
 offset_top = -43.0
 
+[node name="Tutorial" parent="Camera" instance=ExtResource("4_38aqr")]
+unique_name_in_owner = true
+
 [node name="Level 1 Can" parent="." node_paths=PackedStringArray("can") instance=ExtResource("1_fudtw")]
+unique_name_in_owner = true
 transform = Transform3D(0.399522, 0, 0.0195399, 0, 0.4, 0, -0.0195399, 0, 0.399522, -6.69078, 11.7072, 16.0438)
 can = NodePath("can_level_1")
 

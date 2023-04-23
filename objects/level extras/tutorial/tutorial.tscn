@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl5olwsf3yvlu"]
+
+[ext_resource type="Script" path="res://objects/level extras/tutorial/tutorial.gd" id="1_2nbxn"]
+[ext_resource type="Theme" uid="uid://dubog3hc6383i" path="res://levels/menu_theme.tres" id="1_jlugt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhm86"]
+bg_color = Color(0, 0, 0, 0.25098)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_top = 4.0
+expand_margin_right = 8.0
+expand_margin_bottom = 4.0
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jlugt")
+script = ExtResource("1_2nbxn")
+
+[node name="Phrase label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 194.0
+offset_bottom = 23.0
+theme_override_colors/font_shadow_color = Color(0.541176, 0.101961, 0, 0.623529)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.219608)
+theme_override_constants/shadow_outline_size = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_yhm86")
+text = "Click to grab letters from the soup"
+horizontal_alignment = 1
+vertical_alignment = 1

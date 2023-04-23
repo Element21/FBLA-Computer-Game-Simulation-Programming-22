@@ -4,6 +4,7 @@ extends Node
 @onready var camera: GameCamera = %Camera
 @onready var spotlight: SpotLight3D = %Spotlight
 @onready var raycast: RayCast3D = %RayCast
+@onready var tutorial: Tutorial = %Tutorial
 
 @onready var camera_start_pos = camera.global_position
 var camera_can_offset = Vector3(0, 3, 4)
@@ -19,6 +20,9 @@ var maybe_can_focusing_on = null
 func _ready():
 	spotlight.light_energy = 0.
 	Music.play(MusicPlayer.Song.LocalForecast)
+	
+	if !LeaderboardManager.is_level_unlocked(1):
+		tutorial.show_text("Click the can", %"Level 1 Can".global_position + Vector3(0, 1.7, 0))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,6 +51,8 @@ func _input(event: InputEvent):
 		
 		if raycast_hit is LevelCan:
 			unfocus_can()
+			
+			tutorial.hide_text()
 			
 			var can: LevelCan = raycast_hit
 			
