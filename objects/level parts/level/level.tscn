@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://mrpg2qlfhfug" path="res://objects/level parts/environment.tscn" id="1"]
 [ext_resource type="Script" path="res://objects/level parts/level/level.gd" id="2"]
-[ext_resource type="PackedScene" path="res://objects/ui/level_end_screen/level_end_screen.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://bgkrxh1wc7dbr" path="res://objects/ui/level_end_screen/level_end_screen.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://objects/level parts/level_countdown/level_countdown.tscn" id="4"]
 
 [node name="Level" type="Node3D"]

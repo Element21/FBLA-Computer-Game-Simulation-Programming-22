@@ -171,3 +171,5 @@ level = NodePath("../Level")
 
 [connection signal="level_started" from="Level" to="." method="_level_started"]
 [connection signal="grabbed_letter" from="Level/Hand" to="." method="_grabbed_letter"]
+[connection signal="bad_letter_placed" from="Level/Word manager" to="." method="_bad_letter_placed"]
+[connection signal="deleted_letter" from="Level/Word manager" to="." method="_deleted_letter"]

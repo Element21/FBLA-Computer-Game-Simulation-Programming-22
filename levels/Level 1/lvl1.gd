@@ -44,7 +44,7 @@ func _bad_letter_placed(pos: Vector3):
 	if already_suggested_delete:
 		return
 	
-	tutorial.show_text("Right click to delete", pos, Vector2(0, tutorial.text_height()))
+	tutorial.show_text("Right click (click with two fingers) to delete", pos, Vector2(0, tutorial.text_height()))
 	already_suggested_delete = true
 	state = TutorialState.DeleteLetter
 

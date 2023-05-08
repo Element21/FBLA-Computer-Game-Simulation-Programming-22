@@ -55,7 +55,8 @@ texture = ExtResource("3_mvx20")
 [node name="Transition" parent="AspectRatioContainer/Control" instance=ExtResource("4_xggqy")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = -90.0
-offset_right = -38.0
+offset_right = 52.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="gui_input" from="AspectRatioContainer/Control/Slide" to="." method="_slide_on_gui_input"]

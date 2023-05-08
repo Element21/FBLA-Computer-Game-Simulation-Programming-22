@@ -32,7 +32,7 @@ radius = 3.07453
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("camera")]
 script = ExtResource("2_cer0k")
-camera = NodePath("")
+camera = NodePath("Game camera")
 
 [node name="Level" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1")]
 time_given = 90.0
