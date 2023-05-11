@@ -68,7 +68,7 @@ func _input(event: InputEvent):
 			
 			return
 		
-		if raycast_hit is PlayButton:
+		if raycast_hit is PlayButton && !raycast_hit.locked:
 			play_level()
 			return
 

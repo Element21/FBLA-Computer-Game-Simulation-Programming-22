@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyuxdd6q7i4et"]
+[gd_scene load_steps=18 format=3 uid="uid://dyuxdd6q7i4et"]
 
 [ext_resource type="Script" path="res://levels/3D Main Menu/level_can.gd" id="1_kar65"]
 [ext_resource type="Theme" uid="uid://dubog3hc6383i" path="res://levels/menu_theme.tres" id="2_7gr3i"]
@@ -18,6 +18,11 @@ height = 3.0
 cull_mode = 1
 albedo_color = Color(0, 0, 0, 1)
 metallic_specular = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nftpq"]
+top_radius = 2.0
+bottom_radius = 2.0
+height = 6.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_m8db8"]
 size = Vector2(4, 5)
@@ -47,6 +52,7 @@ viewport_path = NodePath("Popup/Play button viewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vv126"]
 resource_local_to_scene = true
+transparency = 1
 albedo_texture = SubResource("ViewportTexture_0jl60")
 metallic_specular = 0.0
 emission_enabled = true
@@ -66,6 +72,14 @@ shape = SubResource("CylinderShape3D_kvto1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CylinderMesh_b4rbm")
 surface_material_override/0 = SubResource("StandardMaterial3D_8tkd3")
+
+[node name="Shadow caster" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0, 0)
+visible = false
+layers = 2
+cast_shadow = 3
+mesh = SubResource("CylinderMesh_nftpq")
 
 [node name="Popup" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -108,6 +122,7 @@ size = Vector2i(200, 150)
 render_target_update_mode = 4
 
 [node name="Button" type="Button" parent="Popup/Play button viewport"]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

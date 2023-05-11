@@ -38,7 +38,7 @@ func maybe_apply_buoyancy_to_thing(thing: RigidBody3D, delta: float):
 		apply_buoyancy_to_thing(thing, delta)
 
 
-func _process(delta):
+func _physics_process(delta):
 	for letter in get_tree().get_nodes_in_group("Letters"):
 		maybe_apply_buoyancy_to_thing(letter, delta)
 	

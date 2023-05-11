@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dyuxdd6q7i4et" path="res://levels/3D Main Menu/level_can.tscn" id="1_fudtw"]
 [ext_resource type="Script" path="res://levels/3D Main Menu/3d_main_menu.gd" id="1_wepeb"]
 [ext_resource type="PackedScene" uid="uid://cn3olk5t7g2uj" path="res://objects/level parts/game_camera/game_camera.tscn" id="2_pgl71"]
-[ext_resource type="PackedScene" path="res://objects/ui/bottom_buttons/bottom_buttons.tscn" id="3_rcrxp"]
+[ext_resource type="PackedScene" uid="uid://6h4g7a70rtka" path="res://objects/ui/bottom_buttons/bottom_buttons.tscn" id="3_rcrxp"]
 [ext_resource type="PackedScene" uid="uid://bix73ntpqumav" path="res://resources/cans/can_level_1.gltf" id="4_6qso0"]
 [ext_resource type="PackedScene" uid="uid://dl5olwsf3yvlu" path="res://objects/level extras/tutorial/tutorial.tscn" id="4_38aqr"]
 [ext_resource type="PackedScene" uid="uid://dbtvkni108ygl" path="res://resources/cans/can_level_2.gltf" id="6_qcjqm"]
@@ -101,6 +101,7 @@ transform = Transform3D(-0.607376, 0, -0.794415, 0, 1, 0, 0.794415, 0, -0.607376
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.848972, 0.528438, 0, -0.528438, 0.848972, -6.50911, 19.7071, 29.0442)
 light_energy = 16.0
+light_cull_mask = 4294967293
 shadow_enabled = true
 spot_range = 40.412
 spot_angle = 7.72711
@@ -206,12 +207,16 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f173d")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12182, 14.6747, 17.4565)
+visible = false
 light_energy = 3.232
+shadow_enabled = true
 omni_range = 9.003
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5449, 14.6747, 17.4565)
+visible = false
 light_energy = 3.232
+shadow_enabled = true
 omni_range = 9.003
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -221,3 +226,11 @@ stream = ExtResource("14_0abbu")
 [node name="CanMove" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("15_m0kc7")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.908508, 0.417867, 0, -0.417867, 0.908508, -1.88528, 16.4621, 26.5303)
+light_energy = 6.778
+shadow_enabled = true
+spot_range = 20.0
+spot_angle = 32.07
+spot_angle_attenuation = 0.210224

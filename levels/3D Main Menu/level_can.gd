@@ -10,6 +10,7 @@ class_name LevelCan
 @onready var popup: Node3D = %Popup
 @onready var animation_player: AnimationPlayer = can.find_child("AnimationPlayer")
 @onready var start_pos = self.position
+@onready var locked = !LeaderboardManager.is_level_unlocked(level_idx)
 
 @export var level_idx: int
 @export var can: Node3D
@@ -18,12 +19,12 @@ static func come_out_amt() -> Vector3: return Vector3(0, 0, 2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if !LeaderboardManager.is_level_unlocked(level_idx):
-		self.hide()
-		self.collision_layer = 0
-		(%PlayButton as Area3D).collision_layer = 0
-		return
-
+	if locked:
+		%"Shadow caster".show()
+		%Button.text = "Locked"
+		%Button.modulate = Color(1., 1., 1., .5)
+		%PlayButton.locked = true
+	
 	assert(animation_player != null)
 	
 	(%Leaderboard as Leaderboard).show_leaderboard_for(level_idx)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://6h4g7a70rtka"]
 
 [ext_resource type="Script" path="res://objects/ui/bottom_buttons/bottom_buttons.gd" id="1"]
 
 [node name="MarginContainer" type="MarginContainer"]
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
