@@ -7,7 +7,7 @@ class_name Hand
 @onready var level: Level = self.get_parent()
 @export var arm_pivot: Vector2 = Vector2(-2, 35)
 
-var hand_height = 2
+var hand_height = 1
 var drop_height = 3
 
 var arm_response = 7
