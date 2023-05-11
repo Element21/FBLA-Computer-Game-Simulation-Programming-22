@@ -55,13 +55,18 @@ func _process(_delta):
 	(%"Time indicator" as Node3D).scale.x = 1 - Tweening.fast_then_slow(1 - level.time_left / level.time_given)
 
 
-func set_letter_of_platform(letter: Letter, platform: LetterPlatform):
+func set_letter_of_platform(letter: Letter, index: int, platform: LetterPlatform):
 	var matches_before = WordUtils.matches_word(letters_placed)
 	
 	if matches_before:
-		platform.set_score(WordUtils.calculate_score_added(letters_placed, letter))
+		platform.set_score(WordUtils.calculate_score_added(letters_placed, letter, index))
 	else:
 		platform.set_score(null)
+	
+	print("1 ,", letters_placed)
+	platform.letter = letter
+	letters_placed[index] = letter
+	print("2 ,", letters_placed)
 
 
 # Called when the hand drops a letter, tells the platform that a letter was dropped on it, validates the letter sequence, and calculates score
@@ -70,10 +75,7 @@ func place_letter(letter: Letter):
 	
 	var platform: LetterPlatform = platforms.get_child(index)
 	
-	set_letter_of_platform(letter, platform)
-	
-	letters_placed[index] = letter
-	platform.letter = letter
+	set_letter_of_platform(letter, index, platform)
 	
 	if platform.score == null:
 		bad_letter_placed.emit(platform.global_position)
@@ -125,9 +127,16 @@ func delete(index: int):
 	
 	level.hand.letter_deleted()
 	
+	var i: int = 0
+	
 	for rechecking_platform in platforms.get_children() as Array[LetterPlatform]:
 		if rechecking_platform.score == null && rechecking_platform.letter != null:
-			set_letter_of_platform(rechecking_platform.letter, rechecking_platform)
+			var letter = rechecking_platform.letter
+			rechecking_platform.letter = null
+			letters_placed[i] = null
+			set_letter_of_platform(letter, i, rechecking_platform)
+		
+		i += 1
 
 
 func timer_pos() -> Vector3:
