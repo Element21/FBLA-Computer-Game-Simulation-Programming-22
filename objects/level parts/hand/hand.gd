@@ -10,7 +10,7 @@ class_name Hand
 var hand_height = 2
 var drop_height = 3
 
-var arm_response = 5
+var arm_response = 7
 
 var hand_animation_part_time = 0.5
 
