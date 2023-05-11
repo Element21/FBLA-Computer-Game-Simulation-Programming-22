@@ -60,6 +60,8 @@ func set_letter_of_platform(letter: Letter, platform: LetterPlatform):
 	
 	if matches_before:
 		platform.set_score(WordUtils.calculate_score_added(letters_placed, letter))
+	else:
+		platform.set_score(null)
 
 
 # Called when the hand drops a letter, tells the platform that a letter was dropped on it, validates the letter sequence, and calculates score
@@ -75,7 +77,6 @@ func place_letter(letter: Letter):
 	
 	if platform.score == null:
 		bad_letter_placed.emit(platform.global_position)
-		platform.set_score(null)
 		return
 	
 	if letters_placed.find(null) == -1:

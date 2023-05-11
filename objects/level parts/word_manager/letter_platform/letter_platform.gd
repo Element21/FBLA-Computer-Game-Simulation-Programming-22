@@ -24,6 +24,8 @@ var letter = null
 
 
 func flip():
+	letter = null
+	
 	var tween = get_tree().create_tween()
 	@warning_ignore("return_value_discarded")
 	tween.set_parallel()
@@ -56,7 +58,7 @@ func launch():
 func set_score(new_score):
 	score = new_score
 	
-	if score_mesh.position.z != score_mesh_start_z:
+	if score_mesh.position.z >= score_mesh_start_z + .1:
 		var tween = get_tree().create_tween()
 		@warning_ignore("return_value_discarded")
 		tween.tween_property(score_mesh, "position", Vector3(0, 0, score_mesh_start_z), action_time).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
@@ -107,7 +109,7 @@ func do_launch_transformation():
 	
 	# Pull the score back in
 	if t > 0.5:
-		score_mesh.position.z = lerp(1.5, 0.334, Tweening.smoothify((t - 0.5) * 2))
+		score_mesh.position.z = lerp(1.5, score_mesh_start_z, Tweening.smoothify((t - 0.5) * 2))
 
 
 # When the platform starts slowing down rather than speeding up
