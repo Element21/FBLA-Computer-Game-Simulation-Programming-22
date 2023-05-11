@@ -48,7 +48,9 @@ func _ready():
 
 # Check if the mouse is pointing at the surface of soup
 func pointing_at_valid_soup_surface() -> bool:
-	if !raycast.is_colliding():
+	var collider = raycast.get_collider()
+	
+	if !(collider is Soup):
 		return false
 	
 	var normal = raycast.get_collision_normal()
@@ -59,13 +61,19 @@ func pointing_at_valid_soup_surface() -> bool:
 
 
 func _input(event: InputEvent):
-	if event.is_action_pressed("click") && pointing_at_valid_soup_surface() && !level.word_manager.no_spots_left() && grabbing_state == GRABBING_STATE.NOT:
-		grabbing_state = GRABBING_STATE.DIPPING
+	if event.is_action_pressed("click"):
+		if pointing_at_valid_soup_surface() && !level.word_manager.no_spots_left() && grabbing_state == GRABBING_STATE.NOT:
+			grabbing_state = GRABBING_STATE.DIPPING
+			
+			start_hand_translation = hand.position
+			final_hand_translation = hand.position - Vector3(0, hand_height, 0)
+			
+			delayed_hand_animation()
 		
-		start_hand_translation = hand.position
-		final_hand_translation = hand.position - Vector3(0, hand_height, 0)
+		var collider = raycast.get_collider()
 		
-		delayed_hand_animation()
+		if collider is LetterPlatform:
+			level.word_manager.delete(collider.index)
 
 
 func delayed_hand_animation():

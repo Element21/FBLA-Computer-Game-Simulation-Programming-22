@@ -2,6 +2,8 @@ extends RigidBody3D
 
 class_name LetterPlatform
 
+var index: int
+
 var action_time = 1
 var launch_vector = Vector3(0, 2, 5)
 
@@ -18,6 +20,8 @@ var letter = null
 @onready var whoosh = %Whoosh as AudioStreamPlayer3D
 @onready var score_mesh = %"Score mesh" as MeshInstance3D
 
+@onready var score_mesh_start_z = score_mesh.position.z
+
 
 func flip():
 	var tween = get_tree().create_tween()
@@ -26,7 +30,7 @@ func flip():
 	@warning_ignore("return_value_discarded")
 	tween.tween_property(self, "rotation_degrees", Vector3(360, 0, 0), action_time).set_trans(Tween.TRANS_SINE)
 	@warning_ignore("return_value_discarded")
-	tween.tween_property(score_mesh, "position", Vector3(0, 0, 0.334), action_time).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(score_mesh, "position", Vector3(0, 0, score_mesh_start_z), action_time).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	
 	whoosh.play()
 	
@@ -52,6 +56,12 @@ func launch():
 func set_score(new_score):
 	score = new_score
 	
+	if score_mesh.position.z != score_mesh_start_z:
+		var tween = get_tree().create_tween()
+		@warning_ignore("return_value_discarded")
+		tween.tween_property(score_mesh, "position", Vector3(0, 0, score_mesh_start_z), action_time).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+		await tween.finished
+	
 	var mesh = TextMesh.new()
 	
 	mesh.font = preload("res://resources/FredokaOne-Regular.ttf")
@@ -66,7 +76,7 @@ func set_score(new_score):
 	
 	var tween = get_tree().create_tween()
 	@warning_ignore("return_value_discarded")
-	tween.tween_property(score_mesh, "position", Vector3(0, 0, 1.5), action_time).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(score_mesh, "position", Vector3(0, 0, 1.5), action_time).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 
 func _physics_process(delta):

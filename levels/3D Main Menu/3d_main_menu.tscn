@@ -205,20 +205,6 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.692
 mesh = SubResource("PlaneMesh_f3non")
 surface_material_override/0 = SubResource("StandardMaterial3D_f173d")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12182, 14.6747, 17.4565)
-visible = false
-light_energy = 3.232
-shadow_enabled = true
-omni_range = 9.003
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5449, 14.6747, 17.4565)
-visible = false
-light_energy = 3.232
-shadow_enabled = true
-omni_range = 9.003
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("14_0abbu")

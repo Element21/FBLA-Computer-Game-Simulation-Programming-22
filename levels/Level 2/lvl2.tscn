@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://levels/Level 2/lvl2.gd" id="1_itio5"]
 [ext_resource type="ArrayMesh" uid="uid://c4m8n11ytae44" path="res://levels/Level 2/pot2.0.obj" id="2"]
 [ext_resource type="PackedScene" uid="uid://cnqgashcl1mh0" path="res://objects/level parts/word_manager/word_manager.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://objects/level parts/hand/hand.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dpdmtauu1xe52" path="res://objects/level parts/hand/hand.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cn3olk5t7g2uj" path="res://objects/level parts/game_camera/game_camera.tscn" id="4_orya4"]
 [ext_resource type="Material" path="res://resources/materials/soup_material.tres" id="5"]
 [ext_resource type="Material" uid="uid://odi615eo1fv2" path="res://resources/materials/metal.tres" id="5_hljo1"]

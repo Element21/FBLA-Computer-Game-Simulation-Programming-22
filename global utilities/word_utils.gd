@@ -138,9 +138,9 @@ func matches_word(letters: Array) -> bool:
 
 
 func calculate_score_added(letters: Array, letter: Letter):
-	var probability_ok_letter = probability_of_randomly_choosing_ok_letter(letters)
+	var probability_ok_letter = probability_of_randomly_choosing_ok_letter(letters, letter)
 	
-	if probability_ok_letter == 0.:
+	if probability_ok_letter == null:
 		return null
 	
 	var size_idx = letters.size() - 1
@@ -149,7 +149,7 @@ func calculate_score_added(letters: Array, letter: Letter):
 	return max(1., floor(1. / (probability_ok_letter * letter_distributions[size_idx][letter_to_idx(letter.which_letter)])))
 
 
-func probability_of_randomly_choosing_ok_letter(letters: Array) -> float:
+func probability_of_randomly_choosing_ok_letter(letters: Array, letter: Letter):
 	var empty_index = letters.find(null)
 	
 	var could_be_placed = []
@@ -161,6 +161,9 @@ func probability_of_randomly_choosing_ok_letter(letters: Array) -> float:
 	for word in words[letters.size() - 1] as Array[String]:
 		if compare_word(word, letters):
 			could_be_placed[word.unicode_at(empty_index) - 97] = true
+	
+	if !could_be_placed[letter_to_idx(letter.which_letter)]:
+		return null
 	
 	var distribution = letter_distributions[letters.size() - 1]
 	

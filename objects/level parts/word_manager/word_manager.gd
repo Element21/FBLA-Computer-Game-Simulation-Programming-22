@@ -39,6 +39,7 @@ func _ready():
 		
 		platform.launch_vector = launch_vector
 		platform.position.x = platform_index_to_x_position(index)
+		platform.index = index
 		
 		platforms.add_child(platform)
 	
@@ -54,27 +55,30 @@ func _process(_delta):
 	(%"Time indicator" as Node3D).scale.x = 1 - Tweening.fast_then_slow(1 - level.time_left / level.time_given)
 
 
+func set_letter_of_platform(letter: Letter, platform: LetterPlatform):
+	var matches_before = WordUtils.matches_word(letters_placed)
+	
+	if matches_before:
+		platform.set_score(WordUtils.calculate_score_added(letters_placed, letter))
+
+
 # Called when the hand drops a letter, tells the platform that a letter was dropped on it, validates the letter sequence, and calculates score
 func place_letter(letter: Letter):
 	var index = letters_placed.find(null)
 	
 	var platform: LetterPlatform = platforms.get_child(index)
 	
-	var matches_before = WordUtils.matches_word(letters_placed)
-	
-	if matches_before:
-		platform.set_score(WordUtils.calculate_score_added(letters_placed, letter))
+	set_letter_of_platform(letter, platform)
 	
 	letters_placed[index] = letter
 	platform.letter = letter
 	
-	var matches_after = WordUtils.matches_word(letters_placed)
-	
-	if !matches_after:
+	if platform.score == null:
 		bad_letter_placed.emit(platform.global_position)
 		platform.set_score(null)
+		return
 	
-	if letters_placed.find(null) == -1 && matches_after:
+	if letters_placed.find(null) == -1:
 		word_made()
 
 
@@ -110,28 +114,19 @@ func next_platform_position() -> Vector3:
 	return platform.global_position
 
 
-func _input(event: InputEvent):
-	if level.playing && event.is_action_pressed("delete_letter"):
-		delete()
-
-
 # Delete a letter
-func delete():
-	var last_letter_index = null
-		
-	for i in range(0, letters_placed.size()):
-		if letters_placed[i] != null:
-			last_letter_index = i
+func delete(index: int):
+	letters_placed[index] = null
 	
-	if last_letter_index != null:
-		
-		letters_placed[last_letter_index] = null
-		
-		(platforms.get_child(last_letter_index) as LetterPlatform).flip()
+	(platforms.get_child(index) as LetterPlatform).flip()
 	
 	deleted_letter.emit()
 	
 	level.hand.letter_deleted()
+	
+	for rechecking_platform in platforms.get_children() as Array[LetterPlatform]:
+		if rechecking_platform.score == null && rechecking_platform.letter != null:
+			set_letter_of_platform(rechecking_platform.letter, rechecking_platform)
 
 
 func timer_pos() -> Vector3:

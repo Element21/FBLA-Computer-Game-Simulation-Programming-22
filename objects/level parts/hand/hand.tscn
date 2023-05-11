@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://dpdmtauu1xe52"]
 
 [ext_resource type="ArrayMesh" uid="uid://r4r72ff1r61p" path="res://resources/hand_frames/frame1_hand_3.0.obj" id="1"]
 [ext_resource type="Script" path="res://objects/level parts/hand/hand.gd" id="2"]
@@ -70,7 +70,6 @@ draw_pass_1 = SubResource("9")
 unique_name_in_owner = true
 collision_mask = 2
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="Hand animation state interval" type="Timer" parent="."]
 unique_name_in_owner = true
