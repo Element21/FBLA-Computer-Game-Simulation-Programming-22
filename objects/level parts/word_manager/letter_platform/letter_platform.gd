@@ -76,7 +76,7 @@ func set_score(new_score):
 	
 	var tween = get_tree().create_tween()
 	@warning_ignore("return_value_discarded")
-	tween.tween_property(score_mesh, "position", Vector3(0, 0, 1.5), action_time).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(score_mesh, "position", Vector3(0, 0, 1.2), action_time).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 
 func _physics_process(delta):
