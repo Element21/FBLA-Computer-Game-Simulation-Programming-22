@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxedi1cdrbyj"
-path.s3tc="res://.godot/imported/can_default_SPAGHETALETTERS.png-40c1d549ff68a6a5aafa0526b57ea646.s3tc.ctex"
+uid="uid://cg0jl85qwm5jf"
+path.s3tc="res://.godot/imported/can_default_can_default_SPAGHETALETTERS.png-f2d4456d5de459f29f4bd77e96b4020b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://resources/cans/can_default_SPAGHETALETTERS.png"
-dest_files=["res://.godot/imported/can_default_SPAGHETALETTERS.png-40c1d549ff68a6a5aafa0526b57ea646.s3tc.ctex"]
+source_file="res://resources/cans/can_default_can_default_SPAGHETALETTERS.png"
+dest_files=["res://.godot/imported/can_default_can_default_SPAGHETALETTERS.png-f2d4456d5de459f29f4bd77e96b4020b.s3tc.ctex"]
 
 [params]
 

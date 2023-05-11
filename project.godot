@@ -36,6 +36,10 @@ gdscript/warnings/unsafe_call_argument=1
 window/per_pixel_transparency/allowed=true
 window/vsync/vsync_via_compositor=true
 
+[filesystem]
+
+import/blender/enabled=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
